@@ -20,6 +20,15 @@ router.get('/set-token-cookie', asyncHandler(async (req, res) => {
     return res.json({ user });
 }));
 
+// TEST RESTORE USER 
+const { restoreUser } = require('../../utils/auth.js');
+router.get(
+    '/restore-user',
+    restoreUser,
+    (req, res) => {
+        return res.json(req.user);
+    }
+);
 //-----------------------------------------------------------------//
 
 
