@@ -22,19 +22,19 @@ function Navigation({ isLoaded }) {
     }
 
     return (
-        <>
+        <div id="nav-bar">
             <div className='logo'>
                 <Link exact to="/">
-                    <i class="fab fa-airbnb"> airBnB</i>
+                    <i class="fab fa-airbnb"> LodgeBnB</i>
                 </Link>
             </div>
             <ul>
-                <li>
+                <li class="list">
                     <NavLink exact to="/">Home</NavLink>
                     {isLoaded && sessionLinks}
                 </li>
             </ul>
-        </>
+        </div>
        
     );
 }

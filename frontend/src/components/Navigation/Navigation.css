@@ -1,0 +1,17 @@
+i {
+    font-size: 30px;
+}
+
+a {
+    text-decoration: none;;
+}
+
+#nav-bar {
+    border: solid 1px blue;
+    display: flex;
+    width: 100%;
+}
+
+li::marker {
+    text-decoration: none !important;
+}
