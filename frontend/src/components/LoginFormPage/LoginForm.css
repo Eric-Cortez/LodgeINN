@@ -1,0 +1,11 @@
+
+
+* {
+    background-color: lightslategrey ;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.login-form{ 
+    display: flex;
+    flex-direction: column;
+}
