@@ -25,7 +25,7 @@ function Navigation({ isLoaded }) {
     return (
         <ul>
             <div>
-                <Link to="/ "><i class="fab fa-airbnb"></i>LodgeINN</Link>
+                <Link to="/ "><i className="fab fa-airbnb"></i>LodgeINN</Link>
             </div>
             <li>
                 <NavLink exact to="/">Home</NavLink>
