@@ -12,39 +12,39 @@
 
 ### General Info 
 ***
-# Carra 
-Carra is an application where users can post questions about their vehicles and the community can share their knowledge by answering questions. Users are able to interact further through comments to form meaningful discussions. 
+# LodgeINN
+LodgeINN is an application where users can post spots to host or book spots. 
 * Link to live  [Carr](https://carra.herokuapp.com/) project. 
 
 
-#### Carra Login page
-![carraLoginPage (2)](https://user-images.githubusercontent.com/85452797/147454949-a2bc41d8-1102-4429-ab8b-b5bb8bbcae08.png)
+#### LodgeINN Login page
+![LodgeINNLoginPage (2)](imgelink)
 
 
-#### Carra Sign up page
-![carraSignUpPage](https://user-images.githubusercontent.com/85452797/147451908-02f6f91d-f1a9-4a3e-98e7-9c9cec3f0e49.png)
+#### LodgeINN Sign up page
+![LodgeINNSignUpPage](imgelink)
 
 
-#### Carra Home page
-![carraHomePage](https://user-images.githubusercontent.com/85452797/147452010-47661dc2-67f5-47c6-977c-eb3352062f59.png)
+#### LodgeINN Home page
+![carraHomePage](imgelink)
 
 
 #### Question details page with an answer and a comment
-![questionDetailsPage](https://user-images.githubusercontent.com/85452797/147455673-e74d8a4d-4850-46fc-bc90-48882a292247.png)
+![questionDetailsPage](imgelink)
 
 
 #### Topics page w/ questions related to topic
-![topics](https://user-images.githubusercontent.com/85452797/147452071-6f2d81d5-f470-4cce-839c-edb9120a3fc1.png)
+![topics](imgelink)
 
 
 ## Wiki Documentation: 
 ***
-* [Home](https://github.com/k-dodsonknapp/Cara/wiki)
-* [API Documentation](https://github.com/k-dodsonknapp/Cara/wiki/API-Documentation)
-* [Database Schema](https://github.com/k-dodsonknapp/Cara/wiki/Database-Schema)
-* [Frontend Routes](https://github.com/k-dodsonknapp/Cara/wiki/Frontend-Routes)
-* [MVP Feature List](https://github.com/k-dodsonknapp/Cara/wiki/MVP-Feature-List)
-* [User Stories](https://github.com/k-dodsonknapp/Cara/wiki/User-Stories)
+* [Home](link)
+* [API Documentation](link)
+* [Database Schema](link)
+* [Frontend Routes](link)
+* [MVP Feature List](link)
+* [User Stories](link)
 
 ## Technologies 
 ***
@@ -79,9 +79,9 @@ Technologies used within the project:
 * Heroku
 
 ## Installation 
-To install Carra on your local machine please clone the project repository. Once the project has been cloned run ```npm install``` in your terminal to install dependencies.
+To install LodgeINN on your local machine please clone the project repository. Once the project has been cloned run ```npm install``` in your terminal to install dependencies.
 ```
- git clone https://github.com/k-dodsonknapp/Cara.git
+ git clone https://github.com/Eric-Cortez/LodgeINN.git
  npm install
  npm start
 ```
@@ -90,7 +90,7 @@ To use the application in a development environment use ```npm start``` to start
 
 
 ## Collaboration
-  This project was developed by a group of four developers Aaron Short, Chris Ramos,    Eric Cortez, and Kenneth Dodson-Knapp. Below are the top two features of the project and a brief description of challenges faced during the one week development cycle. 
+  This project was developed by a group of four developer Eric Cortez. Below are the top two features of the project and a brief description of challenges faced during the one week development cycle. 
 #### Highlight features: 
 * Question Delete: The implementation of the dynamic delete frontend route allows you to delete a question on the home page without the need to be redirected to a new page. This feature was implemented using an event listener to manipulate the document object model and remove the element from the page. This is done through a fetch request in the event listener which reaches an endpoint on the backend to remove the question from the database. 
 * Home Page: The home page displays nested elements as it allows users to post question, answers, and comments. The nested nature of this features required extensive use joint table query searches in addition data manipulation with pug in order to ensure that the question, answers, and comments all correlated to ensure data integrity.  Lastly, we ensured user authentication and permissions when enabling edit and delete features.  
@@ -104,22 +104,22 @@ To use the application in a development environment use ```npm start``` to start
 
 ## Images 
 #### Event Listener for dynamically deleting content
-![eventListener](https://user-images.githubusercontent.com/85452797/147452111-3a263729-9a71-4b7f-9d7c-43c0d706f1bb.png)
+![eventListener](link)
 
 
-#### Pug form for the home page of Carra aka question list
-![questionListPug](https://user-images.githubusercontent.com/85452797/147452118-db5e7eb0-2d65-4199-b374-1da6410ca8c6.png)
+#### REACT form for the home page of LodgeINN aka question list
+![questionListPug](link)
 
 
 #### Code snippet of the route to post a new question 
-![postNewQuestion](https://user-images.githubusercontent.com/85452797/147454596-6364b043-1853-4812-aa80-e226db36e6cb.png)
+![postNewQuestion](link)
 
 
 #### Code snippet of the route to edit an answer
-![submitEditAnswer](https://user-images.githubusercontent.com/85452797/147454603-5af1b1e5-cd40-44f8-8ce7-c82f7b2899e3.png)
+![submitEditAnswer](link)
 
 
 #### Code snippet of the route to get a form to post a new comment
-![getNewCommentForm](https://user-images.githubusercontent.com/85452797/147454618-28661dbb-3083-4de9-8533-13e7484e9235.png)
+![getNewCommentForm](link.png)
 
 
