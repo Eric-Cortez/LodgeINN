@@ -9,13 +9,10 @@ const loadAll = ( list ) => ({
     list
 })
 
-
-
 // THUNKS 
 
-
 export const getAllSpots = () => async dispatch => {
-    const response = await fetch(`/api/spots`);
+    const response = await csrfFetch(`/api/spots`);
 
     if (response.ok) {
         const spots = await response.json();
@@ -24,15 +21,13 @@ export const getAllSpots = () => async dispatch => {
 };
 
 
-
-
 //REDUCER 
 const initialState = { 
     list : [],
  };
 
 const spotsReducer = (state = initialState, action) => {
-
+    console.log(action)
     switch (action.type) {
         case LOAD_ALL: {
             return action.list
