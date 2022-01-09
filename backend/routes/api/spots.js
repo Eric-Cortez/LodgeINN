@@ -5,7 +5,7 @@ const { handleValidationErrors } = require('../../utils/validation');
 
 
 const { setTokenCookie, restoreUser } = require('../../utils/auth');
-const { Spot } = require('../../db/models');
+const { Spot, Image, Amenity } = require('../../db/models');
 const router = express.Router();
 
 `   `
@@ -25,7 +25,11 @@ const router = express.Router();
 // GET  SPOTS - all the spots 
 
 router.get("/", asyncHandler(async (req, res) => {
-    const spots = await Spot.findAll()
+    const spots = await Spot.findAll({
+        include: [Image, Amenity],
+        limit: 15
+    })
+    // console.log(spots[0].Images[0].url)
     res.json(spots);
 }))
 
