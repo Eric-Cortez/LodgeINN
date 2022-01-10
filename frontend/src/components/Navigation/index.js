@@ -13,6 +13,7 @@ function Navigation({ isLoaded }) {
         sessionLinks = (
             <>
                 <Link to="/spots/host">Become a Host</Link>
+                <Link to="/spots">Places to stay</Link>
                 <ProfileButton user={sessionUser} />
             </>
             

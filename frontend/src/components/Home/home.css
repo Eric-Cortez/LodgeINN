@@ -1,0 +1,24 @@
+
+#main-home-container {
+}
+
+.top-container{
+    margin: 4% 9%;
+}
+.middle-container{
+    margin: 4% 9%;
+}
+
+.bottom-container {
+    margin: 4% 9%;
+} 
+
+footer {
+    width: 100%;
+    border: blue 2px solid;
+}
+
+#first-img {
+    border-radius: 15px;
+    width: 100%;
+}

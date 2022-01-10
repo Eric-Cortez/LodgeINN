@@ -175,8 +175,8 @@ function SpotHostForm() {
                             onChange={e => setBathrooms(e.target.value)}
                         />
                     </label>
-                    <button class="host-form" type="submit">Create new Spot</button>
-                    <button class="host-form" type="button" onClick={handleCancelClick}>Cancel</button>
+                    <button className="host-form" type="submit">Create new Spot</button>
+                    <button className="host-form" type="button" onClick={handleCancelClick}>Cancel</button>
                 </form>
             </div>
             

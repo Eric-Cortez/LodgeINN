@@ -18,7 +18,7 @@ select,input {
     padding: 40px;
 }
 
-input {
+select, input {
     width: 300px;
 }
 label {
@@ -30,9 +30,7 @@ label {
     font-size: 20px;
 }
 
-select {
-    margin-right: 37%;
-}
+
 
 button.host-form {
     text-align: center;

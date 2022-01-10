@@ -7,6 +7,7 @@ import Navigation from "./components/Navigation";
 import Spots from "./components/Spots "
 import SpotDetail from "./components/SpotDetail";
 import SpotHostForm from './components/SpotHostForm'
+import Home from "./components/Home";
 
 
 function App() {
@@ -21,6 +22,9 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
           <Route path="/signup">
             <SignupFormPage />
           </Route>
@@ -32,6 +36,9 @@ function App() {
           </Route>
           <Route exact path="/spots/:spotId">
             <SpotDetail />
+          </Route>
+          <Route>
+            <h1> Page Not Found: 404</h1>
           </Route>
         </Switch>
       )}
