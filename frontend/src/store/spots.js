@@ -38,7 +38,7 @@ export const getOneSpot = (id) => async dispatch => {
     if(response.ok) {
         const spot = await response.json()
         // console.log("THUNK",spot)
-        dispatch(addOneSpot(spot))
+        dispatch(loadOne(spot))
     }
 }
 
@@ -66,6 +66,7 @@ const initialState = {
  };
 
 const spotsReducer = (state = initialState, action) => {
+    console.log(action)
     switch (action.type) {
         case LOAD_ALL: {
             const allSpots = {}
@@ -79,7 +80,6 @@ const spotsReducer = (state = initialState, action) => {
             }
         }
         case LOAD_ONE: {
-            console.log("STATE", state)
                 const newState = {
                     ...state,
                     [action.spot.id]: action.spot
