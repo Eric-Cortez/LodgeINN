@@ -28,10 +28,10 @@ function Navigation({ isLoaded }) {
     }
 
     return (
-        <nav>
+        <nav id="navbar">
             <ul>
                 <div>
-                    <Link id="logo" to="/ "><i id="logo-icon"className="fab fa-airbnb"></i>LodgeINN</Link>
+                    <Link id="logo" to="/"><i id="logo-icon"className="fab fa-airbnb"></i>LodgeINN</Link>
                 </div>
                 <li>
                     <NavLink exact to="/">Home</NavLink>

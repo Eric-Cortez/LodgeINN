@@ -1,16 +1,18 @@
 
 #main-home-container {
+   margin: 0 9%;
+  
 }
 
 .top-container{
-    margin: 4% 9%;
+    margin: 4% 0;
 }
 .middle-container{
-    margin: 4% 9%;
+    margin: 4% 0;
 }
 
 .bottom-container {
-    margin: 4% 9%;
+    margin: 4% 0;
 } 
 
 footer {
@@ -21,4 +23,37 @@ footer {
 #first-img {
     border-radius: 15px;
     width: 100%;
+}
+
+/* Centered text */
+.middle-container,
+.bottom-container {
+  position: relative;
+}
+.centered ,
+.middle-center,
+.bottom-center {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 75px;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: transparent;
+  color: white;
+  font-weight: 700;
+}
+
+
+.centered-button {
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 25px;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: white;
+  color: purple;
+  padding: 15px 38px;
+  border-radius: 35px;
 }
