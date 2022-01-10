@@ -27,15 +27,17 @@ function Navigation({ isLoaded }) {
     }
 
     return (
-        <ul>
-            <div>
-                <Link to="/ "><i className="fab fa-airbnb"></i>LodgeINN</Link>
-            </div>
-            <li>
-                <NavLink exact to="/">Home</NavLink>
-                {isLoaded && sessionLinks}
-            </li>
-        </ul>
+        <nav>
+            <ul>
+                <div>
+                    <Link id="logo" to="/ "><i id="logo-icon"className="fab fa-airbnb"></i>LodgeINN</Link>
+                </div>
+                <li>
+                    <NavLink exact to="/">Home</NavLink>
+                    {isLoaded && sessionLinks}
+                </li>
+            </ul>
+        </nav>
     );
 }
 

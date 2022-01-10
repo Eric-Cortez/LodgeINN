@@ -1,0 +1,47 @@
+
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+select,input {
+    margin: 10px 10px;
+    border-radius: 4px;
+}
+
+#form-container {
+    border: 1px solid lightgray;
+    border-radius: 8px;
+    margin: 0 30%;
+    margin-top: 12%;
+    padding: 40px;
+}
+
+input {
+    width: 300px;
+}
+label {
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+    margin-right: 10%;
+    margin-left: 15%;
+    font-size: 20px;
+}
+
+select {
+    margin-right: 37%;
+}
+
+button.host-form {
+    text-align: center;
+    margin: 5px 340px;
+    width: 30%;
+    height: 30px;
+    border-radius: 10px;
+}
+
+h1 {
+    text-align: center;
+}

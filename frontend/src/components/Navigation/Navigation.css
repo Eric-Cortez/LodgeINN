@@ -1,9 +1,9 @@
-i {
-    font-size: 30px;
+i#logo-icon {
+    font-size: 50px;
 }
 
-a {
-    text-decoration: none;;
+#logo {
+   font-size: 30px; 
 }
 
 #nav-bar {
@@ -12,6 +12,33 @@ a {
     width: 100%;
 }
 
+
+
+ul {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+}
+
 li::marker {
     text-decoration: none !important;
 }
+
+.fa-user-circle  {
+    font-size: 20px;
+    border-radius: 5px;
+}
+
+a {
+    text-decoration: none;
+    color: grey;
+    margin: 0 10px;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+#signup {
+    padding-left: 15px;
+} 
+
+
