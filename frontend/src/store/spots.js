@@ -11,9 +11,9 @@ const loadAll = ( list ) => ({
     list
 })
 
-const loadOne = (id) => ({
+const loadOne = (spot) => ({
     type: LOAD_ONE,
-    id
+    spot
 })
 
 const addOneSpot = spot => ({
@@ -45,17 +45,17 @@ export const getOneSpot = (id) => async dispatch => {
 export const addSpot = ( spot ) => async dispatch => {
          const res = await csrfFetch(`/api/spots/host`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' }, // Don't forget the 's' on 'headers'!!
+            headers: { 'Content-Type': 'application/json' }, 
             body: JSON.stringify(spot)
         });
         if (!res.ok) {
             let error = await res.json();
-            return error; // Stops rest of function from running
+            return error; 
         }
 
         const payload = await res.json();
         console.log("addSpot THUNK",payload)
-        await dispatch(addOneSpot(payload)); // Send new pokemon to reducer
+        await dispatch(addOneSpot(payload)); 
         
         return payload;
 }
@@ -78,14 +78,23 @@ const spotsReducer = (state = initialState, action) => {
                 list: action.list
             }
         }
+        case LOAD_ONE: {
+            console.log("STATE", state)
+                const newState = {
+                    ...state,
+                    [action.spot.id]: action.spot
+                };
+            return newState;
+        }
         case ADD_ONE: {
+            console.log("STATE",state)
             if(!state[action.spot.id]){
                 const newState = {
                     ...state,
                     [action.spot.id]: action.spot
                 };
+                console.log("New State",newState)
                 const spotList = newState.list.map(id => newState[id]);
-                console.log(spotList)
                 spotList.push(action.spot);
                 newState.list = action.list;
                 return newState;

@@ -1,9 +1,15 @@
 
-* {
-    background-color: lightsteelblue;
-    font-family: Arial, Helvetica, sans-serif;
-}
 
 .sign-up {
-    padding-top: 10%;
+    margin: 0 20%;
+    margin-top: 20%;
+    padding: 3%;
+    border: 1px solid lightgray;
+    border-radius: 8px;
+}
+
+button.sign-up-btn {
+    margin-left: 60%;
+    width: 100px;
+    border-radius: ;
 }

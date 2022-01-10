@@ -22,21 +22,23 @@ function Spots() {
                 {allSpots.map(spot => (
                     <div className="spots-container">
                         <div className="image-container">
+                            {/* {spot.Images[0].url &&
                             <img id='spot-image' key={spot.id} src={spot.Images[0].url} />
+                            } */}
                         </div>
                         <div className="info">
                             <Link to={`/spots/${spot.id}`}>
-                                <h2 key={spot.id}>{spot.title}</h2>
+                                <h2 key={spot.title}>{spot.title}</h2>
                             </Link>
                             <ul class="details"> 
-                                <li key={spot.id}>Cost: ${spot.price}</li>
-                                <li key={spot.id}>{spot.address}</li>
-                                <li key={spot.id}>{spot.city}</li>
-                                <li key={spot.id}>{spot.state}</li>
-                                <li key={spot.id}>{spot.zipCode}</li>
-                                <li key={spot.id}>Guests:{spot.guests}</li>
-                                <li key={spot.id}>Bedrooms: {spot.bedrooms}</li>
-                                <li key={spot.id}>Bathrooms: {spot.bathrooms}</li>
+                                <li key={spot.price}>Cost: ${spot.price}</li>
+                                <li key={spot.address}>{spot.address}</li>
+                                <li key={spot.city}>{spot.city}</li>
+                                <li key={spot.state}>{spot.state}</li>
+                                <li key={spot.zipCode}>{spot.zipCode}</li>
+                                <li key={spot.guests}>Guests:{spot.guests}</li>
+                                <li key={spot.bedrooms}>Bedrooms: {spot.bedrooms}</li>
+                                <li key={spot.bathrooms}>Bathrooms: {spot.bathrooms}</li>
                             </ul>
                         </div>
                     </div>

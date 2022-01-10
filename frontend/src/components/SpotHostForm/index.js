@@ -63,7 +63,8 @@ function SpotHostForm() {
         //     //!!START SILENT
         //     setErrorMessages({});
         //     //!!END
-            history.push(`/spots/${createdSpot.id}`);
+            console.log(createdSpot)
+            history.push(`/spots/${createdSpot.id.id}`);
         //     hideForm();
         }
     };
