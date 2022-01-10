@@ -28,7 +28,7 @@ function Spots() {
                             <Link to={`/spots/${spot.id}`}>
                                 <h2 key={spot.id}>{spot.title}</h2>
                             </Link>
-                            <ul> Spot Details
+                            <ul class="details"> 
                                 <li key={spot.id}>Cost: ${spot.price}</li>
                                 <li key={spot.id}>{spot.address}</li>
                                 <li key={spot.id}>{spot.city}</li>

@@ -48,8 +48,10 @@ router.get("/:id", asyncHandler(async (req, res) => {
 router.post('/host', 
 //  requireAuth, 
  asyncHandler(async (req, res) => {
+    
     const id = await Spot.create(req.body)
-    // await setTokenCookie(res, id)
+
+    await setTokenCookie(res, id);
 
     return res.json({
         id
