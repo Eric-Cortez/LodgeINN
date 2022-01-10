@@ -42,6 +42,24 @@ export const getOneSpot = (id) => async dispatch => {
     }
 }
 
+export const addSpot = ( spot ) => async dispatch => {
+         const res = await csrfFetch(`/api/spots/host`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' }, // Don't forget the 's' on 'headers'!!
+            body: JSON.stringify(spot)
+        });
+        if (!res.ok) {
+            let error = await res.json();
+            return error; // Stops rest of function from running
+        }
+
+        const payload = await res.json();
+        console.log("addSpot THUNK",payload)
+        await dispatch(addOneSpot(payload)); // Send new pokemon to reducer
+        
+        return payload;
+}
+
 //REDUCER 
 const initialState = { 
     list : [],

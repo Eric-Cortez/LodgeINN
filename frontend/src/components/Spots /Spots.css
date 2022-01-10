@@ -1,5 +1,77 @@
+* {
+  background: rgb(255,255,255);
+  font-family: Arial, Helvetica, sans-serif;
+}
+html {
+    margin: 0;
+}
 
-img {
-  height: 100px;
-  width: 80px;
+.main-container {
+    display: grid;
+    grid-template-columns: 4fr 2fr;
+}
+
+.map{
+    width: 40%;
+    margin-right: 10%;
+}
+
+.left-container{
+    display: flex;
+    flex-direction: column;
+    grid-column-start: 1 / span 1;
+    width: 100%;
+}
+
+.spots-container {
+    border-bottom: rgb(235,235,235) 2px solid;
+    display: flex;
+    height: 330px;
+    width: 100%;
+    margin-left: 5%;
+    margin-top: 2%;
+}
+
+.right-container {
+    grid-column-start: 2 / span 1;
+    width: 100%;
+    height: 100%;
+} 
+
+.info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 100%;
+    width: 40%;
+    overflow: auto;
+    padding-left: 25px;
+    margin-left: 10%;
+}
+
+#spot-image {
+   width: 100%;
+   height: 92%;
+   border-radius: 15px;
+   margin-right: 10%;
+}
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  color: rgb(140,140,140);
+}
+
+.fill {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden
+}
+.fill img {
+    flex-shrink: 0;
+    min-width: 100%;
+    min-height: 100%
 }

@@ -3,8 +3,7 @@ const asyncHandler = require('express-async-handler');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 
-
-const { setTokenCookie, restoreUser } = require('../../utils/auth');
+const { setTokenCookie, requireAuth } = require('../../utils/auth');
 const { Spot, Image, Amenity } = require('../../db/models');
 const router = express.Router();
 
@@ -42,13 +41,19 @@ router.get("/:id", asyncHandler(async (req, res) => {
 }))
 
 
-router.get('/host', asyncHandler(async (req, res) => {
-    return res.send('cabin form')
-}))
+// router.get('/host', asyncHandler(async (req, res) => {
+//     return res.send('cabin form')
+// }))
 
-router.post('/host', asyncHandler(async (req, res) => {
+router.post('/host', 
+//  requireAuth, 
+ asyncHandler(async (req, res) => {
     const id = await Spot.create(req.body)
-    return res.redirect(`${req.baseUrl}/${id}`)
+    // await setTokenCookie(res, id)
+
+    return res.json({
+        id
+    })
 }))
 
 
