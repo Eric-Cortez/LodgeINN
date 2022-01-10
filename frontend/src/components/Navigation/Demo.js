@@ -10,7 +10,6 @@ const Demo = () => {
 
         const credential = 'Demo-lition';
         const password = 'password'
-
         dispatch(sessionActions.login({ credential, password }))
             .catch(async (res) => {
                 const data = await res.json()

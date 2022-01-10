@@ -87,13 +87,11 @@ const spotsReducer = (state = initialState, action) => {
             return newState;
         }
         case ADD_ONE: {
-            console.log("STATE",state)
             if(!state[action.spot.id]){
                 const newState = {
                     ...state,
                     [action.spot.id]: action.spot
                 };
-                console.log("New State",newState)
                 const spotList = newState.list.map(id => newState[id]);
                 spotList.push(action.spot);
                 newState.list = action.list;
