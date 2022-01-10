@@ -23,7 +23,6 @@ const router = express.Router();
 
 
 // GET  SPOTS - all the spots 
-
 router.get("/", asyncHandler(async (req, res) => {
     const spots = await Spot.findAll({
         include: [Image, Amenity],
@@ -33,6 +32,24 @@ router.get("/", asyncHandler(async (req, res) => {
     res.json(spots);
 }))
 
+// GET one spot 
+router.get("/:id", asyncHandler(async (req, res) => {
+    const spotId = parseInt(req.params.id, 10)
+    const spot = await Spot.findByPk(spotId, {
+        include: [Image, Amenity]
+    })
+    return res.json(spot)
+}))
+
+
+router.get('/host', asyncHandler(async (req, res) => {
+    return res.send('cabin form')
+}))
+
+router.post('/host', asyncHandler(async (req, res) => {
+    const id = await Spot.create(req.body)
+    return res.redirect(`${req.baseUrl}/${id}`)
+}))
 
 
 
