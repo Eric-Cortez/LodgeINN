@@ -4,7 +4,7 @@ const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
-const { Spot, Image, Amenity } = require('../../db/models');
+const { Spot, Image, Amenity, User } = require('../../db/models');
 const router = express.Router();
 
 `   `
@@ -35,7 +35,7 @@ router.get("/", asyncHandler(async (req, res) => {
 router.get("/:id", asyncHandler(async (req, res) => {
     const spotId = parseInt(req.params.id, 10)
     const spot = await Spot.findByPk(spotId, {
-        include: [Image, Amenity]
+        include: [Image, Amenity, User]
     })
     return res.json(spot)
 }))
