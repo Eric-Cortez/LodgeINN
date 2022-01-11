@@ -48,11 +48,18 @@ router.get("/:id", asyncHandler(async (req, res) => {
 router.post('/host', 
  requireAuth, 
  asyncHandler(async (req, res) => {
+
+    const { image, spots } = req.body
+    const id = await Spot.create(spots)
     
-    const id = await Spot.create(req.body)
+    const newImageUrl = {
+        spotId: id.id,
+        url: image.url
+    }
+    await Image.create(newImageUrl)
+    
 
     // await setTokenCookie(res, id);
-     console.log(id)
     return res.json({
         id
     })

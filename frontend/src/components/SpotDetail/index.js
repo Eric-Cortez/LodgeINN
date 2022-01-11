@@ -16,9 +16,7 @@ const SpotDetail = () => {
    
     return (
         <div>
-            {/* {oneSpot.Images[0].url && 
-            <img src={oneSpot.Images[0].url} alt="cabin" /> 
-            } */}
+            <img src={oneSpot?.Images[0].url} alt="cabin" /> 
             <p>{oneSpot?.description}</p>
             <h2>{oneSpot?.title}</h2> 
             <h2>{`TESTING: ${spotId}`}</h2>
