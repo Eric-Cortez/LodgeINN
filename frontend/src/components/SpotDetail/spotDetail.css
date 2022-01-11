@@ -1,6 +1,15 @@
-p,
+
 h2 {
     color:black;
-    font-size: xx-large;
-    margin-top: 200px;
+    font-size: xx-large
+}
+
+
+.spot-detail {
+    margin: 10%;
+}
+
+.spot-image {
+   width: 100%;
+   border-radius: 25px;
 }

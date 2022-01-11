@@ -15,9 +15,9 @@ const SpotDetail = () => {
     },[dispatch,spotId])
    
     return (
-        <div>
+        <div className='spot-detail'> 
+            <img className="spot-image" src={oneSpot?.Images[0].url} alt="cabin" /> 
             <h1>{oneSpot?.title}</h1> 
-            <img src={oneSpot?.Images[0].url} alt="cabin" /> 
             <p>{oneSpot?.description}</p>
             <ul> Address: 
                 <li>{oneSpot?.address}</li>
