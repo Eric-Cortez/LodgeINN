@@ -8,8 +8,9 @@ html {
 
 .main-container {
     display: grid;
-    grid-template-columns: 4fr 2fr;
+    grid-template-columns: 4fr 3fr;
     margin-top: 10%;
+    grid-gap: 40px;
 }
 
 .map{
@@ -22,16 +23,17 @@ html {
     flex-direction: column;
     grid-column-start: 1 / span 1;
     width: 100%;
+    margin-left: 2%;
 }
 
 .spots-container {
     border-bottom: rgb(235,235,235) 2px solid;
-    display: flex;
-    height: 330px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+    height: 100%;
     width: 100%;
-    margin-left: 5%;
-    margin-top: 2%;
-    padding-bottom: 2%;
+    padding: 25px 0;
 }
 
 .right-container {
@@ -41,20 +43,22 @@ html {
 } 
 
 .info {
+    position: relative;
+    grid-column-start: 2 / span 1;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     height: 100%;
-    width: 40%;
+    width: 100%;
     overflow: auto;
-    margin-left: 2%;
-    padding-left: 2%;
+
 }
 
 #spot-image {
    width: 100%;
    height: 100%;
    border-radius: 15px;
+   grid-column-start: 1 / span 1;
 }
 
 ul {
@@ -87,10 +91,24 @@ ul.detail li {
  }
 ul li:after { 
     content: " \00b7"; 
-} */
+}  */
 
-/* 
 ul.details {
-    border: blue 1px solid;
-    padding: 0 20px;
-} */
+    /* border: blue 1px solid; */
+    display: block;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+} 
+
+#price {
+  position: absolute;
+  top: 90%;
+  right: 10%;
+  font-size: 25px;
+  font-weight: 100;
+}
+
+#spot-name {
+    font-size: 25px;
+}
