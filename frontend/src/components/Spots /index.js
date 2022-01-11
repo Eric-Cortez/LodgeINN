@@ -26,17 +26,17 @@ function Spots() {
                         </div>
                         <div className="info">
                             <Link to={`/spots/${spot.id}`}>
-                                <h2 id="spot-name" key={spot.title}>{spot.title}</h2>
+                                <h2 key={spot.title}>{spot.title}</h2>
                             </Link>
                             <ul class="details"> 
-                                <li id="price" key={spot.price}>${spot.price} / night</li>
-                                <li key={spot.guests}>{spot.guests} guests</li>
-                                <li key={spot.bedrooms}>{spot.bedrooms} bed</li>
-                                <li key={spot.bathrooms}>{spot.bathrooms} bath</li>
+                                <li key={spot.price}>Cost: ${spot.price}</li>
                                 <li key={spot.address}>{spot.address}</li>
                                 <li key={spot.city}>{spot.city}</li>
                                 <li key={spot.state}>{spot.state}</li>
                                 <li key={spot.zipCode}>{spot.zipCode}</li>
+                                <li key={spot.guests}>Guests:{spot.guests}</li>
+                                <li key={spot.bedrooms}>Bedrooms: {spot.bedrooms}</li>
+                                <li key={spot.bathrooms}>Bathrooms: {spot.bathrooms}</li>
                             </ul>
                         </div>
                     </div>
