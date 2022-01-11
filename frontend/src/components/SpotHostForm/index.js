@@ -17,9 +17,9 @@ function SpotHostForm() {
     const [state, setState] = useState("")
     const [city, setCity] = useState("")
     const [address, setAddress] = useState("")
-    const [zipCode, setZipCode] = useState(111111)
+    const [zipCode, setZipCode] = useState("")
     const [description, setDescription] = useState("")
-    const [price, setPrice] = useState(1)
+    const [price, setPrice] = useState("")
     const [guests, setGuests] = useState("")
     const [bedrooms, setBedrooms] = useState("")
     const [bathrooms, setBathrooms] = useState("")
@@ -31,14 +31,28 @@ function SpotHostForm() {
     const [pool, setPool] = useState(false);
     const [hotTub, setHotTub] = useState(false);
     const [pets, setPets] = useState(false);
+    const [validationErrors, setValidationErrors] = useState([])
 
-    // console.log("Kitchen",kitchen)
-    // console.log("beach", privateBeachAccess)
-    // console.log("firePlace", firePlace)
-    // console.log("parking", parking)
-    // console.log("pool", pool)
-    // console.log("hotTub", hotTub)
-    // console.log("pets", pets)
+    useEffect(() => {
+        const errors = [];
+        if (address.length > 255) errors.push("Address must be less 255 characters")
+        if (city.length > 255) errors.push("City must be less 255 characters")
+        if (state.length > 50) errors.push("State must be less 50 characters")
+        if (country.length > 50) errors.push("Country must be less 50 characters")
+        if (title.length > 100) errors.push("Title must be less 100 characters")
+        if (!description) errors.push("Please provide a description")
+        if (price < 1) errors.push("Please provide a price per night")
+        if (zipCode.length > 0 && zipCode.length > 6) errors.push("Please provide a valid zip code")
+        if (guests < 1) errors.push("Please provide a guest count.")
+        if (bedrooms < 1) errors.push("Please provide a bedroom count.")
+        if (bathrooms < 1) errors.push("Please provide a bathroom count.")
+        if (url.length > 255) errors.push("Please provide valid Image address(url).")
+        setValidationErrors(errors)
+    }, [address, city, state, country, title, description, price,zipCode,guests,bedrooms,bathrooms])
+
+
+
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -113,8 +127,14 @@ function SpotHostForm() {
             <h1>Host Form</h1>
             <div id="host-form" >
                 <form onSubmit={handleSubmit}>
+                    <ul className="errors">
+                        {validationErrors.map(error => (
+                            <li key={error}>{error}</li>
+                        ))}
+                    </ul>
                     <label> Spot Name: 
                         <input
+                            required
                             type='text'
                             placeholder="Spot Name"
                             value={title}
@@ -123,6 +143,7 @@ function SpotHostForm() {
                     </label>
                     <label> Country:
                         <input
+                            required
                             type='text'
                             placeholder="Country"
                             value={country}
@@ -131,6 +152,7 @@ function SpotHostForm() {
                     </label>
                     <label id="select"> State:
                         <select
+                            required
                             type='text'
                             placeholder="State"
                             value={state}
@@ -145,6 +167,7 @@ function SpotHostForm() {
                     </label>
                     <label> City:
                         <input
+                            required
                             type='text'
                             placeholder="City"
                             value={city}
@@ -153,6 +176,7 @@ function SpotHostForm() {
                     </label>
                     <label> Address:
                         <input
+                            required
                             type='text'
                             placeholder="Address"
                             value={address}
@@ -161,6 +185,8 @@ function SpotHostForm() {
                     </label>
                     <label> Zip Code:
                         <input
+                            required
+                            id="num-input"
                             type='number'
                             placeholder="Zip Code"
                             value={zipCode}
@@ -169,6 +195,7 @@ function SpotHostForm() {
                     </label>
                     <label> Description:
                         <input
+                            required
                             type='text'
                             placeholder="Description"
                             value={description}
@@ -177,6 +204,8 @@ function SpotHostForm() {
                     </label>
                     <label> Price:
                         <input
+                            required
+                            id="num-input"
                             type='number'
                             placeholder="Cost Per Night"
                             value={price}
@@ -185,6 +214,7 @@ function SpotHostForm() {
                     </label>
                     <label> Guests:
                         <input
+                            required
                             type='number'
                             placeholder="Guests"
                             value={guests}
@@ -193,6 +223,7 @@ function SpotHostForm() {
                     </label>
                     <label> Bedrooms:
                         <input
+                            required
                             type='number'
                             placeholder="Bedrooms"
                             value={bedrooms}
@@ -201,6 +232,7 @@ function SpotHostForm() {
                     </label>
                     <label> bathrooms
                         <input
+                            required
                             type='number'
                             placeholder="Bathrooms"
                             value={bathrooms}
@@ -209,6 +241,7 @@ function SpotHostForm() {
                     </label>
                     <label> Image url: 
                         <input
+                            required
                             type='string'
                             placeholder="image url"
                             value={url}
@@ -271,7 +304,10 @@ function SpotHostForm() {
                             onChange={(e) => setPets(!pets)}
                         />
                     </label>   
-                    <button className="host-form" type="submit">Create new Spot</button>
+                    <button 
+                    className="host-form" 
+                    disabled={validationErrors.length > 0}
+                    type="submit">Create new Spot</button>
                     <button className="host-form" type="button" onClick={handleCancelClick}>Cancel</button>
                 </form>
             </div>

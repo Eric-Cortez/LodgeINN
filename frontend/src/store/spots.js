@@ -67,7 +67,7 @@ const initialState = {
  };
 
 const spotsReducer = (state = initialState, action) => {
-    console.log(action)
+    // console.log(action)
     switch (action.type) {
         case LOAD_ALL: {
             const allSpots = {}

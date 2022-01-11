@@ -43,3 +43,15 @@ button.host-form {
 h1 {
     text-align: center;
 }
+
+input[type=number]#num-input::-webkit-inner-spin-button,
+input[type=number]#num-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+.errors {
+  display: inline-block;
+}
