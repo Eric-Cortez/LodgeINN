@@ -1,7 +1,7 @@
 i#logo-icon {
     font-size: 50px;
     padding-right: 4px;
-    margin-left: 10px;
+    margin-left: 20px;
     margin-bottom: 20px;
     height: 100%;
 }
@@ -26,24 +26,18 @@ li::marker {
     text-decoration: none !important;
 }
 
-.fa-user-circle  {
+i.fa-user-circle, 
+ .fa-bars  {
     font-size: 30px;
-    border-radius: 5px;
-    padding-left: 2px 10px;
-}
-button {
-    height: 45px;
-    width: 45;
-    border-radius: 5px;
-    margin-right: 50px;
-    
+    border-radius: 50%;
+    color: gray;
+    padding: 3px 2px;
 }
 
 
  a {
     text-decoration: none;
     color: grey;
-    /* margin: 0 40px; */
     text-decoration: none;
     font-size: 20px;
     font-weight: 700;
@@ -62,7 +56,11 @@ nav {
     top: 0;
     width: 100%;
     z-index: 1;
-    padding-top: 40px;
+    padding-top: 15px;
+    background-color: rgb(241,241,241);
+}
+nav * {
+     background-color: rgb(241,241,241);
 }
 
 
@@ -73,6 +71,22 @@ nav {
 }
 
 .sticky + .content {
-  padding-top: 60px;
+  padding-top: 30px;
 }
 
+ul {
+    margin-bottom: 10px;
+}
+
+a.nav-links {
+    /* border: 1px solid red; */
+    padding-right: 20px;
+}
+
+#user-btn {
+    border-radius: 21px !important;
+    overflow: visible !important;
+    padding: 2px 15px;
+    border: 1pz solid lightgray;
+    margin-right: 50px;
+}

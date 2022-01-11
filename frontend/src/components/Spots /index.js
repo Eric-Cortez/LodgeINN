@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { getAllSpots } from "../../store/spots"
 import { Link, Route, useParams } from 'react-router-dom';
-import "./spots.css"
+import "./Spots.css"
 
 function Spots() {
     const dispatch = useDispatch()
