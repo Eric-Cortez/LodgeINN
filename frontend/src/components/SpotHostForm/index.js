@@ -12,18 +12,18 @@ function SpotHostForm() {
         
  
 
-    const [title, setTitle] = useState("test")
-    const [country, setCountry] = useState("test")
-    const [state, setState] = useState("test")
-    const [city, setCity] = useState("test")
-    const [address, setAddress] = useState("test")
+    const [title, setTitle] = useState("")
+    const [country, setCountry] = useState("")
+    const [state, setState] = useState("")
+    const [city, setCity] = useState("")
+    const [address, setAddress] = useState("")
     const [zipCode, setZipCode] = useState(111111)
-    const [description, setDescription] = useState("test")
-    const [price, setPrice] = useState(0)
-    const [guests, setGuests] = useState(0)
-    const [bedrooms, setBedrooms] = useState(0)
-    const [bathrooms, setBathrooms] = useState(0)
-    const [url, setUrl] = useState("https://images.unsplash.com/photo-1486915309851-b0cc1f8a0084?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8Y2FtcGluZ3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60")
+    const [description, setDescription] = useState("")
+    const [price, setPrice] = useState("")
+    const [guests, setGuests] = useState("")
+    const [bedrooms, setBedrooms] = useState("")
+    const [bathrooms, setBathrooms] = useState("")
+    const [url, setUrl] = useState("")
 
     const handleSubmit = async (e) => {
         e.preventDefault();
