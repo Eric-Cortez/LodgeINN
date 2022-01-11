@@ -24,7 +24,7 @@ const SpotDetail = () => {
             <img className="spot-image" src={oneSpot?.Images[0].url} alt="cabin" /> 
             <h1>{oneSpot?.title}</h1>
             <h2>Host By: {oneSpot?.User?.username}</h2> 
-            {sessionUser.id === oneSpot.userId &&
+            {sessionUser?.id === oneSpot?.userId &&
               <Link to={`/spots/${spotId}/host`}>Edit Spot</Link>}
             <p>{oneSpot?.description}</p>
             <ul> Address: 

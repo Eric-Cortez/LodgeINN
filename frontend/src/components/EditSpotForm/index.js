@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useHistory, useParams } from "react-router-dom";
+import { Link, Redirect, useHistory, useParams } from "react-router-dom";
 import { states } from '../utils.js'
 import { addSpot } from "../../store/spots"
 import "./EditSpotForm.css"
@@ -308,7 +308,7 @@ function EditSpotForm() {
                         className="host-form"
                         disabled={validationErrors.length > 0}
                         type="submit">Create new Spot</button>
-                    <button className="host-form" type="button" onClick={handleCancelClick}>Cancel</button>
+                    <Link to={`/spots/${spotId}`}>Cancel</Link>
                 </form>
             </div>
         </div>
