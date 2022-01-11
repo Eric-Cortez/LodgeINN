@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useSelector, useDispatch,  } from 'react-redux';
 import { getOneSpot } from '../../store/spots';
 import "./spotDetail.css"
@@ -9,16 +9,23 @@ const SpotDetail = () => {
     const { spotId } = useParams() 
     
     const oneSpot = useSelector(state => state.spots[spotId])
+    const sessionUser = useSelector(state => state.session.user);
 
     useEffect(() => {
     dispatch(getOneSpot(spotId))
     },[dispatch,spotId])
    
+
+
+
+    
     return (
         <div className='spot-detail'> 
             <img className="spot-image" src={oneSpot?.Images[0].url} alt="cabin" /> 
             <h1>{oneSpot?.title}</h1>
             <h2>Host By: {oneSpot?.User?.username}</h2> 
+            {sessionUser.id === oneSpot.userId &&
+              <Link to={`/spots/${spotId}/host`}>Edit Spot</Link>}
             <p>{oneSpot?.description}</p>
             <ul> Address: 
                 <li>{oneSpot?.address}</li>
