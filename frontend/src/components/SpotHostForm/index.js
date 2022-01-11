@@ -24,12 +24,36 @@ function SpotHostForm() {
     const [bedrooms, setBedrooms] = useState("")
     const [bathrooms, setBathrooms] = useState("")
     const [url, setUrl] = useState("")
+    const [kitchen, setKitchen] = useState(false);
+    const [privateBeachAccess, setPrivateBeachAccess] = useState(false);
+    const [firePlace, setFirePlace] = useState(false);
+    const [parking, setParking] = useState(false);
+    const [pool, setPool] = useState(false);
+    const [hotTub, setHotTub] = useState(false);
+    const [pets, setPets] = useState(false);
+
+    // console.log("Kitchen",kitchen)
+    // console.log("beach", privateBeachAccess)
+    // console.log("firePlace", firePlace)
+    // console.log("parking", parking)
+    // console.log("pool", pool)
+    // console.log("hotTub", hotTub)
+    // console.log("pets", pets)
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         //!!START SILENT
         const payload = {
+         amenities: {
+             kitchen,
+             privateBeachAccess,
+             firePlace,
+             parking,
+             pool,
+             hotTub,
+             pets,
+         },
          image: {
             url 
          },
@@ -191,6 +215,62 @@ function SpotHostForm() {
                             onChange={e => setUrl(e.target.value)}
                         />
                     </label>
+                    <label htmlFor="kitchen">Kitchen:
+                    <input
+                        id="kitchen"
+                        type="checkbox"
+                        checked={kitchen} 
+                        onChange={(e) => setKitchen(!kitchen)}
+                    />  
+                    </label>        
+                    <label htmlFor="privateBeachAccess">Private Beach Access:
+                        <input
+                            id="privateBeachAccess"
+                            type="checkbox"
+                            checked={privateBeachAccess}
+                            onChange={(e) => setPrivateBeachAccess(!privateBeachAccess)}
+                        />
+                    </label>  
+                    <label htmlFor="firePlace">Fire Place:
+                        <input
+                            id="firePlace"
+                            type="checkbox"
+                            checked={firePlace}
+                            onChange={(e) => setFirePlace(!firePlace)}
+                        />
+                    </label>
+                    <label htmlFor="parking">Parking:
+                        <input
+                            id="parking"
+                            type="checkbox"
+                            checked={parking}
+                            onChange={(e) => setParking(!parking)}
+                        />
+                    </label>        
+                    <label htmlFor="pool">Pool:
+                        <input
+                            id="pool"
+                            type="checkbox"
+                            checked={pool}
+                            onChange={(e) => setPool(!pool)}
+                        />
+                    </label>  
+                    <label htmlFor="hotTub">Hot Tub:
+                        <input
+                            id="hotTub"
+                            type="checkbox"
+                            checked={hotTub}
+                            onChange={(e) => setHotTub(!hotTub)}
+                        />
+                    </label> 
+                    <label htmlFor="pets">Pets:
+                        <input
+                            id="pets"
+                            type="checkbox"
+                            checked={pets}
+                            onChange={(e) => setPets(!pets)}
+                        />
+                    </label>   
                     <button className="host-form" type="submit">Create new Spot</button>
                     <button className="host-form" type="button" onClick={handleCancelClick}>Cancel</button>
                 </form>

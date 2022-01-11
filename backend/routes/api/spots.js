@@ -49,7 +49,7 @@ router.post('/host',
  requireAuth, 
  asyncHandler(async (req, res) => {
 
-    const { image, spots } = req.body
+     const { image, spots, amenities } = req.body
     const id = await Spot.create(spots)
     
     const newImageUrl = {
@@ -57,7 +57,18 @@ router.post('/host',
         url: image.url
     }
     await Image.create(newImageUrl)
+    const newAmenityList = {
+        spotId: id.id,
+        kitchen: amenities.kitchen,
+        privateBeachAccess: amenities.privateBeachAccess,
+        firePlace: amenities.firePlace,
+        parking: amenities.parking,
+        pool: amenities.pool,
+        hotTub: amenities.hotTub,
+        pets: amenities.pets,
+    }
     
+    await Amenity.create(newAmenityList)
 
     // await setTokenCookie(res, id);
     return res.json({
