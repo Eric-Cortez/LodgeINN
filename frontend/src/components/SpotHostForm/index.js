@@ -19,7 +19,7 @@ function SpotHostForm() {
     const [address, setAddress] = useState("")
     const [zipCode, setZipCode] = useState(111111)
     const [description, setDescription] = useState("")
-    const [price, setPrice] = useState("")
+    const [price, setPrice] = useState(1)
     const [guests, setGuests] = useState("")
     const [bedrooms, setBedrooms] = useState("")
     const [bathrooms, setBathrooms] = useState("")
@@ -30,7 +30,6 @@ function SpotHostForm() {
 
         //!!START SILENT
         const payload = {
-         
          image: {
             url 
          },
