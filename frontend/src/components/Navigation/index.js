@@ -13,9 +13,9 @@ function Navigation({ isLoaded }) {
     if (sessionUser) {
         sessionLinks = (
             <>
-                <Link to="/spots/host">Become a Host</Link>
-                <Link to="/spots">Places to stay</Link>
-                <ProfileButton user={sessionUser} />
+                <Link className="nav-links" to="/spots/host">Become a Host</Link>
+                <Link className="nav-links" to="/spots">Places to stay</Link>
+                <ProfileButton className="nav-links" user={sessionUser} />
             </>
             
         );
@@ -23,7 +23,7 @@ function Navigation({ isLoaded }) {
         sessionLinks = (
             <>
                 <LoginFormModal />
-                <NavLink to="/signup">Sign Up</NavLink>
+                <NavLink className="nav-links" to="/signup">Sign Up</NavLink>
                 <Demo />
             </>
         );
@@ -36,7 +36,7 @@ function Navigation({ isLoaded }) {
                     <Link id="logo" to="/"><i id="logo-icon"className="fab fa-airbnb"></i>LodgeINN</Link>
                 </div>
                 <li>
-                    <NavLink exact to="/">Home</NavLink>
+                    <NavLink className="nav-links" exact to="/">Home</NavLink>
                     {isLoaded && sessionLinks}
                 </li>
             </ul>
