@@ -22,8 +22,8 @@ function Spots() {
                 {allSpots?.map(spot => (
                     <div className="spots-container">
                         <div className="image-container">
-                            <img id='spot-image' key={spot.id} src={spot?.Images[0]?.url}></img>
-                            {/* <img id='spot-image' key={spot.id} src={spot?.Images[0]?.url} /> */}
+                            {/* <img crossorigin="anonymous" id='spot-image' key={spot.id} src={spot?.Images[0]?.url}></img> */}
+                            <img crossorigin="anonymous" id='spot-image' key={spot.id} src={spot?.Images[0]?.url} />
                         </div>
                         <div className="info">
                             <Link to={`/spots/${spot.id}`}>
