@@ -1,21 +1,38 @@
 import { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useHistory, useParams } from 'react-router-dom';
 import { useSelector, useDispatch,  } from 'react-redux';
 import { getOneSpot } from '../../store/spots';
 import "./spotDetail.css"
+import { deleteSpot } from "../../store/spots"
 
 const SpotDetail = ({ spotInfo, setSpotInfo}) => {
     const dispatch = useDispatch()
     const { spotId } = useParams() 
+    const history = useHistory()
     
     const oneSpot = useSelector(state => state.spots[spotId])
     const sessionUser = useSelector(state => state.session.user);
 
     useEffect(() => {
     dispatch(getOneSpot(spotId))
-    },[dispatch,spotId])
-   
 
+    },[dispatch,spotId])
+
+    const deleteBtn = async (e) => {
+        e.preventDefault() 
+        let deleteSpotRes;
+        try {
+            deleteSpotRes = await dispatch(deleteSpot(oneSpot,spotId));
+            console.log(deleteSpotRes)
+        } catch (error) {
+            throw new Error("Error - Resource not found")
+        }
+        if (deleteSpotRes.message === "Delete Successful") {
+           history.push("/spots")
+        }
+
+
+    }
 
 
     
@@ -25,7 +42,11 @@ const SpotDetail = ({ spotInfo, setSpotInfo}) => {
             <h1>{oneSpot?.title}</h1>
             <h2>Host By: {oneSpot?.User?.username}</h2> 
             {sessionUser?.id === oneSpot?.userId &&
-              <Link to={`/spots/${spotId}/host`}>Edit Spot</Link>}
+            <>
+                <Link to={`/spots/${spotId}/host`}>Edit Spot</Link>
+                <button onClick={deleteBtn}>Delete</button>
+            </>
+            }
             <p>{oneSpot?.description}</p>
             <ul> Address: 
                 <li>{oneSpot?.address}</li>

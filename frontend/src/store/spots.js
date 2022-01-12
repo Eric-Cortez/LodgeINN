@@ -3,6 +3,7 @@ import { csrfFetch } from './csrf';
 const LOAD_ALL = 'spots/loadAll';
 const LOAD_ONE = 'spot/lostOne';
 const ADD_ONE = 'spot/addOne'
+const DELETE_ONE = 'spot/deleteOne'
 
 // ACTIONS 
 
@@ -20,6 +21,13 @@ const addOneSpot = spot => ({
     type: ADD_ONE,
     spot
 })
+
+const deleteOneSpot = (spotId) => {
+    return {
+        type: DELETE_ONE,
+        spotId
+    }
+}
 
 // THUNKS 
 
@@ -79,7 +87,23 @@ export const editSpot = (spot, id) => async dispatch => {
     return payload;
 }
 
+export const deleteSpot = (payload, id) => async (dispatch) => {
+        console.log("delete thunk", id)
+    const response = await csrfFetch(`/api/spots/${id}`, {
+        method: "DELETE",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload,id)
+    });
 
+    
+    if (response.ok) {
+        const spot = await response.json();
+        console.log("yo response:====>", spot);
+        console.log("Thunk return",spot)
+         await dispatch(deleteOneSpot(spot));
+        return spot;
+    }
+}
 
 //REDUCER 
 const initialState = { 
@@ -126,6 +150,22 @@ const spotsReducer = (state = initialState, action) => {
                 }
             }
         }
+        case DELETE_ONE: {
+            const newState = { ...state };
+            delete newState[action.spotId];
+            return newState;
+        }
+        // case DELETE_ONE: {
+        //     return {
+        //         ...state,
+        //         [action.spotId]: {
+        //             ...state[action.spotId],
+        //             list: state[action.spotId].list.filter(
+        //                 (spot) => spot.id !== action.spotId
+        //             ),
+        //         },
+        //     };
+        // }
         default:
             return state;
     }

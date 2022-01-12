@@ -110,37 +110,6 @@ router.post('/host',
     })
 }))
 
-// router.post('/host',
-//     requireAuth,
-//     spotHostForm,
-//     asyncHandler(async (req, res) => {
-
-//         const { image, spots, amenities } = req.body
-//         const id = await Spot.create(spots)
-
-//         const newImageUrl = {
-//             spotId: id.id,
-//             url: image.url
-//         }
-//         await Image.create(newImageUrl)
-//         const newAmenityList = {
-//             spotId: id.id,
-//             kitchen: amenities.kitchen,
-//             privateBeachAccess: amenities.privateBeachAccess,
-//             firePlace: amenities.firePlace,
-//             parking: amenities.parking,
-//             pool: amenities.pool,
-//             hotTub: amenities.hotTub,
-//             pets: amenities.pets,
-//         }
-
-//         await Amenity.create(newAmenityList)
-
-//         // await setTokenCookie(res, id);
-//         return res.json({
-//             id
-//         })
-//     }))
 
 
 router.put('/:id/host',
@@ -153,7 +122,7 @@ router.put('/:id/host',
         const { image, spots, amenities } = req.body
          // update spot
         const id = await currSpot.update(spots)
-        // console.log("FLAGGGGGGG", image.id)
+        
         
          //  update image
                 const newImageUrl = {
@@ -163,10 +132,10 @@ router.put('/:id/host',
                 }
         
         const currImage = await Image.findByPk(image.id);
-        // console.log(currImage, "<=========")
+     
         await currImage.update(newImageUrl)
         
-         console.log("AAAAAA",amenities)
+         
         // update amenity
         const newAmenityList = {
             id: amenities.id,
@@ -188,6 +157,35 @@ router.put('/:id/host',
         })
     }))
 
+
+router.delete('/:id', asyncHandler(async (req, res) => {
+    console.log("DELETE ROUTE","HIIIIII");
+    const { id, Images, Amenities } = req.body
+    const spotId = parseInt(req.params.id, 10);
+    const imageId = Images[0].id;
+    const amenitiesId = Amenities[0].id;
+
+    const currSpot = await Spot.findByPk(spotId);
+    const currImage = await Image.findByPk(imageId);
+    const currAmenity = await Amenity.findByPk(amenitiesId);
+
+    console.log("DELETE BODY SPOT ====>", currSpot)
+    console.log("DELETE BODY Image ===>", currImage)
+    console.log("DELETE BODY Amenities ===> ", currAmenity)
+    
+
+    if (currSpot && currImage && currAmenity) {
+        await currAmenity.destroy();
+        await currImage.destroy(); 
+        await currSpot.destroy();
+
+        res.json({ message: "Delete Successful" });
+    } else {
+        console.log('unsuccessful');
+    }
+
+    res.json({ message: "Delete Unsuccessful" });
+}));
 
 
 
