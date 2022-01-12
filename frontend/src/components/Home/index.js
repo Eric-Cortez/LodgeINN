@@ -4,7 +4,7 @@ import { useSelector, useDispatch, } from 'react-redux';
 import { getOneSpot } from '../../store/spots';
 import "./home.css"
 const Home = () => {
-  
+    const sessionUser = useSelector(state => state.session.user);
     return (
         <div id="main-home-container">
           <div className='top-container'>
@@ -21,7 +21,8 @@ const Home = () => {
           <div className='bottom-container'>
               <img id="first-img" src="https://images.unsplash.com/photo-1572455825634-2c63e14ecae1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80" /> 
           <div className="bottom-center">Questions about hosting?</div>
-          <Link className="centered-button" to="/spots/host">Host</Link>
+          {sessionUser &&
+          <Link className="centered-button" to="/spots/host">Host</Link>}
           </div>
           <footer>footer</footer>
         </div>
