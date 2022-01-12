@@ -158,11 +158,7 @@ function EditSpotForm() {
             }
         }
 
-        // let createdSpot = await dispatch(addSpot(payload))
-
-        // if (createdSpot) {
-        //     history.push(`/spots/${createdSpot.id}`)
-        // }
+    
 
         let createdSpot;
         try {
@@ -176,21 +172,10 @@ function EditSpotForm() {
         }
         //!!END
         if (createdSpot) {
-            //     //!!START SILENT
             //     setErrorMessages({});
-            //     //!!END
-            // console.log(createdSpot)
             history.push(`/spots/${createdSpot.id.id}`);
-            //     hideForm();
+            localStorage.clear();
         }
-    };
-
-    const handleCancelClick = (e) => {
-        e.preventDefault();
-        //!!START SILENT
-        // setErrorMessages({});
-        //!!END
-        // hideForm();
     };
 
     return (
