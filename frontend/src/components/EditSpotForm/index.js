@@ -106,21 +106,20 @@ function EditSpotForm() {
 
     useEffect(() => {
         const errors = [];
-        if (title?.length > 100) errors.push("Title must be less 100 characters")
-        if (country?.length > 50) errors.push("Country must be less 50 characters")
+        if (title?.length > 100 || title?.length === 0) errors.push("Title must be less 100 characters")
+        if (country?.length > 50 || country?.length === 0) errors.push("Country must be less 50 characters")
         if (state === '--Select a State--') errors.push("Please select a state")
-        if (city?.length > 255) errors.push("City must be less 255 characters")
-        if (address?.length > 255) errors.push("Address must be less 255 characters")
+        if (city?.length > 255 || country?.length === 0) errors.push("City must be less 255 characters")
+        if (address?.length > 255 || address?.length === 0) errors.push("Address must be less 255 characters")
         if (zipCode?.length > 0 && zipCode?.length > 6 || zipCode?.length === 0) errors.push("Please provide a valid zip code")
-        if (!description?.length) errors.push("Please provide a description")
+        if (!description?.length || description?.length === 0) errors.push("Please provide a description")
         if (price < 1 && price !== 0) errors.push("Please provide a valid price per night")
         if (guests < 1 && guests !== 0) errors.push("Please provide a guest count.")
         if (bedrooms < 1 &&  bedrooms !== 0) errors.push("Please provide a bedroom count.")
         if (bathrooms < 1 && bathrooms !== 0) errors.push("Please provide a bathroom count.")
-        if (url?.length > 255) errors.push("Please provide valid Image address(url).")
+        if (url?.length > 255 || url?.length === 0) errors.push("Please provide valid Image address(url).")
         setValidationErrors(errors)
-    }, [address, city, state, country, title, description, price, zipCode, guests, bedrooms, bathrooms])
-
+    }, [address, city, state, country, title, description, price, zipCode, guests, bedrooms, bathrooms,url])
 
 
     const handleSubmit = async (e) => {
