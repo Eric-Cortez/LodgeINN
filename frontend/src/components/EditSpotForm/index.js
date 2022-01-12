@@ -37,7 +37,7 @@ function EditSpotForm() {
     const [pets, setPets] = useState(spotInfo?.Amenities[0]?.pets);
     const [validationErrors, setValidationErrors] = useState([])
 
-    console.log("Edit form", spotInfo?.Images[0]?.id)
+  
     useEffect(() => {
         dispatch(getOneSpot(spotId))
         if (title) localStorage.setItem("title", spotInfo?.title)
@@ -104,22 +104,22 @@ function EditSpotForm() {
         setPets(localPets === 'true' ? true : false)
     }, [])
 
-    // useEffect(() => {
-    //     const errors = [];
-    //     // if (address.length > 255) errors.push("Address must be less 255 characters")
-    //     // if (city.length > 255) errors.push("City must be less 255 characters")
-    //     if (state.length > 50) errors.push("State must be less 50 characters")
-    //     if (country.length > 50) errors.push("Country must be less 50 characters")
-    //     if (title.length > 100) errors.push("Title must be less 100 characters")
-    //     if (!description) errors.push("Please provide a description")
-    //     if (price < 1) errors.push("Please provide a price per night")
-    //     if (zipCode.length > 0 && zipCode.length > 6) errors.push("Please provide a valid zip code")
-    //     if (guests < 1) errors.push("Please provide a guest count.")
-    //     if (bedrooms < 1) errors.push("Please provide a bedroom count.")
-    //     // if (bathrooms < 1) errors.push("Please provide a bathroom count.")
-    //     // if (url.length > 255) errors.push("Please provide valid Image address(url).")
-    //     setValidationErrors(errors)
-    // }, [address, city, state, country, title, description, price, zipCode, guests, bedrooms, bathrooms])
+    useEffect(() => {
+        const errors = [];
+        if (title?.length > 100) errors.push("Title must be less 100 characters")
+        if (country?.length > 50) errors.push("Country must be less 50 characters")
+        if (state === '--Select a State--') errors.push("Please select a state")
+        if (city?.length > 255) errors.push("City must be less 255 characters")
+        if (address?.length > 255) errors.push("Address must be less 255 characters")
+        if (zipCode?.length > 0 && zipCode?.length > 6 || zipCode?.length === 0) errors.push("Please provide a valid zip code")
+        if (!description?.length) errors.push("Please provide a description")
+        if (price < 1 && price !== 0) errors.push("Please provide a valid price per night")
+        if (guests < 1 && guests !== 0) errors.push("Please provide a guest count.")
+        if (bedrooms < 1 &&  bedrooms !== 0) errors.push("Please provide a bedroom count.")
+        if (bathrooms < 1 && bathrooms !== 0) errors.push("Please provide a bathroom count.")
+        if (url?.length > 255) errors.push("Please provide valid Image address(url).")
+        setValidationErrors(errors)
+    }, [address, city, state, country, title, description, price, zipCode, guests, bedrooms, bathrooms])
 
 
 
@@ -180,7 +180,7 @@ function EditSpotForm() {
 
     return (
         <div id="form-container">
-            <h1>Edit addSpot</h1>
+            <h1>Edit Spot</h1>
             <div id="host-form" >
                 <form onSubmit={handleSubmit}>
                     <ul className="errors">
@@ -188,7 +188,7 @@ function EditSpotForm() {
                             <li key={error}>{error}</li>
                         ))}
                     </ul>
-                    <label> Spot Name:
+                    <label> Title:
                         <input
                             required
                             type='text'
@@ -364,7 +364,7 @@ function EditSpotForm() {
                         className="host-form"
                         disabled={validationErrors.length > 0}
                         type="submit">Create new Spot</button>
-                    <Link to={`/spots/${spotId}`}>Cancel</Link>
+                    <Link exact="true" to={`/spots/${spotId}`}>Cancel</Link>
                 </form>
             </div>
         </div>

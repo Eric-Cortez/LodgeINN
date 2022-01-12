@@ -35,18 +35,18 @@ function SpotHostForm() {
 
     useEffect(() => {
         const errors = [];
-        if (address.length > 255) errors.push("Address must be less 255 characters")
-        if (city.length > 255) errors.push("City must be less 255 characters")
-        if (state.length > 50) errors.push("State must be less 50 characters")
-        if (country.length > 50) errors.push("Country must be less 50 characters")
-        if (title.length > 100) errors.push("Title must be less 100 characters")
+        if (address?.length > 255) errors.push("Address must be less 255 characters")
+        if (city?.length > 255) errors.push("City must be less 255 characters")
+        if (state?.length > 50) errors.push("State must be less 50 characters")
+        if (country?.length > 50) errors.push("Country must be less 50 characters")
+        if (title?.length > 100) errors.push("Title must be less 100 characters")
         if (!description) errors.push("Please provide a description")
         if (price < 1) errors.push("Please provide a price per night")
-        if (zipCode.length > 0 && zipCode.length > 6) errors.push("Please provide a valid zip code")
+        if (zipCode?.length > 0 && zipCode?.length > 6) errors.push("Please provide a valid zip code")
         if (guests < 1) errors.push("Please provide a guest count.")
         if (bedrooms < 1) errors.push("Please provide a bedroom count.")
         if (bathrooms < 1) errors.push("Please provide a bathroom count.")
-        if (url.length > 255) errors.push("Please provide valid Image address(url).")
+        if (url?.length > 255) errors.push("Please provide valid Image address(url).")
         setValidationErrors(errors)
     }, [address, city, state, country, title, description, price,zipCode,guests,bedrooms,bathrooms])
 
@@ -289,7 +289,7 @@ function SpotHostForm() {
                     className="host-form" 
                     disabled={validationErrors.length > 0}
                     type="submit">Create new Spot</button>
-                    <Link exact to="/">Cancel</Link>
+                    <Link exact="true" to="/">Cancel</Link>
                 </form>
             </div>
             
