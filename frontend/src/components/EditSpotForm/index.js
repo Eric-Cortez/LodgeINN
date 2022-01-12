@@ -117,7 +117,7 @@ function EditSpotForm() {
         if (guests < 1 && guests !== 0) errors.push("Please provide a guest count.")
         if (bedrooms < 1 &&  bedrooms !== 0) errors.push("Please provide a bedroom count.")
         if (bathrooms < 1 && bathrooms !== 0) errors.push("Please provide a bathroom count.")
-        if (url?.length > 255 || url?.length === 0) errors.push("Please provide valid Image address(url).")
+        if (url?.length > 255 || url?.length === 0 || !url?.includes("http" || "https")) errors.push("Please provide valid Image address(url)")
         setValidationErrors(errors)
     }, [address, city, state, country, title, description, price, zipCode, guests, bedrooms, bathrooms,url])
 
@@ -297,7 +297,7 @@ function EditSpotForm() {
                     <label> Image url:
                         <input
                             required
-                            type='string'
+                            type="url"
                             placeholder="image url"
                             value={url}
                             onChange={e => setUrl(e.target.value)}
