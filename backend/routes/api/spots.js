@@ -74,10 +74,6 @@ router.get("/:id", asyncHandler(async (req, res) => {
 }))
 
 
-// router.get('/host', asyncHandler(async (req, res) => {
-//     return res.send('cabin form')
-// }))
-
 router.post('/host', 
  requireAuth, 
  spotHostForm,
@@ -123,7 +119,6 @@ router.put('/:id/host',
          // update spot
         const id = await currSpot.update(spots)
         
-        
          //  update image
                 const newImageUrl = {
                     id: image.id,
@@ -134,7 +129,6 @@ router.put('/:id/host',
         const currImage = await Image.findByPk(image.id);
      
         await currImage.update(newImageUrl)
-        
          
         // update amenity
         const newAmenityList = {
@@ -159,7 +153,6 @@ router.put('/:id/host',
 
 
 router.delete('/:id', asyncHandler(async (req, res) => {
-    console.log("DELETE ROUTE","HIIIIII");
     const { id, Images, Amenities } = req.body
     const spotId = parseInt(req.params.id, 10);
     const imageId = Images[0].id;
@@ -168,11 +161,6 @@ router.delete('/:id', asyncHandler(async (req, res) => {
     const currSpot = await Spot.findByPk(spotId);
     const currImage = await Image.findByPk(imageId);
     const currAmenity = await Amenity.findByPk(amenitiesId);
-
-    console.log("DELETE BODY SPOT ====>", currSpot)
-    console.log("DELETE BODY Image ===>", currImage)
-    console.log("DELETE BODY Amenities ===> ", currAmenity)
-    
 
     if (currSpot && currImage && currAmenity) {
         await currAmenity.destroy();
@@ -186,10 +174,5 @@ router.delete('/:id', asyncHandler(async (req, res) => {
 
     res.json({ message: "Delete Unsuccessful" });
 }));
-
-
-
-
-
 
 module.exports = router;

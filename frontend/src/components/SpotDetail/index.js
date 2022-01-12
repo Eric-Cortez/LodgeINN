@@ -30,8 +30,6 @@ const SpotDetail = ({ spotInfo, setSpotInfo}) => {
         if (deleteSpotRes.message === "Delete Successful") {
            history.push("/spots")
         }
-
-
     }
 
 

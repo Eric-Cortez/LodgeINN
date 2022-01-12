@@ -88,18 +88,15 @@ export const editSpot = (spot, id) => async dispatch => {
 }
 
 export const deleteSpot = (payload, id) => async (dispatch) => {
-        console.log("delete thunk", id)
     const response = await csrfFetch(`/api/spots/${id}`, {
         method: "DELETE",
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload,id)
     });
-
     
     if (response.ok) {
         const spot = await response.json();
-        console.log("yo response:====>", spot);
-        console.log("Thunk return",spot)
+      
          await dispatch(deleteOneSpot(spot));
         return spot;
     }
