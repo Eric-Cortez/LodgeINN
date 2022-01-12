@@ -22,9 +22,9 @@ if(!isProduction) {
     app.use(cors()); // use corse in development 
 }
 
-app.use(helmet({
-    contentSecurityPolicy: false
-}));
+// app.use(helmet({
+//     contentSecurityPolicy: false
+// }));
 
 app.use(
     csurf({

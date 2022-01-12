@@ -4,7 +4,7 @@ import { useSelector, useDispatch,  } from 'react-redux';
 import { getOneSpot } from '../../store/spots';
 import "./spotDetail.css"
 
-const SpotDetail = () => {
+const SpotDetail = ({ spotInfo, setSpotInfo}) => {
     const dispatch = useDispatch()
     const { spotId } = useParams() 
     

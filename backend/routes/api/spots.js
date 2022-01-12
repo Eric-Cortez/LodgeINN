@@ -58,7 +58,7 @@ const spotHostForm = [
 router.get("/", asyncHandler(async (req, res) => {
     const spots = await Spot.findAll({
         include: [Image, Amenity],
-        limit: 15
+        // limit: 15
     })
     // console.log(spots[0].Images[0].url)
     res.json(spots);
@@ -110,20 +110,66 @@ router.post('/host',
     })
 }))
 
-router.post('/host',
+// router.post('/host',
+//     requireAuth,
+//     spotHostForm,
+//     asyncHandler(async (req, res) => {
+
+//         const { image, spots, amenities } = req.body
+//         const id = await Spot.create(spots)
+
+//         const newImageUrl = {
+//             spotId: id.id,
+//             url: image.url
+//         }
+//         await Image.create(newImageUrl)
+//         const newAmenityList = {
+//             spotId: id.id,
+//             kitchen: amenities.kitchen,
+//             privateBeachAccess: amenities.privateBeachAccess,
+//             firePlace: amenities.firePlace,
+//             parking: amenities.parking,
+//             pool: amenities.pool,
+//             hotTub: amenities.hotTub,
+//             pets: amenities.pets,
+//         }
+
+//         await Amenity.create(newAmenityList)
+
+//         // await setTokenCookie(res, id);
+//         return res.json({
+//             id
+//         })
+//     }))
+
+
+router.put('/:id/host',
     requireAuth,
-    spotHostForm,
     asyncHandler(async (req, res) => {
-
+        console.log("here")
+        const spotId = parseInt(req.params.id, 10);
+        const currSpot = await Spot.findByPk(spotId);
+       
         const { image, spots, amenities } = req.body
-        const id = await Spot.create(spots)
-
-        const newImageUrl = {
-            spotId: id.id,
-            url: image.url
-        }
-        await Image.create(newImageUrl)
+         // update spot
+        const id = await currSpot.update(spots)
+        // console.log("FLAGGGGGGG", image.id)
+        
+         //  update image
+                const newImageUrl = {
+                    id: image.id,
+                    spotId: id.id,
+                    url: image.url
+                }
+        
+        const currImage = await Image.findByPk(image.id);
+        // console.log(currImage, "<=========")
+        await currImage.update(newImageUrl)
+        
+         console.log("AAAAAA",amenities)
+        // update amenity
         const newAmenityList = {
+            id: amenities.id,
             spotId: id.id,
             kitchen: amenities.kitchen,
             privateBeachAccess: amenities.privateBeachAccess,
@@ -133,14 +179,18 @@ router.post('/host',
             hotTub: amenities.hotTub,
             pets: amenities.pets,
         }
-
-        await Amenity.create(newAmenityList)
-
-        // await setTokenCookie(res, id);
+            console.log("--->TEST", newAmenityList)
+        const currAmenity = await Amenity.findByPk(amenities.id)
+        await currAmenity.update(newAmenityList);
+        
         return res.json({
             id
         })
     }))
+
+
+
+
 
 
 

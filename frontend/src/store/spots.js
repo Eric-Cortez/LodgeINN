@@ -61,6 +61,26 @@ export const addSpot = ( spot ) => async dispatch => {
         return payload;
 }
 
+export const editSpot = (spot, id) => async dispatch => {
+    // console.log(spot, "SPOT")
+    const res = await csrfFetch(`/api/spots/${id}/host`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(spot)
+    });
+    if (!res.ok) {
+        let error = await res.json();
+        return error;
+    }
+    const payload = await res.json();
+    console.log("EDIT THUNK",payload)
+    await dispatch(addOneSpot(payload));
+
+    return payload;
+}
+
+
+
 //REDUCER 
 const initialState = { 
     list : [],

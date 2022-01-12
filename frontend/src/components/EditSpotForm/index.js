@@ -2,55 +2,124 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, Redirect, useHistory, useParams } from "react-router-dom";
 import { states } from '../utils.js'
-import { addSpot } from "../../store/spots"
+import { editSpot } from "../../store/spots"
 import "./EditSpotForm.css"
+import { getOneSpot } from "../../store/spots"
 
 function EditSpotForm() {
+    // console.log(spotInfo)
+
     const history = useHistory()
     const dispatch = useDispatch()
-    const currSpotInfo = useSelector(state => state)
     const session = useSelector(state => state.session)
     const { spotId } = useParams()
+    const spotInfo = useSelector(state => state.spots[spotId])
 
-    const [title, setTitle] = useState("")
-    const [country, setCountry] = useState("")
-    const [state, setState] = useState("")
-    const [city, setCity] = useState("")
-    const [address, setAddress] = useState("")
-    const [zipCode, setZipCode] = useState("")
-    const [description, setDescription] = useState("")
-    const [price, setPrice] = useState("")
-    const [guests, setGuests] = useState("")
-    const [bedrooms, setBedrooms] = useState("")
-    const [bathrooms, setBathrooms] = useState("")
-    const [url, setUrl] = useState("")
-    const [kitchen, setKitchen] = useState(false);
-    const [privateBeachAccess, setPrivateBeachAccess] = useState(false);
-    const [firePlace, setFirePlace] = useState(false);
-    const [parking, setParking] = useState(false);
-    const [pool, setPool] = useState(false);
-    const [hotTub, setHotTub] = useState(false);
-    const [pets, setPets] = useState(false);
+
+    const [title, setTitle] = useState(spotInfo?.title)
+    const [country, setCountry] = useState(spotInfo?.country)
+    const [state, setState] = useState(spotInfo?.state)
+    const [city, setCity] = useState(spotInfo?.city)
+    const [address, setAddress] = useState(spotInfo?.address)
+    const [zipCode, setZipCode] = useState(spotInfo?.zipCode)
+    const [description, setDescription] = useState(spotInfo?.description)
+    const [price, setPrice] = useState(spotInfo?.price)
+    const [guests, setGuests] = useState(spotInfo?.guests)
+    const [bedrooms, setBedrooms] = useState(spotInfo?.bedrooms)
+    const [bathrooms, setBathrooms] = useState(spotInfo?.bathrooms)
+    const [url, setUrl] = useState(spotInfo?.Images[0]?.url)
+    const [kitchen, setKitchen] = useState(spotInfo?.Amenities[0]?.kitchen);
+    const [privateBeachAccess, setPrivateBeachAccess] = useState(spotInfo?.Amenities[0]?.privateBeachAccess);
+    const [firePlace, setFirePlace] = useState(spotInfo?.Amenities[0]?.firePlace);
+    const [parking, setParking] = useState(spotInfo?.Amenities[0]?.parking);
+    const [pool, setPool] = useState(spotInfo?.Amenities[0]?.pool);
+    const [hotTub, setHotTub] = useState(spotInfo?.Amenities[0]?.hotTub);
+    const [pets, setPets] = useState(spotInfo?.Amenities[0]?.pets);
     const [validationErrors, setValidationErrors] = useState([])
 
+    console.log("Edit form", spotInfo?.Images[0]?.id)
     useEffect(() => {
-        const errors = [];
-        if (address.length > 255) errors.push("Address must be less 255 characters")
-        if (city.length > 255) errors.push("City must be less 255 characters")
-        if (state.length > 50) errors.push("State must be less 50 characters")
-        if (country.length > 50) errors.push("Country must be less 50 characters")
-        if (title.length > 100) errors.push("Title must be less 100 characters")
-        if (!description) errors.push("Please provide a description")
-        if (price < 1) errors.push("Please provide a price per night")
-        if (zipCode.length > 0 && zipCode.length > 6) errors.push("Please provide a valid zip code")
-        if (guests < 1) errors.push("Please provide a guest count.")
-        if (bedrooms < 1) errors.push("Please provide a bedroom count.")
-        if (bathrooms < 1) errors.push("Please provide a bathroom count.")
-        if (url.length > 255) errors.push("Please provide valid Image address(url).")
-        setValidationErrors(errors)
-    }, [address, city, state, country, title, description, price, zipCode, guests, bedrooms, bathrooms])
+        dispatch(getOneSpot(spotId))
+        if (title) localStorage.setItem("title", spotInfo?.title)
+        if (country) localStorage.setItem("country", spotInfo?.country)
+        if (state) localStorage.setItem("state", spotInfo?.state)
+        if (city) localStorage.setItem("city", spotInfo?.city)
+        if (address) localStorage.setItem("address", spotInfo?.address)
+        if (zipCode) localStorage.setItem("zipCode", spotInfo?.zipCode)
+        if (description) localStorage.setItem("description", spotInfo?.description)
+        if (price) localStorage.setItem("price", spotInfo?.price)
+        if (guests) localStorage.setItem("guests", spotInfo?.guests)
+        if (bedrooms) localStorage.setItem("bedrooms", spotInfo?.bedrooms)
+        if (bathrooms) localStorage.setItem("bathrooms", spotInfo?.bathrooms)
+        if (url) localStorage.setItem('url', spotInfo?.Images[0]?.url)
+        if (kitchen) localStorage.setItem('kitchen', spotInfo?.Amenities[0]?.kitchen)
+        if (privateBeachAccess) localStorage.setItem('privateBeachAccess', spotInfo?.Amenities[0]?.privateBeachAccess)
+        if (firePlace) localStorage.setItem('firePlace', spotInfo?.Amenities[0]?.firePlace)
+        if (parking) localStorage.setItem('parking', spotInfo?.Amenities[0]?.parking)
+        if (pool) localStorage.setItem('pool', spotInfo?.Amenities[0].pool)
+        if (hotTub) localStorage.setItem('hotTub', spotInfo?.Amenities[0]?.hotTub)
+        if (pets) localStorage.setItem('pets', spotInfo?.Amenities[0]?.pets)
+    }, [])
 
+    useEffect(() => {
+        dispatch(getOneSpot(spotId))
 
+        const localTitle = localStorage.getItem("title")
+        setTitle(localTitle)
+        const localCountry = localStorage.getItem("country");
+        setCountry(localCountry)
+        const localState = localStorage.getItem("state");
+        setState(localState)
+        const localCity = localStorage.getItem("city");
+        setCity(localCity)
+        const localAddress = localStorage.getItem("address");
+        setAddress(localAddress)
+        const localZipCode = localStorage.getItem("zipCode");
+        setZipCode(localZipCode)
+        const localDescription = localStorage.getItem("description");
+        setDescription(localDescription)
+        const localPrice = localStorage.getItem("price");
+        setPrice(localPrice)
+        const localGuests = localStorage.getItem("guests");
+        setGuests(localGuests)
+        const localBedrooms = localStorage.getItem("bedrooms");
+        setBedrooms(localBedrooms)
+        const localBathrooms = localStorage.getItem("bathrooms");
+        setBathrooms(localBathrooms)
+        const localUrl= localStorage.getItem("url");
+        setUrl(localUrl)
+        const localKitchen = localStorage.getItem("kitchen");
+        setKitchen(localKitchen === 'true' ? true : false)
+        const localPrivateBeachAccess = localStorage.getItem("privateBeachAccess");
+        setPrivateBeachAccess(localPrivateBeachAccess === 'true' ? true : false)
+        const localFirePlace = localStorage.getItem("firePlace");
+        setFirePlace(localFirePlace === 'true' ? true : false)
+        const localParking = localStorage.getItem("parking");
+        setParking(localParking === 'true' ? true : false)
+        const localPool = localStorage.getItem("pool");
+        setPool(localPool === 'true' ? true : false)
+        const localHotTub = localStorage.getItem("hotTub");
+        setHotTub(localHotTub === 'true' ? true : false)
+        const localPets = localStorage.getItem("pets");
+        setPets(localPets === 'true' ? true : false)
+    }, [])
+
+    // useEffect(() => {
+    //     const errors = [];
+    //     // if (address.length > 255) errors.push("Address must be less 255 characters")
+    //     // if (city.length > 255) errors.push("City must be less 255 characters")
+    //     if (state.length > 50) errors.push("State must be less 50 characters")
+    //     if (country.length > 50) errors.push("Country must be less 50 characters")
+    //     if (title.length > 100) errors.push("Title must be less 100 characters")
+    //     if (!description) errors.push("Please provide a description")
+    //     if (price < 1) errors.push("Please provide a price per night")
+    //     if (zipCode.length > 0 && zipCode.length > 6) errors.push("Please provide a valid zip code")
+    //     if (guests < 1) errors.push("Please provide a guest count.")
+    //     if (bedrooms < 1) errors.push("Please provide a bedroom count.")
+    //     // if (bathrooms < 1) errors.push("Please provide a bathroom count.")
+    //     // if (url.length > 255) errors.push("Please provide valid Image address(url).")
+    //     setValidationErrors(errors)
+    // }, [address, city, state, country, title, description, price, zipCode, guests, bedrooms, bathrooms])
 
 
 
@@ -60,6 +129,7 @@ function EditSpotForm() {
         //!!START SILENT
         const payload = {
             amenities: {
+                id: spotInfo?.Amenities[0]?.id,
                 kitchen,
                 privateBeachAccess,
                 firePlace,
@@ -69,6 +139,7 @@ function EditSpotForm() {
                 pets,
             },
             image: {
+                id: spotInfo?.Images[0]?.id,
                 url
             },
             spots: {
@@ -95,7 +166,7 @@ function EditSpotForm() {
 
         let createdSpot;
         try {
-            createdSpot = await dispatch(addSpot(payload));
+            createdSpot = await dispatch(editSpot(payload, spotId));
         } catch (error) {
             throw new Error("This did not work!!")
             // if (error instanceof ValidationError) setErrorMessages(error.errors);
