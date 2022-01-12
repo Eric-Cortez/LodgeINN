@@ -8,48 +8,49 @@ const { Spot, Image, Amenity, User } = require('../../db/models');
 const router = express.Router();
 
 const spotHostForm = [
-    check('address')
+    check('spots.address')
         .exists({ checkFalsy: true })
-        .isLength({ max: 255 })
+        // .isLength({ max: 255 })
         .withMessage("Address must be less 255 characters"),
-    check('city')
+    check('spots.city')
         .exists({ checkFalsy: true })
-        .isLength({ max: 255 })
+        // .isLength({ max: 255 })
         .withMessage("City must be less 255 characters"),
-    check('state')
+    check('spots.state')
         .exists({ checkFalsy: true })
-        .isLength({ max: 50 })
+        // .isLength({ max: 50 })
         .withMessage("City must be less 255 characters"),
-    check('country')
+    check('spots.country')
         .exists({ checkFalsy: true })
-        .isLength({ max: 50 })
+        // .isLength({ max: 50 })
         .withMessage("Country must be less 50 characters"),
-    check('title')
+    check('spots.title')
         .exists({ checkFalsy: true })
         .isLength({ max: 100 })
         .withMessage("Title must be less 100 characters"),
-    check('description')
+    check('spots.description')
         .exists({ checkFalsy: true })
         .withMessage("Please provide a description"),
-    check('price')
+    check('spots.price')
         .exists({ checkFalsy: true })
         .withMessage("Please provide a price per night"),
-    check('zipCode')
+    check('spots.zipCode')
         .exists({ checkFalsy: true })
         .withMessage("Please provide a valid zip code"),
-    check('guests')
+    check('spots.guests')
         .exists({ checkFalsy: true })
-        .withMessage("Please provide a valid zip code"),
-    check('bedrooms')
+        .withMessage("Please provide a valid number of guests"),
+    check('spots.bedrooms')
         .exists({ checkFalsy: true })
-        .withMessage("Please provide a valid zip code"),
-    check('bathrooms')
+        .withMessage("Please provide a valid number of bedrooms"),
+    check('spots.bathrooms')
         .exists({ checkFalsy: true })
-        .withMessage("Please provide a valid zip code"),
-    check('url')
+        .withMessage("Please provide a valid number of bathrooms"),
+    check('image.url')
         .exists({ checkFalsy: true })
-        .isLength({ max: 255 })
-        .withMessage("Please provide a valid zip code"),
+        // .isLength({ max: 255 })
+        .withMessage("Please provide a valid url"),
+    handleValidationErrors,
 ];
 
 
@@ -78,6 +79,7 @@ router.post('/host',
  requireAuth, 
  spotHostForm,
  asyncHandler(async (req, res) => {
+     console.log("ROUTE", req.body)
 
      const { image, spots, amenities } = req.body
     const id = await Spot.create(spots)
@@ -110,6 +112,7 @@ router.post('/host',
 
 router.put('/:id/host',
     requireAuth,
+    spotHostForm,
     asyncHandler(async (req, res) => {
         console.log("here")
         const spotId = parseInt(req.params.id, 10);
