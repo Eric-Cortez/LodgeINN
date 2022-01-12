@@ -10,19 +10,19 @@ const router = express.Router();
 const spotHostForm = [
     check('spots.address')
         .exists({ checkFalsy: true })
-        // .isLength({ max: 255 })
+        .isLength({ max: 255 })
         .withMessage("Address must be less 255 characters"),
     check('spots.city')
         .exists({ checkFalsy: true })
-        // .isLength({ max: 255 })
+        .isLength({ max: 255 })
         .withMessage("City must be less 255 characters"),
     check('spots.state')
         .exists({ checkFalsy: true })
-        // .isLength({ max: 50 })
+        .isLength({ max: 50 })
         .withMessage("City must be less 255 characters"),
     check('spots.country')
         .exists({ checkFalsy: true })
-        // .isLength({ max: 50 })
+        .isLength({ max: 50 })
         .withMessage("Country must be less 50 characters"),
     check('spots.title')
         .exists({ checkFalsy: true })
@@ -48,7 +48,7 @@ const spotHostForm = [
         .withMessage("Please provide a valid number of bathrooms"),
     check('image.url')
         .exists({ checkFalsy: true })
-        // .isLength({ max: 255 })
+        .isLength({ max: 255 })
         .withMessage("Please provide a valid url"),
     handleValidationErrors,
 ];
