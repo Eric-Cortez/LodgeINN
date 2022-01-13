@@ -62,7 +62,7 @@ html {
     width:  500px;
     height: 350px;
     object-fit: cover;
-    margin-left: 100px;
+    margin-left: 2%;
 }
 
 ul {
@@ -135,4 +135,10 @@ ul.details {
     border-bottom: rgb(235,235,235) 2px solid;
     width: 50px;
     margin-bottom: 10px;
+}
+
+.spot-image {
+    height: 500;
+    margin: 0 9.8%;
+    width: 700;
 }
