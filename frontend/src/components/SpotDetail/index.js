@@ -37,15 +37,25 @@ const SpotDetail = ({ spotInfo, setSpotInfo}) => {
     return (
         <div className='spot-detail'> 
             <img className="spot-image" src={oneSpot?.Images[0].url} alt="cabin" /> 
-            <h1>{oneSpot?.title}</h1>
-            <h2>Host By: {oneSpot?.User?.username}</h2> 
+            <h1 id="title">{oneSpot?.title}</h1>
+            <h2 id="one-spot">Host By: {oneSpot?.User?.username}</h2> 
             {sessionUser?.id === oneSpot?.userId &&
             <>
                 <Link to={`/spots/${spotId}/host`}>Edit Spot</Link>
                 <button onClick={deleteBtn}>Delete</button>
             </>
             }
-            <p>{oneSpot?.description}</p>
+            <div id="amen-icon">
+                <ul> Amenities
+                    <li>{`Fireplace: ${oneSpot?.Amenities[0].firePlace}`}</li>
+                    <li>{`Hot Tub: ${oneSpot?.Amenities[0].hotTub}`}</li>
+                    <li>{`Kitchen: ${oneSpot?.Amenities[0].kitchen}`}</li>
+                    <li>{`Parking: ${oneSpot?.Amenities[0].parking}`}</li>
+                    <li>{`Pets: ${oneSpot?.Amenities[0].pets}`}</li>
+                    <li>{`Pool: ${oneSpot?.Amenities[0].pool}`}</li>
+                    <li>{`Private Beach Access: ${oneSpot?.Amenities[0].privateBeachAccess}`}</li>
+                </ul>
+            </div>
             <ul> Address: 
                 <li>{oneSpot?.address}</li>
                 <li>{oneSpot?.city}</li>
@@ -58,15 +68,6 @@ const SpotDetail = ({ spotInfo, setSpotInfo}) => {
                 <li>{`Bedrooms: ${oneSpot?.bedrooms}`}</li>
                 <li>{`Guests: ${oneSpot?.bathrooms}`}</li>
                 <li></li>
-            </ul>
-            <ul> Amenities: 
-                <li>{`Fireplace: ${oneSpot?.Amenities[0].firePlace}`}</li>
-                <li>{`Hot Tub: ${oneSpot?.Amenities[0].hotTub}`}</li>
-                <li>{`Kitchen: ${oneSpot?.Amenities[0].kitchen}`}</li>
-                <li>{`Parking: ${oneSpot?.Amenities[0].parking}`}</li>
-                <li>{`Pets: ${oneSpot?.Amenities[0].pets}`}</li>
-                <li>{`Pool: ${oneSpot?.Amenities[0].pool}`}</li>
-                <li>{`Private Beach Access: ${oneSpot?.Amenities[0].privateBeachAccess}`}</li>
             </ul>
             <h3>{`$${oneSpot?.price}`}</h3>
 

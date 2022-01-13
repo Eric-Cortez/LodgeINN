@@ -29,15 +29,29 @@ function Spots() {
                             <Link key={`${spot?.title}5`}  to={`/spots/${spot.id}`}>
                                 <h2 key={`${spot?.title}6`} id="spot-name" key={spot?.title}>{spot?.title}</h2>
                             </Link>
+                                <div className="detail-container-all">
+                                   <p id="detail-p">
+                                       {`${spot?.guests} guests • ${spot?.bedrooms} beds • ${spot?.bathrooms} `}
+                                       {(spot?.bathrooms !== 1) ? "baths" : "bath"}
+                                   </p>
+                               </div>
+                               <div className="amenities-container-all">
+                                   <p id='amenities-all'>
+                                       {(spot?.Amenities[0]?.parking) ? 'parking • ' : (spot?.Amenities[0]?.fireplace) ? 'fireplace • ' : ''}
+                                    {(spot?.Amenities[0]?.privateBeachAccess) ? 'private beach access • ' : (spot?.Amenities[0]?.pool) ? 'pool • ' : ''}
+                                       {(spot?.Amenities[0]?.pets) ? 'pets • ' : (spot?.Amenities[0]?.pets) ? 'pets • ' : ''}
+                                       {(spot?.Amenities[0]?.hotTub) ? 'hot tub' : (spot?.Amenities[0]?.kitchen) ? 'kitchen' : ''}</p>
+                               </div>
                             <ul key={`${spot?.title}7`} className="details">
                                 <li id="price" key={`${spot?.title}8`}>${spot?.price} / night</li>
-                                <li key={`${spot?.title}9`}>{spot?.guests} guests</li>
-                                <li key={`${spot?.title}10`}>{spot?.bedrooms} bed</li>
-                                <li key={`${spot?.title}11`}>{spot?.bathrooms} bath</li>
-                                <li key={`${spot?.title}12`}>{spot?.address}</li>
+                                {/* <li key={`${spot?.title}9`}>{spot?.guests} guests</li> */}
+                                {/* <li key={`${spot?.title}10`}>{spot?.bedrooms} bed</li> */}
+                                {/* <li key={`${spot?.title}11`}>{spot?.bathrooms} bath</li> */}
+                                {/* <li key={`${spot?.title}12`}>{spot?.address}</li>
                                 <li key={`${spot?.title}13`}>{spot?.city}</li>
-                                <li key={`${spot?.title}14`}>{spot?.zipCode}</li>
+                                <li key={`${spot?.title}14`}>{spot?.zipCode}</li> */}
                             </ul>
+
                         </div>
                     </div>
                 ))}

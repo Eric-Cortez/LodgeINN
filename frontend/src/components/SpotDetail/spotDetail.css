@@ -6,10 +6,53 @@ h2 {
 
 
 .spot-detail {
-    margin: 10%;
+    margin: 8% 20% ;
+    border-bottom: 1px solid rgb(221, 221, 221);
 }
 
 .spot-image {
    width: 100%;
    border-radius: 25px;
+   /* width:  850px; */
+   height: 700px;
+   object-fit: cover;
+   /* margin: 0 100px; */
+}
+
+#one-spot {
+    font-size: 20px;
+    border-bottom: 1px solid rgb(221, 221, 221);
+    padding-bottom: 20px;
+}
+
+#title {
+    display: flex;
+    justify-content: flex-start;
+    font-size: 25px;
+}
+
+#p-text {
+   font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif !important;
+    color: #222222 !important;
+    font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif !important;
+    font-weight: 400 !important;
+    font-size: 16px !important;
+    line-height: 20px !important;
+    border-bottom: 1px solid rgb(221, 221, 221);
+    padding-bottom: 20px;
+}
+
+.amenities-container-all {
+    color: rgb(135, 135, 135);
+    margin:0;
+    font-size: 15px;
+}
+
+.detail-container-all {
+    color: rgb(125, 125, 125);
+    margin-bottom: 0 !important;
+}
+
+.detail-p {
+    margin:0 !important;
 }

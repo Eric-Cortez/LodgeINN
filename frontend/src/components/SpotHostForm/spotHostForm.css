@@ -67,8 +67,7 @@ input[type=number]#num-input::-webkit-outer-spin-button {
     border: 1px solid lightgray;
     border-radius: 8px;
     margin: 10% 25%;
-    /* width: 80%;
-    height: 80%; */
+    width: 50%;  
 }
 
 
@@ -95,11 +94,12 @@ input[type=number]#num-input::-webkit-outer-spin-button {
     grid-row:2; 
     /* border: 1px solid greenyellow; */
     grid-column-start:2 / span 1 ;
-    padding: 0;
+    padding-right: px;
     margin: 0;
     /* flex-direction: column; */
-    border-radius: 8px;
+    border-radius: 4px;
     position: relative;
+    /* background-color: transparent; */
 }
 #kitchen,
 #privateBeachAccess,
@@ -118,8 +118,8 @@ ul#errors {
 
 .title-center{
     text-align: center;
-    border-top: 1px solid lightgray;
-    border-bottom: 1px solid lightgray;
+    border-top: 1px solid rgb(221, 221, 221);
+    border-bottom: 1px solid rgb(221, 221, 221);
 }
 
 

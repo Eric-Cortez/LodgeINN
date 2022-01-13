@@ -59,7 +59,7 @@ html {
    height: 100%;
    border-radius: 15px;
    grid-column-start: 1 / span 1;
-    width:  450px;
+    width:  500px;
     height: 350px;
     object-fit: cover;
     margin-left: 100px;
@@ -115,4 +115,11 @@ ul.details {
 
 #spot-name {
     font-size: 25px;
+    font-weight: 100 !important;
+}
+
+
+#detail-p {
+    margin:0 !important;
+    font-size: 20px;
 }
