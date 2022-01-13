@@ -14,7 +14,7 @@ function Navigation({ isLoaded }) {
         sessionLinks = (
             <>
                 <Link className="nav-links" to="/spots/host">Become a Host</Link>
-                <Link className="nav-links" to="/spots">Places to stay</Link>
+                <Link className="nav-links" to="/spots"><i class="fas fa-globe"></i> Explore</Link>
                 <ProfileButton className="nav-links" user={sessionUser} />
             </>
 
@@ -22,6 +22,7 @@ function Navigation({ isLoaded }) {
     } else {
         sessionLinks = (
             <>
+                <Link className="nav-links" to="/spots"><i class="fas fa-globe"></i> Explore</Link>
                 <LoginFormModal />
                 <NavLink className="nav-links" to="/signup">Sign Up</NavLink>
                 <Demo />
