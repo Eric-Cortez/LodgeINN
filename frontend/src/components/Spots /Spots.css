@@ -136,12 +136,3 @@ ul.details {
     width: 50px;
     margin-bottom: 10px;
 }
-
-.spot-image {
-    border-radius: 25px;
-    height: 700px;
-    height: 85%;
-    object-fit: cover;
-    width: 100%;
-    width: 80%;
-}

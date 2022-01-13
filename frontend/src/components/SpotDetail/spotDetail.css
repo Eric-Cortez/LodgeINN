@@ -10,16 +10,11 @@ h2 {
     border-bottom: 1px solid rgb(221, 221, 221);
 }
 
-.spot-image {
+.spot-image-new {
    width: 100%;
    border-radius: 25px;
-   /* width:  850px; */
-   height: 700px;
+   height: 50%;
    object-fit: cover;
-   /* margin: 0 100px; */
-    height: 300px;
-    margin-left: 40px;
-    width: 350px;
 }
 
 
@@ -92,3 +87,4 @@ h2 {
 .list-details {
     margin-left: 55px;
 }
+

@@ -36,7 +36,7 @@ const SpotDetail = ({ spotInfo, setSpotInfo}) => {
     
     return (
         <div className='spot-detail'> 
-            <img className="spot-image" src={oneSpot?.Images[0].url} alt="cabin" /> 
+            <img className="spot-image-new" src={oneSpot?.Images[0].url} alt="cabin" /> 
             <h1 id="title">{oneSpot?.title}</h1>
             <p id="one-price">{`$${oneSpot?.price}`} <>/ night</></p>
 
