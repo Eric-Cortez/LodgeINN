@@ -38,13 +38,35 @@ const SpotDetail = ({ spotInfo, setSpotInfo}) => {
         <div className='spot-detail'> 
             <img className="spot-image" src={oneSpot?.Images[0].url} alt="cabin" /> 
             <h1 id="title">{oneSpot?.title}</h1>
-            <h2 id="one-spot">Host By: {oneSpot?.User?.username}</h2> 
+            <p id="one-price">{`$${oneSpot?.price}`} <>/ night</></p>
+
+            <div>
+                <p id="detail-p">
+                    {`${oneSpot?.guests} guests • ${oneSpot?.bedrooms} bedrooms • ${oneSpot?.bathrooms} `}
+                    {(oneSpot?.bathrooms !== 1) ? "baths" : "bath"}
+                </p>
+            </div>
+        
             {sessionUser?.id === oneSpot?.userId &&
             <>
                 <Link to={`/spots/${spotId}/host`}>Edit Spot</Link>
                 <button onClick={deleteBtn}>Delete</button>
             </>
             }
+            <div id="info">
+                <h3 ><i class="fas i-list fa-home"></i>Entire home</h3>
+                <p class="list-details">You’ll have the guesthouse to yourself.</p>
+                <h3><i class="fas i-list fa-hand-sparkles"></i>Enhanced Clean</h3>
+                <p class="list-details">This Host committed to Airbnb's 5-step enhanced cleaning process.</p>
+                <h3><i class="fas i-list fa-map-marker-alt"></i>Great location</h3>
+                <p class="list-details">100% of recent guests gave the location a 5-star rating.</p>
+                <h3><i class="fas i-list fa-map-marker-alt"></i>Great check-in experience</h3>
+                <p class="list-details">95% of recent guests gave the check-in process a 5-star rating.</p>
+            </div>
+            <h3>{oneSpot?.city}, {oneSpot?.state}</h3>
+            <p id='p-text'>{oneSpot?.description}
+            <h2 id="one-spot"> Host By: {oneSpot?.User?.username}</h2></p> 
+
             <div id="amen-icon">
                 <ul> Amenities
                     <li>{`Fireplace: ${oneSpot?.Amenities[0].firePlace}`}</li>
@@ -56,21 +78,6 @@ const SpotDetail = ({ spotInfo, setSpotInfo}) => {
                     <li>{`Private Beach Access: ${oneSpot?.Amenities[0].privateBeachAccess}`}</li>
                 </ul>
             </div>
-            <ul> Address: 
-                <li>{oneSpot?.address}</li>
-                <li>{oneSpot?.city}</li>
-                <li>{oneSpot?.country}</li>
-                <li>{oneSpot?.state}</li>
-                <li>{oneSpot?.zipCode}</li>
-            </ul>
-            <ul> Details: 
-                <li>{`Bathrooms: ${oneSpot?.bathrooms}`}</li>
-                <li>{`Bedrooms: ${oneSpot?.bedrooms}`}</li>
-                <li>{`Guests: ${oneSpot?.bathrooms}`}</li>
-                <li></li>
-            </ul>
-            <h3>{`$${oneSpot?.price}`}</h3>
-
         </div>
     )
 }

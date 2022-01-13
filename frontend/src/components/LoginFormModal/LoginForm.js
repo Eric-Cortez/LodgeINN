@@ -38,19 +38,23 @@ function LoginForm() {
                     required
                 />
             </label>
-            <label
-             className="modal-label"
-            >
-                Password
-                <input
-                    className="modal-input"
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                />
-            </label>
-            <button className="login-btn-modal" type="submit">Log In</button>
+            <div className="white-bk">
+                <label
+                className="modal-label"
+                >
+                    Password
+                    <input
+                        className="modal-input"
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                    />
+                </label>
+            </div>
+            <div className="white-bk">
+                <button className="login-btn-modal" type="submit">Log In</button>
+            </div>
         </form>
     );
 }

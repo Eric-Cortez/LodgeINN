@@ -116,10 +116,23 @@ ul.details {
 #spot-name {
     font-size: 25px;
     font-weight: 100 !important;
+    margin-bottom: 10px;
 }
 
 
 #detail-p {
     margin:0 !important;
     font-size: 20px;
+     font-weight: 100 !important;
+}
+
+#amenities-all {
+    font-size: 16px;
+    font-weight: 100 !important; 
+}
+
+#line {
+    border-bottom: rgb(235,235,235) 2px solid;
+    width: 50px;
+    margin-bottom: 10px;
 }
