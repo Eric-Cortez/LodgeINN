@@ -91,9 +91,18 @@ Technologies used within the project:
 
 
 ## Installation 
-To install LodgeINN on your local machine please clone the project repository. Once the project has been cloned run ```npm install``` in your terminal to install dependencies.
+To install LodgeINN on your local machine please clone the project repository. 
+Once the project has been cloned cd into the backend and run ```npm install``` in your terminal to install the backend dependencies.
 ```
  git clone https://github.com/Eric-Cortez/LodgeINN.git
+ cd backend 
+ npm install
+ npm start
+ 
+```
+Once the project has been cloned cd into the frontend and run ```npm install``` in your terminal to install the frontend dependencies.
+```
+ cd frontend  
  npm install
  npm start
 ```
