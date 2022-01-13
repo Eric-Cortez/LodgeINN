@@ -46,33 +46,37 @@ LodgeINN is an application where users can post spots to host or book spots.
 ## Wiki Documentation: 
 ***
 * [Home](link)
-* [API Documentation](link)
-* [Database Schema](link)
 * [Frontend Routes](link)
 * [MVP Feature List](link)
-* [User Stories](link)
 
 ## Technologies 
 ***
 Technologies used within the project:
 * [bcryptjs](https://www.npmjs.com/package/bcrypt): Version 2.4.3
+* [cookie-parser](https://www.npmjs.com/package/cookie-parser): Version 1.4.4
+* [cors]: Version 2.8.5
 * [connect-session-sequelize](https://www.npmjs.com/package/connect-session-sequelize): Version 7.0.4
-*  [cookie-parser](https://www.npmjs.com/package/cookie-parser): Version 1.4.4
-*  [csrf](https://www.npmjs.com/package/csrf): Version 3.1.0
-*  [csurf](https://www.npmjs.com/package/csurf): Version 1.11.0
-*  [debug](https://www.npmjs.com/package/debug): Version 2.6.9
-*  [express](https://expressjs.com/en/4x/api.html#express): Version 4.16.1
-*  [express-session](https://www.npmjs.com/package/express-session): Version 1.17.2
+* [csurf](https://www.npmjs.com/package/csurf): Version 1.11.0
+* [dotenv]: Version 10.0.0
+* [express](https://expressjs.com/en/4x/api.html#express): Version 4.16.1
+* [express-async-handler]: Version 1.2.0
 * [express-validator](https://express-validator.github.io/docs/): Version  6.14.0
-* [http-errors](https://www.npmjs.com/package/http-errors): Version 1.6.3
+* [helmet]: Version 5.0.1,
+* [jsonwebtoken]: Version 8.5.1
 * [morgan](https://www.npmjs.com/package/morgan): Version 1.9.1
-* [pre-env](): Version 1.0.2
+* [per-env]: Version 1.0.2
 * [pg](https://www.npmjs.com/package/pg): Version 2.0.4
 * [sequelize](https://sequelize.org/master/class/lib/sequelize.js~Sequelize.html): Version 5.22.3
 * [sequelize-cli](https://sequelize.org/master/class/lib/sequelize.js~Sequelize.html): Version 5.5.1
 * [dotenv](https://www.npmjs.com/package/dotenv): Version 8.2.0
 * [dotenv-cli](https://www.npmjs.com/package/dotenv-cli): Version 4.0.0
 * [nodemon](https://www.npmjs.com/package/nodemon): Version 2.0.6
+* [js-cookie]: Version 3.0.1
+* [react]: Version 17.0.2
+* [react-dom]: Version 17.0.2
+* [react-redux]: Version: 7.2.6
+* [redux]: Version 4.1.2
+* [redux-thunk]: 2.4.1
 * React
 * Redux
 * Postgres
@@ -98,7 +102,7 @@ To use the application in a development environment use ```npm start``` to start
 
 
 ## Collaboration
-  This project was developed by a group of four developer Eric Cortez. Below are the top two features of the project and a brief description of challenges faced during the one week development cycle. 
+This project was developed by a group of four developer Eric Cortez. Below are the top two features of the project and a brief description of challenges faced during the one week development cycle. 
 #### Highlight features: 
 * Question Delete: The implementation of the dynamic delete frontend route allows you to delete a question on the home page without the need to be redirected to a new page. This feature was implemented using an event listener to manipulate the document object model and remove the element from the page. This is done through a fetch request in the event listener which reaches an endpoint on the backend to remove the question from the database. 
 * Home Page: The home page displays nested elements as it allows users to post question, answers, and comments. The nested nature of this features required extensive use joint table query searches in addition data manipulation with pug in order to ensure that the question, answers, and comments all correlated to ensure data integrity.  Lastly, we ensured user authentication and permissions when enabling edit and delete features.  
