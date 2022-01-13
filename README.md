@@ -124,52 +124,14 @@ This project was developed by a single developer Eric Cortez. Below is a descrip
 * Creating and Editing Form: When creating a Spot the payload sent to the database must update three tables. Prior to this project, I had only updated one table at a time. I was unsure of how to implement and through research, I found that I could send the data for all three tables in one payload and destructured it in the backend. I was able to use this technique for both editing and creating Spots.  
 
 * Backend Validation Errors: When using the check method from express-validator I faced a challenge as the validator returned a Bad Request error when creating and editing spots. After tracing the request in the handle validation function I found that the data was entering the validation function, but my payload was nested so it was causing an error. Therefore I had to key into the payload in each check method in order to resolve the issue (ex: .check("image.url"). 
-```
-//PAYLOAD EXAMPLE
-
- const payload = {
-            amenities: {
-                id: spotInfo?.Amenities[0]?.id,
-                kitchen,
-                privateBeachAccess,
-                firePlace,
-                parking,
-                pool,
-                hotTub,
-                pets,
-            },
-            image: {
-                id: spotInfo?.Images[0]?.id,
-                url
-            },
-            spots: {
-                userId: session.user.id,
-                address,
-                city,
-                state,
-                country,
-                title,
-                description,
-                price,
-                zipCode,
-                guests,
-                bedrooms,
-                bathrooms
-            }
-```
-
-## Create Spot (POST) - Route 
-#### Updates three tables in the databade 
-![eventListener](link)
 
 
-#### REACT form for the home page of LodgeINN aka question list
-![questionListPug](link)
+#### Create Spot (POST) - Route 
+##### Updates three tables in the databade 
+![POST](https://user-images.githubusercontent.com/80999718/149393907-3b1379f5-42ab-4583-9af3-add4150c93a6.png)
 
+#### Create (POST) Payload: 
+![payload](https://user-images.githubusercontent.com/80999718/149393791-1ed62d5a-0548-4a4a-8244-bbe9b6dc06a5.png)
 
-#### Code snippet of the route to post a new question 
-![postNewQuestion](link)
-
-
-
-
+#### Local Storage 
+![local-storge](https://user-images.githubusercontent.com/80999718/149393856-ecc8252a-4d33-433c-8351-1be8485ee1b5.png)
