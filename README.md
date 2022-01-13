@@ -5,7 +5,7 @@
 2. [Wiki-Documentation](#wiki-documentation)
 3. [Technologies](#technologies)
 4. [Installation](#installation)
-5. [Collaboration](#collaboration)
+5. [Development](#development)
 6. [Images](#images)
 
 
@@ -106,25 +106,60 @@ Once the project has been cloned cd into the frontend and run ```npm install``` 
  npm install
  npm start
 ```
+To use the application in a development environment use ```npm start``` in the backend and in the frontend to start the application. 
 
-To use the application in a development environment use ```npm start``` to start. 
 
-
-## Collaboration
-This project was developed by a group of four developer Eric Cortez. Below are the top two features of the project and a brief description of challenges faced during the one week development cycle. 
+## Development 
+This project was developed by a single developer Eric Cortez. Below is a description of the top features of the project and a brief description of challenges faced during the six-day development cycle. 
 #### Highlight features: 
-* Question Delete: The implementation of the dynamic delete frontend route allows you to delete a question on the home page without the need to be redirected to a new page. This feature was implemented using an event listener to manipulate the document object model and remove the element from the page. This is done through a fetch request in the event listener which reaches an endpoint on the backend to remove the question from the database. 
-* Home Page: The home page displays nested elements as it allows users to post question, answers, and comments. The nested nature of this features required extensive use joint table query searches in addition data manipulation with pug in order to ensure that the question, answers, and comments all correlated to ensure data integrity.  Lastly, we ensured user authentication and permissions when enabling edit and delete features.  
+
+* Navigation: Implementation of dynamic navigation across the application with the use of React. This allows for a seamless browsing experience for the user as the page does not reload or refresh. This was also achieved by preventing the default of events such as on submit.
+
+* Redux: All information from database queries received through csurfetch request are stored in the Redux store and accessible to the components across the application. 
 
 
 #### Challenges:   
-* The planning phase of this project was challenging as it require nested features, which were more difficult to implement than anticipated. Initally we decided to work along side one another but found that we need to work on the same phase for each feature in order to test and refactor our routes to make sure that the functionality was the same across the board. 
-* During the implementation of the database we came up against an unforseen problem with our nested features that were dependant on one another that made it more challenging to have working CRUD features. Specifically the deleting of our nested dependencies which required the use of cascading hooks in our sequelize models. 
-* Having our site use a uniform style. We realized early on that we needed to pay attention to the way we styled one page so that when our users moved through our site so it  flowed seamlessly allowling them to uniterrupted navigation. 
-* For a while we struggled to make sure that the person logged in was the only one that could delete or update content that they had made. Ultimatley it came down to authorization of the user when logged in they were the only ones that could use the delete/edit buttons. 
+* Refreshing Edit Form Page: When implementing the feature to edit forms I had difficulty keeping the state of the input data when refreshing the page. I was able to resolve this problem with the use of local storage. I set the input data to local storage and used a useEffect to set the input values on re-render. 
 
-## Images 
-#### Event Listener for dynamically deleting content
+* Creating and Editing Form: When creating a Spot the payload sent to the database must update three tables. Prior to this project, I had only updated one table at a time. I was unsure of how to implement and through research, I found that I could send the data for all three tables in one payload and destructured it in the backend. I was able to use this technique for both editing and creating Spots.  
+
+* Backend Validation Errors: When using the check method from express-validator I faced a challenge as the validator returned a Bad Request error when creating and editing spots. After tracing the request in the handle validation function I found that the data was entering the validation function, but my payload was nested so it was causing an error. Therefore I had to key into the payload in each check method in order to resolve the issue (ex: .check("image.url"). 
+```
+//PAYLOAD EXAMPLE
+
+ const payload = {
+            amenities: {
+                id: spotInfo?.Amenities[0]?.id,
+                kitchen,
+                privateBeachAccess,
+                firePlace,
+                parking,
+                pool,
+                hotTub,
+                pets,
+            },
+            image: {
+                id: spotInfo?.Images[0]?.id,
+                url
+            },
+            spots: {
+                userId: session.user.id,
+                address,
+                city,
+                state,
+                country,
+                title,
+                description,
+                price,
+                zipCode,
+                guests,
+                bedrooms,
+                bathrooms
+            }
+```
+
+## Create Spot (POST) - Route 
+#### Updates three tables in the databade 
 ![eventListener](link)
 
 
@@ -136,11 +171,5 @@ This project was developed by a group of four developer Eric Cortez. Below are t
 ![postNewQuestion](link)
 
 
-#### Code snippet of the route to edit an answer
-![submitEditAnswer](link)
-
-
-#### Code snippet of the route to get a form to post a new comment
-![getNewCommentForm](link.png)
 
 
