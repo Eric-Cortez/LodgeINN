@@ -10,13 +10,6 @@ select,input {
     border-radius: 4px;
 }
 
-#form-container {
-    border: 1px solid lightgray;
-    border-radius: 8px;
-    margin: 0 30%;
-    margin-top: 12%;
-    padding: 40px;
-}
 
 select, input {
     width: 300px;
@@ -54,4 +47,145 @@ input[type=number]#num-input::-webkit-outer-spin-button {
 
 .errors {
   display: inline-block;
+}
+/* 
+#outer{
+    margin: 0 32%;
+    margin-top: 20%;
+    padding: 3%;
+    border: 1px solid lightgray;
+    border-radius: 8px;
+    display:flex;
+    align-items: flex-end;   
+} */
+
+#form-container {
+    /* border: 1px solid purple; */
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    grid-template-rows: 1fr fr;
+    border: 1px solid lightgray;
+    border-radius: 8px;
+    margin: 10% 12%;
+    /* width: 80%;
+    height: 80%; */
+}
+
+
+#top-host-form {
+    grid-column-start:1;
+    grid-column-end: 3;
+    column-span: auto;
+    border-radius: 8px;
+}
+
+
+#left-host-form {
+    grid-row: 2;
+    /* grid-row-start: 2 / span 1; */
+    grid-column-start:1 / span 1 ;
+    padding: 0;
+    margin: 0;
+    border-radius: 8px;
+    padding-bottom: 15px;;
+}
+
+
+#right-host-form {
+    grid-row:2; 
+    /* border: 1px solid greenyellow; */
+    grid-column-start:2 / span 1 ;
+    padding: 0;
+    margin: 0;
+    /* flex-direction: column; */
+    border-radius: 8px;
+    position: relative;
+}
+#kitchen,
+#privateBeachAccess,
+#firePlace,
+#parking,
+#hotTub,
+#pets,
+#pool{
+    width: 20px;
+}
+
+ul#errors {
+   margin-left: 45%;
+
+}
+
+.title-center{
+    text-align: center;
+    border-top: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+}
+
+
+
+ul.errors-center {
+    display: inline;
+    text-align: center;
+}
+
+.image-inp {
+    border-bottom: 20px;
+}
+
+#host-cancel-btn {
+position: absolute;
+bottom: 20px;
+right: 20px;
+text-align: center;
+border-radius: 10px;
+border-radius: 4px;
+background-color: lightgray;
+font-size: 15px;
+color: black;
+font-weight: 100;
+padding: 5px 15px;
+border:gray 1px solid;
+display: inline;
+}
+
+#host-btn {
+position: absolute;
+margin: 0;
+bottom: 20px;
+right: 100px;
+border-radius: 4px;
+background-color: lightgray;
+font-size: 15px;
+color: black;
+padding: 5px 5px;
+border:gray 1px solid;
+margin-right: 30px;
+width: 80px;
+}
+
+.host-labels {
+  margin: 0;
+  margin-left: 100px;
+  margin-right: 50px;
+  display: flex;
+  width: 500px;
+}
+
+.host-labels-box {
+     display: inline-block !important;
+     margin: 0 !important;
+}
+
+textarea {
+    margin-top: 15px;
+    width: 400px;
+    height: 250px;
+    border-radius: 8px;
+    resize: none;
+}
+
+.amenities {
+    display: flex;
+    justify-content: flex-start;
 }

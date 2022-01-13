@@ -21,4 +21,27 @@
 #modal-content {
   position: absolute;
   background-color:white;
+  border-radius: 15px;
+  padding: 30px; 
+}
+
+.login-btn-modal {
+  margin-right: 4%;
+  border-radius: 4px;
+  background-color: lightgray;
+}
+
+.modal-label {
+  margin: 0;
+  display: block;
+}
+.modal-form {
+  display:flex;
+  align-items: flex-end; 
+  height: 100%;
+  width: 100%;
+}
+
+.modal-input {
+  height:  30px;
 }

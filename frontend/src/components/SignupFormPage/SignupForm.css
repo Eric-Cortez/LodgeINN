@@ -1,15 +1,27 @@
 
 
 .sign-up {
-    margin: 0 20%;
+    margin: 0 32%;
     margin-top: 20%;
     padding: 3%;
     border: 1px solid lightgray;
     border-radius: 8px;
+    display:flex;
+    align-items: flex-end; 
 }
 
 button.sign-up-btn {
-    margin-left: 60%;
-    width: 100px;
-    border-radius: ;
+  margin-right: 4%;
+  border-radius: 4px;
+  background-color: lightgray;
 }
+
+.signup-label {
+  margin: 0;
+  display: block;
+}
+
+.signup-input {
+    height:  30px; 
+}
+

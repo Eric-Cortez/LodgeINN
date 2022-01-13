@@ -34,8 +34,9 @@ i.fa-user-circle,
     padding: 3px 2px;
 }
 
-
- a {
+.login-btn,
+#demo-btn,
+a {
     text-decoration: none;
     color: grey;
     text-decoration: none;
@@ -48,6 +49,11 @@ i.fa-user-circle,
     padding-left: 15px;
 } 
 
+.login-btn,
+#demo-btn {
+border: none;
+margin-right: 20px;
+}
 
 nav {
     padding: 0;
@@ -74,9 +80,6 @@ nav * {
   padding-top: 30px;
 }
 
-ul {
-    margin-bottom: 10px;
-}
 
 a.nav-links {
     /* border: 1px solid red; */

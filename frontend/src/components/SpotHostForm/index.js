@@ -9,8 +9,8 @@ function SpotHostForm() {
     const history = useHistory()
     const dispatch = useDispatch()
     const session = useSelector(state => state.session)
-        
- 
+
+
 
     const [title, setTitle] = useState("")
     const [country, setCountry] = useState("")
@@ -33,7 +33,7 @@ function SpotHostForm() {
     const [pets, setPets] = useState(false);
     const [validationErrors, setValidationErrors] = useState([])
 
-   
+
     useEffect(() => {
         const errors = [];
         if (title?.length > 100 || title?.length === 0) errors.push("Title must be less 100 characters")
@@ -59,32 +59,32 @@ function SpotHostForm() {
 
         //!!START SILENT
         const payload = {
-         amenities: {
-             kitchen,
-             privateBeachAccess,
-             firePlace,
-             parking,
-             pool,
-             hotTub,
-             pets,
-         },
-         image: {
-            url 
-         },
-         spots:{
-          userId: session.user.id,
-          address,
-          city,
-          state,
-          country,
-          title,
-          description,
-          price,
-          zipCode,
-          guests,
-          bedrooms,
-          bathrooms
-         } 
+            amenities: {
+                kitchen,
+                privateBeachAccess,
+                firePlace,
+                parking,
+                pool,
+                hotTub,
+                pets,
+            },
+            image: {
+                url
+            },
+            spots: {
+                userId: session.user.id,
+                address,
+                city,
+                state,
+                country,
+                title,
+                description,
+                price,
+                zipCode,
+                guests,
+                bedrooms,
+                bathrooms
+            }
         }
 
         let createdSpot;
@@ -98,201 +98,261 @@ function SpotHostForm() {
             // else setErrorMessages({ overall: error.toString().slice(7) })
         }
         if (createdSpot) {
-   
+
             history.push(`/spots/${createdSpot.id.id}`);
         }
     };
 
     return (
-        <div id="form-container">
-            <h1>Host Form</h1>
-            <div id="host-form" >
-                <form onSubmit={handleSubmit}>
-                    <ul className="errors">
-                        {validationErrors.map(error => (
-                            <li key={error}>{error}</li>
-                        ))}
-                    </ul>
-                    <label> Spot Name: 
-                        <input
-                            required
-                            type='text'
-                            placeholder="Spot Name"
-                            value={title}
-                            onChange={e => setTitle(e.target.value)}
-                        />
-                    </label>
-                    <label> Country:
-                        <input
-                            required
-                            type='text'
-                            placeholder="Country"
-                            value={country}
-                            onChange={e => setCountry(e.target.value)}
-                            />
-                    </label>
-                    <label id="select"> State:
-                        <select
-                            required
-                            type='text'
-                            placeholder="State"
-                            value={state}
-                            onChange={e => setState(e.target.value)}
-                            >
-                            {states.map(state => (
-                                <option key={state}>
-                                    {state}
-                                </option>
-                            ))}
-                        </select>
-                    </label>
-                    <label> City:
-                        <input
-                            required
-                            type='text'
-                            placeholder="City"
-                            value={city}
-                            onChange={e => setCity(e.target.value)}
-                        />
-                    </label>
-                    <label> Address:
-                        <input
-                            required
-                            type='text'
-                            placeholder="Address"
-                            value={address}
-                            onChange={e => setAddress(e.target.value)}
-                        />
-                    </label>
-                    <label> Zip Code:
-                        <input
-                            required
-                            id="num-input"
-                            type='number'
-                            placeholder="Zip Code"
-                            value={zipCode}
-                            onChange={e => setZipCode(e.target.value)}
-                        />
-                    </label>
-                    <label> Description:
-                        <input
-                            required
-                            type='text'
-                            placeholder="Description"
-                            value={description}
-                            onChange={e => setDescription(e.target.value)}
-                        />
-                    </label>
-                    <label> Price:
-                        <input
-                            required
-                            id="num-input"
-                            type='number'
-                            placeholder="Cost Per Night"
-                            value={price}
-                            onChange={e => setPrice(e.target.value)}
-                        />
-                    </label>
-                    <label> Guests:
-                        <input
-                            required
-                            type='number'
-                            placeholder="Guests"
-                            value={guests}
-                            onChange={e => setGuests(e.target.value)}
-                        />
-                    </label>
-                    <label> Bedrooms:
-                        <input
-                            required
-                            type='number'
-                            placeholder="Bedrooms"
-                            value={bedrooms}
-                            onChange={e => setBedrooms(e.target.value)}
-                        />
-                    </label>
-                    <label> bathrooms
-                        <input
-                            required
-                            type='number'
-                            placeholder="Bathrooms"
-                            value={bathrooms}
-                            onChange={e => setBathrooms(e.target.value)}
-                        />
-                    </label>
-                    <label> Image url: 
-                        <input
-                            required
-                            type='string'
-                            placeholder="image url"
-                            value={url}
-                            onChange={e => setUrl(e.target.value)}
-                        />
-                    </label>
-                    <label htmlFor="kitchen">Kitchen:
-                    <input
-                        id="kitchen"
-                        type="checkbox"
-                        checked={kitchen} 
-                        onChange={(e) => setKitchen(!kitchen)}
-                    />  
-                    </label>        
-                    <label htmlFor="privateBeachAccess">Private Beach Access:
-                        <input
-                            id="privateBeachAccess"
-                            type="checkbox"
-                            checked={privateBeachAccess}
-                            onChange={(e) => setPrivateBeachAccess(!privateBeachAccess)}
-                        />
-                    </label>  
-                    <label htmlFor="firePlace">Fire Place:
-                        <input
-                            id="firePlace"
-                            type="checkbox"
-                            checked={firePlace}
-                            onChange={(e) => setFirePlace(!firePlace)}
-                        />
-                    </label>
-                    <label htmlFor="parking">Parking:
-                        <input
-                            id="parking"
-                            type="checkbox"
-                            checked={parking}
-                            onChange={(e) => setParking(!parking)}
-                        />
-                    </label>        
-                    <label htmlFor="pool">Pool:
-                        <input
-                            id="pool"
-                            type="checkbox"
-                            checked={pool}
-                            onChange={(e) => setPool(!pool)}
-                        />
-                    </label>  
-                    <label htmlFor="hotTub">Hot Tub:
-                        <input
-                            id="hotTub"
-                            type="checkbox"
-                            checked={hotTub}
-                            onChange={(e) => setHotTub(!hotTub)}
-                        />
-                    </label> 
-                    <label htmlFor="pets">Pets:
-                        <input
-                            id="pets"
-                            type="checkbox"
-                            checked={pets}
-                            onChange={(e) => setPets(!pets)}
-                        />
-                    </label>   
-                    <button 
-                    className="host-form" 
-                    disabled={validationErrors.length > 0}
-                    type="submit">Create new Spot</button>
-                    <Link exact="true" to="/">Cancel</Link>
-                </form>
-            </div>
-            
+        <div id="host-form" >
+            <form onSubmit={handleSubmit}>
+                <div id="form-container">
+                        <div id="top-host-form">
+                            <h1>Host Form</h1>
+                            <ul className="errors-center">
+                                {validationErrors.map(error => (
+                                    <li key={error}>{error}</li>
+                                ))}
+                            </ul>
+                        </div>
+
+                        <div id="left-host-form">
+                            <h3 className="title-center">Spot Details</h3>
+                            <label
+                            className="host-labels"
+                            > Title
+                                <input
+                                    className="host-input"
+                                    required
+                                    type='text'
+                                    placeholder="Spot Name"
+                                    value={title}
+                                    onChange={e => setTitle(e.target.value)}
+                                />
+                            </label>
+                            <label
+                            className="host-labels"
+                            > Country
+                                <input
+                                    required
+                                    type='text'
+                                    placeholder="Country"
+                                    value={country}
+                                    onChange={e => setCountry(e.target.value)}
+                                />
+                            </label>
+                            <label id="select"
+                                className="host-labels"
+                            > State
+                                <select
+                                    required
+                                    type='text'
+                                    placeholder="State"
+                                    value={state}
+                                    onChange={e => setState(e.target.value)}
+                                >
+                                    {states.map(state => (
+                                        <option key={state}>
+                                            {state}
+                                        </option>
+                                    ))}
+                                </select>
+                            </label>
+                            <label
+                                className="host-labels"
+                            > City
+                                <input
+                                    required
+                                    type='text'
+                                    placeholder="City"
+                                    value={city}
+                                    onChange={e => setCity(e.target.value)}
+                                />
+                            </label>
+                            <label
+                                className="host-labels"
+                            > Address
+                                <input
+                                    required
+                                    type='text'
+                                    placeholder="Address"
+                                    value={address}
+                                    onChange={e => setAddress(e.target.value)}
+                                />
+                            </label>
+                            <label
+                                className="host-labels"
+                            > Zip Code
+                                <input
+                                    required
+                                    id="num-input"
+                                    type='number'
+                                    placeholder="Zip Code"
+                                    value={zipCode}
+                                    onChange={e => setZipCode(e.target.value)}
+                                />
+                            </label>
+                            <label
+                                className="host-labels"
+                            > Price
+                                <input
+                                    required
+                                    id="num-input"
+                                    type='number'
+                                    placeholder="Cost Per Night"
+                                    value={price}
+                                    onChange={e => setPrice(e.target.value)}
+                                />
+                            </label>
+                            <label
+                                className="host-labels"
+                            > Guests:
+                                <input
+                                    id="num-input"
+                                    required
+                                    type='number'
+                                    placeholder="Guests"
+                                    value={guests}
+                                    onChange={e => setGuests(e.target.value)}
+                                />
+                            </label>
+                            <label
+                                className="host-labels"
+                            > Bedrooms
+                                <input
+                                    id="num-input"
+                                    required
+                                    type='number'
+                                    placeholder="Bedrooms"
+                                    value={bedrooms}
+                                    onChange={e => setBedrooms(e.target.value)}
+                                />
+                            </label>
+                            <label
+                                className="host-labels"
+                            > bathrooms
+                                <input
+                                    id="num-input"
+                                    required
+                                    type='number'
+                                    placeholder="Bathrooms"
+                                    value={bathrooms}
+                                    onChange={e => setBathrooms(e.target.value)}
+                                />
+                            </label>
+                            <label
+                                className="host-labels"
+                            > Image url
+                                <input
+                                    id="image-inp"
+                                    required
+                                    type='string'
+                                    placeholder="image url"
+                                    value={url}
+                                    onChange={e => setUrl(e.target.value)}
+                                />
+                            </label>
+                        </div>
+
+
+                        <div id="right-host-form">
+                            <h3 className="title-center">Amenities</h3>
+                            <div id="amenities">
+                                <label htmlFor="kitchen"
+                                    className="host-labels-box"
+                                >Kitchen:
+                                    <input
+                                        id="kitchen"
+                                        type="checkbox"
+                                        checked={kitchen}
+                                        onChange={(e) => setKitchen(!kitchen)}
+                                    />
+                                </label>
+                                <label htmlFor="privateBeachAccess"
+                                className="host-labels-box"
+                                >Private Beach Access:
+                                    <input
+                                        id="privateBeachAccess"
+                                        type="checkbox"
+                                        checked={privateBeachAccess}
+                                        onChange={(e) => setPrivateBeachAccess(!privateBeachAccess)}
+                                    />
+                                </label>
+                                <label htmlFor="firePlace"
+                                className="host-labels-box"
+                                >Fire Place:
+                                    <input
+                                        id="firePlace"
+                                        type="checkbox"
+                                        checked={firePlace}
+                                        onChange={(e) => setFirePlace(!firePlace)}
+                                    />
+                                </label>
+                                <label htmlFor="parking"
+                                className="host-labels-box"
+                                >Parking:
+                                    <input
+                                        id="parking"
+                                        type="checkbox"
+                                        checked={parking}
+                                        onChange={(e) => setParking(!parking)}
+                                    />
+                                </label>
+                                <label htmlFor="pool"
+                                className="host-labels-box"
+                                >Pool:
+                                    <input
+                                        id="pool"
+                                        type="checkbox"
+                                        checked={pool}
+                                        onChange={(e) => setPool(!pool)}
+                                    />
+                                </label>
+                                <label htmlFor="hotTub"
+                                className="host-labels-box"
+                                >Hot Tub:
+                                    <input
+                                        id="hotTub"
+                                        type="checkbox"
+                                        checked={hotTub}
+                                        onChange={(e) => setHotTub(!hotTub)}
+                                    />
+                                </label>
+                                <label htmlFor="pets"
+                                    className="host-labels-box"
+                                >Pets:
+                                    <input
+                                        id="pets"
+                                        type="checkbox"
+                                        checked={pets}
+                                        onChange={(e) => setPets(!pets)}
+                                    />
+                                </label>
+                            </div>
+                            <br></br>
+                            <br></br>
+                            <br></br>
+                            <label
+                            className="host-labels-box"
+                            > Description
+                                <br></br>
+                                <textarea
+                                    required
+                                    type='text'
+                                    placeholder="Spot Description"
+                                    value={description}
+                                    onChange={e => setDescription(e.target.value)}
+                                />
+                            </label>
+                            <button
+                                id="host-btn"
+                                className="host-form"
+                                disabled={validationErrors.length > 0}
+                                type="submit">Submit</button>
+                            <Link id="host-cancel-btn" exact="true" to="/">Cancel</Link>
+                        </div>
+                </div>
+            </form>
         </div>
     )
 }
