@@ -20,7 +20,7 @@
 
 .signup-input {
   height:  30px; 
-  width: 300px;
+  width: 50%;
   /* margin-left: 20px; */
 } 
 
@@ -68,7 +68,7 @@
   margin-right: 4%;
   border-radius: 4px;
   background-color: lightgray;
-  margin-left: 500px;
+  margin-left: 80%;
 }
 
 .signup-label{ 
