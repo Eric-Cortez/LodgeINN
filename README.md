@@ -22,19 +22,22 @@ LodgeINN is an application where users can post spots to host or book spots.
 
 
 #### LodgeINN Sign up page
-![LodgeINN Sign Up Page](imgelink)
+![signup](https://user-images.githubusercontent.com/80999718/149380404-17edea81-37c0-4ff7-b432-8ba723dfda8e.png)
 
 
 #### LodgeINN Home page
-![LodgeINN Home Page](imgelink)
+![home](https://user-images.githubusercontent.com/80999718/149380341-a1773700-4a94-4610-a030-c416350e4525.png)
+
 
 
 #### Spots 
-![All Spots Page](imgelink)
+![spots](https://user-images.githubusercontent.com/80999718/149380460-557b3a64-b0e1-47e6-ab52-736f9970d2d8.png)
+
 
 
 #### Spots Detail 
-![Spot Detail Page](imgelink)
+![Spot](https://user-images.githubusercontent.com/80999718/149380252-6c67be40-8ffc-4a5c-a806-d6116ccac953.png)
+
 
 
 ## Wiki Documentation: 
