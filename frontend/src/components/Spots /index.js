@@ -43,7 +43,6 @@ function Spots() {
                 ))}
             </div>
             <div className="right-container fill">
-                {/* <img id='map-image' src='https://images.unsplash.com/photo-1530738270955-2ed78de5c2a9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=705&q=80' /> */}
                 <img id='map-image' src='https://images.unsplash.com/photo-1614021026464-5ebe74fd55ce?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=776&q=80' />
             </div>
         </div>
