@@ -125,7 +125,6 @@ function EditSpotForm() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        //!!START SILENT
         const payload = {
             amenities: {
                 id: spotInfo?.Amenities[0]?.id,
@@ -304,7 +303,7 @@ function EditSpotForm() {
                         </label>
                         <label
                             className="host-labels"
-                        > bathrooms
+                        > Bathrooms
                             <input
                                 id="num-input"
                                 required
@@ -403,9 +402,6 @@ function EditSpotForm() {
                                 />
                             </label>
                         </div>
-                        <br></br>
-                        <br></br>
-                        <br></br>
                         <label
                             className="host-labels-box"
                         > Description

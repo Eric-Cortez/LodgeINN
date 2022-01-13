@@ -230,7 +230,7 @@ function SpotHostForm() {
                             </label>
                             <label
                                 className="host-labels"
-                            > bathrooms
+                            > Bathrooms
                                 <input
                                     id="num-input"
                                     required
@@ -329,9 +329,7 @@ function SpotHostForm() {
                                     />
                                 </label>
                             </div>
-                            <br></br>
-                            <br></br>
-                            <br></br>
+                          
                             <label
                             className="host-labels-box"
                             > Description
