@@ -113,17 +113,17 @@ To use the application in a development environment use ```npm start``` in the b
 This project was developed by a single developer Eric Cortez. Below is a description of the top features of the project and a brief description of challenges faced during the six-day development cycle. 
 #### Highlight features: 
 
-* Navigation: Implementation of dynamic navigation across the application with the use of React. This allows for a seamless browsing experience for the user as the page does not reload or refresh. This was also achieved by preventing the default of events such as on submit.
+* Navigation: Implementation of dynamic navigation across the application with the use of React. This allows for a seamless browsing experience for the user as the page does not reload or refresh while accessing different features. This was also achieved by preventing the default of events such as on submit.
 
 * Redux: All information from database queries received through csurfetch request are stored in the Redux store and accessible to the components across the application. 
 
 
 #### Challenges:   
-* Refreshing Edit Form Page: When implementing the feature to edit forms I had difficulty keeping the state of the input data when refreshing the page. I was able to resolve this problem with the use of local storage. I set the input data to local storage and used a useEffect to set the input values on re-render. 
+* Refreshing Edit Form Page: When implementing the feature to edit forms, I had difficulty keeping the state of the input data when refreshing the page. I was able to resolve this problem with the use of local storage. I set the input data to local storage and used a useEffect to set the input values on re-render. 
 
-* Creating and Editing Form: When creating a Spot the payload sent to the database must update three tables. Prior to this project, I had only updated one table at a time. I was unsure of how to implement and through research, I found that I could send the data for all three tables in one payload and destructured it in the backend. I was able to use this technique for both editing and creating Spots.  
+* Creating and Editing Form: When creating a Spot, the payload sent to the database must update three tables. Prior to this project, I had only updated one table at a time. I was unsure of how to implement this and through research, I found that I could send the data for all three tables in one payload and destructure it in the backend. I was able to use this technique for both editing and creating Spots.  
 
-* Backend Validation Errors: When using the check method from express-validator I faced a challenge as the validator returned a Bad Request error when creating and editing spots. After tracing the request in the handle validation function I found that the data was entering the validation function, but my payload was nested so it was causing an error. Therefore I had to key into the payload in each check method in order to resolve the issue (ex: .check("image.url"). 
+* Backend Validation Errors: When using the check method from express-validator, I faced a challenge as the validator returned a Bad Request error when creating and editing spots. After tracing the request in the handle validation function, I found that the data was entering the validation function, but my payload was nested so it was causing an error. Therefore, I had to key into the payload object in each check method in order to resolve the issue (ex: .check("image.url"). 
 
 
 #### Create Spot (POST) - Route 
