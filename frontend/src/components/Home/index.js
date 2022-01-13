@@ -24,7 +24,6 @@ const Home = () => {
           {sessionUser &&
           <Link className="centered-button" to="/spots/host">Host</Link>}
           </div>
-          <footer>footer</footer>
         </div>
     )
 }

@@ -14,27 +14,27 @@
 ***
 # LodgeINN
 LodgeINN is an application where users can post spots to host or book spots. 
-* Link to live  [Carr](https://carra.herokuapp.com/) project. 
+* Link to live  [LodgeInn](https://lodgeinn.herokuapp.com/) project. 
 
 
 #### LodgeINN Login page
-![LodgeINNLoginPage (2)](imgelink)
+![login](https://user-images.githubusercontent.com/80999718/149379610-05f80153-21d8-4c0a-aab6-70036eb28a18.png)
 
 
 #### LodgeINN Sign up page
-![LodgeINNSignUpPage](imgelink)
+![LodgeINN Sign Up Page](imgelink)
 
 
 #### LodgeINN Home page
-![carraHomePage](imgelink)
+![LodgeINN Home Page](imgelink)
 
 
-#### Question details page with an answer and a comment
-![questionDetailsPage](imgelink)
+#### Spots 
+![All Spots Page](imgelink)
 
 
-#### Topics page w/ questions related to topic
-![topics](imgelink)
+#### Spots Detail 
+![Spot Detail Page](imgelink)
 
 
 ## Wiki Documentation: 
@@ -67,16 +67,18 @@ Technologies used within the project:
 * [dotenv](https://www.npmjs.com/package/dotenv): Version 8.2.0
 * [dotenv-cli](https://www.npmjs.com/package/dotenv-cli): Version 4.0.0
 * [nodemon](https://www.npmjs.com/package/nodemon): Version 2.0.6
-
-## Languages 
-***
-* JavaScript
-* Pug
-* CSS
+* React
+* Redux
 * Postgres
 * Sequelize
 * SQL
 * Heroku
+
+## Languages 
+***
+* JavaScript
+* CSS
+
 
 ## Installation 
 To install LodgeINN on your local machine please clone the project repository. Once the project has been cloned run ```npm install``` in your terminal to install dependencies.

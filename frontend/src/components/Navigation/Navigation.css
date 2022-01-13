@@ -3,13 +3,15 @@ i#logo-icon {
     padding-right: 4px;
     margin-left: 30px;
     margin-bottom: 20px;
+    font-weight: 500;
     height: 100%;
 }
 
 a#logo {
    font-size: 30px; 
    height: 100%;
-   font-weight: 675;
+   font-weight: 800;
+   color: rgb(234,91,98);
 }
 
 

@@ -9,6 +9,7 @@ import SpotDetail from "./components/SpotDetail";
 import SpotHostForm from './components/SpotHostForm'
 import Home from "./components/Home";
 import EditSpotForm from "./components/EditSpotForm"
+import Footer from "./components/Footer";
 
 
 function App() {
@@ -46,6 +47,7 @@ function App() {
           </Route>
         </Switch>
       )}
+      <Footer />
     </>
   );
 }

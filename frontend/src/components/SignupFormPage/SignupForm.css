@@ -12,7 +12,7 @@
   margin: 0;
   display: block;
   text-align: end;
-  padding-left: 10px;
+  padding: 0 30px;
   border-radius: 8px;
 } 
 
@@ -41,6 +41,7 @@
 
 #sign-up-form {
   border-radius: 15px;
+  padding: 20px;
 }
 
 #confirm {
