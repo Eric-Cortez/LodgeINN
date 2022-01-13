@@ -138,7 +138,10 @@ ul.details {
 }
 
 .spot-image {
-    height: 500;
-    margin: 0 9.8%;
-    width: 700;
+    border-radius: 25px;
+    height: 700px;
+    height: 85%;
+    object-fit: cover;
+    width: 100%;
+    width: 80%;
 }
