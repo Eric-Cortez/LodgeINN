@@ -17,6 +17,9 @@ h2 {
    height: 700px;
    object-fit: cover;
    /* margin: 0 100px; */
+    height: 300px;
+    margin-left: 40px;
+    width: 350px;
 }
 
 

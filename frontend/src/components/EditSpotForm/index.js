@@ -195,7 +195,7 @@ function EditSpotForm() {
                             className="host-labels"
                         > Title
                             <input
-                                className="host-input"
+                                className="host-input new-input"
                                 required
                                 type='text'
                                 placeholder="Spot Name"
@@ -207,6 +207,7 @@ function EditSpotForm() {
                             className="host-labels"
                         > Country
                             <input
+                                className="new-input" 
                                 required
                                 type='text'
                                 placeholder="Country"
@@ -218,6 +219,7 @@ function EditSpotForm() {
                             className="host-labels"
                         > State
                             <select
+                                className="new-input" 
                                 required
                                 type='text'
                                 placeholder="State"
@@ -235,6 +237,7 @@ function EditSpotForm() {
                             className="host-labels"
                         > City
                             <input
+                                className="new-input" 
                                 required
                                 type='text'
                                 placeholder="City"
@@ -246,6 +249,7 @@ function EditSpotForm() {
                             className="host-labels"
                         > Address
                             <input
+                                className="new-input" 
                                 required
                                 type='text'
                                 placeholder="Address"
@@ -257,6 +261,7 @@ function EditSpotForm() {
                             className="host-labels"
                         > Zip Code
                             <input
+                                className="new-input" 
                                 required
                                 id="num-input"
                                 type='number'
@@ -269,6 +274,7 @@ function EditSpotForm() {
                             className="host-labels"
                         > Price
                             <input
+                                className="new-input" 
                                 required
                                 id="num-input"
                                 type='number'
@@ -281,6 +287,7 @@ function EditSpotForm() {
                             className="host-labels"
                         > Guests:
                             <input
+                                className="new-input" 
                                 id="num-input"
                                 required
                                 type='number'
@@ -293,6 +300,7 @@ function EditSpotForm() {
                             className="host-labels"
                         > Bedrooms
                             <input
+                                className="new-input" 
                                 id="num-input"
                                 required
                                 type='number'
@@ -305,6 +313,7 @@ function EditSpotForm() {
                             className="host-labels"
                         > Bathrooms
                             <input
+                                className="new-input" 
                                 id="num-input"
                                 required
                                 type='number'
@@ -317,6 +326,7 @@ function EditSpotForm() {
                             className="host-labels"
                         > Image url
                             <input
+                                className="new-input" 
                                 id="image-inp"
                                 required
                                 type='string'

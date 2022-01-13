@@ -25,7 +25,7 @@
   position: absolute;
   background-color:white;
   border-radius: 15px;
-  padding: 30px; 
+  padding: 40px; 
 }
 
 .login-btn-modal {
@@ -48,6 +48,9 @@
 
 .modal-input {
   height:  30px;
+  border-radius: 4px;
+  margin-left: 10px;
+  width: 200px;
 }
 
 /* #modal {

@@ -5,13 +5,13 @@ form {
     flex-direction: column;
 }
 
-select,input {
+div#left-host-form > input,
+select {
     margin: 10px 10px;
     border-radius: 4px;
 }
 
-
-select, input {
+select  {
     width: 300px;
 }
 label {
@@ -216,7 +216,7 @@ form {
 }
 
 select {
-    margin-top: 0;
+    margin-top: 10px;
     margin-bottom: 0;
     height: 30px;
     margin-bottom: 0;
@@ -224,7 +224,21 @@ select {
     width: 60%;
 }
 
-input {
+div#left-host-form > input {
     margin-right: 50px;
     width: 60%;
+}
+
+select,
+.new-input {
+    width: 60%;
+    margin-right: 50px;
+    margin-left: 50px;
+    height: 30px;
+    border-radius: 4px;
+}
+
+.host-labels {
+    display: flex;
+    justify-content: flex-end;
 }

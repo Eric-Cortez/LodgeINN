@@ -12,36 +12,44 @@
   margin: 0;
   display: block;
   text-align: end;
-  padding: 0 30px;
+  /* padding: 0 30px; */
+  padding-right: 60px;
   border-radius: 8px;
+  position: relative;
 } 
 
 .signup-input {
   height:  30px; 
+  width: 400px;
+  /* margin-left: 20px; */
 } 
 
 .sign-up- {
   width: 100%;
   background-color: white;
+    border: red solid 1;
 }
 
 .sign-up {
   width: 100%;
   margin: 0;
   padding: 0;
-  text-align: end;
+  text-align: start;
+
 } 
 
 #wrapper-div {
-  margin-top: 25% !important;
-  margin-left: 20% !important;
-  margin-right: 35% !important;
+  margin-top: 20% !important;
+  margin: 20% 30% ;
   border-radius: 8px;
+  width: 40%;
 }
 
 #sign-up-form {
   border-radius: 15px;
   padding: 20px;
+  margin-left: 20% !important;
+  margin-right: 20% !important;
 }
 
 #confirm {
@@ -60,5 +68,14 @@
   margin-right: 4%;
   border-radius: 4px;
   background-color: lightgray;
+  margin-left: 600px;
 }
 
+.signup-label{ 
+  /* border:  red 1px solid; */
+  width: 85%;
+  display: flex;
+  align-items: center;
+  padding-right: 0 !important;
+  margin-left: 30px;
+}
