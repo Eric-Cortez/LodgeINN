@@ -13,7 +13,7 @@ h2 {
 .spot-image-new {
    width: 100%;
    border-radius: 25px;
-   height: 50%;
+   height: 80%;
    object-fit: cover;
 }
 
@@ -88,3 +88,12 @@ h2 {
     margin-left: 55px;
 }
 
+.amen-icon {
+    /* border: tomato 1px solid; */
+    display: flex;
+    flex-direction: row;
+}
+
+.symb {
+    margin-left: 30px;
+}
