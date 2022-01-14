@@ -69,7 +69,7 @@ input[type=number]#num-input::-webkit-outer-spin-button {
     grid-template-rows: 1fr fr; */
     border: 1px solid lightgray;
     border-radius: 8px;
-    margin: 5% 25%;
+    margin: 6% 25%;
     width: 50%;  
 }
 
@@ -104,7 +104,7 @@ input[type=number]#num-input::-webkit-outer-spin-button {
     /* flex-direction: column; */
     border-radius: 4px;
     position: relative;
-    height: 200px;
+    height: 230px;
     margin-top: 30px;
     /* background-color: transparent; */
 }
@@ -207,6 +207,7 @@ form {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    margin-top: 7%;
 }
 
 .host-input {
