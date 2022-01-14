@@ -36,8 +36,9 @@ const SpotDetail = ({ spotInfo, setSpotInfo}) => {
     
     return (
         <div className='spot-detail'> 
+            <h1 id="title-1">{oneSpot?.title}</h1>
             <img className="spot-image-new" src={oneSpot?.Images[0].url} alt="cabin" /> 
-            <h1 id="title">{oneSpot?.title}</h1>
+            <h1 id="title">Host By: {oneSpot?.User?.username}</h1>
             <p id="one-price">{`$${oneSpot?.price}`} <>/ night</></p>
 
             <div>
@@ -48,10 +49,10 @@ const SpotDetail = ({ spotInfo, setSpotInfo}) => {
             </div>
         
             {sessionUser?.id === oneSpot?.userId &&
-            <>
-                <Link to={`/spots/${spotId}/host`}>Edit Spot</Link>
-                <button onClick={deleteBtn}>Delete</button>
-            </>
+            <div id="button-detail">
+                <Link  className="spot-delete-new" to={`/spots/${spotId}/host`}>Edit Spot</Link>
+                <button className="spot-delete-new"onClick={deleteBtn}>Delete</button>
+            </div>
             }
             <div id="info">
                 <h3 ><i class="fas i-list fa-home"></i>Entire home</h3>
@@ -65,7 +66,7 @@ const SpotDetail = ({ spotInfo, setSpotInfo}) => {
             </div>
             <h3>{oneSpot?.city}, {oneSpot?.state}</h3>
             <p id='p-text'>{oneSpot?.description}
-            <h2 id="one-spot"> Host By: {oneSpot?.User?.username}</h2></p> 
+            <h2 id="one-spot"></h2></p> 
 
             <h3>Amenities</h3>
             <div className="amen-icon">
