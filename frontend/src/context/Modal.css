@@ -90,3 +90,12 @@
     text-align: end;
     background-color: white;
   }
+
+  /* #modal-li1 {
+    padding-right: 112px;
+  } */
+
+  #modal-li {
+    width: 100%;
+    color: white;
+  }
