@@ -5,10 +5,12 @@ import { getOneSpot } from '../../store/spots';
 import "./footer.css"
 
 
-const Footer = () => {
+function Footer() {
     return (
-        <footer>
-           Footer
+        <footer className='footer'>
+            <p id='developed-by'>Developed By: Eric Cortez</p>
+            <a id='git-linkd' href='https://github.com/Eric-Cortez/LodgeINN'><i class="fab foot-icon fa-github"></i></a>
+            <a id='git-linkd' href='https://www.linkedin.com/in/eric-cortez-0101/'><i class="fab foot-icon fa-linkedin"></i></a>
         </footer>
     )
 }

@@ -1,5 +1,32 @@
 
-footer {
+.footer {
+    border-top: 1px solid rgba(10,10,10,0.3);
+    position:fixed;
     width: 100%;
-    border: blue 2px solid;
+    bottom: 0;
+    left:0;
+    z-index: 10000;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    padding-top:0.2%;
+    border-top: gray 2px solid;
+    background-color: rgb(216, 212, 212);
+}
+
+#git-linkd {
+    padding-top:0.30%;
+    padding-left: 30px;
+    font-size: 25px;
+    background-color: transparent;
+}
+
+#developed-by {
+    font-weight: 500;
+    font-size: 13px;
+    background-color: transparent;
+}
+
+.foot-icon {
+    background-color: transparent;
 }
