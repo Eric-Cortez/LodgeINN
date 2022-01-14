@@ -18,28 +18,22 @@ LodgeINN is an application where users can post spots to host or book spots.
 
 
 ### LodgeINN Login page
-![login](https://user-images.githubusercontent.com/80999718/149379610-05f80153-21d8-4c0a-aab6-70036eb28a18.png)
-
+![login](https://user-images.githubusercontent.com/80999718/149466559-c17dd619-3488-493f-a6a9-49f4f596c23a.png)
 
 ### LodgeINN Sign up page
 ![signup](https://user-images.githubusercontent.com/80999718/149380404-17edea81-37c0-4ff7-b432-8ba723dfda8e.png)
 
-
 ### LodgeINN Home page
-![home](https://user-images.githubusercontent.com/80999718/149380341-a1773700-4a94-4610-a030-c416350e4525.png)
-
-
+![home](https://user-images.githubusercontent.com/80999718/149466432-b487d479-4772-4e7c-99ff-a1aa481b7f7f.png)
 
 ### Spots 
-![spots](https://user-images.githubusercontent.com/80999718/149380460-557b3a64-b0e1-47e6-ab52-736f9970d2d8.png)
-
-
+![spots](https://user-images.githubusercontent.com/80999718/149466089-a9f87c2f-7c34-4843-9b3c-59855ad48f27.png)
 
 ### Spots Detail 
 ![Spot](https://user-images.githubusercontent.com/80999718/149380252-6c67be40-8ffc-4a5c-a806-d6116ccac953.png)
 
 ### Host Form
-![signup](https://user-images.githubusercontent.com/80999718/149381035-0965fcad-ba4e-4eb0-9085-a86347676480.png)
+![signup](https://user-images.githubusercontent.com/80999718/149466515-ba590e28-8b37-4916-b163-febfe177e117.png)
 
 
 
