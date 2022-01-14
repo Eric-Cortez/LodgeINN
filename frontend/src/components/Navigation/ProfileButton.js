@@ -41,10 +41,10 @@ function ProfileButton({ user }) {
                     <li>{user.username}</li>
                     <li>{user.email}</li>
                     <li>
-                        <Link to="/spots/host">Host</Link>
+                        {/* <Link to="/spots/host">Host</Link> */}
                     </li>
                     <li>
-                        <button onClick={logout}>Log Out</button>
+                        <button id="logOut" onClick={logout}>Log Out</button>
                     </li>
                 </ul>
             )}

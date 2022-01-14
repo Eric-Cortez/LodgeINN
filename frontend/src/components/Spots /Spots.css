@@ -4,6 +4,7 @@
 }
 html {
     margin: 0;
+    padding: 0;
 }
 
 .main-container {
@@ -11,8 +12,11 @@ html {
     grid-template-columns: 4fr 3fr;
     margin-top: 7%;
     grid-gap: 40px;
+    margin-left: 0;
 }
-
+body {
+    margin-left: 0;
+}
 .map{
     width: 40%;
     margin-right: 10%;
@@ -59,8 +63,8 @@ html {
    height: 100%;
    border-radius: 15px;
    grid-column-start: 1 / span 1;
-    width:  500px;
-    height: 350px;
+    width:  450px;
+    height: 300px;
     object-fit: cover;
     margin-left: 2%;
 }
@@ -80,8 +84,8 @@ li {
     overflow: hidden
 }
 .fill img {
-    flex-shrink: 0;
-    min-width: 100%;
+    flex-shrink: 0; 
+    min-width: 100%; 
     min-height: 100%
 }
 /* 

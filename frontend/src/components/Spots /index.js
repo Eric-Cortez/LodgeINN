@@ -53,7 +53,7 @@ function Spots() {
                 ))}
             </div>
             <div className="right-container fill">
-                <img id='map-image' src='https://images.unsplash.com/photo-1614021026464-5ebe74fd55ce?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=776&q=80' />
+                <img id='map-image' src='https://slack-imgs.com/?c=1&o1=ro&url=https%3A%2F%2Fr1.ilikewallpaper.net%2Fiphone-13-pro-max-wallpapers%2Fdownload-110065%2Fmountains-5k-4k-8k-lake-forest-Nature.jpg' />
             </div>
         </div>
     )
