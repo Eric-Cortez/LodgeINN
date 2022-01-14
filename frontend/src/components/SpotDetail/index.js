@@ -72,7 +72,7 @@ const SpotDetail = ({ spotInfo, setSpotInfo}) => {
             <div className="amen-icon">
                     <div className="left-amenities">
                     
-                        <p>{(oneSpot?.Amenities[0]?.firePlace) ? <p><i className="fas symb fa-fire"></i> Fireplace</p>: ''}</p>
+                    <p>{(oneSpot?.Amenities[0]?.firePlace) ? <p><i className="fas symb fa-fire"></i> Fireplace</p>: ''}</p>
                     <p>{(oneSpot?.Amenities[0]?.hotTub) ? <p><i class="fas symb fa-hot-tub"></i> Hot Tub</p> : ''}</p>
                     <p>{(oneSpot?.Amenities[0]?.kitchen) ? <p>< i className="fas symb fa-blender"></i> Kitchen</p> : ''}</p>
                     <p>{(oneSpot?.Amenities[0]?.parking) ? <p>< i className="fas symb fa-parking"></i> Parking </p> : ''}</p>
