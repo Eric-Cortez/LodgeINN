@@ -10,9 +10,10 @@ html {
 .main-container {
     display: grid;
     grid-template-columns: 4fr 3fr;
-    margin-top: 7%;
+    margin-top: 5%;
     grid-gap: 40px;
     margin-left: 0;
+    margin-bottom: 3%;
 }
 body {
     margin-left: 0;
