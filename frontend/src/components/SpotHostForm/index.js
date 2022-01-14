@@ -108,16 +108,16 @@ function SpotHostForm() {
             <form onSubmit={handleSubmit}>
                 <div id="form-container">
                         <div id="top-host-form">
-                            <h1>Host Form</h1>
+                        <h1 className="Upper-title">Host Form</h1>
                             <ul className="errors-center">
                                 {validationErrors.map(error => (
-                                    <li key={error}>{error}</li>
+                                        <li class="list-of-err" key={error}> •  {error}</li>
                                 ))}
                             </ul>
                         </div>
 
                         <div id="left-host-form">
-                            <h3 className="title-center">Spot Details</h3>
+                            <h3 className="title-center"></h3>
                             <label
                             className="host-labels"
                             > Title
@@ -263,8 +263,21 @@ function SpotHostForm() {
                                 />
                             </label>
                         </div>
-
-
+                        <label
+                            id="host-labels-box"
+                            className="host-labels"
+                        > Description
+                            <br></br>
+                            <textarea
+                                id="text-id"
+                                className="new-input"
+                                required
+                                type='text'
+                                placeholder="Spot Description"
+                                value={description}
+                                onChange={e => setDescription(e.target.value)}
+                            />
+                        </label>
                         <div id="right-host-form">
                             <h3 className="title-center">Amenities</h3>
                             <div id="amenities">
@@ -339,19 +352,6 @@ function SpotHostForm() {
                                     />
                                 </label>
                             </div>
-                          
-                            <label
-                            className="host-labels-box"
-                            > Description
-                                <br></br>
-                                <textarea
-                                    required
-                                    type='text'
-                                    placeholder="Spot Description"
-                                    value={description}
-                                    onChange={e => setDescription(e.target.value)}
-                                />
-                            </label>
                             <button
                                 id="host-btn"
                                 className="host-form"
