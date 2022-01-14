@@ -8,7 +8,7 @@ import "./Spots.css"
 function Spots() {
     const dispatch = useDispatch()
     const allSpots = useSelector(state => state.spots.list)
-    // console.log(allSpots[1])
+
 
 
     useEffect(() => {

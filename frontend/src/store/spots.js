@@ -45,13 +45,11 @@ export const getOneSpot = (id) => async dispatch => {
 
     if(response.ok) {
         const spot = await response.json()
-        // console.log("THUNK",spot)
         dispatch(loadOne(spot))
     }
 }
 
 export const addSpot = ( spot ) => async dispatch => {
-        //   console.log(" THUNK ",spot)
          const res = await csrfFetch(`/api/spots/host`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' }, 
@@ -63,14 +61,12 @@ export const addSpot = ( spot ) => async dispatch => {
         }
 
         const payload = await res.json();
-        console.log("addSpot THUNK",payload)
         await dispatch(addOneSpot(payload)); 
         
         return payload;
 }
 
 export const editSpot = (spot, id) => async dispatch => {
-    // console.log(spot, "SPOT")
     const res = await csrfFetch(`/api/spots/${id}/host`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
@@ -81,7 +77,6 @@ export const editSpot = (spot, id) => async dispatch => {
         return error;
     }
     const payload = await res.json();
-    console.log("EDIT THUNK",payload)
     await dispatch(addOneSpot(payload));
 
     return payload;
@@ -108,7 +103,6 @@ const initialState = {
  };
 
 const spotsReducer = (state = initialState, action) => {
-    // console.log(action)
     switch (action.type) {
         case LOAD_ALL: {
             const allSpots = {}

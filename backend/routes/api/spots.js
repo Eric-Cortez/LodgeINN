@@ -61,7 +61,6 @@ router.get("/", asyncHandler(async (req, res) => {
         include: [Image, Amenity],
         // limit: 15
     })
-    // console.log(spots[0].Images[0].url)
     res.json(spots);
 }))
 
@@ -79,7 +78,6 @@ router.post('/host',
  requireAuth, 
  spotHostForm,
  asyncHandler(async (req, res) => {
-     console.log("ROUTE", req.body)
 
      const { image, spots, amenities } = req.body
     const id = await Spot.create(spots)
@@ -114,7 +112,7 @@ router.put('/:id/host',
     requireAuth,
     spotHostForm,
     asyncHandler(async (req, res) => {
-        console.log("here")
+    
         const spotId = parseInt(req.params.id, 10);
         const currSpot = await Spot.findByPk(spotId);
        
@@ -145,7 +143,6 @@ router.put('/:id/host',
             hotTub: amenities.hotTub,
             pets: amenities.pets,
         }
-            console.log("--->TEST", newAmenityList)
         const currAmenity = await Amenity.findByPk(amenities.id)
         await currAmenity.update(newAmenityList);
         

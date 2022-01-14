@@ -3,7 +3,7 @@ const { validationResult } = require('express-validator');
 //MIDDLEWARE - FORMATS ERRORS FOR EXPRESS-VALIDATOR 
 
 const handleValidationErrors = (req, _res, next) => {
-    // console.log(req)
+
     const validationErrors = validationResult(req);
 
     if (!validationErrors.isEmpty()) {

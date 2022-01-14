@@ -7,7 +7,6 @@ import "./EditSpotForm.css"
 import { getOneSpot } from "../../store/spots"
 
 function EditSpotForm() {
-    // console.log(spotInfo)
 
     const history = useHistory()
     const dispatch = useDispatch()
