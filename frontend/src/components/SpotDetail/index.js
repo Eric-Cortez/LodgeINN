@@ -4,6 +4,7 @@ import { useSelector, useDispatch,  } from 'react-redux';
 import { getOneSpot } from '../../store/spots';
 import "./spotDetail.css"
 import { deleteSpot } from "../../store/spots"
+import BookingCalendar from '../BookingCalendar';
 
 const SpotDetail = ({ spotInfo, setSpotInfo}) => {
     const dispatch = useDispatch()
@@ -39,6 +40,8 @@ const SpotDetail = ({ spotInfo, setSpotInfo}) => {
             <img className="spot-image-new" src={oneSpot?.Images[0].url} alt="cabin" /> 
             <h1 id="title">Host By: {oneSpot?.User?.username}</h1>
             <p id="one-price">{`$${oneSpot?.price}`} <>/ night</></p>
+            
+            <BookingCalendar />
 
             <div>
                 <p id="detail-p">
@@ -47,12 +50,16 @@ const SpotDetail = ({ spotInfo, setSpotInfo}) => {
                 </p>
             </div>
         
+
             {sessionUser?.id === oneSpot?.userId &&
             <div id="button-detail">
                 <Link  className="spot-delete-new" to={`/spots/${spotId}/host`}>Edit Spot</Link>
                 <button className="spot-delete-new"onClick={deleteBtn}>Delete</button>
             </div>
             }
+
+
+
             <div id="info">
                 <h3 ><i className="fas i-list fa-home"></i>Entire home</h3>
                 <p className="list-details">You’ll have the guesthouse to yourself.</p>
