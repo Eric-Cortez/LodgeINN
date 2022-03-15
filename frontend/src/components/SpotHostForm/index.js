@@ -111,7 +111,7 @@ function SpotHostForm() {
                         <h1 className="Upper-title">Host Form</h1>
                             <ul className="errors-center">
                                 {validationErrors.map(error => (
-                                        <li class="list-of-err" key={error}> •  {error}</li>
+                                        <li className="list-of-err" key={error}> •  {error}</li>
                                 ))}
                             </ul>
                         </div>

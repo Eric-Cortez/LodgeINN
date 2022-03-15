@@ -54,14 +54,14 @@ const SpotDetail = ({ spotInfo, setSpotInfo}) => {
             </div>
             }
             <div id="info">
-                <h3 ><i class="fas i-list fa-home"></i>Entire home</h3>
-                <p class="list-details">You’ll have the guesthouse to yourself.</p>
-                <h3><i class="fas i-list fa-hand-sparkles"></i>Enhanced Clean</h3>
-                <p class="list-details">This Host committed to Airbnb's 5-step enhanced cleaning process.</p>
-                <h3><i class="fas i-list fa-map-marker-alt"></i>Great location</h3>
-                <p class="list-details">100% of recent guests gave the location a 5-star rating.</p>
-                <h3><i class="fas i-list fa-map-marker-alt"></i>Great check-in experience</h3>
-                <p class="list-details">95% of recent guests gave the check-in process a 5-star rating.</p>
+                <h3 ><i className="fas i-list fa-home"></i>Entire home</h3>
+                <p className="list-details">You’ll have the guesthouse to yourself.</p>
+                <h3><i className="fas i-list fa-hand-sparkles"></i>Enhanced Clean</h3>
+                <p className="list-details">This Host committed to Airbnb's 5-step enhanced cleaning process.</p>
+                <h3><i className="fas i-list fa-map-marker-alt"></i>Great location</h3>
+                <p className="list-details">100% of recent guests gave the location a 5-star rating.</p>
+                <h3><i className="fas i-list fa-map-marker-alt"></i>Great check-in experience</h3>
+                <p className="list-details">95% of recent guests gave the check-in process a 5-star rating.</p>
             </div>
             <h3>{oneSpot?.city}, {oneSpot?.state}</h3>
             <p id='p-text'>{oneSpot?.description}
@@ -72,7 +72,7 @@ const SpotDetail = ({ spotInfo, setSpotInfo}) => {
                     <div className="left-amenities">
                     
                     <p>{(oneSpot?.Amenities[0]?.firePlace) ? <p><i className="fas symb fa-fire"></i> Fireplace</p>: ''}</p>
-                    <p>{(oneSpot?.Amenities[0]?.hotTub) ? <p><i class="fas symb fa-hot-tub"></i> Hot Tub</p> : ''}</p>
+                    <p>{(oneSpot?.Amenities[0]?.hotTub) ? <p><i className="fas symb fa-hot-tub"></i> Hot Tub</p> : ''}</p>
                     <p>{(oneSpot?.Amenities[0]?.kitchen) ? <p>< i className="fas symb fa-blender"></i> Kitchen</p> : ''}</p>
                     <p>{(oneSpot?.Amenities[0]?.parking) ? <p>< i className="fas symb fa-parking"></i> Parking </p> : ''}</p>
                     </div>
