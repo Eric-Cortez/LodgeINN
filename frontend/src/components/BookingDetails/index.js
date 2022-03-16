@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import DatePicker from "react-datepicker"
 import moment from 'moment';
-import { addBooking, getAllBookings } from '../../store/booking';
+import bookingReducer, { addBooking, getAllBookings } from '../../store/booking';
 import { useDispatch, useSelector, } from 'react-redux';
 import { addDays } from 'date-fns';
 import { useHistory } from 'react-router-dom';
@@ -34,10 +34,9 @@ const BookingDetails = ({ spotId, spot, user }) => {
     const [guestCount, setGuestCount] = useState(guestLimit[0])
     const spotBookings = allBookings.filter(booking => booking.spotId === +spotId)
 
-
     useEffect(() => {
         dispatch(getAllBookings())
-    }, [guestCount]);
+    }, [guestCount, startDate, endDate, dispatch]);
 
     const dateFormat = (currDate) => {
         let dd = String(currDate.getDate()).padStart(2, '0');
@@ -53,7 +52,7 @@ const BookingDetails = ({ spotId, spot, user }) => {
         for (let i = 0; i < current.length; i++) {
             const startBookingDate = new Date(current[i].startDate)
             const endBookingDate = new Date(current[i].endDate)
-            const convertStart = dateFormat(startBookingDate)
+            // const convertStart = dateFormat(startBookingDate)
             convertEnd = dateFormat(endBookingDate)
 
             const dayInMilliseconds = 86400000
@@ -76,14 +75,15 @@ const BookingDetails = ({ spotId, spot, user }) => {
 
     }
 
-    // const dayCount = (currStartDate, currEndBookingDate) => {
-    //     console.log(currEndBookingDate,currStartDate)
-    //     const startBookingDate = new Date(currStartDate.startDate)
-    //     const endBookingDate = new Date(currEndBookingDate.endDate)
-    //     const difference = endBookingDate.getTime() - startBookingDate.getTime()
-    //     const days = Math.ceil(difference / (1000 * 3600 * 24));
-    //     return days
-    // }
+    const dayCount = (currStartDate, currEndBookingDate) => {
+
+        const startBookingDate = new Date(currStartDate)
+        const endBookingDate = new Date(currEndBookingDate)
+        
+        const difference = endBookingDate.getTime() - startBookingDate.getTime()
+        const days = Math.ceil(difference / (1000 * 3600 * 24));
+        return days
+    }
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -95,7 +95,6 @@ const BookingDetails = ({ spotId, spot, user }) => {
             guestCount: +guestCount
         }
         const res = await dispatch(addBooking(payload))
-        console.log(res)
         history.push(`/`)
     }
 
@@ -119,6 +118,12 @@ const BookingDetails = ({ spotId, spot, user }) => {
                    if(arrayOfDisabledDates.find(date => dateFormat(date) ===dateFormat(eachDate))) {
                     setStartDate(endDate)
                     setEndDate("")
+                    const body = document.body
+                    const div = document.getElementById("booked-msg")
+                    div.style.color = "rgb(234, 91, 98)"
+                    div.style.fontSize ="12px"
+                    div.innerText = "*Dates are unavailable please select another start date."
+                    setTimeout(() => {  div.remove()}, 2000);
                     break
                    }
 
@@ -133,6 +138,9 @@ const BookingDetails = ({ spotId, spot, user }) => {
             <p id="one-price">{`$${spot?.price}`} <>/ night</></p>
             <p>[star rating] . [count] reviews</p>
             <form className='booking-form' onSubmit={handleSubmit}>
+                <div id="booked-msg">
+
+                </div>
                 <DatePicker
                     selected={startDate}
                     onChange={(date) => setStartDate(date)}
@@ -144,8 +152,9 @@ const BookingDetails = ({ spotId, spot, user }) => {
                     />
                 <DatePicker
                     selected={endDate}
-                    onChange={(date) => setEndDate(date)}
-                    // onChange={handleDisabledDatesInRange}
+                    onChange={(date) => {
+                        setEndDate(date)
+                    }}
                     selectsEnd
                     placeholderText='Add date'
                     startDate={startDate}
@@ -163,8 +172,10 @@ const BookingDetails = ({ spotId, spot, user }) => {
 
                 </select>
                 <button>Reserve</button>
+                {endDate ? <div>
                 <h6>You won't be charged yet</h6>
-                {/* <p>{`$${spot?.price}`} x {dayCount(startDate, endDate)}</p> */}
+                <p>{`$${spot?.price}`} x {dayCount(startDate, endDate)}   total: {spot?.price * dayCount(startDate, endDate)}</p>
+                </div>: ""}
             </form>
         </div>
     )
