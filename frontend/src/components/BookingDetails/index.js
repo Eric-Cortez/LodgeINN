@@ -97,8 +97,7 @@ const BookingDetails = ({ spotId, spot, user }) => {
         }
         const res = await dispatch(addBooking(payload))
         console.log(res)
-        
-        history.push("/")
+        history.push(`/`)
     }
 
     return (
