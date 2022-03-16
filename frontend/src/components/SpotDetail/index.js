@@ -39,7 +39,7 @@ const SpotDetail = ({ spotInfo, setSpotInfo}) => {
             <h1 id="title-1">{oneSpot?.title}</h1>
             <img className="spot-image-new" src={oneSpot?.Images[0].url} alt="cabin" /> 
             <h1 id="title">Host By: {oneSpot?.User?.username}</h1>
-            <p id="one-price">{`$${oneSpot?.price}`} <>/ night</></p>
+          
             <BookingDetails spotId={spotId} spot={oneSpot} user={sessionUser}/>
 
             <div>
@@ -71,21 +71,21 @@ const SpotDetail = ({ spotInfo, setSpotInfo}) => {
             </div>
             <h3>{oneSpot?.city}, {oneSpot?.state}</h3>
             <p id='p-text'>{oneSpot?.description}
-            <h2 id="one-spot"></h2></p> 
+           </p> 
 
             <h3>Amenities</h3>
             <div className="amen-icon">
                     <div className="left-amenities">
                     
-                    <p>{(oneSpot?.Amenities[0]?.firePlace) ? <p><i className="fas symb fa-fire"></i> Fireplace</p>: ''}</p>
-                    <p>{(oneSpot?.Amenities[0]?.hotTub) ? <p><i className="fas symb fa-hot-tub"></i> Hot Tub</p> : ''}</p>
-                    <p>{(oneSpot?.Amenities[0]?.kitchen) ? <p>< i className="fas symb fa-blender"></i> Kitchen</p> : ''}</p>
-                    <p>{(oneSpot?.Amenities[0]?.parking) ? <p>< i className="fas symb fa-parking"></i> Parking </p> : ''}</p>
+                    <h4>{(oneSpot?.Amenities[0]?.firePlace) ? <p><i className="fas symb fa-fire"></i> Fireplace</p>: ''}</h4>
+                    <h4>{(oneSpot?.Amenities[0]?.hotTub) ? <p><i className="fas symb fa-hot-tub"></i> Hot Tub</p> : ''}</h4>
+                    <h4>{(oneSpot?.Amenities[0]?.kitchen) ? <p>< i className="fas symb fa-blender"></i> Kitchen</p> : ''}</h4>
+                    <h4>{(oneSpot?.Amenities[0]?.parking) ? <p>< i className="fas symb fa-parking"></i> Parking </p> : ''}</h4>
                     </div>
                     <div className="right-amenities">
-                    <p>{(oneSpot?.Amenities[0]?.pets) ? <p><i className="fas symb fa-cat"></i> Pets </p> : ''}</p>
-                    <p>{(oneSpot?.Amenities[0]?.pool) ? <p><i className="fas symb fa-swimmer"></i> Pool </p> : ''}</p>
-                    <p>{(oneSpot?.Amenities[0]?.privateBeachAccess) ? <p><i class="fas symb fa-umbrella-beach"></i> Private Beach Access </p> : ''}</p>
+                    <h4>{(oneSpot?.Amenities[0]?.pets) ? <p><i className="fas symb fa-cat"></i> Pets </p> : ''}</h4>
+                    <h4>{(oneSpot?.Amenities[0]?.pool) ? <p><i className="fas symb fa-swimmer"></i> Pool </p> : ''}</h4>
+                    <h4>{(oneSpot?.Amenities[0]?.privateBeachAccess) ? <p><i className="fas symb fa-umbrella-beach"></i> Private Beach Access </p> : ''}</h4>
                     </div>
             </div>
         </div>

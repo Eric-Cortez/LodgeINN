@@ -5,7 +5,7 @@ import { addBooking, getAllBookings } from '../../store/booking';
 import { useDispatch, useSelector, } from 'react-redux';
 import { addDays } from 'date-fns';
 import { useHistory } from 'react-router-dom';
-
+import "./BookingDetails.css"
 
 
 
@@ -40,9 +40,8 @@ const BookingDetails = ({ spotId, spot, user }) => {
     }, [guestCount]);
 
     const dateFormat = (currDate) => {
-        // let currDate = new Date(curr.startDate)
         let dd = String(currDate.getDate()).padStart(2, '0');
-        let mm = String(currDate.getMonth() + 1).padStart(2, '0'); 
+        let mm = String(currDate.getMonth() + 1).padStart(2, '0');
         let yyyy = currDate.getFullYear();
         currDate = yyyy + '-' + mm + '-' + dd;
         return currDate;
@@ -57,34 +56,34 @@ const BookingDetails = ({ spotId, spot, user }) => {
             const convertStart = dateFormat(startBookingDate)
             convertEnd = dateFormat(endBookingDate)
 
-            const dayInMilliseconds = 86400000 
-            let j = startBookingDate.getTime() 
+            const dayInMilliseconds = 86400000
+            let j = startBookingDate.getTime()
             while (j < endBookingDate.getTime()) {
                 const currNewDate = new Date(j)
                 const convert = dateFormat(currNewDate)
 
                 disableDateArr.push(addDays(new Date(convert), 1))
-                j += dayInMilliseconds; 
+                j += dayInMilliseconds;
             }
 
 
-
-            // const difference = endBookingDate.getTime() - startBookingDate.getTime() 
-            // const days = Math.ceil(difference / (1000 * 3600 * 24));
-            // if(days === 2) {
-            //     disableDateArr.push(addDays(new Date(convertStart), 1))
-            //     disableDateArr.push(addDays(new Date(convertEnd), 1))
-            // }
-
-            
         }
-        if (!disableDateArr.includes(addDays(new Date(convertEnd), 1))){
+        if (!disableDateArr.includes(addDays(new Date(convertEnd), 1))) {
             disableDateArr.push(addDays(new Date(convertEnd), 1))
         }
         return disableDateArr
         // return !customDates.includes(current.format('YYYY-MM-DD'));
 
     }
+
+    // const dayCount = (currStartDate, currEndBookingDate) => {
+    //     console.log(currEndBookingDate,currStartDate)
+    //     const startBookingDate = new Date(currStartDate.startDate)
+    //     const endBookingDate = new Date(currEndBookingDate.endDate)
+    //     const difference = endBookingDate.getTime() - startBookingDate.getTime()
+    //     const days = Math.ceil(difference / (1000 * 3600 * 24));
+    //     return days
+    // }
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -100,9 +99,40 @@ const BookingDetails = ({ spotId, spot, user }) => {
         history.push(`/`)
     }
 
+    const handleDisabledDatesInRange = async (startDate, endDate) => {
+        const arrayOfDisabledDates = disableCustomDt(spotBookings)
+   
+        let dateArray = []
+
+        const dayInMilliseconds = 86400000
+        let j = new Date(startDate).getTime()
+        while (j < new Date(endDate).getTime()) {
+            const currNewDate = new Date(j)
+            const convert = dateFormat(currNewDate)
+
+            dateArray.push(addDays(new Date(convert), 1))
+            j += dayInMilliseconds;
+        }
+
+        for (let i = 1; i < dateArray.length; i++){
+                    const eachDate = dateArray[i]
+                   if(arrayOfDisabledDates.find(date => dateFormat(date) ===dateFormat(eachDate))) {
+                    setStartDate(endDate)
+                    setEndDate("")
+                    break
+                   }
+
+        }
+    }
+
+   handleDisabledDatesInRange(startDate,endDate)
+
+
     return (
-        <>
-            <form onSubmit={handleSubmit}>
+        <div className='booking-div'>
+            <p id="one-price">{`$${spot?.price}`} <>/ night</></p>
+            <p>[star rating] . [count] reviews</p>
+            <form className='booking-form' onSubmit={handleSubmit}>
                 <DatePicker
                     selected={startDate}
                     onChange={(date) => setStartDate(date)}
@@ -111,32 +141,32 @@ const BookingDetails = ({ spotId, spot, user }) => {
                     endDate={endDate}
                     minDate={startDate}
                     excludeDates={disableCustomDt(spotBookings)}
-                    // excludeDates={[addDays(new Date("2022-03-30"), 1)]}
-                // dateFormat="MM/dd/yyyy"
-                // excludeDates={customDates}
-                />
+                    />
                 <DatePicker
                     selected={endDate}
                     onChange={(date) => setEndDate(date)}
+                    // onChange={handleDisabledDatesInRange}
                     selectsEnd
                     placeholderText='Add date'
                     startDate={startDate}
                     endDate={endDate}
-                    // dateFormat="MM/dd/yyyy"
                     excludeDates={disableCustomDt(spotBookings)}
                     minDate={startDate}
-                />
+                    />
                 <select
                     onChange={e => setGuestCount(e.target.value)}
-                >
+                    className="guest-count-select"
+                    >
                     {guestLimit.map(num => (
-                        <option value={num}>{num}</option>
-                    ))}
+                        <option key={num} value={num}>{num}</option>
+                        ))}
 
                 </select>
-                <button>Submit</button>
+                <button>Reserve</button>
+                <h6>You won't be charged yet</h6>
+                {/* <p>{`$${spot?.price}`} x {dayCount(startDate, endDate)}</p> */}
             </form>
-        </>
+        </div>
     )
 }
 
