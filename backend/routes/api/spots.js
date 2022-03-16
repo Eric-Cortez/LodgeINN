@@ -74,37 +74,37 @@ router.get("/:id", asyncHandler(async (req, res) => {
 }))
 
 
-router.post('/host', 
- requireAuth, 
- spotHostForm,
- asyncHandler(async (req, res) => {
+router.post('/host',
+    requireAuth,
+    spotHostForm,
+    asyncHandler(async (req, res) => {
 
-     const { image, spots, amenities } = req.body
-    const id = await Spot.create(spots)
-    
-    const newImageUrl = {
-        spotId: id.id,
-        url: image.url
-    }
-    await Image.create(newImageUrl)
-    const newAmenityList = {
-        spotId: id.id,
-        kitchen: amenities.kitchen,
-        privateBeachAccess: amenities.privateBeachAccess,
-        firePlace: amenities.firePlace,
-        parking: amenities.parking,
-        pool: amenities.pool,
-        hotTub: amenities.hotTub,
-        pets: amenities.pets,
-    }
-    
-    await Amenity.create(newAmenityList)
+        const { image, spots, amenities } = req.body
+        const id = await Spot.create(spots)
 
-    // await setTokenCookie(res, id);
-    return res.json({
-        id
-    })
-}))
+        const newImageUrl = {
+            spotId: id.id,
+            url: image.url
+        }
+        await Image.create(newImageUrl)
+        const newAmenityList = {
+            spotId: id.id,
+            kitchen: amenities.kitchen,
+            privateBeachAccess: amenities.privateBeachAccess,
+            firePlace: amenities.firePlace,
+            parking: amenities.parking,
+            pool: amenities.pool,
+            hotTub: amenities.hotTub,
+            pets: amenities.pets,
+        }
+
+        await Amenity.create(newAmenityList)
+
+        // await setTokenCookie(res, id);
+        return res.json({
+            id
+        })
+    }))
 
 
 
@@ -112,25 +112,25 @@ router.put('/:id/host',
     requireAuth,
     spotHostForm,
     asyncHandler(async (req, res) => {
-    
+
         const spotId = parseInt(req.params.id, 10);
         const currSpot = await Spot.findByPk(spotId);
-       
+
         const { image, spots, amenities } = req.body
-         // update spot
+        // update spot
         const id = await currSpot.update(spots)
-        
-         //  update image
-                const newImageUrl = {
-                    id: image.id,
-                    spotId: id.id,
-                    url: image.url
-                }
-        
+
+        //  update image
+        const newImageUrl = {
+            id: image.id,
+            spotId: id.id,
+            url: image.url
+        }
+
         const currImage = await Image.findByPk(image.id);
-     
+
         await currImage.update(newImageUrl)
-         
+
         // update amenity
         const newAmenityList = {
             id: amenities.id,
@@ -145,7 +145,7 @@ router.put('/:id/host',
         }
         const currAmenity = await Amenity.findByPk(amenities.id)
         await currAmenity.update(newAmenityList);
-        
+
         return res.json({
             id
         })
@@ -164,7 +164,7 @@ router.delete('/:id', asyncHandler(async (req, res) => {
 
     if (currSpot && currImage && currAmenity) {
         await currAmenity.destroy();
-        await currImage.destroy(); 
+        await currImage.destroy();
         await currSpot.destroy();
 
         res.json({ message: "Delete Successful" });
