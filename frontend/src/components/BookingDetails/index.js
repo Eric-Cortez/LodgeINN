@@ -52,7 +52,6 @@ const BookingDetails = ({ spotId, spot, user }) => {
         for (let i = 0; i < current.length; i++) {
             const startBookingDate = new Date(current[i].startDate)
             const endBookingDate = new Date(current[i].endDate)
-            // const convertStart = dateFormat(startBookingDate)
             convertEnd = dateFormat(endBookingDate)
 
             const dayInMilliseconds = 86400000
@@ -70,9 +69,7 @@ const BookingDetails = ({ spotId, spot, user }) => {
         if (!disableDateArr.includes(addDays(new Date(convertEnd), 1))) {
             disableDateArr.push(addDays(new Date(convertEnd), 1))
         }
-        return disableDateArr
-        // return !customDates.includes(current.format('YYYY-MM-DD'));
-
+        return disableDateArr;
     }
 
     const dayCount = (currStartDate, currEndBookingDate) => {
@@ -120,9 +117,9 @@ const BookingDetails = ({ spotId, spot, user }) => {
                     setEndDate("")
                     const body = document.body
                     const div = document.getElementById("booked-msg")
-                    div.style.color = "rgb(234, 91, 98)"
-                    div.style.fontSize ="12px"
                     div.innerText = "*Dates are unavailable please select another start date."
+                    div.style.fontSize ="12px"
+                    div.style.color = "rgb(234, 91, 98)"
                     setTimeout(() => {  div.remove()}, 2000);
                     break
                    }
@@ -174,7 +171,8 @@ const BookingDetails = ({ spotId, spot, user }) => {
                 <button>Reserve</button>
                 {endDate ? <div>
                 <h6>You won't be charged yet</h6>
-                <p>{`$${spot?.price}`} x {dayCount(startDate, endDate)}   total: {spot?.price * dayCount(startDate, endDate)}</p>
+                <p>{`$${spot?.price}`} x {dayCount(startDate, endDate)}   </p>
+                <p>Total before taxes: {`$${spot?.price * dayCount(startDate, endDate)}`}</p>
                 </div>: ""}
             </form>
         </div>
