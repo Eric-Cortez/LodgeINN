@@ -1,0 +1,12 @@
+.google-map {
+    border-radius: 5px;
+}
+
+.embed-map {
+    width: 100%;
+    border: 1px solid rgba(0,0,0,.1);
+    height: 300px;
+    border-radius: 5px;
+    margin-bottom: 5%;
+    margin-top: 1%;
+}

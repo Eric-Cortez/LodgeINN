@@ -91,6 +91,10 @@ const SpotDetail = ({ spotInfo, setSpotInfo}) => {
                     <h4>{(oneSpot?.Amenities[0]?.privateBeachAccess) ? <p><i className="fas symb fa-umbrella-beach"></i> Private Beach Access </p> : ''}</h4>
                     </div>
             </div>
+            <div className='review-div'>
+                <p>Reviews/Stars</p>
+                <p>goo</p>
+            </div>
             <div>
                 <SpotMap oneSpot={oneSpot}/>
                     {/* <DatePicker
@@ -101,10 +105,6 @@ const SpotDetail = ({ spotInfo, setSpotInfo}) => {
                         selectsRange
                         inline
                     /> */}
-            </div>
-            <div className='review-div'>
-                <p>Reviews/Stars</p>
-                <p>goo</p>
             </div>
             </div>
             
