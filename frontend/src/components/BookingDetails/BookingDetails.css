@@ -3,10 +3,111 @@
 }
 
 .booking-div {
-    border: 2px solid blue;
-    height: auto; 
+    height: fit-content; 
+    width: 30%;
+    border: 1px solid rgb(221, 221, 221);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
+    position: sticky;
+    top: 100px; 
+    left: 70%;
 }
 
 .booking-form {
     height: auto;
+}
+
+.fa-star {
+    font-size: 12px;
+    color: rgb(255,56,92);
+
+}
+
+.booking-reviews-count {
+   margin: 0;
+   align-self: center;
+   font-size: 12px;
+}
+
+.upper-booking-detail-div {
+    display: flex;
+    flex-direction: column;
+}
+
+#one-price {
+   display: flex;
+   flex-direction: row;
+   align-self: center;
+   justify-content: flex-end;
+   margin-bottom: 10px;
+}
+
+.price-per-n {
+   color: rgb(34, 34, 34);
+   font-weight: 600;
+   font-size: 20px;
+   padding-right: 5px;  
+   text-align: center;
+   margin: 0;
+}
+.per-night-label {
+   color: rgb(34, 34, 34);
+   font-weight: 200;
+   font-size: 19px;
+   margin: 0;
+}  
+
+#date-start-input {
+    width: 90px;
+    height: 50px;
+    border-top-left-radius: 10px;
+    border: 1px solid rgb(176,176,176);
+    text-align: center;
+    border-right: none;
+    
+}
+#date-end-input {
+    width: 90px;
+    height: 50px;
+    border-top-right-radius: 10px;
+    border: 1px solid rgb(176,176,176);
+    text-align: center;
+}
+
+.date-picker-div {
+    display: flex;
+    justify-content: center;
+}
+
+.guest-count-select {
+    margin: 0;
+    width: 180px;
+    border: 1px solid rgb(176,176,176);
+    align-self: center;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    text-align: start;
+    padding-left: 15px;
+    height: 50px;
+    border-top: none;
+}
+
+.reserve-booking-btn {
+    margin-top: 15px;
+    background-color:rgb(255, 56, 92);
+    color: white;
+    width: 200px;
+    height: 48px;
+    background: linear-gradient(to right, rgb(230, 30, 77) 0%, rgb(227, 28, 95) 50%, rgb(215, 4, 102) 100%) !important;
+    color: rgb(255, 255, 255) !important;
+    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
+    font-size: 16px !important;
+    line-height: 20px !important;
+    font-weight: 600 !important;
+    border: none;
+    border-radius: 8px;
+    align-self: center;
 }

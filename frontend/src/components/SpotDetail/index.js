@@ -36,12 +36,14 @@ const SpotDetail = ({ spotInfo, setSpotInfo}) => {
     
     return (
         <div className='spot-detail'> 
+         <div className='detail-upper-main'>
             <h1 id="title-1">{oneSpot?.title}</h1>
             <img className="spot-image-new" src={oneSpot?.Images[0].url} alt="cabin" /> 
-            <h1 id="title">Host By: {oneSpot?.User?.username}</h1>
-          
-            <BookingDetails spotId={spotId} spot={oneSpot} user={sessionUser}/>
+         </div>
 
+        <div className='post-content-main'>
+            <div className='left-spot-detail-pg'>
+            <h1 id="title">Host By: {oneSpot?.User?.username}</h1>
             <div>
                 <p id="detail-p">
                     {`${oneSpot?.guests} guests • ${oneSpot?.bedrooms} bedrooms • ${oneSpot?.bathrooms} `}
@@ -88,6 +90,12 @@ const SpotDetail = ({ spotInfo, setSpotInfo}) => {
                     <h4>{(oneSpot?.Amenities[0]?.privateBeachAccess) ? <p><i className="fas symb fa-umbrella-beach"></i> Private Beach Access </p> : ''}</h4>
                     </div>
             </div>
+            </div>
+            
+            <BookingDetails spotId={spotId} spot={oneSpot} user={sessionUser} />
+        </div>
+        <p>Reviews/Stars</p>
+        <p>goo</p>
         </div>
     )
 }

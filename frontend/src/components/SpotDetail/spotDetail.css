@@ -6,14 +6,14 @@ h2 {
 
 
 .spot-detail {
-    margin: 8% 20% ;
+    margin: 8% 15% ;
     border-bottom: 1px solid rgb(221, 221, 221);
 }
 
 .spot-image-new {
-   width: 100%;
+   width: 500px;
    border-radius: 25px;
-   height: 80%;
+   height: 400px;
    object-fit: cover;
 }
 
@@ -21,13 +21,12 @@ h2 {
     margin-top: 65px;
     display: flex;
     justify-content: flex-start;
-    font-size: 35px;
+    font-size: 25px;
     margin-bottom: 20px;
     margin-left: 10px;
 }
 
 #title {
-    margin-top: 65px;
     display: flex;
     justify-content: flex-start;
     font-size: 25px;
@@ -141,4 +140,24 @@ h2 {
 #button-detail {
     display: flex;
     justify-content: flex-end;
+}
+
+.post-content-main {
+    position: relative;
+    margin-top: 48px;
+    display: flex;
+    flex-direction: row;
+}
+
+
+.detail-upper-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.left-spot-detail-pg {
+    width: 68%;
+    margin-right: 2%;
 }

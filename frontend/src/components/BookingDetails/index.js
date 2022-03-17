@@ -18,6 +18,7 @@ const BookingDetails = ({ spotId, spot, user }) => {
     let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
     let yyyy = today.getFullYear();
     today = yyyy + '/' + mm + '/' + dd
+    // const yesterday = new Date(new Date(today).setDate(new Date(today).getDate() - 1))
 
     const customSelect = (guestLimit) => {
         const limitArr = []
@@ -29,7 +30,7 @@ const BookingDetails = ({ spotId, spot, user }) => {
 
     const guestLimit = customSelect(spot?.guests)
     const allBookings = useSelector(state => state?.booking?.list)
-    const [startDate, setStartDate] = useState(new Date(today));
+    const [startDate, setStartDate] = useState("");
     const [endDate, setEndDate] = useState("");
     const [guestCount, setGuestCount] = useState(guestLimit[0])
     const spotBookings = allBookings.filter(booking => booking.spotId === +spotId)
@@ -132,43 +133,54 @@ const BookingDetails = ({ spotId, spot, user }) => {
 
     return (
         <div className='booking-div'>
-            <p id="one-price">{`$${spot?.price}`} <>/ night</></p>
-            <p>[star rating] . [count] reviews</p>
+            <div className='upper-booking-detail-div'>
+        
+                <span id="one-price"><h3 className='price-per-n'>{`$${spot?.price}`}</h3> <span className='per-night-label'>/ night</span></span>
+                <span className='booking-reviews-count'><i className="fas fa-star"></i>[#]·[#] reviews</span>
+            </div>
             <form className='booking-form' onSubmit={handleSubmit}>
                 <div id="booked-msg">
 
-                </div>
+                </div> 
+                <div className='date-picker-div'>
                 <DatePicker
+                    id="date-start-input"
                     selected={startDate}
                     onChange={(date) => setStartDate(date)}
                     selectsStart
+                    placeholderText='Add date'
                     startDate={startDate}
                     endDate={endDate}
-                    minDate={startDate}
+                    minDate={new Date()}
                     excludeDates={disableCustomDt(spotBookings)}
                     />
                 <DatePicker
+                    id="date-end-input"
                     selected={endDate}
-                    onChange={(date) => {
-                        setEndDate(date)
-                    }}
+                    onChange={(date) => setEndDate(date)}
                     selectsEnd
                     placeholderText='Add date'
                     startDate={startDate}
                     endDate={endDate}
                     excludeDates={disableCustomDt(spotBookings)}
                     minDate={startDate}
-                    />
+                    />     
+                </div>
                 <select
                     onChange={e => setGuestCount(e.target.value)}
                     className="guest-count-select"
                     >
-                    {guestLimit.map(num => (
-                        <option key={num} value={num}>{num}</option>
-                        ))}
+                    {guestLimit.map(num => {
+                        if(num === 1) {
+                            return   <option key={num} value={num}>{num} guest</option>
+                        } else {
+
+                           return  <option key={num} value={num}>{num} guests</option>
+                        }
+                    })}
 
                 </select>
-                <button>Reserve</button>
+                <button className='reserve-booking-btn'>Reserve</button>
                 {endDate ? <div>
                 <h6>You won't be charged yet</h6>
                 <p>{`$${spot?.price}`} x {dayCount(startDate, endDate)}   </p>
