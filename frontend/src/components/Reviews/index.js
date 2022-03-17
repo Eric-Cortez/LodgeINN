@@ -4,6 +4,7 @@ import { useSelector, useDispatch, } from 'react-redux';
 import "./Reviews.css"
 import AddReviewForm from '../Forms/AddReviewForm';
 import EditReviewModal from '../../context/EditReviewModal';
+import { deleteReview } from '../../store/reviews';
 
 
 export const Reviews = ({spot, user}) => {
@@ -16,6 +17,18 @@ export const Reviews = ({spot, user}) => {
       dispatch(getAllReviews(spot?.id))
     }
   }, [spot?.id, dispatch])
+
+
+
+  const handleDelete = (reviewId) => async (e) => {
+    e.preventDefault()
+    const data = await dispatch(deleteReview(reviewId))
+    
+    if (data && data.message === "Delete Successful") {
+      await dispatch(getAllReviews(spot?.id))
+    }
+  }
+
   
   return (
     <div className='each-review-div'>
@@ -24,11 +37,13 @@ export const Reviews = ({spot, user}) => {
           <p>User: {eachReview?.User?.username}</p>
           <p>Date: {eachReview?.updatedAt}</p>
           <p>Review: {eachReview?.review}</p>
+          <button id="post-modal-del" onClick={handleDelete(eachReview?.id)}><i className="fa fa-trash"></i></button>
           <EditReviewModal reviewId={eachReview?.id} spotId={spot?.id}/>
         </div>
       ))}
       <div>
         <AddReviewForm spotId={spot?.id} userId={user?.id}/>
+        
       </div>
 
     </div>

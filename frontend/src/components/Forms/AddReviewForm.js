@@ -63,11 +63,11 @@ const AddReviewForm = ({ spotId, userId }) => {
                 <div className='App'>
                     <Rating 
                     onClick={handleRating} 
-                    ratingValue={rating} /* Available Props */ />
+                    ratingValue={rating} />
                 </div>
                 <h2 id="form-h2">Write a review</h2>
                 <div className='input-div'>
-                    <label className='input-label required-field'>Content </label>
+                    {/* <label className='input-label required-field'>Content </label> */}
                     <textarea
                         className='text-area'
                         type='text'

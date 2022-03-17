@@ -118,27 +118,13 @@ router.put('/:id',
     }))
 
 
-// router.delete('/:id', asyncHandler(async (req, res) => {
-//     const { id, Images, Amenities } = req.body
-//     const spotId = parseInt(req.params.id, 10);
-//     const imageId = Images[0].id;
-//     const amenitiesId = Amenities[0].id;
-
-//     const currSpot = await Spot.findByPk(spotId);
-//     const currImage = await Image.findByPk(imageId);
-//     const currAmenity = await Amenity.findByPk(amenitiesId);
-
-//     if (currSpot && currImage && currAmenity) {
-//         await currAmenity.destroy();
-//         await currImage.destroy();
-//         await currSpot.destroy();
-
-//         res.json({ message: "Delete Successful" });
-//     } else {
-//         console.log('unsuccessful');
-//     }
-
-//     res.json({ message: "Delete Unsuccessful" });
-// }));
+router.delete('/:id', 
+asyncHandler(async (req, res) => {
+    const reviewId = parseInt(req.params.id, 10);
+    const currReview = await Review.findByPk(reviewId)
+    await currReview.destroy()
+  
+    res.json({ message: "Delete Successful", id: currReview.id });
+}));
 
 module.exports = router;

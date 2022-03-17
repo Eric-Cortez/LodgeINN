@@ -1,3 +1,7 @@
 .text-area {
     width: 200px;
 }
+
+.style-form {
+    height: fit-content;
+}

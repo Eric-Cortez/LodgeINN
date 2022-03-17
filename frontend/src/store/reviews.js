@@ -3,7 +3,7 @@ import { csrfFetch } from './csrf';
 const LOAD_ALL = 'review/loadAll';
 const LOAD_ONE = 'review/lostOne';
 const ADD_ONE = 'review/addOne'
-// const DELETE_ONE = 'spot/deleteOne'
+const DELETE_ONE = 'review/deleteOne'
 
 // ACTIONS 
 
@@ -22,12 +22,12 @@ const addOneReview = review => ({
     review
 })
 
-// const deleteOneSpot = (spotId) => {
-//     return {
-//         type: DELETE_ONE,
-//         spotId
-//     }
-// }
+const deleteOneReview = (reviewId) => {
+    return {
+        type: DELETE_ONE,
+        reviewId
+    }
+}
 
 // THUNKS ----------------------------------------------------------------------
 export const getAllReviews = (spotId) => async dispatch => {
@@ -82,20 +82,19 @@ export const editReview = (review, reviewId) => async dispatch => {
     return payload;
 }
 
-// export const deleteSpot = (payload, id) => async (dispatch) => {
-//     const response = await csrfFetch(`/api/spots/${id}`, {
-//         method: "DELETE",
-//         headers: { 'Content-Type': 'application/json' },
-//         body: JSON.stringify(payload, id)
-//     });
+export const deleteReview = (reviewId) => async (dispatch) => {
+    console.log(reviewId, "thunk")
+    const response = await csrfFetch(`/api/reviews/${reviewId}`, {
+        method: 'delete'
+    })
 
-//     if (response.ok) {
-//         const spot = await response.json();
-
-//         await dispatch(deleteOneSpot(spot));
-//         return spot;
-//     }
-// }
+    if (response.ok) {
+        const review = await response.json();
+        console.log(review.id, "deleted reviewID")
+        await dispatch(deleteOneReview(review.id));
+        return review;
+    }
+}
 
 //REDUCER----------------------------------------------------------------------- 
 const initialState = {
@@ -142,22 +141,12 @@ const reviewsReducer = (state = initialState, action) => {
                 }
             }
         }
-        // case DELETE_ONE: {
-        //     const newState = { ...state };
-        //     delete newState[action.spotId];
-        //     return newState;
-        // }
-        // case DELETE_ONE: {
-        //     return {
-        //         ...state,
-        //         [action.spotId]: {
-        //             ...state[action.spotId],
-        //             list: state[action.spotId].list.filter(
-        //                 (spot) => spot.id !== action.spotId
-        //             ),
-        //         },
-        //     };
-        // }
+        case DELETE_ONE: {
+            const newState = { ...state };
+            delete newState[action.reviewId];
+            return newState;
+        }
+
         default:
             return state;
     }
