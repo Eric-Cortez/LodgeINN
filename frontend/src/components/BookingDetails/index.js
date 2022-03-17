@@ -163,7 +163,7 @@ const BookingDetails = ({ spotId, spot, user }) => {
                     startDate={startDate}
                     endDate={endDate}
                     excludeDates={disableCustomDt(spotBookings)}
-                    minDate={startDate}
+                        minDate={new Date(startDate).setDate(new Date(startDate).getDate() + 1) }
                     />     
                 </div>
                 <select
