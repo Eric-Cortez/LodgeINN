@@ -11,7 +11,7 @@ const { Sequelize, Op } = require('@sequelize/core');
 router.get("/:searchQuery", asyncHandler(async (req, res) => {
 
     const searchQuery = req.params.searchQuery
-    // console.log("search query ----> ", searchQuery)
+    
     const results = await Spot.findAll({
       where: {
           title: {
@@ -22,7 +22,6 @@ router.get("/:searchQuery", asyncHandler(async (req, res) => {
             ]
     })
     
-    // console.log(results, "<-------res from search")
     res.json(results)
 }))
 

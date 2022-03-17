@@ -16,7 +16,7 @@ export const getAllSearchRes = (searchQuery) => async dispatch => {
     
     if (response.ok) {
         const res = await response.json();
-        console.log("thunk ", res)
+    
         dispatch(loadAll(res));
     }
 };

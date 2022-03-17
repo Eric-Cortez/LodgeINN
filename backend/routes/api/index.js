@@ -4,6 +4,7 @@ const usersRouter = require('./users.js');
 const spotsRouter = require('./spots.js')
 const bookingsRouter = require('./bookings.js')
 const searchRouter = require("./search.js");
+const reviewRouter = require("./reviews.js")
 
 
 router.use('/session', sessionRouter);
@@ -11,13 +12,14 @@ router.use('/users', usersRouter);
 router.use('/spots', spotsRouter);
 router.use('/bookings', bookingsRouter);
 router.use("/search", searchRouter);
+router.use("/reviews", reviewRouter)
 
 
 
 //TEST ROUTES 
-router.post('/test', function (req, res) {
-    res.json({ requestBody: req.body });
-});
+// router.post('/test', function (req, res) {
+//     res.json({ requestBody: req.body });
+// });
 
 
 //-----------------------------------------------------------------//
@@ -61,4 +63,4 @@ router.post('/test', function (req, res) {
         
         
         
-        module.exports = router;
+module.exports = router;

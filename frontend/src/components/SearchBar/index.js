@@ -10,7 +10,7 @@ const dispatch = useDispatch()
 const handleSubmit = async (e) => {
     e.preventDefault()
     if (search) {
-        console.log("component", search)
+        
         await dispatch(getAllSearchRes(search))
        
     }

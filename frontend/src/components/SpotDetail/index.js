@@ -6,6 +6,7 @@ import "./spotDetail.css"
 import { deleteSpot } from "../../store/spots"
 import BookingDetails from "../BookingDetails"
 import SpotMap from '../SpotMap';
+import { Reviews } from '../Reviews';
 
 const SpotDetail = ({ spotInfo, setSpotInfo}) => {
     const dispatch = useDispatch()
@@ -93,10 +94,11 @@ const SpotDetail = ({ spotInfo, setSpotInfo}) => {
             </div>
             <div className='review-div'>
                 <p>Reviews/Stars</p>
-                <p>goo</p>
+                <Reviews spot={oneSpot} user={sessionUser}/>
+                
             </div>
             <div>
-                <SpotMap oneSpot={oneSpot}/>
+                <SpotMap oneSpot={oneSpot} />
                     {/* <DatePicker
                         selected={startDate}
                         onChange={onChange}

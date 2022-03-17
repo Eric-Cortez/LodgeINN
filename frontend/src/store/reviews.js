@@ -1,42 +1,41 @@
 import { csrfFetch } from './csrf';
 
-const LOAD_ALL = 'booking/loadAll';
-const LOAD_ONE ='booking/lostOne';
-const ADD_ONE ='booking/addOne'
-const DELETE_ONE ='booking/deleteOne'
+const LOAD_ALL = 'review/loadAll';
+// const LOAD_ONE = 'spot/lostOne';
+// const ADD_ONE = 'spot/addOne'
+// const DELETE_ONE = 'spot/deleteOne'
 
 // ACTIONS 
 
-const loadAll = (list) => ({
+const loadAll = (spotId) => ({
     type: LOAD_ALL,
-    list
+    list: spotId
 })
 
-// const loadOne = (booking) => ({
+// const loadOne = (spot) => ({
 //     type: LOAD_ONE,
-//     booking
+//     spot
 // })
 
-const addOneBooking = booking => ({
-    type: ADD_ONE,
-    booking
-})
+// const addOneSpot = spot => ({
+//     type: ADD_ONE,
+//     spot
+// })
 
-// const deleteOneBooking = (bookingId) => {
+// const deleteOneSpot = (spotId) => {
 //     return {
 //         type: DELETE_ONE,
-//         bookingId
+//         spotId
 //     }
 // }
 
-// THUNKS 
-
-export const getAllBookings = () => async dispatch => {
-    const response = await csrfFetch(`/api/bookings`);
+// THUNKS ----------------------------------------------------------------------
+export const getAllReviews = (spotId) => async dispatch => {
+    const response = await csrfFetch(`/api/reviews/${spotId}`);
 
     if (response.ok) {
-        const bookings = await response.json();
-        dispatch(loadAll(bookings));
+        const reviews = await response.json();
+        dispatch(loadAll(reviews));
     }
 };
 
@@ -49,22 +48,22 @@ export const getAllBookings = () => async dispatch => {
 //     }
 // }
 
-export const addBooking = (bookingDetails) => async dispatch => {
+// export const addSpot = (spot) => async dispatch => {
+//     const res = await csrfFetch(`/api/spots/host`, {
+//         method: 'POST',
+//         headers: { 'Content-Type': 'application/json' },
+//         body: JSON.stringify(spot)
+//     });
+//     if (!res.ok) {
+//         let error = await res.json();
+//         return error;
+//     }
 
-    const res = await csrfFetch(`/api/bookings`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(bookingDetails)
-    });
-    if (!res.ok) {
-        let error = await res.json();
-        return error;
-    }
+//     const payload = await res.json();
+//     await dispatch(addOneSpot(payload));
 
-    const payload = await res.json();
-    await dispatch(addOneBooking(payload));
-    return payload;
-}
+//     return payload;
+// }
 
 // export const editSpot = (spot, id) => async dispatch => {
 //     const res = await csrfFetch(`/api/spots/${id}/host`, {
@@ -97,20 +96,21 @@ export const addBooking = (bookingDetails) => async dispatch => {
 //     }
 // }
 
-//REDUCER 
+//REDUCER----------------------------------------------------------------------- 
 const initialState = {
     list: [],
 };
 
-const bookingReducer = (state = initialState, action) => {
+const reviewsReducer = (state = initialState, action) => {
+    
     switch (action.type) {
         case LOAD_ALL: {
-            const getAllBookings = {}
-            action.list.forEach(booking => {
-                getAllBookings[booking.id] = booking
+            const allReviews = {}
+            action.list.forEach(review => {
+                allReviews[review.id] = review
             });
             return {
-                ...getAllBookings,
+                ...allReviews,
                 ...state.list,
                 list: action.list
             }
@@ -162,4 +162,4 @@ const bookingReducer = (state = initialState, action) => {
     }
 };
 
-export default bookingReducer;
+export default reviewsReducer;

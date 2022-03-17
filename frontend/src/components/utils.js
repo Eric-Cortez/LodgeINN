@@ -87,7 +87,6 @@ export const handleDisabledDatesInRange = async (startDate, endDate, spotBooking
         if (arrayOfDisabledDates.find(date => dateFormat(date) === dateFormat(eachDate))) {
             setStartDate(endDate)
             setEndDate("")
-            const body = document.body
             const div = document.getElementById("booked-msg")
             div.innerText = "*Dates are unavailable please select another start date."
             div.style.fontSize = "12px"
