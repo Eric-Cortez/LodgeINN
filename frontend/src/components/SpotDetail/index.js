@@ -5,6 +5,7 @@ import { getOneSpot } from '../../store/spots';
 import "./spotDetail.css"
 import { deleteSpot } from "../../store/spots"
 import BookingDetails from "../BookingDetails"
+import SpotMap from '../SpotMap';
 
 const SpotDetail = ({ spotInfo, setSpotInfo}) => {
     const dispatch = useDispatch()
@@ -90,12 +91,25 @@ const SpotDetail = ({ spotInfo, setSpotInfo}) => {
                     <h4>{(oneSpot?.Amenities[0]?.privateBeachAccess) ? <p><i className="fas symb fa-umbrella-beach"></i> Private Beach Access </p> : ''}</h4>
                     </div>
             </div>
+            <div>
+                <SpotMap oneSpot={oneSpot}/>
+                    {/* <DatePicker
+                        selected={startDate}
+                        onChange={onChange}
+                        startDate={startDate}
+                        endDate={endDate}
+                        selectsRange
+                        inline
+                    /> */}
+            </div>
+            <div className='review-div'>
+                <p>Reviews/Stars</p>
+                <p>goo</p>
+            </div>
             </div>
             
             <BookingDetails spotId={spotId} spot={oneSpot} user={sessionUser} />
         </div>
-        <p>Reviews/Stars</p>
-        <p>goo</p>
         </div>
     )
 }
