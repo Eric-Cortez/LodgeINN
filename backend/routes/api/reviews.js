@@ -66,6 +66,7 @@ router.get("/:id", asyncHandler(async (req, res) => {
            spotId
        } , 
        include: [User],
+        order: [['createdAt', 'ASC']]
        // limit: 5
   })
 

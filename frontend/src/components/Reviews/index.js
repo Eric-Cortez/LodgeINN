@@ -2,6 +2,7 @@ import React,{ useEffect, useState } from 'react'
 import { getAllReviews } from '../../store/reviews'
 import { useSelector, useDispatch, } from 'react-redux';
 import "./Reviews.css"
+import AddReviewForm from '../Forms/AddReviewForm';
 
 
 export const Reviews = ({spot, user}) => {
@@ -24,6 +25,9 @@ export const Reviews = ({spot, user}) => {
           <p>Review: {eachReview?.review}</p>
         </div>
       ))}
+      <div>
+        <AddReviewForm spotId={spot?.id} userId={user?.id}/>
+      </div>
 
     </div>
   )

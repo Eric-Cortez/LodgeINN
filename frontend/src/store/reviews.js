@@ -2,7 +2,7 @@ import { csrfFetch } from './csrf';
 
 const LOAD_ALL = 'review/loadAll';
 // const LOAD_ONE = 'spot/lostOne';
-// const ADD_ONE = 'spot/addOne'
+const ADD_ONE = 'review/addOne'
 // const DELETE_ONE = 'spot/deleteOne'
 
 // ACTIONS 
@@ -17,10 +17,10 @@ const loadAll = (spotId) => ({
 //     spot
 // })
 
-// const addOneSpot = spot => ({
-//     type: ADD_ONE,
-//     spot
-// })
+const addOneReview = review => ({
+    type: ADD_ONE,
+    review
+})
 
 // const deleteOneSpot = (spotId) => {
 //     return {
@@ -48,22 +48,22 @@ export const getAllReviews = (spotId) => async dispatch => {
 //     }
 // }
 
-// export const addSpot = (spot) => async dispatch => {
-//     const res = await csrfFetch(`/api/spots/host`, {
-//         method: 'POST',
-//         headers: { 'Content-Type': 'application/json' },
-//         body: JSON.stringify(spot)
-//     });
-//     if (!res.ok) {
-//         let error = await res.json();
-//         return error;
-//     }
+export const addReview = (payload) => async dispatch => {
+    const res = await csrfFetch(`/api/reviews`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+    });
+    if (!res.ok) {
+        let error = await res.json();
+        return error;
+    }
 
-//     const payload = await res.json();
-//     await dispatch(addOneSpot(payload));
+    const review = await res.json();
+    await dispatch(addOneReview(review));
 
-//     return payload;
-// }
+    return review;
+}
 
 // export const editSpot = (spot, id) => async dispatch => {
 //     const res = await csrfFetch(`/api/spots/${id}/host`, {
@@ -122,25 +122,25 @@ const reviewsReducer = (state = initialState, action) => {
         //     };
         //     return newState;
         // }
-        // case ADD_ONE: {
-        //     if (!state[action.spot.id]) {
-        //         const newState = {
-        //             ...state,
-        //             [action.spot.id]: action.spot
-        //         };
-        //         const spotList = newState.list.map(id => newState[id]);
-        //         spotList.push(action.spot);
-        //         newState.list = action.list;
-        //         return newState;
-        //     }
-        //     return {
-        //         ...state,
-        //         [action.spot.id]: {
-        //             ...state[action.spot.id],
-        //             ...action.spot
-        //         }
-        //     }
-        // }
+        case ADD_ONE: {
+            if (!state[action.review.id]) {
+                const newState = {
+                    ...state,
+                    [action.review.id]: action.review
+                };
+                const reviewList = newState.list.map(id => newState[id]);
+                reviewList.push(action.review);
+                newState.list = action.list;
+                return newState;
+            }
+            return {
+                ...state,
+                [action.review.id]: {
+                    ...state[action.review.id],
+                    ...action.review
+                }
+            }
+        }
         // case DELETE_ONE: {
         //     const newState = { ...state };
         //     delete newState[action.spotId];

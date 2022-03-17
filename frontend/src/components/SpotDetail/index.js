@@ -92,11 +92,12 @@ const SpotDetail = ({ spotInfo, setSpotInfo}) => {
                     <h4>{(oneSpot?.Amenities[0]?.privateBeachAccess) ? <p><i className="fas symb fa-umbrella-beach"></i> Private Beach Access </p> : ''}</h4>
                     </div>
             </div>
+            {sessionUser?.id !== oneSpot?.User?.id &&
             <div className='review-div'>
                 <p>Reviews/Stars</p>
                 <Reviews spot={oneSpot} user={sessionUser}/>
                 
-            </div>
+            </div>}
             <div>
                 <SpotMap oneSpot={oneSpot} />
                     {/* <DatePicker
