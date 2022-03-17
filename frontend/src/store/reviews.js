@@ -1,7 +1,7 @@
 import { csrfFetch } from './csrf';
 
 const LOAD_ALL = 'review/loadAll';
-// const LOAD_ONE = 'spot/lostOne';
+const LOAD_ONE = 'review/lostOne';
 const ADD_ONE = 'review/addOne'
 // const DELETE_ONE = 'spot/deleteOne'
 
@@ -12,10 +12,10 @@ const loadAll = (spotId) => ({
     list: spotId
 })
 
-// const loadOne = (spot) => ({
-//     type: LOAD_ONE,
-//     spot
-// })
+const loadOne = (review) => ({
+    type: LOAD_ONE,
+    review
+})
 
 const addOneReview = review => ({
     type: ADD_ONE,
@@ -39,14 +39,14 @@ export const getAllReviews = (spotId) => async dispatch => {
     }
 };
 
-// export const getOneSpot = (id) => async dispatch => {
-//     const response = await csrfFetch(`/api/spots/${id}`)
+export const getOneReview = (reviewId) => async dispatch => {
+    const response = await csrfFetch(`/api/reviews/${reviewId}`)
 
-//     if (response.ok) {
-//         const spot = await response.json()
-//         dispatch(loadOne(spot))
-//     }
-// }
+    if (response.ok) {
+        const review = await response.json()
+        dispatch(loadOne(review))
+    }
+}
 
 export const addReview = (payload) => async dispatch => {
     const res = await csrfFetch(`/api/reviews`, {
@@ -65,21 +65,22 @@ export const addReview = (payload) => async dispatch => {
     return review;
 }
 
-// export const editSpot = (spot, id) => async dispatch => {
-//     const res = await csrfFetch(`/api/spots/${id}/host`, {
-//         method: 'PUT',
-//         headers: { 'Content-Type': 'application/json' },
-//         body: JSON.stringify(spot)
-//     });
-//     if (!res.ok) {
-//         let error = await res.json();
-//         return error;
-//     }
-//     const payload = await res.json();
-//     await dispatch(addOneSpot(payload));
+export const editReview = (review, reviewId) => async dispatch => {
+    console.log(review, reviewId)
+    const res = await csrfFetch(`/api/reviews/${reviewId}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(review)
+    });
+    if (!res.ok) {
+        let error = await res.json();
+        return error;
+    }
+    const payload = await res.json();
+    await dispatch(addOneReview(payload));
 
-//     return payload;
-// }
+    return payload;
+}
 
 // export const deleteSpot = (payload, id) => async (dispatch) => {
 //     const response = await csrfFetch(`/api/spots/${id}`, {
@@ -115,13 +116,13 @@ const reviewsReducer = (state = initialState, action) => {
                 list: action.list
             }
         }
-        // case LOAD_ONE: {
-        //     const newState = {
-        //         ...state,
-        //         [action.spot.id]: action.spot
-        //     };
-        //     return newState;
-        // }
+        case LOAD_ONE: {
+            const newState = {
+                ...state,
+                [action.review.id]: action.review
+            };
+            return newState;
+        }
         case ADD_ONE: {
             if (!state[action.review.id]) {
                 const newState = {

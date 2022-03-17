@@ -8,6 +8,7 @@ import BookingDetails from "../BookingDetails"
 import SpotMap from '../SpotMap';
 import { Reviews } from '../Reviews';
 
+
 const SpotDetail = ({ spotInfo, setSpotInfo}) => {
     const dispatch = useDispatch()
     const { spotId } = useParams() 
@@ -96,7 +97,7 @@ const SpotDetail = ({ spotInfo, setSpotInfo}) => {
             <div className='review-div'>
                 <p>Reviews/Stars</p>
                 <Reviews spot={oneSpot} user={sessionUser}/>
-                
+              
             </div>}
             <div>
                 <SpotMap oneSpot={oneSpot} />

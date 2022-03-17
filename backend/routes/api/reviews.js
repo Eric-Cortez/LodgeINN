@@ -94,48 +94,28 @@ router.post('/',
 
 
 
-// router.put('/:id/host',
-//     requireAuth,
-//     spotHostForm,
-//     asyncHandler(async (req, res) => {
-
-//         const spotId = parseInt(req.params.id, 10);
-//         const currSpot = await Spot.findByPk(spotId);
-
-//         const { image, spots, amenities } = req.body
-//         // update spot
-//         const id = await currSpot.update(spots)
-
-//         //  update image
-//         const newImageUrl = {
-//             id: image.id,
-//             spotId: id.id,
-//             url: image.url
-//         }
-
-//         const currImage = await Image.findByPk(image.id);
-
-//         await currImage.update(newImageUrl)
-
-//         // update amenity
-//         const newAmenityList = {
-//             id: amenities.id,
-//             spotId: id.id,
-//             kitchen: amenities.kitchen,
-//             privateBeachAccess: amenities.privateBeachAccess,
-//             firePlace: amenities.firePlace,
-//             parking: amenities.parking,
-//             pool: amenities.pool,
-//             hotTub: amenities.hotTub,
-//             pets: amenities.pets,
-//         }
-//         const currAmenity = await Amenity.findByPk(amenities.id)
-//         await currAmenity.update(newAmenityList);
-
-//         return res.json({
-//             id
-//         })
-//     }))
+router.put('/:id',
+    requireAuth,
+    reviewForm,
+    asyncHandler(async (req, res) => {
+        
+        const reviewId = parseInt(req.params.id, 10);
+        const currReview = await Review.findByPk(reviewId);
+        console.log("id-------->", currReview)
+        
+        const { rating, review} = req.body
+        
+        const newReview = {
+            id: reviewId,
+            rating,
+            review
+        }
+        const updatedReview = await currReview.update(newReview)
+        console.log(updatedReview)
+        return res.json({
+            updatedReview
+        })
+    }))
 
 
 // router.delete('/:id', asyncHandler(async (req, res) => {

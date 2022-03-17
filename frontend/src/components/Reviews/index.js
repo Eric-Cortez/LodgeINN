@@ -3,6 +3,7 @@ import { getAllReviews } from '../../store/reviews'
 import { useSelector, useDispatch, } from 'react-redux';
 import "./Reviews.css"
 import AddReviewForm from '../Forms/AddReviewForm';
+import EditReviewModal from '../../context/EditReviewModal';
 
 
 export const Reviews = ({spot, user}) => {
@@ -23,6 +24,7 @@ export const Reviews = ({spot, user}) => {
           <p>User: {eachReview?.User?.username}</p>
           <p>Date: {eachReview?.updatedAt}</p>
           <p>Review: {eachReview?.review}</p>
+          <EditReviewModal reviewId={eachReview?.id} spotId={spot?.id}/>
         </div>
       ))}
       <div>

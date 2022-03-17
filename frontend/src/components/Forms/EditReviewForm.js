@@ -4,19 +4,27 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom';
 import { Rating } from 'react-simple-star-rating'
 import "./GlobalForm.css"
-import { addReview, getAllReviews } from '../../store/reviews';
+import { editReview, getOneReview, getAllReviews } from '../../store/reviews';
 
 
-const AddReviewForm = ({ spotId, userId }) => {
+const EditReviewForm = ({ reviewId, spotId, setShowModal }) => {
     const history = useHistory()
     const dispatch = useDispatch()
-
+    const user = useSelector(state => state.session.user)
+    const currReview = useSelector(state => state?.reviews[reviewId])
     const [errors, setErrors] = useState([])
     const [displayErrors, setDisplayErrors] = useState(false);
-    const [rating, setRating] = useState(0)
-    const [content, setContent] = useState('')
-    const user = useSelector(state => state.session.user)
+    const [rating, setRating] = useState((currReview?.rating * 20))
+    const [content, setContent] = useState(currReview?.review)
+    console.log(currReview?.rating, "current rating from initial post")
+    console.log(rating, "controled input")
 
+
+    useEffect(()=>{
+        if(spotId){
+            dispatch(getOneReview(spotId))
+        }
+    }, [dispatch, rating])
     useEffect(() => {
         const errors = []
         if (content === " " || content === "  ") errors.push("Please provide content for your review")
@@ -27,22 +35,23 @@ const AddReviewForm = ({ spotId, userId }) => {
     const onSubmit = async (e) => {
         e.preventDefault()
         const payload = {
-            userId,
-            spotId,
             rating: rating / 20,
             review: content,
         }
-        if(errors && errors.length === 0){
-           review = await dispatch(addReview(payload))
-        }else {
-           setDisplayErrors(true);
+        if (errors && errors.length === 0) {
+            review = await dispatch(editReview(payload, reviewId))
+            setShowModal(false)
+        } else {
+            setDisplayErrors(true);
         }
         if (review) {
             await dispatch(getAllReviews(spotId))
-            setRating(0)
-            setContent("")
+            // setRating(0)
+            // setContent("")
         }
     }
+
+   
 
     const updateContent = (e) => {
         setContent(e.target.value)
@@ -50,6 +59,7 @@ const AddReviewForm = ({ spotId, userId }) => {
 
     const handleRating = (e) => {
         setRating(e)
+        // other logic
     }
 
     return (
@@ -61,13 +71,12 @@ const AddReviewForm = ({ spotId, userId }) => {
                     ))}
                 </div>
                 <div className='App'>
-                    <Rating 
-                    onClick={handleRating} 
-                    ratingValue={rating} /* Available Props */ />
+                    <Rating
+                        onClick={handleRating}
+                        ratingValue={rating} />
                 </div>
-                <h2 id="form-h2">Write a review</h2>
+                <h2 id="form-h2">Edit Review</h2>
                 <div className='input-div'>
-                    <label className='input-label required-field'>Content </label>
                     <textarea
                         className='text-area'
                         type='text'
@@ -91,4 +100,4 @@ const AddReviewForm = ({ spotId, userId }) => {
     )
 }
 
-export default AddReviewForm;
+export default EditReviewForm;
