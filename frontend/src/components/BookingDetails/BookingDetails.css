@@ -4,7 +4,7 @@
 
 .booking-div {
     height: fit-content; 
-    width: 30%;
+    width: fit-content;
     border: 1px solid rgb(221, 221, 221);
     border-radius: 12px;
     padding: 24px;
@@ -110,4 +110,27 @@
     border: none;
     border-radius: 8px;
     align-self: center;
+}
+.reserve-msg {
+    color: rgb(34, 34, 34) !important;
+    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
+    font-weight: 300 !important;
+    font-size: 14px !important;
+    line-height: 18px !important;
+    text-align: center;
+}
+
+.total-price {
+    font-size: 15px !important;
+    line-height: 20px !important;
+    color: rgb(34, 34, 34) !important;
+    font-weight: 200 !important;
+}
+.booking-line {
+    border-bottom: 0.5px solid rgb(176,176,176);
+}
+
+.total-price.last {
+    margin-bottom: 0;
+    font-weight: 600 !important;
 }

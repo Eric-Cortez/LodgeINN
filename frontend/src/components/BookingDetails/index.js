@@ -182,9 +182,10 @@ const BookingDetails = ({ spotId, spot, user }) => {
                 </select>
                 <button className='reserve-booking-btn'>Reserve</button>
                 {endDate ? <div>
-                <h6>You won't be charged yet</h6>
-                <p>{`$${spot?.price}`} x {dayCount(startDate, endDate)}   </p>
-                <p>Total before taxes: {`$${spot?.price * dayCount(startDate, endDate)}`}</p>
+                <h5 className='reserve-msg'>You won't be charged yet</h5>
+                <p className='total-price'>{`$${spot?.price}`} x {dayCount(startDate, endDate) === 1 ? `${dayCount(startDate, endDate)} night` : `${dayCount(startDate, endDate)} nights`}   </p>
+                <div className='booking-line'></div>
+                <p className='total-price last'>Total before taxes: {`$${spot?.price * dayCount(startDate, endDate)}`}</p>
                 </div>: ""}
             </form>
         </div>
