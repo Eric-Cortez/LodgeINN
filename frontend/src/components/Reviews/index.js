@@ -39,22 +39,30 @@ export const Reviews = ({spot, user}) => {
   }
   
   return (
-    <div className='each-review-div'>
+    <div>
+     
+
+     <div className='all-reviews-div'>
       {allSpotReviews && allSpotReviews?.map(eachReview => (
-        <div key={eachReview?.id}>
-          <p>profile image</p>
-          <p>{eachReview?.User?.username} </p>
-          <p>{formatDateMonthYear(eachReview?.updatedAt)}</p>
+        <div className='each-review-div' key={eachReview?.id}>
+          <div className='review-user-info'>
+            <img className='profile-img-review' src={"https://cdn2.vectorstock.com/i/1000x1000/20/76/man-avatar-profile-vector-21372076.jpg"} />
+            <div className='username-date-div-review'>
+              <p className='username-review'>{eachReview?.User?.username} </p>
+              <p className='date-review'>{formatDateMonthYear(eachReview?.updatedAt)}</p>
+            </div>
+          </div>
           <Rating 
           className="react-simple-star-rating"
           ratingValue={eachReview?.rating * 20} 
           fillColor={"#ff385c"}
           readonly={true}/>
-          <p>Review: {eachReview?.review}</p>
+          <p>{eachReview?.review}</p>
           <button id="post-modal-del" onClick={handleDelete(eachReview?.id)}><i className="fa fa-trash"></i></button>
           <EditReviewModal reviewId={eachReview?.id} spotId={spot?.id}/>
         </div>
       ))}
+      </div>
       <div>
         <AddReviewForm spotId={spot?.id} userId={user?.id}/>
       </div>

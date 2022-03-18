@@ -26,12 +26,16 @@ const AddReviewForm = ({ spotId, userId }) => {
     let review;
     const onSubmit = async (e) => {
         e.preventDefault()
+        console.log(rating, "rating")
+     
         const payload = {
             userId,
             spotId,
             rating: rating / 20,
             review: content,
         }
+        
+        console.log(payload)
         if(errors && errors.length === 0){
            review = await dispatch(addReview(payload))
         }else {

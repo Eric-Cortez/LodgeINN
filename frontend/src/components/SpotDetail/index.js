@@ -7,6 +7,7 @@ import { deleteSpot } from "../../store/spots"
 import BookingDetails from "../BookingDetails"
 import SpotMap from '../SpotMap';
 import { Reviews } from '../Reviews';
+import { getAllReviews } from "../../store/reviews"
 
 
 const SpotDetail = ({ spotInfo, setSpotInfo}) => {
@@ -16,9 +17,16 @@ const SpotDetail = ({ spotInfo, setSpotInfo}) => {
     
     const oneSpot = useSelector(state => state.spots[spotId])
     const sessionUser = useSelector(state => state.session.user);
+    const allSpotReviews = useSelector(state => state?.reviews)
+
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [])
 
     useEffect(() => {
     dispatch(getOneSpot(spotId))
+    dispatch(getAllReviews(spotId))
 
     },[dispatch,spotId])
 
@@ -35,6 +43,16 @@ const SpotDetail = ({ spotInfo, setSpotInfo}) => {
         }
     }
 
+    function avgStars() {
+        let sum = 0
+        let reviews = allSpotReviews?.list 
+        for (let i = 0; i < reviews?.length; i++) {
+            let num = reviews[i]?.rating
+            sum += num;
+        }
+        
+        return `${Number.parseFloat(sum / reviews?.length).toFixed(1)}`
+    }
 
     
     return (
@@ -95,21 +113,21 @@ const SpotDetail = ({ spotInfo, setSpotInfo}) => {
             </div>
             {sessionUser?.id !== oneSpot?.User?.id &&
             <div className='review-div'>
-                <p>Reviews/Stars</p>
-                <Reviews spot={oneSpot} user={sessionUser}/>
+                           
+                {allSpotReviews &&
+                    <h3 className='spot-rating-count'> 
+                        <i className="fas fa-star rating-review"></i> 
+                                    {avgStars()} • {allSpotReviews?.list?.length} {allSpotReviews?.list?.length === 1 ? 'review' : 'reviews'}
+                    </h3>
+                }          
               
+                 <Reviews spot={oneSpot} user={sessionUser}/>
             </div>}
+
             <div>
                 <SpotMap oneSpot={oneSpot} />
-                    {/* <DatePicker
-                        selected={startDate}
-                        onChange={onChange}
-                        startDate={startDate}
-                        endDate={endDate}
-                        selectsRange
-                        inline
-                    /> */}
             </div>
+
             </div>
             
             <BookingDetails spotId={spotId} spot={oneSpot} user={sessionUser} />

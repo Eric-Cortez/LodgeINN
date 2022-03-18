@@ -8,48 +8,10 @@ const { Review, User} = require('../../db/models');
 const router = express.Router();
 
 const reviewForm = [
-    // check('spots.address')
-    //     .exists({ checkFalsy: true })
-    //     .isLength({ max: 255 })
-    //     .withMessage("Address must be less 255 characters"),
-    // check('spots.city')
-    //     .exists({ checkFalsy: true })
-    //     .isLength({ max: 255 })
-    //     .withMessage("City must be less 255 characters"),
-    // check('spots.state')
-    //     .exists({ checkFalsy: true })
-    //     .isLength({ max: 50 })
-    //     .withMessage("City must be less 255 characters"),
-    // check('spots.country')
-    //     .exists({ checkFalsy: true })
-    //     .isLength({ max: 50 })
-    //     .withMessage("Country must be less 50 characters"),
-    // check('spots.title')
-    //     .exists({ checkFalsy: true })
-    //     .isLength({ max: 100 })
-    //     .withMessage("Title must be less 100 characters"),
-    // check('spots.description')
-    //     .exists({ checkFalsy: true })
-    //     .withMessage("Please provide a description"),
-    // check('spots.price')
-    //     .exists({ checkFalsy: true })
-    //     .withMessage("Please provide a price per night"),
-    // check('spots.zipCode')
-    //     .exists({ checkFalsy: true })
-    //     .withMessage("Please provide a valid zip code"),
-    // check('spots.guests')
-    //     .exists({ checkFalsy: true })
-    //     .withMessage("Please provide a valid number of guests"),
-    // check('spots.bedrooms')
-    //     .exists({ checkFalsy: true })
-    //     .withMessage("Please provide a valid number of bedrooms"),
-    // check('spots.bathrooms')
-    //     .exists({ checkFalsy: true })
-    //     .withMessage("Please provide a valid number of bathrooms"),
-    // check('image.url')
-    //     .exists({ checkFalsy: true })
-    //     .isLength({ max: 255 })
-    //     .withMessage("Please provide a valid url"),
+    check('review')
+        .exists({ checkFalsy: true })
+        .isLength({ max: 255 })
+        .withMessage("Review must be less 255 characters"),
     handleValidationErrors,
 ];
 

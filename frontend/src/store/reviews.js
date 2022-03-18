@@ -109,11 +109,12 @@ const reviewsReducer = (state = initialState, action) => {
             action.list.forEach(review => {
                 allReviews[review.id] = review
             });
-            return {
+            const res =  {
+                ...state,
                 ...allReviews,
-                ...state.list,
                 list: action.list
             }
+            return res
         }
         case LOAD_ONE: {
             const newState = {
