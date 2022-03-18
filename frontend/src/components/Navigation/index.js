@@ -6,6 +6,7 @@ import LoginFormModal from '../LoginFormModal';
 import Demo from './Demo';
 import './Navigation.css';
 import SearchBar from '../SearchBar';
+import AddHostFormModal from '../../context/AddHostFormModal/Index';
 
 function Navigation({ isLoaded }) {
     const sessionUser = useSelector(state => state.session.user);
@@ -14,7 +15,8 @@ function Navigation({ isLoaded }) {
     if (sessionUser) {
         sessionLinks = (
             <>
-                <Link className="nav-links" to="/spots/host">Become a Host</Link>
+                <AddHostFormModal />
+                {/* <Link className="nav-links" to="/spots/host">Become a Host</Link> */}
                 <Link className="nav-links" to="/spots"><i className="fas fa-globe"></i> Explore</Link>
                 <ProfileButton className="nav-links" user={sessionUser} />
             </>

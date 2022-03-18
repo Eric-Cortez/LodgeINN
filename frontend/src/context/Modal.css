@@ -21,12 +21,21 @@
   background-color: rgba(0, 0, 0, 0.7);
 }
 
+
 #modal-content {
   position: absolute;
   background-color:white;
   border-radius: 15px;
-  padding: 40px; 
+  height: auto;
+  width: auto;
 }
+
+/* #modal-content {
+  position: absolute;
+  background-color:white;
+  border-radius: 15px;
+  padding: 40px; 
+} */
 
 .login-btn-modal {
   margin-right: 4%;

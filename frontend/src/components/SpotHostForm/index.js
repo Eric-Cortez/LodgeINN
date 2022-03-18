@@ -5,7 +5,7 @@ import { states } from '../utils.js'
 import { addSpot } from "../../store/spots"
 import "./spotHostForm.css"
 
-function SpotHostForm() {
+function SpotHostForm({ setShowModal }) {
     const history = useHistory()
     const dispatch = useDispatch()
     const session = useSelector(state => state.session)
@@ -98,22 +98,21 @@ function SpotHostForm() {
             // else setErrorMessages({ overall: error.toString().slice(7) })
         }
         if (createdSpot) {
-
+            setShowModal(false)
             history.push(`/spots/${createdSpot.id.id}`);
         }
     };
 
     return (
-        <div id="host-form" >
-            <form onSubmit={handleSubmit}>
+            <form className="host-form-outer" onSubmit={handleSubmit}>
                 <div id="form-container">
                         <div id="top-host-form">
                         <h1 className="Upper-title">Host Form</h1>
-                            <ul className="errors-center">
+                            {/* <ul className="errors-center">
                                 {validationErrors.map(error => (
                                         <li className="list-of-err" key={error}> •  {error}</li>
                                 ))}
-                            </ul>
+                            </ul> */}
                         </div>
 
                         <div id="left-host-form">
@@ -361,7 +360,6 @@ function SpotHostForm() {
                         </div>
                 </div>
             </form>
-        </div>
     )
 }
 

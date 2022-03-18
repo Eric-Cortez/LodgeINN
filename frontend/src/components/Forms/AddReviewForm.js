@@ -54,6 +54,7 @@ const AddReviewForm = ({ spotId, userId }) => {
 
     return (
         <div id="reivew-product-div">
+            <h1>Create Review</h1>
             <form className="style-form" onSubmit={onSubmit}>
                 <div className='each-error-div'>
                     {displayErrors && errors?.map((error, ind) => (
@@ -61,11 +62,13 @@ const AddReviewForm = ({ spotId, userId }) => {
                     ))}
                 </div>
                 <div className='App'>
+                    <p>Overall rating</p>
                     <Rating 
+                    fillColor={"#ff385c"}
                     onClick={handleRating} 
                     ratingValue={rating} />
                 </div>
-                <h2 id="form-h2">Write a review</h2>
+                <h2 id="form-h2">Add a written review</h2>
                 <div className='input-div'>
                     {/* <label className='input-label required-field'>Content </label> */}
                     <textarea

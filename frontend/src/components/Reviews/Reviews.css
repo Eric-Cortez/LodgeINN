@@ -1,3 +1,8 @@
 .each-review-div {
    border: 2px solid rebeccapurple;
 }
+
+.star-svg {
+   height: 20px;
+   width: 20px;
+}
