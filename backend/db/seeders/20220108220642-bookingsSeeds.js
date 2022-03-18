@@ -9,6 +9,7 @@ module.exports = {
           userId: 5,
           startDate: new Date(),
           endDate: new Date(),
+          guestCount: 2,
           createdAt: new Date(),
           updatedAt: new Date()
         },
@@ -17,6 +18,7 @@ module.exports = {
           userId: 6,
           startDate: new Date(),
           endDate: new Date(),
+          guestCount: 2,
           createdAt: new Date(),
           updatedAt: new Date()
         },
@@ -25,6 +27,7 @@ module.exports = {
           userId: 7,
           startDate: new Date(),
           endDate: new Date(),
+          guestCount: 1,
           createdAt: new Date(),
           updatedAt: new Date()
         }

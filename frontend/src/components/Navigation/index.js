@@ -5,6 +5,8 @@ import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import Demo from './Demo';
 import './Navigation.css';
+import SearchBar from '../SearchBar';
+import AddHostFormModal from '../../context/AddHostFormModal/Index';
 
 function Navigation({ isLoaded }) {
     const sessionUser = useSelector(state => state.session.user);
@@ -13,8 +15,9 @@ function Navigation({ isLoaded }) {
     if (sessionUser) {
         sessionLinks = (
             <>
-                <Link className="nav-links" to="/spots/host">Become a Host</Link>
-                <Link className="nav-links" to="/spots"><i class="fas fa-globe"></i> Explore</Link>
+                <AddHostFormModal />
+                {/* <Link className="nav-links" to="/spots/host">Become a Host</Link> */}
+                <Link className="nav-links" to="/spots"><i className="fas fa-globe"></i> Explore</Link>
                 <ProfileButton className="nav-links" user={sessionUser} />
             </>
 
@@ -22,7 +25,7 @@ function Navigation({ isLoaded }) {
     } else {
         sessionLinks = (
             <>
-                <Link className="nav-links" to="/spots"><i class="fas fa-globe"></i> Explore</Link>
+                <Link className="nav-links" to="/spots"><i className="fas fa-globe"></i> Explore</Link>
                 <LoginFormModal />
                 <NavLink className="nav-links" to="/signup">Sign Up</NavLink>
                 <Demo />
@@ -36,6 +39,7 @@ function Navigation({ isLoaded }) {
                 <div>
                     <Link id="logo" to="/"><i id="logo-icon" className="fab fa-airbnb"></i>LodgeINN</Link>
                 </div>
+                <SearchBar />
                 <li>
                     <NavLink className="nav-links" exact to="/">Home</NavLink>
                     {isLoaded && sessionLinks}

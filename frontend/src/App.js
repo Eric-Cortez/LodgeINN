@@ -33,9 +33,9 @@ function App() {
           <Route exact path="/spots">
             <Spots />
           </Route>
-          <Route exact path="/spots/host">
+          {/* <Route exact path="/spots/host">
             <SpotHostForm />
-          </Route>
+          </Route> */}
           <Route exact path="/spots/:spotId">
             <SpotDetail />
           </Route>
