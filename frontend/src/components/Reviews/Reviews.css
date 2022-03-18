@@ -42,9 +42,10 @@
 }
 
 .all-reviews-div {
-   border: 0.25px solid rgb(176,176,176);
+   border: 0.25px solid rgba(176,176,176, 0.2);
    max-height: 400px;
    overflow-y: scroll;
+   padding: 15px;
 }
 
 .all-reviews-div::-webkit-scrollbar {
