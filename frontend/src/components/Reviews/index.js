@@ -47,7 +47,7 @@ export const Reviews = ({spot, user}) => {
         <div className='each-review-div' key={eachReview?.id}>
           <div className='review-user-info'>
             <div className='each-review-info'>
-              <img className='profile-img-review' src={"https://cdn2.vectorstock.com/i/1000x1000/20/76/man-avatar-profile-vector-21372076.jpg"} />
+              <img className='profile-img-review' src={"https://cdn2.vectorstock.com/i/1000x1000/20/76/man-avatar-profile-vector-21372076.jpg"} alt="profile " />
               <div className='username-date-div-review'>
                 <p className='username-review'>{eachReview?.User?.username} </p>
                 <p className='date-review'>{formatDateMonthYear(eachReview?.updatedAt)}</p>
@@ -64,7 +64,7 @@ export const Reviews = ({spot, user}) => {
           ratingValue={eachReview?.rating * 20} 
           fillColor={"#ff385c"}
           readonly={true}/>
-          <p>{eachReview?.review}</p>
+          <p className='each-review-text'>{eachReview?.review}</p>
         </div>
       ))}
       </div>
