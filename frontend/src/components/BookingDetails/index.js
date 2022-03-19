@@ -7,9 +7,10 @@ import { addDays } from 'date-fns';
 import { useHistory } from 'react-router-dom';
 import "./BookingDetails.css"
 import { dateFormat, disableCustomDt, customSelect, dayCount, handleDisabledDatesInRange } from '../utils';
+import { avgStars } from '../utils';
 
 
-const BookingDetails = ({ spotId, spot, user }) => {
+const BookingDetails = ({ spotId, spot, user, allSpotReviews }) => {
     const dispatch = useDispatch()
     const history = useHistory()
     // format todays date 
@@ -54,7 +55,12 @@ const BookingDetails = ({ spotId, spot, user }) => {
             <div className='upper-booking-detail-div'>
         
                 <span id="one-price"><h3 className='price-per-n'>{`$${spot?.price}`}</h3> <span className='per-night-label'>/ night</span></span>
-                <span className='booking-reviews-count'><i className="fas fa-star"></i>[#]·[#] reviews</span>
+                
+                {allSpotReviews &&
+                <span className='booking-reviews-count'><i className="fas fa-star"></i> {avgStars(allSpotReviews)} · {allSpotReviews?.length} {allSpotReviews?.length === 1 ? 'review' : 'reviews'}</span>
+                }   
+            
+            
             </div>
             <form className='booking-form' onSubmit={handleSubmit}>
                 <div id="booked-msg">

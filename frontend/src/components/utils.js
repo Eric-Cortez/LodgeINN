@@ -97,3 +97,14 @@ export const handleDisabledDatesInRange = async (startDate, endDate, spotBooking
 
     }
 }
+
+export const avgStars = (reviews) => {
+    let sum = 0
+    // let reviews = allSpotReviews?.list
+    for (let i = 0; i < reviews?.length; i++) {
+        let num = reviews[i]?.rating
+        sum += num;
+    }
+
+    return `${Number.parseFloat(sum / reviews?.length).toFixed(1)}`
+}

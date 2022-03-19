@@ -78,6 +78,7 @@
 .date-picker-div {
     display: flex;
     justify-content: center;
+    margin-top: 10px;
 }
 
 .guest-count-select {
