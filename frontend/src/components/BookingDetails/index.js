@@ -13,11 +13,11 @@ const BookingDetails = ({ spotId, spot, user }) => {
     const dispatch = useDispatch()
     const history = useHistory()
     // format todays date 
-    let today = new Date();
-    let dd = String(today.getDate()).padStart(2, '0');
-    let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-    let yyyy = today.getFullYear();
-    today = yyyy + '/' + mm + '/' + dd
+    // let today = new Date();
+    // let dd = String(today.getDate()).padStart(2, '0');
+    // let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    // let yyyy = today.getFullYear();
+    // today = yyyy + '/' + mm + '/' + dd
     // const yesterday = new Date(new Date(today).setDate(new Date(today).getDate() - 1))
 
   

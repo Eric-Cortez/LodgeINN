@@ -14,15 +14,20 @@
 .review-user-info {
    display: flex;
    flex-direction: row;
+   justify-content: space-between;
 }
 
 .review-user-info > * {
    align-items: center;
 }
 
+.each-review-info {
+   display: flex;
+}
+
 .date-review {
    margin: 0;
-   margin-bottom: 5px;
+   height: fit-content;
    padding-top: 3px;
    font-size: 12px;
    color: #717171;
@@ -40,7 +45,7 @@
   flex-direction: column;
   align-items: flex-start;
 }
-
+/* 
 .all-reviews-div {
    border: 0.25px solid rgba(176,176,176, 0.2);
    max-height: 400px;
@@ -50,11 +55,19 @@
 
 .all-reviews-div::-webkit-scrollbar {
   display: none;
-}
+} */
 
 
 .add-review-form {
    border-bottom: 1px solid rgb(221, 221, 221);
 }
 
+#post-modal-del {
+   border:  none;
+   align-self: flex-start;
+}
 
+#review-preview-edit {
+   border: none;
+   align-self: flex-start;
+}
