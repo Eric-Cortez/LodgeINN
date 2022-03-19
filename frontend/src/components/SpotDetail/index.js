@@ -111,6 +111,7 @@ const SpotDetail = ({ spotInfo, setSpotInfo}) => {
                     <h4>{(oneSpot?.Amenities[0]?.privateBeachAccess) ? <p><i className="fas symb fa-umbrella-beach"></i> Private Beach Access </p> : ''}</h4>
                     </div>
             </div>
+
             {sessionUser?.id !== oneSpot?.User?.id &&
             <div className='review-div'>
                            
@@ -124,7 +125,8 @@ const SpotDetail = ({ spotInfo, setSpotInfo}) => {
                  <Reviews spot={oneSpot} user={sessionUser}/>
             </div>}
 
-            <div>
+            <div className='google-map-div'>
+               <h4>Where you'll be</h4>
                 <SpotMap oneSpot={oneSpot} />
             </div>
 

@@ -5,3 +5,70 @@
 .style-form {
     height: fit-content;
 }
+
+.write-review-title {
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 0;
+}
+
+.add-review-text {
+    margin: 0;
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    border: 1px solid black;
+}
+
+.add-review-text::-webkit-scrollbar {
+    display: none;
+}
+
+
+.input-label {
+    margin: 0;
+    height: fit-content;
+    font-size: 12px;
+    font-weight: 600;
+    margin: 10px 0;
+}
+
+.input-label-rating {
+    margin: 0;
+    height: fit-content;
+    font-size: 12px;
+    font-weight: 600;
+    margin: 10px 0;
+}
+
+.submit-btn-add-review {
+    background-color: rgb(255, 56, 92);
+    color: white;
+    width: 70px;
+    height: 25px;
+    background: linear-gradient(to right, rgb(230, 30, 77) 0%, rgb(227, 28, 95) 50%, rgb(215, 4, 102) 100%) !important;
+    color: rgb(255, 255, 255) !important;
+    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    border: none;
+    border-radius: 8px;
+    align-self: center;
+}
+
+.submit-btn-div-add-review {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 15px;
+}
+
+.error-div-reviews {
+    height: fit-content;
+}
+
+.each-error-div-reviews {
+    font-size: 12px;
+    color: #ff385c;
+    margin: 3px 0;
+}
