@@ -11,10 +11,6 @@ a#logo {
    color: rgb(234,91,98);
    align-self: center !important;
 }
-.main-logo-nav {
-   height: fit-content;
-   width: fit-content;
-}
 
 
 
@@ -44,7 +40,6 @@ li::marker {
 
 .all-nav-links {
     align-self: center;
-    
 }
 
 .all-nav-links > * {
@@ -53,6 +48,7 @@ li::marker {
    font-weight: 600;
    margin-left: 5px;
    padding: 11px;
+  
 }
 
 
@@ -128,7 +124,7 @@ nav * {
 
 
 a.nav-links {
-    /* border: 1px solid red; */
+  
     padding-right: 20px;
 }
 
@@ -142,32 +138,24 @@ button#user-btn {
 
 
 #logOut { 
-    left: 50px;
-    list-style: none;
-    background: none;
-    border: none;
-    color: #FF5A5F;
-    background-color: white; /* Green */
-    border: 2px solid #FF5A5F;
-    padding: 4px 8px;
+    color: #343434;
+    background-color: transparent; 
     text-align: center;
     text-decoration: none;
-    display: inline-block;
     font-size: 12px;
-    margin: 6px 4px;
-    transition-duration: 0.4s;
-    margin-bottom: 5px;
-    margin-left: 28%;
+    font-weight: 600;
     cursor: pointer; 
-    margin-left: 0!important;
-    margin-right: 50px;
+    width: 100%;
+    text-align: start;
+    border: none;
+    padding: 0;
 }
 
 #logOut:hover { 
-  cursor: pointer;
-    transform: scale(1.1);
-    background-color: #FF5A5F;
-    color: white;
+    cursor: pointer;
+    transition-duration: .5s;
+    color: #FF5A5F;
+    
       
 }
 
@@ -187,4 +175,35 @@ button#user-btn {
 
 .fa-globe {
     background-color: transparent;
+}
+
+
+
+ul.profile-dropdown {
+  padding: 0;
+  margin: 0;
+  border-radius: 10px;
+  min-width: 160px;
+  background-color: white;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.3);
+  padding: 10px 0;
+  width: fit-content;
+  position: fixed;
+  top: 65px;
+  right: 40px;
+}
+
+.profile-dropdown * {
+    background-color: white;
+    color: #343434;
+}
+
+
+.dropdown-links {
+    font-size: 14px !important;
+    padding: 8px 10px !important;
+    margin: 0;
+}
+.dropdown-links:hover {
+   background-color:  rgba(176, 176, 176, 0.3) !important;
 }

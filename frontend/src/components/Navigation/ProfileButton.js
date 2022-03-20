@@ -42,13 +42,17 @@ function ProfileButton({ user }) {
             </button>
             {showMenu && (
                 <ul className="profile-dropdown">
-                    <li>User {user.username}</li>
-                    <li>{user.email}</li>
+                    {/* <li>User {user.username}</li>
+                    <li>{user.email}</li> */}
                     <li>
-                        {/* <Link to="/spots/host">Host</Link> */}
+                        <h4 className="dropdown-links">Trips</h4>
                     </li>
                     <li>
-                        <button id="logOut" onClick={logout}>Log Out</button>
+                        <h4 className="dropdown-links">Manage listings</h4>
+                    </li>
+
+                    <li>
+                        <button id="logOut" className="dropdown-links" onClick={logout}>Log Out</button>
                     </li>
                 </ul>
             )}
