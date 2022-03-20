@@ -2,11 +2,12 @@ import React from 'react';
 import {  Link, NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
-import LoginFormModal from '../LoginFormModal';
+
 import Demo from './Demo';
 import './Navigation.css';
 import SearchBar from '../SearchBar';
 import AddHostFormModal from '../../context/AddHostFormModal/Index';
+import LoginFormModal from '../../context/LoginFormModal';
 
 function Navigation({ isLoaded }) {
     const sessionUser = useSelector(state => state.session.user);
