@@ -15,7 +15,7 @@
     height: fit-content;
 }
 
-.login-label {
+.label {
     font-size: 14px;
     font-weight: 600;
     height: fit-content;
@@ -30,9 +30,11 @@
     margin: 5px 0;
 }
 
-.login-input {
+.input {
     width: 250px;
     height: 30px;
+    border-radius: 5px;
+    border-color: black;
 }
 
 .each-error-div {

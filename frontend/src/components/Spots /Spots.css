@@ -16,7 +16,8 @@ html {
     margin-bottom: 3%;
 }
 body {
-    margin-left: 0;
+    margin: 0;
+    padding: 0;
 }
 .map{
     width: 40%;

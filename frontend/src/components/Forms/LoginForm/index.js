@@ -32,12 +32,12 @@ function LoginForm() {
 
                <div className="input-div">
                 <label
-                    className="login-label"
-                    > Username or Email</label>
+                    className="label"
+                    >Email</label>
                    
                     <input
-                        type="text"
-                        className="login-input"
+                        type="email"
+                        className="input"
                         value={credential}
                         onChange={(e) => setCredential(e.target.value)}
                         required
@@ -46,10 +46,10 @@ function LoginForm() {
 
                 <div className="input-div">
                     <label
-                    className="login-label"
+                    className="label"
                     >Password</label>
                         <input
-                            className="login-input"
+                            className="input"
                             type="password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
