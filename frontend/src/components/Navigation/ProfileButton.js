@@ -34,9 +34,11 @@ function ProfileButton({ user }) {
 
     return (
         <>
-            <button className="profile-menu" id="user-btn" onClick={openMenu}>
-                <i className="fas fa-bars" />
-                <i className="fas fa-user-circle" />
+            <button  id="user-btn" onClick={openMenu}>
+                <div className="dropdown-profile-btn">
+                    <i className="fas fa-bars" />
+                    <img className='nav-profile-img' src={"https://cdn2.vectorstock.com/i/1000x1000/20/76/man-avatar-profile-vector-21372076.jpg"} alt="profile " />  
+                </div>
             </button>
             {showMenu && (
                 <ul className="profile-dropdown">

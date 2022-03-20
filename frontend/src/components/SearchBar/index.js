@@ -2,6 +2,7 @@ import React, { useState, useEffect, Component } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { getAllSearchRes } from '../../store/search';
+import "../Navigation/Navigation.css"
 
 const SearchBar = () => {
 const [search, setSearch] = useState("")
@@ -17,8 +18,8 @@ const handleSubmit = async (e) => {
 }
 
     return (
-    <div>
-        <form onSubmit={handleSubmit}>
+   
+        <form  className="search-form" onSubmit={handleSubmit}>
             <input
             name="search"
             type="text"
@@ -27,7 +28,7 @@ const handleSubmit = async (e) => {
             onChange={e => setSearch(e.target.value)}
             />  
         </form>
-    </div>
+
   )
 }
 

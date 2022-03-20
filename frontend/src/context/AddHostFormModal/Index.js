@@ -8,7 +8,7 @@ function AddHostFormModal() {
 
     return (
         <>
-            <button id="review-preview-edit" onClick={() => setShowModal(true)}>Become A Host</button>
+            <button id="review-preview-edit" className='nav-hover' onClick={() => setShowModal(true)}>Become A Host</button>
             {showModal && (
                 <Modal onClose={() => {
                     setShowModal(false)
