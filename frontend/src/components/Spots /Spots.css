@@ -81,7 +81,7 @@ li {
 
 
 
-#map-image {
+.map-image {
     border: 2px solid rebeccapurple;
     position: fixed;
     height: 100%;

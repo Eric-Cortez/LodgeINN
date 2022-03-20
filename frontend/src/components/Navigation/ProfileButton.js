@@ -44,15 +44,16 @@ function ProfileButton({ user }) {
                 <ul className="profile-dropdown">
                     {/* <li>User {user.username}</li>
                     <li>{user.email}</li> */}
-                    <li>
-                        <Link to={`/users/${user?.id}/trips`} className="dropdown-links">Trips</Link>
+                    <li className="dropdown-links">
+                        <Link to={`/users/${user?.id}/trips`} className="dropdown-link">Trips</Link>
                     </li>
-                    <li>
-                        <h4 className="dropdown-links">Manage listings</h4>
+                    <li className="dropdown-links">
+                        <Link to={`/users/${user?.id}/listings`} className="dropdown-link">Manage listings</Link>
+                       
                     </li>
 
-                    <li>
-                        <button id="logOut" className="dropdown-links" onClick={logout}>Log Out</button>
+                    <li className="dropdown-links">
+                        <button id="logOut" onClick={logout}>Log Out</button>
                     </li>
                 </ul>
             )}

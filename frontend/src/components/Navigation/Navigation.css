@@ -203,7 +203,16 @@ ul.profile-dropdown {
     font-size: 14px !important;
     padding: 8px 10px !important;
     margin: 0;
+    font-weight: 600 !important;
 }
+.dropdown-link {
+    margin: 0;
+    padding: 0;
+    font-size: 14px !important;
+    font-weight: 600;
+    background-color: transparent;
+}
+
 .dropdown-links:hover {
    background-color:  rgba(176, 176, 176, 0.3) !important;
 }

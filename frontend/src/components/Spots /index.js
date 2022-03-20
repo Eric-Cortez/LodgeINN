@@ -6,6 +6,8 @@ import { getAllReviews } from "../../store/reviews";
 import { Link, Route, useParams } from 'react-router-dom';
 import "./Spots.css"
 import { avgStars } from "../utils";
+// import GoogleMapMarkers from "../GoogleMapMarkers";
+import SpotMap from "../SpotMap";
 
 function Spots() {
     const dispatch = useDispatch()
@@ -13,6 +15,8 @@ function Spots() {
     // const allSpotReviews = useSelector(state => state?.review?.list)
     // console.log(allSpotReviews)
      
+
+
 
     useEffect(() => {
         dispatch(getAllSpots())
@@ -65,7 +69,10 @@ function Spots() {
             </div>
 
             <div className="right-container fill">
-                <img id='map-image' src='https://slack-imgs.com/?c=1&o1=ro&url=https%3A%2F%2Fr1.ilikewallpaper.net%2Fiphone-13-pro-max-wallpapers%2Fdownload-110065%2Fmountains-5k-4k-8k-lake-forest-Nature.jpg' alt="google map"/>
+                 {/* <GoogleMapMarkers /> */}
+                 <SpotMap />
+                
+                {/* <img id='map-image' src='https://slack-imgs.com/?c=1&o1=ro&url=https%3A%2F%2Fr1.ilikewallpaper.net%2Fiphone-13-pro-max-wallpapers%2Fdownload-110065%2Fmountains-5k-4k-8k-lake-forest-Nature.jpg' alt="google map"/> */}
             </div>
         </div>
     )
