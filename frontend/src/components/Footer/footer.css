@@ -1,32 +1,38 @@
 
 .footer {
-    border-top: 1px solid rgba(10,10,10,0.3);
-    position:fixed;
     width: 100%;
     bottom: 0;
     left:0;
-    z-index: 1;
     background-color: white;
     display: flex;
     justify-content: center;
     padding-top:0.2%;
-    border-top: gray 2px solid;
-    background-color: rgb(216, 212, 212);
 }
 
-#git-linkd {
-    padding-top:0.30%;
-    padding-left: 30px;
-    font-size: 25px;
+#git-linked {
+    padding: 0;
+    padding-left: 10px;
+    font-size: 18px;
     background-color: transparent;
+    align-items: center;
+    margin: 10px;
 }
 
 #developed-by {
     font-weight: 500;
-    font-size: 13px;
+    font-size: 12px;
     background-color: transparent;
+    color: rgb(60,60,60);
 }
 
 .foot-icon {
     background-color: transparent;
+}
+
+i.fa-linkedin,
+i.fa-github {
+color: rgb(158, 156, 156) !important;
+}
+.footer-line {
+    border-bottom: 1px solid rgb(221, 221, 221);
 }

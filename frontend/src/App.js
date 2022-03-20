@@ -8,6 +8,7 @@ import SpotDetail from "./components/SpotDetail";
 import Home from "./components/Home";
 import EditSpotForm from "./components/EditSpotForm"
 import Footer from "./components/Footer";
+import TripPage from "./components/TripsPage";
 
 
 function App() {
@@ -33,6 +34,9 @@ function App() {
           </Route>
           <Route exact path="/spots/:spotId/host">
             <EditSpotForm />
+          </Route>
+          <Route exact path="/users/:userId/trips">
+            <TripPage />
           </Route>
           <Route>
             <h1> Page Not Found: 404</h1>
