@@ -78,3 +78,12 @@
 .each-review-text {
     word-wrap: break-word;
 }
+
+.style-form-edit {
+    margin: 30px; 
+}
+.text-area-edit {
+    margin: 0;
+    width: 300px;
+    margin: 10px 0;
+}

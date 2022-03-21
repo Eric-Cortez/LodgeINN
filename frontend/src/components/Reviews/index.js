@@ -69,7 +69,8 @@ export const Reviews = ({spot, user}) => {
       ))}
       </div>
       <div className='add-review-form'>
-        <AddReviewForm spotId={spot?.id} userId={user?.id}/>
+       {user?.id &&
+        <AddReviewForm spotId={spot?.id} userId={user?.id}/>} 
       </div>
 
     </div>

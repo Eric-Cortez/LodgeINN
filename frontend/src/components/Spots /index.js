@@ -70,9 +70,10 @@ function Spots() {
 
             <div className="right-container fill">
                  {/* <GoogleMapMarkers /> */}
-                 <SpotMap />
-                
-                {/* <img id='map-image' src='https://slack-imgs.com/?c=1&o1=ro&url=https%3A%2F%2Fr1.ilikewallpaper.net%2Fiphone-13-pro-max-wallpapers%2Fdownload-110065%2Fmountains-5k-4k-8k-lake-forest-Nature.jpg' alt="google map"/> */}
+                 {/* <SpotMap /> */}
+            
+                <img id='right-image' src='https://images.unsplash.com/photo-1551927411-95e412943b58?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8Y2FiaW58ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60'/>
+            
             </div>
         </div>
     )

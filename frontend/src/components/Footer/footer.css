@@ -1,13 +1,4 @@
 
-.footer {
-    width: 100%;
-    bottom: 0;
-    left:0;
-    background-color: white;
-    display: flex;
-    justify-content: center;
-    padding-top:0.2%;
-}
 
 #git-linked {
     padding: 0;
@@ -31,8 +22,24 @@
 
 i.fa-linkedin,
 i.fa-github {
-color: rgb(158, 156, 156) !important;
+    color: rgb(158, 156, 156) !important;
 }
 .footer-line {
+    position: fixed;
     border-bottom: 1px solid rgb(221, 221, 221);
+}
+footer.footer {
+    width: 100%;
+    bottom: 0;
+    left:0;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    padding-top:0.2%;
+  
+}
+
+#footer-style {
+    border-top: 1px solid rgb(221, 221, 221);
+    position: fixed;
 }

@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom';
 import { Rating } from 'react-simple-star-rating'
 import "./GlobalForm.css"
+import "./LoginForm/LoginForm.css"
 import { editReview, getOneReview, getAllReviews } from '../../store/reviews';
 
 
@@ -64,21 +65,22 @@ const EditReviewForm = ({ reviewId, spotId, setShowModal }) => {
 
     return (
         <div id="reivew-product-div">
-            <form className="style-form" onSubmit={onSubmit}>
+            <form className="style-form-edit" onSubmit={onSubmit}>
+                <h2 className="form-title">Edit Review</h2>
                 <div className='each-error-div'>
                     {displayErrors && errors?.map((error, ind) => (
-                        <div key={ind}>{`* ${error}`}</div>
+                        <div className="each-error-div" key={ind}>{`* ${error}`}</div>
                     ))}
                 </div>
                 <div className='App'>
                     <Rating
+                        fillColor={"#ff385c"}
                         onClick={handleRating}
                         ratingValue={rating} />
                 </div>
-                <h2 id="form-h2">Edit Review</h2>
                 <div className='input-div'>
                     <textarea
-                        className='text-area'
+                        className='text-area-edit'
                         type='text'
                         name='content'
                         required
@@ -89,9 +91,9 @@ const EditReviewForm = ({ reviewId, spotId, setShowModal }) => {
                 <div id="">
 
                 </div>
-                <div className='submit-btn-div'>
+                <div className="btn-basic-submit">
                     <button
-                        className="submit-btn"
+                        className="btn-basic"
                         // disabled={errors.length > 0}
                         type='submit'> Submit </button>
                 </div>
