@@ -47,18 +47,18 @@ body {
     z-index: 0;
 }
 .spots-container {
-    border-bottom: rgb(235,235,235) 1.5px solid;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 2fr;
     grid-gap: 15px;
     height: 100%;
     width: 100%;
     padding: 25px 0;
 }
 
-
-
-
+.each-line {
+    border-bottom: rgb(235,235,235) 1.5px solid;
+    width: 95%;
+}
 
 .info {
     width: 300px;
@@ -66,6 +66,15 @@ body {
     padding: 10px;
 }
 
+.spots-container {
+    width: fit-content;
+    margin-left: 8%;
+
+}
+.image-container {
+    width: fit-content;
+
+}
 
 .each-spot-title {
     word-wrap: break-word;
@@ -134,3 +143,36 @@ p#spot-detail-info {
  .fa-star.spot {
      margin: 18px 0;
  }
+
+ @media screen and (max-width: 1350px) {
+ .right-container {
+    border:  2px solid red;
+    display: none;
+  }
+
+}
+
+@media screen and (max-width: 1349px) and (min-width: 600px)  {
+
+
+.detail-pg-main-container {
+    width: 100%;
+}
+.info {
+    width: fit-content;
+
+}
+.left-container {
+    width: 100%;
+}
+.each-line {
+    width: 100%;
+}
+.spots-container {
+    width: 100%;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+}

@@ -29,6 +29,7 @@ function Spots() {
 
             <div className="left-container">
                 {allSpots?.map(spot => (
+                    <div>
                     <div key={`${spot?.title}1`} className="spots-container">
                         <div key={`${spot?.title}2`} className="image-container">
                             <Link key={`${spot?.title}13`} to={`/spots/${spot.id}`}>
@@ -64,6 +65,8 @@ function Spots() {
                                 </div>
 
                         </div>
+                    </div>
+                        <div className="each-line"></div>
                     </div>
                 ))}
             </div>
