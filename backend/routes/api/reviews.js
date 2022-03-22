@@ -63,7 +63,6 @@ router.put('/:id',
         
         const reviewId = parseInt(req.params.id, 10);
         const currReview = await Review.findByPk(reviewId);
-        console.log("id-------->", currReview)
         
         const { rating, review} = req.body
         

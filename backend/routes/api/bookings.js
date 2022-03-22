@@ -11,14 +11,19 @@ const router = express.Router();
 
 // USE FOR VALIDATIONS LATER 
 const bookingForm = [
-    // check('credential')
-    //     .exists({ checkFalsy: true })
-    //     .notEmpty()
-    //     .withMessage('Please provide a valid email or username.'),
-    // check('password')
-    //     .exists({ checkFalsy: true })
-    //     .withMessage('Please provide a password.'),
-    // handleValidationErrors,
+    check('startDate')
+        .exists({ checkFalsy: true })
+        .notEmpty()
+        .withMessage('Please select a check-in date.'),
+    check('endDate')
+        .exists({ checkFalsy: true })
+        .notEmpty()
+        .withMessage(' Please Select a checkout date.'),
+    check('guestCount')
+        .exists({ checkFalsy: true })
+        .notEmpty()
+        .withMessage(' Please select a valid guest count.'), 
+    handleValidationErrors,
 ];
 
 // GET ALL BOOKINGS 

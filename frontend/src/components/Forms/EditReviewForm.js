@@ -17,15 +17,14 @@ const EditReviewForm = ({ reviewId, spotId, setShowModal }) => {
     const [displayErrors, setDisplayErrors] = useState(false);
     const [rating, setRating] = useState((currReview?.rating * 20))
     const [content, setContent] = useState(currReview?.review)
-    console.log(currReview?.rating, "current rating from initial post")
-    console.log(rating, "controled input")
-
+  
 
     useEffect(()=>{
         if(spotId){
             dispatch(getOneReview(spotId))
         }
     }, [dispatch, rating])
+    
     useEffect(() => {
         const errors = []
         if (content === " " || content === "  ") errors.push("Please provide content for your review")

@@ -1,5 +1,108 @@
+/* html {
+     height: auto;
+} */
+
 .trip-page-main {
-     margin-top: 6%;
+ height: auto !important;
+ width: 100%;
+ margin-bottom: 4%;
+}
+
+
+.trip-page-search {
+    background-color: rgb(255, 56, 92);
+    color: white;
+    width: 200px;
+    height: 48px;
+    background: linear-gradient(to right, rgb(230, 30, 77) 0%, rgb(227, 28, 95) 50%, rgb(215, 4, 102) 100%) !important;
+    color: rgb(255, 255, 255) !important;
+    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
+    font-size: 16px !important;
+    line-height: 20px !important;
+    font-weight: 600 !important;
+    border: none;
+    border-radius: 8px;
+    align-self: center;
+    margin-top: 50px !important;
+}
+
+.trips-booking-div {
+  border-radius: 15px;
+  border: 1px solid #DDDDDD;
+  display: flex;
+  height: 350px;
+  border-top-right-radius: 18px;
+  border-bottom-right-radius: 18px;
+  margin: 0 5%;
+}
+
+.trips-booking-div  {
+     display: flex;
+     align-items: center;
+}
+
+.trip-page-image {
      height: 100%;
      width: 100%;
+     border-top-right-radius: 15px;
+     border-bottom-right-radius: 15px;
 }
+
+.left-trip-div {
+ width: 40%;
+ border-top-left-radius: 15px;
+ border-bottom-left-radius: 15px;
+ padding: 0 32px; 
+}
+
+.right-trip-div {
+     width: 60%;
+     height: 350px;
+     border-top-right-radius: 15px;
+     border-bottom-right-radius: 15px;
+}
+
+i.fa-suitcase {
+     color:rgb(215, 4, 102);
+     font-size: 40px;
+}
+
+.no-trip-message {
+     margin-bottom: 30px;
+}
+
+.trip-title {
+     font-size: 36px;
+     font-weight: 500;
+     margin: 2% 5%;
+     margin-top: 10%;
+     font-size:  Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;;
+}
+
+.fa-suitcase.trips {
+     font-size: 50;
+}
+
+.upComing-trip-count {
+     font-size: 30px;
+}
+
+.trip-plans-history {
+     margin-bottom: 100px;
+     margin: 2% 15%;
+}
+
+.trip-image-small {
+     height: 80px;
+     width: 80px;
+     border-radius: 10px;
+     margin: 20px;
+}
+
+.each-booking-container {
+     display: flex;
+     align-items: center;
+     justify-content: flex-start;
+     border-bottom: 1px solid#DDDDDD;
+}
+

@@ -24,6 +24,24 @@ export const dateFormat = (currDate) => {
     return currDate;
 }
 
+export const dateFormatOrder = (startDate , endDate) => {
+    
+    const options = { month: 'long' }
+    let startmm = new Intl.DateTimeFormat('en-US', options).format(startDate);
+    let startD = String(startDate.getDate()).padStart(1, '0');
+    
+    let endmm = new Intl.DateTimeFormat('en-US', options).format(endDate);
+    let endD = String(endDate.getDate()).padStart(1, '0');
+    
+    let yyyy = startDate.getFullYear();
+
+    if (startmm === endmm) {
+        return startmm + ' ' + startD + "-" +  endD + ', ' + yyyy;
+    } else {
+        return startmm + ' ' + startD + "-" + endmm + endD + ', ' + yyyy ;
+    }
+}
+
 export const disableCustomDt = current => {
     let disableDateArr = []
     let convertEnd;
@@ -91,7 +109,8 @@ export const handleDisabledDatesInRange = async (startDate, endDate, spotBooking
             div.innerText = "*Dates are unavailable please select another start date."
             div.style.fontSize = "12px"
             div.style.color = "rgb(234, 91, 98)"
-            setTimeout(() => { div.remove() }, 2000);
+            div.style.width ="200px"
+            setTimeout(() => { div.remove() }, 3000);
             break
         }
 
@@ -108,3 +127,12 @@ export const avgStars = (reviews) => {
 
     return `${Number.parseFloat(sum / reviews?.length).toFixed(1)}`
 }
+
+
+   // format todays date 
+    // let today = new Date();
+    // let dd = String(today.getDate()).padStart(2, '0');
+    // let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    // let yyyy = today.getFullYear();
+    // today = yyyy + '/' + mm + '/' + dd
+    // const yesterday = new Date(new Date(today).setDate(new Date(today).getDate() - 1))

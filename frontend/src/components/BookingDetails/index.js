@@ -13,25 +13,26 @@ import { avgStars } from '../utils';
 const BookingDetails = ({ spotId, spot, user, allSpotReviews }) => {
     const dispatch = useDispatch()
     const history = useHistory()
-    // format todays date 
-    // let today = new Date();
-    // let dd = String(today.getDate()).padStart(2, '0');
-    // let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-    // let yyyy = today.getFullYear();
-    // today = yyyy + '/' + mm + '/' + dd
-    // const yesterday = new Date(new Date(today).setDate(new Date(today).getDate() - 1))
-
   
     const guestLimit = customSelect(spot?.guests)
     const allBookings = useSelector(state => state?.booking?.list)
     const [startDate, setStartDate] = useState("");
     const [endDate, setEndDate] = useState("");
     const [guestCount, setGuestCount] = useState(guestLimit[0])
+    const [displayErrors, setDisplayErrors] = useState(false)
+    const [errors, setErrors] = useState([])
     const spotBookings = allBookings.filter(booking => booking.spotId === +spotId)
 
     useEffect(() => {
         dispatch(getAllBookings())
     }, [guestCount, startDate, endDate, dispatch]);
+
+    useEffect(() => {
+        const errors = [];
+        if(startDate === "") errors.push("Please select a check-in date")
+        if(endDate === "") errors.push("Please Select a checkout date")
+        setErrors(errors)
+    }, [startDate, endDate])
 
 
     const handleSubmit = async (e) => {
@@ -43,8 +44,16 @@ const BookingDetails = ({ spotId, spot, user, allSpotReviews }) => {
             endDate: endDate,
             guestCount: +guestCount
         }
-        const res = await dispatch(addBooking(payload))
-        history.push(`/`)
+        let res;
+        if (errors && errors.length === 0) {
+            res = await dispatch(addBooking(payload))
+        } else {
+            setDisplayErrors(true)
+        }
+
+        if(res) {
+            history.push(`/users/${user?.id}/trips`)
+        }
     }
 
  
@@ -62,6 +71,11 @@ const BookingDetails = ({ spotId, spot, user, allSpotReviews }) => {
             
             
             </div>
+            <div className='each-error-div'>
+                {displayErrors && errors?.map((error, ind) => (
+                    <div className="each-error-div" key={ind}>{`* ${error}`}</div>
+                ))}
+            </div>
             <form className='booking-form' onSubmit={handleSubmit}>
                 <div id="booked-msg">
 
@@ -72,7 +86,7 @@ const BookingDetails = ({ spotId, spot, user, allSpotReviews }) => {
                     selected={startDate}
                     onChange={(date) => setStartDate(date)}
                     selectsStart
-                    placeholderText='Add date'
+                    placeholderText='Check-in date'
                     startDate={startDate}
                     endDate={endDate}
                     minDate={new Date()}
@@ -83,7 +97,7 @@ const BookingDetails = ({ spotId, spot, user, allSpotReviews }) => {
                     selected={endDate}
                     onChange={(date) => setEndDate(date)}
                     selectsEnd
-                    placeholderText='Add date'
+                    placeholderText='Checkout date'
                     startDate={startDate}
                     endDate={endDate}
                     excludeDates={disableCustomDt(spotBookings)}
@@ -104,7 +118,7 @@ const BookingDetails = ({ spotId, spot, user, allSpotReviews }) => {
                     })}
 
                 </select>
-                <button className='reserve-booking-btn'>Reserve</button>
+                <button className='reserve-booking-btn'>{startDate === "" && endDate === "" ? "Check availability" : "Reserve" }</button>
                 {endDate ? <div>
                 <h5 className='reserve-msg'>You won't be charged yet</h5>
                 <p className='total-price'>{`$${spot?.price}`} x {dayCount(startDate, endDate) === 1 ? `${dayCount(startDate, endDate)} night` : `${dayCount(startDate, endDate)} nights`}   </p>
