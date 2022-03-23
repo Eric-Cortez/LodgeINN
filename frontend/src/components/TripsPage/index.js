@@ -39,7 +39,7 @@ const TripPage = () => {
         futureDates.push([current.startDate, current])
       }
     }
-    
+
     return { pastDates: pastDates, futureDates: [ ...todaysTrip, ...futureDates] }
   }
 
@@ -86,7 +86,7 @@ const TripPage = () => {
               <div className='delete-button-div'>
                   {date[2] &&
                   <>
-                    <i class="fas fa-luggage-cart"></i>
+                    <i className="fas fa-luggage-cart"></i>
                     <p className='Check-in'>Check-in 3PM</p>
                   </>
                   }

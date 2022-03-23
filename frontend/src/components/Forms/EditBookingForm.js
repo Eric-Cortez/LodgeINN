@@ -12,8 +12,6 @@ import { editBooking } from '../../store/booking';
 
 
 const EditBookingForm = ({ setShowModal, spotId, booking}) => {
-
-    console.log(booking?.startDate, "form")
     const dispatch = useDispatch()
     const history = useHistory()
 
@@ -22,11 +20,13 @@ const EditBookingForm = ({ setShowModal, spotId, booking}) => {
     const allBookings = useSelector(state => state?.booking?.list)
     const [startDate, setStartDate] = useState(new Date(booking?.startDate));
     const [endDate, setEndDate] = useState(new Date(booking?.endDate));
+    // console.log(booking?.guestCount, "booking")
     const [guestCount, setGuestCount] = useState(guestLimit[0])
+    console.log(guestCount)
     const [displayErrors, setDisplayErrors] = useState(false)
     const [errors, setErrors] = useState([])
     const spotBookings = allBookings.filter(booking => booking.spotId === +spotId)
-    console.log(startDate, endDate, "starting inputs")
+   
 
     useEffect(() => {
         dispatch(getAllBookings())
@@ -53,8 +53,6 @@ const EditBookingForm = ({ setShowModal, spotId, booking}) => {
         } else {
             setDisplayErrors(true)
         }
-        console.log(res, "edit response")
-
         if (res) {
             await dispatch(getAllBookings())
            setShowModal(false)
@@ -63,6 +61,29 @@ const EditBookingForm = ({ setShowModal, spotId, booking}) => {
 
     // handleDisabledDatesInRange(startDate, endDate, spotBookings, setStartDate, setEndDate)
 
+    const disableDatesEdit = spotBookings => {
+        const filteredEdit = spotBookings.filter(spot => spot.id !== booking.id)
+        let disableDateArr = []
+
+        for (let i = 0; i < filteredEdit.length; i++) {
+            const startBookingDate = new Date(filteredEdit[i].startDate)
+            const endBookingDate = new Date(filteredEdit[i].endDate)
+
+            let j = startBookingDate.getTime()
+            while (j <= endBookingDate.getTime()) {
+
+                const convert = dateFormat(new Date(j))
+                disableDateArr.push(addDays(new Date(convert), 1))
+
+                const result = new Date(j)
+                j = result.setDate(result.getDate() + 1);
+            }
+        }
+
+        return disableDateArr;
+
+    }
+    
 
   return (
       <div className='booking-div'>
@@ -89,7 +110,7 @@ const EditBookingForm = ({ setShowModal, spotId, booking}) => {
                       startDate={startDate}
                       endDate={endDate}
                       minDate={new Date()}
-                    //   excludeDates={disableCustomDt(spotBookings)}
+                      excludeDates={disableDatesEdit(spotBookings) }
                   />
                   <DatePicker
                       id="date-end-input"
@@ -99,7 +120,7 @@ const EditBookingForm = ({ setShowModal, spotId, booking}) => {
                       placeholderText='Check-out date'
                       startDate={startDate}
                       endDate={endDate}
-                    //   excludeDates={disableCustomDt(spotBookings)}
+                      excludeDates={disableDatesEdit(spotBookings)}
                       minDate={new Date(startDate).setDate(new Date(startDate).getDate() + 1)}
                   />
               </div>
