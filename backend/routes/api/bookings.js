@@ -28,7 +28,9 @@ const bookingForm = [
 
 // GET ALL BOOKINGS 
 router.get("/", asyncHandler(async (req, res) => {
-    const bookings = await Booking.findAll()
+    const bookings = await Booking.findAll({
+        order: [["startDate", "ASC"]]
+    })
     return res.json(bookings)
 }))
 
@@ -62,10 +64,11 @@ router.delete("/:bookingId",
 requireAuth,
 asyncHandler(async (req, res) => {
     const bookingId = parseInt(req.params.bookingId, 10);
+    console.log(bookingId, "IIIIIIID")
     const currBooking = await Booking.findByPk(bookingId);
     await currBooking.destroy()
     
-    res.json({message: "Delete Successful", deleted: currBooking})
+    res.json({message: "Delete Successful", id: currBooking.id})
 }))
 
 

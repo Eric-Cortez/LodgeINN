@@ -1,7 +1,7 @@
 import { csrfFetch } from './csrf';
 
 const LOAD_ALL = 'booking/loadAll';
-const LOAD_ONE ='booking/lostOne';
+// const LOAD_ONE ='booking/lostOne';
 const ADD_ONE ='booking/addOne'
 const DELETE_ONE ='booking/deleteOne'
 
@@ -22,12 +22,12 @@ const addOneBooking = booking => ({
     booking
 })
 
-// const deleteOneBooking = (bookingId) => {
-//     return {
-//         type: DELETE_ONE,
-//         bookingId
-//     }
-// }
+const deleteOneBooking = (bookingId) => {
+    return {
+        type: DELETE_ONE,
+        bookingId
+    }
+}
 
 // THUNKS 
 
@@ -82,20 +82,21 @@ export const addBooking = (bookingDetails) => async dispatch => {
 //     return payload;
 // }
 
-// export const deleteSpot = (payload, id) => async (dispatch) => {
-//     const response = await csrfFetch(`/api/spots/${id}`, {
-//         method: "DELETE",
-//         headers: { 'Content-Type': 'application/json' },
-//         body: JSON.stringify(payload, id)
-//     });
+export const deleteBooking = (bookingId) => async (dispatch) => {
+    console.log(bookingId, "thunk")
+    const response = await csrfFetch(`/api/bookings/${bookingId}`, {
+        method: "DELETE",
+        // headers: { 'Content-Type': 'application/json' },
+        // body: JSON.stringify(d)
+    });
 
-//     if (response.ok) {
-//         const spot = await response.json();
+    if (response.ok) {
+        const booking = await response.json();
 
-//         await dispatch(deleteOneSpot(spot));
-//         return spot;
-//     }
-// }
+        await dispatch(deleteOneBooking(booking.id));
+        return booking.message;
+    }
+}
 
 //REDUCER 
 const initialState = {
@@ -141,22 +142,11 @@ const bookingReducer = (state = initialState, action) => {
         //         }
         //     }
         // }
-        // case DELETE_ONE: {
-        //     const newState = { ...state };
-        //     delete newState[action.spotId];
-        //     return newState;
-        // }
-        // case DELETE_ONE: {
-        //     return {
-        //         ...state,
-        //         [action.spotId]: {
-        //             ...state[action.spotId],
-        //             list: state[action.spotId].list.filter(
-        //                 (spot) => spot.id !== action.spotId
-        //             ),
-        //         },
-        //     };
-        // }
+        case DELETE_ONE: {
+            const newState = { ...state };
+            delete newState[action.booking];
+            return newState;
+        }
         default:
             return state;
     }

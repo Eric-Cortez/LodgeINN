@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { dateFormatOrder } from '../utils';
 import { getAllSpots } from '../../store/spots';
 import { getAllUsers } from "../../store/users"
+import DeleteBookingBtn from './DeleteBookingBtn';
 
 const TripPage = () => {
   const sessionUser = useSelector(state => state?.session?.user);
@@ -15,8 +16,6 @@ const TripPage = () => {
   const allSpots = useSelector(state => state?.spots)
   const allUsers = useSelector(state => state?.users)
  
-
-
   useEffect(() => {
     dispatch(getAllUsers())
     dispatch(getAllBookings())
@@ -39,8 +38,9 @@ const TripPage = () => {
 
   return (
     <div className='trip-page-main'>
-
+    
       <h2 className='trip-title'>Trips</h2>
+      <div id="booking-delete-msg">hi</div>
       <div className='trips-booking-div'>
         {!futureNPastBookings(userBookings).futureDates.length ?
           <div className='left-trip-div'>
@@ -74,6 +74,8 @@ const TripPage = () => {
                 <h5 className='host-title'>Hosted by {allUsers[allSpots[date[1].spotId]?.userId]?.username}</h5>
                 <p className='booking-dates'>{dateFormatOrder(new Date(date[0]), new Date(date[1]?.endDate))}</p>
               </div>
+              <DeleteBookingBtn bookingId={date[1]?.id} />
+             
             </div>
           ))}
         </div>
