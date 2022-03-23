@@ -8,12 +8,13 @@ import { getAllSpots } from '../../store/spots';
 import { getAllUsers } from "../../store/users"
 import DeleteBookingBtn from './DeleteBookingBtn';
 import { dateFormat } from '../utils';
+import EditBookingModal from '../../context/EditBookingModal';
 
 const TripPage = () => {
   const sessionUser = useSelector(state => state?.session?.user);
   const dispatch = useDispatch()
   const allBookings = useSelector(state => state?.booking?.list)
-  const userBookings = allBookings.filter(booking => booking?.userId === sessionUser?.id)
+  const userBookings = allBookings?.filter(booking => booking?.userId === sessionUser?.id)
   const allSpots = useSelector(state => state?.spots)
   const allUsers = useSelector(state => state?.users)
  
@@ -38,7 +39,7 @@ const TripPage = () => {
         futureDates.push([current.startDate, current])
       }
     }
-    // console.log({ pastDates: pastDates, futureDates: futureDates, todaysTrip: todaysTrip })
+    
     return { pastDates: pastDates, futureDates: [ ...todaysTrip, ...futureDates] }
   }
 
@@ -46,7 +47,7 @@ const TripPage = () => {
     <div className='trip-page-main'>
     
       <h2 className='trip-title'>Trips</h2>
-      <div id="booking-delete-msg">hi</div>
+      <div id="booking-delete-msg"></div>
       <div className='trips-booking-div'>
         {!futureNPastBookings(userBookings).futureDates.length ?
           <div className='left-trip-div'>
@@ -89,7 +90,9 @@ const TripPage = () => {
                     <p className='Check-in'>Check-in 3PM</p>
                   </>
                   }
+                  
                 <DeleteBookingBtn bookingId={date[1]?.id} />
+                <EditBookingModal spotId={date[1]?.spotId} booking={date[1]} />
               </div>
              
             </div>

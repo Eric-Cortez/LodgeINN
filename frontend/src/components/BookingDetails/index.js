@@ -1,30 +1,40 @@
 import React, { useEffect, useState } from 'react'
 import DatePicker from "react-datepicker"
-import moment from 'moment';
-import bookingReducer, { addBooking, getAllBookings } from '../../store/booking';
+import  { addBooking, getAllBookings } from '../../store/booking';
 import { useDispatch, useSelector, } from 'react-redux';
 import { addDays } from 'date-fns';
 import { useHistory } from 'react-router-dom';
 import "./BookingDetails.css"
-import { dateFormat, disableCustomDt, customSelect, dayCount, handleDisabledDatesInRange } from '../utils';
+import { disableCustomDt, dayCount, handleDisabledDatesInRange } from '../utils';
 import { avgStars } from '../utils';
+import { getAllSpots } from '../../store/spots';
 
 
-const BookingDetails = ({ spotId, spot, user, allSpotReviews }) => {
+const BookingDetails = ({ spotId, user, allSpotReviews }) => {
     const dispatch = useDispatch()
     const history = useHistory()
-  
-    const guestLimit = customSelect(spot?.guests)
+
+ const customSelect = (guestLimit) => {
+        const limitArr = []
+        for (let i = 1; i <= guestLimit; i++) {
+            limitArr.push(i)
+        }
+        return limitArr
+    }
+    
     const allBookings = useSelector(state => state?.booking?.list)
+    const spot = useSelector(state => state?.spots[spotId])
     const [startDate, setStartDate] = useState("");
     const [endDate, setEndDate] = useState("");
-    const [guestCount, setGuestCount] = useState(guestLimit[0])
+    const [guestCount, setGuestCount] = useState(customSelect(spot?.guests)[0])
     const [displayErrors, setDisplayErrors] = useState(false)
     const [errors, setErrors] = useState([])
-    const spotBookings = allBookings.filter(booking => booking.spotId === +spotId)
+    const spotBookings = allBookings?.filter(booking => booking?.spotId === +spotId)
+
 
     useEffect(() => {
         dispatch(getAllBookings())
+        dispatch(getAllSpots())
     }, [guestCount, startDate, endDate, dispatch]);
 
     useEffect(() => {
@@ -42,10 +52,12 @@ const BookingDetails = ({ spotId, spot, user, allSpotReviews }) => {
             userId: user.id,
             startDate: startDate,
             endDate: endDate,
-            guestCount: +guestCount
+            guestCount: guestCount
         }
+     
         let res;
         if (errors && errors.length === 0) {
+            console.log(payload, "payload")
             res = await dispatch(addBooking(payload))
         } else {
             setDisplayErrors(true)
@@ -106,7 +118,7 @@ const BookingDetails = ({ spotId, spot, user, allSpotReviews }) => {
                     onChange={e => setGuestCount(e.target.value)}
                     className="guest-count-select"
                     >
-                    {guestLimit.map(num => {
+                    {customSelect(spot?.guests)?.map(num => {
                         if(num === 1) {
                             return   <option key={num} value={num}>{num} guest</option>
                         } else {

@@ -16,8 +16,8 @@ const SpotDetail = ({ spotInfo, setSpotInfo}) => {
     const { spotId } = useParams() 
     const history = useHistory()
     
-    const oneSpot = useSelector(state => state.spots[spotId])
-    const sessionUser = useSelector(state => state.session.user);
+    const oneSpot = useSelector(state => state?.spots[spotId])
+    const sessionUser = useSelector(state => state?.session?.user);
     const allSpotReviews = useSelector(state => state?.reviews)
 
 
