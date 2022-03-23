@@ -112,7 +112,7 @@ const bookingReducer = (state = initialState, action) => {
             });
             return {
                 ...getAllBookings,
-                ...state.list,
+                ...state,
                 list: action.list
             }
         }

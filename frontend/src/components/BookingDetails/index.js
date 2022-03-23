@@ -77,9 +77,7 @@ const BookingDetails = ({ spotId, spot, user, allSpotReviews }) => {
                 ))}
             </div>
             <form className='booking-form' onSubmit={handleSubmit}>
-                <div id="booked-msg">
-
-                </div> 
+                <div id="booked-msg"></div> 
                 <div className='date-picker-div'>
                 <DatePicker
                     id="date-start-input"
@@ -97,7 +95,7 @@ const BookingDetails = ({ spotId, spot, user, allSpotReviews }) => {
                     selected={endDate}
                     onChange={(date) => setEndDate(date)}
                     selectsEnd
-                    placeholderText='Checkout date'
+                    placeholderText='Check-out date'
                     startDate={startDate}
                     endDate={endDate}
                     excludeDates={disableCustomDt(spotBookings)}

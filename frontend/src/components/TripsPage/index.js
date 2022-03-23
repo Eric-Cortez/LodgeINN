@@ -7,6 +7,7 @@ import { dateFormatOrder } from '../utils';
 import { getAllSpots } from '../../store/spots';
 import { getAllUsers } from "../../store/users"
 import DeleteBookingBtn from './DeleteBookingBtn';
+import { dateFormat } from '../utils';
 
 const TripPage = () => {
   const sessionUser = useSelector(state => state?.session?.user);
@@ -25,15 +26,20 @@ const TripPage = () => {
   const futureNPastBookings = (allUserBookings) => {
     const pastDates = []
     const futureDates = []
+    const todaysTrip = []
     for (let i = 0; i < allUserBookings.length; i++) {
-      let current = allUserBookings[i]
-      if (new Date(current.startDate).getTime() < new Date().getTime()) {
+      let current = allUserBookings[i] 
+      if (dateFormat(new Date(current.startDate)) === dateFormat(new Date())) {
+        todaysTrip.push([current.startDate, current, "today"])
+      } else if (new Date(current.startDate).getTime() < new Date().getTime()) {
         pastDates.push([current.startDate, current])
-      } else {
+      } 
+      else {
         futureDates.push([current.startDate, current])
       }
     }
-    return { pastDates: pastDates, futureDates: futureDates }
+    // console.log({ pastDates: pastDates, futureDates: futureDates, todaysTrip: todaysTrip })
+    return { pastDates: pastDates, futureDates: [ ...todaysTrip, ...futureDates] }
   }
 
   return (
@@ -52,7 +58,7 @@ const TripPage = () => {
           <div className='left-trip-div'>
             <i className="fa fa-suitcase trips"></i>
             <h4 className="upComing-trip-count">Time to pack your bags...</h4>
-            <p>You have {futureNPastBookings(userBookings).futureDates.length} Booked Trips!</p>
+            <p>You have {futureNPastBookings(userBookings).futureDates.length} booked trips!</p>
           </div>}
 
 
@@ -74,7 +80,12 @@ const TripPage = () => {
                 <h5 className='host-title'>Hosted by {allUsers[allSpots[date[1].spotId]?.userId]?.username}</h5>
                 <p className='booking-dates'>{dateFormatOrder(new Date(date[0]), new Date(date[1]?.endDate))}</p>
               </div>
-              <DeleteBookingBtn bookingId={date[1]?.id} />
+              <div>
+                  {date[2] &&
+                    <i class="fas fa-luggage-cart"></i>
+                  }
+                <DeleteBookingBtn bookingId={date[1]?.id} />
+              </div>
              
             </div>
           ))}

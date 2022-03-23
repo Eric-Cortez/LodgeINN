@@ -16,6 +16,7 @@ export const states = [
     'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
 ]
 
+// formats date in  ---> yyyy-mm-dd
 export const dateFormat = (currDate) => {
     let dd = String(currDate.getDate()).padStart(2, '0');
     let mm = String(currDate.getMonth() + 1).padStart(2, '0');
@@ -24,8 +25,8 @@ export const dateFormat = (currDate) => {
     return currDate;
 }
 
+// formats date for trip detail page 
 export const dateFormatOrder = (startDate , endDate) => {
-    
     const options = { month: 'long' }
     let startmm = new Intl.DateTimeFormat('en-US', options).format(startDate);
     let startD = String(startDate.getDate()).padStart(1, '0');
@@ -42,27 +43,25 @@ export const dateFormatOrder = (startDate , endDate) => {
     }
 }
 
+// disables dates that have already been booked for a specific spot
 export const disableCustomDt = current => {
     let disableDateArr = []
-    let convertEnd;
+    
     for (let i = 0; i < current.length; i++) {
         const startBookingDate = new Date(current[i].startDate)
         const endBookingDate = new Date(current[i].endDate)
-        convertEnd = dateFormat(endBookingDate)
-
-        const dayInMilliseconds = 86400000
+    
         let j = startBookingDate.getTime()
-        while (j < endBookingDate.getTime()) {
-            const currNewDate = new Date(j)
-            const convert = dateFormat(currNewDate)
-
+        while (j <= endBookingDate.getTime()) {
+            
+            const convert = dateFormat(new Date(j))
             disableDateArr.push(addDays(new Date(convert), 1))
-            j += dayInMilliseconds;
+    
+            const result = new Date(j)
+            j = result.setDate(result.getDate() + 1);
         }
     }
-    if (!disableDateArr.includes(addDays(new Date(convertEnd), 1))) {
-        disableDateArr.push(addDays(new Date(convertEnd), 1))
-    }
+   
     return disableDateArr;
 }
 
@@ -99,18 +98,43 @@ export const handleDisabledDatesInRange = async (startDate, endDate, spotBooking
         dateArray.push(addDays(new Date(convert), 1))
         j += dayInMilliseconds;
     }
-
     for (let i = 1; i < dateArray.length; i++) {
         const eachDate = dateArray[i]
         if (arrayOfDisabledDates.find(date => dateFormat(date) === dateFormat(eachDate))) {
+            console.log(eachDate, "loop date")
             setStartDate(endDate)
             setEndDate("")
-            const div = document.getElementById("booked-msg")
-            div.innerText = "*Dates are unavailable please select another start date."
-            div.style.fontSize = "12px"
-            div.style.color = "rgb(234, 91, 98)"
-            div.style.width ="200px"
-            setTimeout(() => { div.remove() }, 3000);
+            
+            const div = document.createElement("div")
+            const div2 = document.getElementById("booked-msg")
+            let parentDiv = div2.parentNode
+            parentDiv.insertBefore(div, div2)
+            div.innerText = "* Dates are unavailable please select another start date."
+            div.style.color = "white"
+            div.style.backgroundColor = "rgba(229,30,80, 0.9)"
+            div.style.borderRadius = "10px"
+            div.style.position = "fixed"
+            div.style.top = "100px"
+            div.style.right = "20px"
+            div.style.fontSize = "18px"
+            div.style.fontWeight = "400"
+            div.style.padding = "15px"
+            setTimeout(() => div.remove(), 3000)
+            
+            
+            // const div = document.getElementById("booked-msg")
+
+            // const div = document.createElement("div")
+            // const div2 = document.getElementById("booked-msg")
+            // let parentDiv = div2.parentNode
+            // parentDiv.insertBefore(div, div2)
+            
+            // div.innerText = "* Dates are unavailable please select another start date."
+            // console.log(div)
+            // div.style.fontSize = "12px"
+            // div.style.color = "rgb(234, 91, 98)"
+            // div.style.width ="200px"
+            // setTimeout(() =>  { div.remove() }, 3000);
             break
         }
 
