@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react'
 import { deleteBooking, getAllBookings } from '../../store/booking';
 import { useDispatch } from 'react-redux';
+import "../Forms/GlobalForm.css"
 
 
 
@@ -43,7 +44,9 @@ const DeleteBookingBtn = ({bookingId}) => {
 
   return (
     <div>
-          <button onClick={handleDelete(bookingId)}>cancel</button> 
+          <button 
+          className="btn-basic"
+          onClick={handleDelete(bookingId)}>Cancel</button> 
     </div>
   )
 }

@@ -74,15 +74,20 @@ const TripPage = () => {
         <div className='booking-outer-container'>
           {userBookings && futureNPastBookings(userBookings).futureDates.map(date => (
             <div key={`${date[1].id}1`} className='each-booking-container'>
-              <img className="trip-image-small" src={`${allSpots[date[1].spotId]?.Images[0]?.url}`} alt="spot" />
-              <div>
-                <h4 className='location-title'>{allSpots[date[1].spotId]?.city}</h4>
-                <h5 className='host-title'>Hosted by {allUsers[allSpots[date[1].spotId]?.userId]?.username}</h5>
-                <p className='booking-dates'>{dateFormatOrder(new Date(date[0]), new Date(date[1]?.endDate))}</p>
+              <div className='booking-post-info'>
+                <img className="trip-image-small" src={`${allSpots[date[1].spotId]?.Images[0]?.url}`} alt="spot" />
+                <div className='content-details'>
+                  <h4 className='location-title'>{allSpots[date[1].spotId]?.city}</h4>
+                  <h5 className='host-title'>Hosted by {allUsers[allSpots[date[1].spotId]?.userId]?.username}</h5>
+                  <p className='booking-dates'>{dateFormatOrder(new Date(date[0]), new Date(date[1]?.endDate))}</p>
+                </div>
               </div>
-              <div>
+              <div className='delete-button-div'>
                   {date[2] &&
+                  <>
                     <i class="fas fa-luggage-cart"></i>
+                    <p className='Check-in'>Check-in 3PM</p>
+                  </>
                   }
                 <DeleteBookingBtn bookingId={date[1]?.id} />
               </div>
@@ -94,11 +99,14 @@ const TripPage = () => {
         <h3>Where you've been</h3>
         {userBookings && futureNPastBookings(userBookings).pastDates.map(date => (
           <div key={`${date[1].id}2`} className='each-booking-container' >
-            <img className="trip-image-small" src={`${allSpots[date[1].spotId]?.Images[0]?.url}`} alt="spot" />
-            <div>
-              <h4 className='location-title'>{allSpots[date[1].spotId]?.city}</h4>
-              <h5 className='host-title'>Hosted by {allUsers[allSpots[date[1].spotId]?.userId]?.username}</h5>
-              <p>{dateFormatOrder(new Date(date[0]), new Date(date[1]?.endDate))}</p>
+            <div className='booking-post-info'>
+
+              <img className="trip-image-small" src={`${allSpots[date[1].spotId]?.Images[0]?.url}`} alt="spot" />
+              <div className='content-details'>
+                <h4 className='location-title'>{allSpots[date[1].spotId]?.city}</h4>
+                <h5 className='host-title'>Hosted by {allUsers[allSpots[date[1].spotId]?.userId]?.username}</h5>
+                <p className='booking-dates'>{dateFormatOrder(new Date(date[0]), new Date(date[1]?.endDate))}</p>
+              </div>
             </div>
           </div>
         ))}

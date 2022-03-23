@@ -104,5 +104,28 @@ i.fa-suitcase {
      align-items: center;
      justify-content: flex-start;
      border-bottom: 1px solid#DDDDDD;
+     display: flex;
+     justify-content: space-between;
 }
 
+.booking-post-info {
+     display: flex;
+     flex-direction: row;
+}
+
+.content-details {
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+}
+
+.delete-button-div {
+     display: flex;
+     align-items: center;
+     height: 100%;
+}
+
+.Check-in {
+     margin-right: 60px;
+     font-size: 14px;
+}
