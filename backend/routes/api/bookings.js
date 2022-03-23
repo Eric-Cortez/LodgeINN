@@ -38,11 +38,35 @@ router.post("/",
     requireAuth,
     bookingForm,
     asyncHandler(async (req, res) => {
-        const {spotId, userId, startDate, endDate, guestCount} = req.body
+        // const {spotId, userId, startDate, endDate, guestCount} = req.body
         const booking = await Booking.create(req.body)
         return res.json(booking)
     }))
 
+// UPDATE BOOKING 
+router.put("/:bookingId",
+requireAuth, 
+asyncHandler(async (req, res) => {
+    const bookingId = parseInt(req.params.bookingId, 10)
+    const currBooking = await Booking.findByPk(bookingId)
+    // const { spotId, userId, startDate, endDate, guestCount } = req.body
+    const updatedBooking = await currBooking.update(req.body)
+    return res.json({
+        updatedBooking
+    })
+}))
+
+
+// DELETE BOOKING 
+router.delete("/:bookingId",
+requireAuth,
+asyncHandler(async (req, res) => {
+    const bookingId = parseInt(req.params.bookingId, 10);
+    const currBooking = await Booking.findByPk(bookingId);
+    await currBooking.destroy()
+    
+    res.json({message: "Delete Successful", deleted: currBooking})
+}))
 
 
 

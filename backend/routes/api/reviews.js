@@ -72,7 +72,7 @@ router.put('/:id',
             review
         }
         const updatedReview = await currReview.update(newReview)
-        console.log(updatedReview)
+        
         return res.json({
             updatedReview
         })

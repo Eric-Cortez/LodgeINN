@@ -136,3 +136,21 @@
     font-weight: 600 !important;
 }
 
+.location-title {
+    margin: 0;
+    font-size: 16px;
+}
+
+.host-title {
+    color: rgb(115,115,115);
+    font-size: 12px;
+    font-weight: 100;
+    margin: 5px 0;
+}
+
+.booking-dates {
+    font-weight: 100;
+    font-size: 14px;
+     color: rgb(115,115,115);
+    margin: 0;
+}

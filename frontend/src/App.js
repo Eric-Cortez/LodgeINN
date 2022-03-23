@@ -36,11 +36,11 @@ function App() {
           <Route exact path="/spots/:spotId/host">
             <EditSpotForm />
           </Route>
-          <Route exact path="/users/:userId/trips">
-            <TripPage />
-          </Route>
           <Route exact path="/users/:userId/listings">
             <Listings />
+          </Route>
+          <Route exact path="/users/:userId/trips">
+            <TripPage />
           </Route>
           <Route>
             <h1> Page Not Found: 404</h1>
