@@ -1,41 +1,34 @@
 import React, { useEffect, useState } from 'react'
 import DatePicker from "react-datepicker"
-import moment from 'moment';
-import { addBooking, getAllBookings } from '../../store/booking';
+import {  getAllBookings } from '../../store/booking';
 import { useDispatch, useSelector, } from 'react-redux';
 import { addDays } from 'date-fns';
-import { useHistory } from 'react-router-dom';
-// import "./BookingDetails.css"
-import { dateFormat, disableCustomDt, customSelect, dayCount, handleDisabledDatesInRange } from '../utils';
-import { avgStars } from '../utils';
+import { dateFormat, customSelect, dayCount} from '../utils';
 import { editBooking } from '../../store/booking';
 
 
 const EditBookingForm = ({ setShowModal, spotId, booking}) => {
     const dispatch = useDispatch()
-    const history = useHistory()
 
     const spot = useSelector(state => state?.spots[spotId])
     const guestLimit = customSelect(spot?.guests)
     const allBookings = useSelector(state => state?.booking?.list)
     const [startDate, setStartDate] = useState(new Date(booking?.startDate));
     const [endDate, setEndDate] = useState(new Date(booking?.endDate));
-    // console.log(booking?.guestCount, "booking")
-    const [guestCount, setGuestCount] = useState(guestLimit[0])
-    console.log(guestCount)
+    const [guestCount, setGuestCount] = useState(booking?.guestCount)
     const [displayErrors, setDisplayErrors] = useState(false)
     const [errors, setErrors] = useState([])
     const spotBookings = allBookings.filter(booking => booking.spotId === +spotId)
    
-
     useEffect(() => {
         dispatch(getAllBookings())
     }, [guestCount, startDate, endDate, dispatch]);
 
     useEffect(() => {
+       
         const errors = [];
-        if (startDate === "") errors.push("Please select a check-in date")
-        if (endDate === "") errors.push("Please Select a checkout date")
+        if (!startDate) errors.push("Please select a check-in date")
+        if (!endDate) errors.push("Please Select a checkout date")
         setErrors(errors)
     }, [startDate, endDate])
 
@@ -46,7 +39,7 @@ const EditBookingForm = ({ setShowModal, spotId, booking}) => {
             endDate: endDate,
             guestCount: +guestCount
         }
-        console.log(payload, booking?.id, "COMPONENT ")
+      
         let res;
         if (errors && errors.length === 0) {
             res = await dispatch(editBooking(payload, booking?.id))
@@ -59,7 +52,6 @@ const EditBookingForm = ({ setShowModal, spotId, booking}) => {
         }
     }
 
-    // handleDisabledDatesInRange(startDate, endDate, spotBookings, setStartDate, setEndDate)
 
     const disableDatesEdit = spotBookings => {
         const filteredEdit = spotBookings.filter(spot => spot.id !== booking.id)
@@ -88,10 +80,13 @@ const EditBookingForm = ({ setShowModal, spotId, booking}) => {
   return (
       <div className='booking-div'>
           <div className='upper-booking-detail-div'>
+            <div>
 
-              <span id="one-price"><h3 className='price-per-n'>Edit Booking</h3></span>
+            </div>
 
-
+            <span id="one-price">
+                  <h3 className='price-per-n'>Edit Booking</h3>
+            </span>
           </div>
           <div className='each-error-div'>
               {displayErrors && errors?.map((error, ind) => (
@@ -126,9 +121,11 @@ const EditBookingForm = ({ setShowModal, spotId, booking}) => {
               </div>
               <select
                   onChange={e => setGuestCount(e.target.value)}
+                  value={guestCount}
                   className="guest-count-select"
               >
-                  {guestLimit.map(num => {
+                  {/* <option style={{ display: "none"}}>{booking?.guestCount} guests</option>  */}
+              {guestLimit.map(num => {
                       if (num === 1) {
                           return <option key={num} value={num}>{num} guest</option>
                       } else {

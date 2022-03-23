@@ -72,7 +72,6 @@ export const addBooking = (bookingDetails) => async dispatch => {
     
 
 export const editBooking = (bookingPayload, bookingId) => async dispatch => {
-    console.log(bookingId, bookingPayload, "thunk")
     const res = await csrfFetch(`/api/bookings/${bookingId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },

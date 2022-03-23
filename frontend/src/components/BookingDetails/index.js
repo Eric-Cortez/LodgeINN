@@ -57,7 +57,6 @@ const BookingDetails = ({ spotId, user, allSpotReviews }) => {
      
         let res;
         if (errors && errors.length === 0) {
-            console.log(payload, "payload")
             res = await dispatch(addBooking(payload))
         } else {
             setDisplayErrors(true)
@@ -117,6 +116,7 @@ const BookingDetails = ({ spotId, user, allSpotReviews }) => {
                 <select
                     onChange={e => setGuestCount(e.target.value)}
                     className="guest-count-select"
+                    value={guestCount}
                     >
                     {customSelect(spot?.guests)?.map(num => {
                         if(num === 1) {
