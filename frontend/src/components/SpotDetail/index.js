@@ -105,11 +105,9 @@ const SpotDetail = ({ spotInfo, setSpotInfo}) => {
 
             {sessionUser?.id !== oneSpot?.User?.id &&
             <div className='review-div'>
-                           
                 {allSpotReviews &&
                     <h3 className='spot-rating-count'> 
-                        <i className="fas fa-star rating-review"></i> 
-                                    {avgStars(allSpotReviews?.list)} • {allSpotReviews?.list?.length} {allSpotReviews?.list?.length === 1 ? 'review' : 'reviews'}
+                                    <i className="fas fa-star rating-review"></i>{allSpotReviews?.list?.length ? avgStars(allSpotReviews?.list) : ""} • {allSpotReviews?.list?.length} {allSpotReviews?.list?.length === 1 ? 'review' : 'reviews'}
                     </h3>
                 }          
               

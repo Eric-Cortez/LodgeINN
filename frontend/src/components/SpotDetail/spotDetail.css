@@ -6,7 +6,7 @@ h2 {
 
 
 .spot-detail {
-    margin: 8% 15% ;
+    margin: 8% 8% ;
     border-bottom: 1px solid rgb(221, 221, 221);
 }
 
@@ -172,9 +172,12 @@ h2 {
   margin: 18px 0;
   font-size: 20px;
   font-weight: 500;
+  display: flex;
+  
 }
 
+
 .fa-star.rating-review {
-    margin-right: 10px;
+    margin-right: 5px;
     font-size: 18px;
 }

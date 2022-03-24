@@ -11,6 +11,7 @@ import { getAllSpots } from '../../store/spots';
 
 
 const BookingDetails = ({ spotId, user, allSpotReviews }) => {
+ 
     const dispatch = useDispatch()
     const history = useHistory()
 
@@ -75,9 +76,10 @@ const BookingDetails = ({ spotId, user, allSpotReviews }) => {
             <div className='upper-booking-detail-div'>
         
                 <span id="one-price"><h3 className='price-per-n'>{`$${spot?.price}`}</h3> <span className='per-night-label'>/ night</span></span>
-                
+               
                 {allSpotReviews &&
-                <span className='booking-reviews-count'><i className="fas fa-star"></i> {avgStars(allSpotReviews)} · {allSpotReviews?.length} {allSpotReviews?.length === 1 ? 'review' : 'reviews'}</span>
+                 
+                    <span className='booking-reviews-count'><i className="fas fa-star"></i> {allSpotReviews.length ? avgStars(allSpotReviews) : "" }  · {allSpotReviews?.length} {allSpotReviews?.length === 1 ? 'review' : 'reviews'}</span>
                 }   
             
             

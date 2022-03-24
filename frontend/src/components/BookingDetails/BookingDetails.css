@@ -21,10 +21,11 @@
 .fa-star {
     font-size: 12px;
     color: #ff385c;
-
+    margin-right: 2px;
 }
 
 .booking-reviews-count {
+    display: flex;
    margin: 0;
    align-self: center;
    font-size: 12px;

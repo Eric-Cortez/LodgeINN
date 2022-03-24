@@ -312,7 +312,20 @@ select,
 
 .host-form-outer {
     height: auto;
-    border-radius: 8px;
+    border-radius: 20px;
     margin: 0;
-    width: 700px;
+}
+
+.host-spot-outer-form {
+    /* border: 2px solid red; */
+    height: fit-content;
+    min-height: 550px;
+    width: 650px;
+    border-radius: 15px;
+    padding: 25px;
+}
+
+.host-form-outer {
+    width: auto;
+    height: auto;
 }
