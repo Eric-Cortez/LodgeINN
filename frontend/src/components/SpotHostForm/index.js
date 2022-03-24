@@ -200,12 +200,12 @@ function SpotHostForm({ setShowModal }) {
             setShowModal={setShowModal}
             />}
 
-            {step === 6 && 
+            {/* {step === 6 && 
             <button
                 id="host-btn"
                 className="host-form"
                 disabled={validationErrors.length > 0}
-                type="submit">Submit</button>}
+                type="submit">Submit</button>} */}
         </form>
     )
 }

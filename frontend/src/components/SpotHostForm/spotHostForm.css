@@ -390,11 +390,6 @@ select,
 
 }
 
-.host-spot-outer-form.confirm {
-    height: 400px;
-    background-color: rebeccapurple;
-    padding-bottom: 0 ;
-}
 
 .next-btn {
     border: black;
@@ -432,3 +427,4 @@ select,
 .main-input-div.image {
     height: 300px;
 }
+
