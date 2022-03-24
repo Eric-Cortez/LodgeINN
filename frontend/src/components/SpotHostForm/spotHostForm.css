@@ -428,3 +428,29 @@ select,
     height: 300px;
 }
 
+
+.confirm-details {
+    height: 350px;
+    overflow: scroll;
+     overflow-x: hidden;
+    padding: 0 30px;
+    border: 1px solid rgb(221, 221, 221);
+}
+
+/* .confirm-details::-webkit-scrollbar {
+  display: none;
+} */
+
+.cabin-image {
+    width: 100%;
+    margin-bottom: 30px;
+    border-radius: 5px;
+}
+
+.confirm-edit {
+    border: none;
+}
+
+.confirm-sub-title {
+    border-top: 1px solid rgb(221, 221, 221);
+}

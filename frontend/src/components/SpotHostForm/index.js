@@ -36,20 +36,29 @@ function SpotHostForm({ setShowModal }) {
     const [pool, setPool] = useState(false);
     const [hotTub, setHotTub] = useState(false);
     const [pets, setPets] = useState(false);
-    const [validationErrors, setValidationErrors] = useState([])
     const [step, setStep] = useState(1)
 
 
 
+    const allAmenitiesArr = {
+        kitchen,
+        privateBeachAccess,
+        firePlace,
+        parking,
+        pool,
+        hotTub,
+        pets
+    }
+    useEffect(() => {
 
-    // useEffect(() => {
-    //     const errors = [];
-      
-        
-    //     setValidationErrors(errors)
-    // }, [ title, description, price, zipCode, guests, bedrooms, bathrooms, url, step])
-
-
+    }, [allAmenitiesArr,
+        kitchen,
+        privateBeachAccess,
+        firePlace,
+        parking,
+        pool,
+        hotTub,
+        pets])
 
 
     const handleSubmit = async (e) => {
@@ -102,61 +111,8 @@ function SpotHostForm({ setShowModal }) {
 
     return (
         <form className="host-form-outer" onSubmit={handleSubmit}>
-            {/* <div id="form-container">
-                        <div id="top-host-form">
-                        <h1 className="Upper-title">Host Form</h1>
-                            <ul className="errors-center">
-                                {validationErrors.map(error => (
-                                        <li className="list-of-err" key={error}> •  {error}</li>
-                                ))}
-                            </ul>
-                        </div>
-
-                        <div id="left-host-form">
-                            <h3 className="title-center"></h3>
-                    
-                           
-                            
-                        
-                      */}
 
 
-
-            {step === 2 &&
-                <SpotInfo
-                    guests={guests}
-                    setGuests={setGuests}
-                    bedrooms={bedrooms}
-                    setBedrooms={setBedrooms}
-                    bathrooms={bathrooms}
-                    setBathrooms={setBathrooms}
-                    step={step}
-                    setStep={setStep}
-                    price={price}
-                    setPrice={setPrice}
-                />}
-
-            {step === 3 && 
-            <SpotAmenities
-            step={step}
-            setStep={setStep}
-            kitchen={kitchen}
-            setKitchen={setKitchen}
-            privateBeachAccess={privateBeachAccess}
-            setPrivateBeachAccess={setPrivateBeachAccess}
-            firePlace={firePlace}
-            setFirePlace={setFirePlace}
-            parking={parking}
-            setParking={setParking}
-            pool={pool}
-            setPool={setPool}
-            hotTub={hotTub}
-            setHotTub={setHotTub}
-            pets={pets}
-            setPets={setPets}
-            />}
-
-            
             {step === 1 &&
                 <SpotAddress
                     step={step}
@@ -173,39 +129,79 @@ function SpotHostForm({ setShowModal }) {
                     setCity={setCity}
                 />}
 
-            {step === 4 && 
-                <SpotDescription 
-                step={step}
-                setStep={setStep}
-                description={description}
-                setDescription={setDescription}
-                title={title}
-                setTitle={setTitle}
+            {step === 2 &&
+                <SpotInfo
+                    guests={guests}
+                    setGuests={setGuests}
+                    bedrooms={bedrooms}
+                    setBedrooms={setBedrooms}
+                    bathrooms={bathrooms}
+                    setBathrooms={setBathrooms}
+                    step={step}
+                    setStep={setStep}
+                    price={price}
+                    setPrice={setPrice}
+                />}
+
+            {step === 3 &&
+                <SpotAmenities
+                    step={step}
+                    setStep={setStep}
+                    kitchen={kitchen}
+                    setKitchen={setKitchen}
+                    privateBeachAccess={privateBeachAccess}
+                    setPrivateBeachAccess={setPrivateBeachAccess}
+                    firePlace={firePlace}
+                    setFirePlace={setFirePlace}
+                    parking={parking}
+                    setParking={setParking}
+                    pool={pool}
+                    setPool={setPool}
+                    hotTub={hotTub}
+                    setHotTub={setHotTub}
+                    pets={pets}
+                    setPets={setPets}
+                />}
+
+
+            {step === 4 &&
+                <SpotDescription
+                    step={step}
+                    setStep={setStep}
+                    description={description}
+                    setDescription={setDescription}
+                    title={title}
+                    setTitle={setTitle}
                 />}
 
             {step === 5 &&
-            <SpotImage
-            step={step}
-            setStep={setStep}
-            url={url}
-            setUrl={setUrl}
-            />
+                <SpotImage
+                    step={step}
+                    setStep={setStep}
+                    url={url}
+                    setUrl={setUrl}
+                />
             }
 
-            {step === 6 && 
-            <HostSpotConfirmation 
-            step={step}
-            setStep={setStep}
-            validationErrors={validationErrors}
-            setShowModal={setShowModal}
-            />}
+            {step === 6 &&
+                <HostSpotConfirmation
+                    address={address}
+                    city={city}
+                    state={state}
+                    country={country}
+                    zipCode={zipCode}
+                    guests={guests}
+                    bedrooms={bedrooms}
+                    bathrooms={bathrooms}
+                    price={price}
+                    allAmenitiesArr={allAmenitiesArr}
+                    title={title}
+                    description={description}
+                    url={url}
+                    step={step}
+                    setStep={setStep}
+                />}
 
-            {/* {step === 6 && 
-            <button
-                id="host-btn"
-                className="host-form"
-                disabled={validationErrors.length > 0}
-                type="submit">Submit</button>} */}
         </form>
     )
 }
