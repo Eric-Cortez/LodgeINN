@@ -90,10 +90,6 @@ function SpotHostForm({ setShowModal }) {
             createdSpot = await dispatch(addSpot(payload));
         } catch (error) {
             throw new Error("Error - Resource not found")
-            // if (error instanceof ValidationError) setErrorMessages(error.errors);
-            // // If error is not a ValidationError, add slice at the end to remove extra
-            // // "Error: "
-            // else setErrorMessages({ overall: error.toString().slice(7) })
         }
         if (createdSpot) {
             setShowModal(false)

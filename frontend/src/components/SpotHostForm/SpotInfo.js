@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import "./spotHostForm.css"
+import "../Forms/GlobalForm.css"
 
 const SpotInfo = ({
     guests,
@@ -28,81 +29,96 @@ const SpotInfo = ({
 
     return (
         <div className='host-spot-outer-form'>
-            <h2>Tell us more about your spot</h2>
-            <h6>How many guests would you like to host?</h6>
+            <h2 className='create-spot-title'>Tell us more about your spot</h2>
+            <h6 className='create-spot-header'>How many guests would you like to host?</h6>
 
+            <div className='errors-container'>
+                <ul className="form-errors-ul">
+                    {displayErrors && errors.map(error => (
+                        <li className="form-errors" key={error}> •  {error}</li>
+                    ))}
+                </ul>
+            </div>
+                     
+            <div className='main-input-div'>
+                <div className='inputs-container'>
 
-            <ul className="errors-center">
-                {displayErrors && errors.map(error => (
-                    <li className="list-of-err" key={error}> •  {error}</li>
-                ))}
-            </ul>
+                    <div className='input-div-host'>
+                        <label
+                            className='input-label'
+                        > Guests </label>
+                        <input
+                            className="input host"
+                            id="num-input"
+                            required
+                            type='number'
+                            placeholder="Guests"
+                            value={guests}
+                            onChange={e => setGuests(e.target.value)}
+                        />
 
-            <label
-                className="host-labels"
-            > Guests:
-                <input
-                    className="new-input"
-                    id="num-input"
-                    required
-                    type='number'
-                    placeholder="Guests"
-                    value={guests}
-                    onChange={e => setGuests(e.target.value)}
-                />
-            </label>
-            <label
-                className="host-labels"
-            > Bedrooms
-                <input
-                    className="new-input"
-                    id="num-input"
-                    required
-                    type='number'
-                    placeholder="Bedrooms"
-                    value={bedrooms}
-                    onChange={e => setBedrooms(e.target.value)}
-                />
-            </label>
-            <label
-                className="host-labels"
-            > Bathrooms
-                <input
-                    className="new-input"
-                    id="num-input"
-                    required
-                    type='number'
-                    placeholder="Bathrooms"
-                    value={bathrooms}
-                    onChange={e => setBathrooms(e.target.value)}
-                />
-            </label>
+                    </div>
+                    <div className='input-div-host'>
+                        <label
+                            className='input-label'
+                        > Bedrooms</label>
+                        <input
+                            className="input host"
+                            id="num-input"
+                            required
+                            type='number'
+                            placeholder="Bedrooms"
+                            value={bedrooms}
+                            onChange={e => setBedrooms(e.target.value)}
+                        />
+                    </div>
+                    <div className='input-div-host'>
+                        <label
+                            className='input-label'
+                        > Bathrooms</label>
+                        <input
+                            className="input host"
+                            id="num-input"
+                            required
+                            type='number'
+                            placeholder="Bathrooms"
+                            value={bathrooms}
+                            onChange={e => setBathrooms(e.target.value)}
+                        />
+                    </div>
 
-
-            <label
-                className="host-labels"
-            > Price per night
-                <input
-                    className="new-input"
-                    required
-                    id="num-input"
-                    type='number'
-                    placeholder="Cost Per Night"
-                    value={price}
-                    onChange={e => setPrice(e.target.value)}
-                />
-            </label> 
-
-          
-            <button onClick={() => setStep(step - 1)}>Back</button>
-            <button onClick={() => {
-                if (errors.length) {
-                    setDisplayErrors(true)
-                } else {
-                    setStep(step + 1)
-                }
-            }}>next</button>
-
+                    <div className='input-div-host'>
+                        <label
+                            className='input-label'
+                        > Price per night</label>
+                        <input
+                            className="input host"
+                            required
+                            id="num-input"
+                            type='number'
+                            placeholder="Cost Per Night"
+                            value={price}
+                            onChange={e => setPrice(e.target.value)}
+                        />
+                    </div>
+                </div>
+            </div>
+            <div className='host-btn-next-back'>
+                <button
+                    onClick={() => setStep(step - 1)}
+                    className="back-btn"
+                >Back</button>
+                <button onClick={() => {
+                    if (errors.length) {
+                        setDisplayErrors(true)
+                    } else {
+                        setStep(step + 1)
+                    }
+                }}
+                    className="next-btn"
+                >Next</button>
+            </div>
+        
         </div>
     )
 }

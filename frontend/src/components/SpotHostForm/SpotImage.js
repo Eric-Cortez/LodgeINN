@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react'
+import "./spotHostForm.css"
+import "../Forms/GlobalForm.css"
 
 const SpotImage = ({
-    step,
-    setStep,
-    url,
-    setUrl
+  step,
+  setStep,
+  url,
+  setUrl
 }) => {
 
   const [displayErrors, setDisplayErrors] = useState(false)
@@ -20,33 +22,50 @@ const SpotImage = ({
 
   return (
     <div className='host-spot-outer-form'>
-       <h2>Next, let's add some photos of your place</h2>
-      <ul className="errors-center">
+      <h2 className='create-spot-title'>Next, let's add some photos of your place</h2>
+      <div className='errors-container'>
+
+        <ul className="form-errors-ul">
         {displayErrors && errors.map(error => (
-          <li className="list-of-err" key={error}> •  {error}</li>
+          <li className="form-errors" key={error}> •  {error}</li>
         ))}
       </ul>
-        <label
-              className="host-labels"
-          > Image url
+      </div>
+      <div className='main-input-div image'>
+        <div className='inputs-container'>
+
+          <div className='input-div-host'>
+            <label
+              className='input-label'
+            > Image url </label>
               <input
-                  className="new-input"
-                  id="image-inp"
-                  required
-                  type='string'
-                  placeholder="image url"
-                  value={url}
-                  onChange={e => setUrl(e.target.value)}
+               className="input host"
+                required
+                type='string'
+                placeholder="image url"
+                value={url}
+                onChange={e => setUrl(e.target.value)}
               />
-          </label>
-        <button onClick={()=>setStep(step - 1)}>Back</button>
-      <button onClick={() => {
+           
+          </div>
+
+        </div>
+      </div>
+
+      <div className='host-btn-next-back'>
+      <button 
+      className="back-btn"
+      onClick={() => setStep(step - 1)}>Back</button>
+      <button 
+      className="next-btn"
+      onClick={() => {
         if (errors.length) {
           setDisplayErrors(true)
         } else {
           setStep(step + 1)
         }
       }}>Next</button>
+      </div>
     </div>
   )
 }
