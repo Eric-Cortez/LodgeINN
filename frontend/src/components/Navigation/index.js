@@ -1,12 +1,13 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import {  Link, NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
-import LoginFormModal from '../LoginFormModal';
 import Demo from './Demo';
 import './Navigation.css';
 import SearchBar from '../SearchBar';
 import AddHostFormModal from '../../context/AddHostFormModal/Index';
+import LoginFormModal from '../../context/LoginFormModal';
+import SignupFormModal from '../../context/SignupFormModal';
 
 function Navigation({ isLoaded }) {
     const sessionUser = useSelector(state => state.session.user);
@@ -16,18 +17,17 @@ function Navigation({ isLoaded }) {
         sessionLinks = (
             <>
                 <AddHostFormModal />
-                {/* <Link className="nav-links" to="/spots/host">Become a Host</Link> */}
-                <Link className="nav-links" to="/spots"><i className="fas fa-globe"></i> Explore</Link>
-                <ProfileButton className="nav-links" user={sessionUser} />
+                <NavLink className="nav-hover" to="/spots"><i className="fas fa-globe"></i> Explore</NavLink>
+                <ProfileButton  user={sessionUser} />
             </>
 
         );
     } else {
         sessionLinks = (
             <>
-                <Link className="nav-links" to="/spots"><i className="fas fa-globe"></i> Explore</Link>
+                <NavLink className="nav-hover" to="/spots"><i className="fas fa-globe"></i> Explore</NavLink>
                 <LoginFormModal />
-                <NavLink className="nav-links" to="/signup">Sign Up</NavLink>
+                <SignupFormModal />
                 <Demo />
             </>
         );
@@ -35,13 +35,17 @@ function Navigation({ isLoaded }) {
 
     return (
         <nav id="navbar">
-            <ul>
-                <div>
-                    <Link id="logo" to="/"><i id="logo-icon" className="fab fa-airbnb"></i>LodgeINN</Link>
-                </div>
-                <SearchBar />
-                <li>
-                    <NavLink className="nav-links" exact to="/">Home</NavLink>
+            <ul className='main-nav-ul'>
+                <li className='main-logo-nav'>
+                    <Link id="logo" to="/">
+                        <i id="logo-icon" className="fab fa-airbnb"></i>LodgeINN
+                    </Link>
+                </li>
+                <li className='search-main'>
+                    <SearchBar />
+                </li>
+                <li className='all-nav-links'>
+                    <NavLink className="nav-hover" exact to="/">Home</NavLink>
                     {isLoaded && sessionLinks}
                 </li>
             </ul>

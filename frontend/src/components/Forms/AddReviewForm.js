@@ -20,13 +20,13 @@ const AddReviewForm = ({ spotId, userId }) => {
     useEffect(() => {
         const errors = []
         if (content === " " || content === "  ") errors.push("Please provide content for your review")
+        if (content.length > 255) errors.push("Review must be less than 255 characters")
         setErrors(errors)
     }, [content])
 
     let review;
     const onSubmit = async (e) => {
         e.preventDefault()
-        console.log(rating, "rating")
      
         const payload = {
             userId,
@@ -35,7 +35,6 @@ const AddReviewForm = ({ spotId, userId }) => {
             review: content,
         }
         
-        console.log(payload)
         if(errors && errors.length === 0){
            review = await dispatch(addReview(payload))
         }else {
@@ -58,25 +57,25 @@ const AddReviewForm = ({ spotId, userId }) => {
 
     return (
         <div id="reivew-product-div">
-            <h1>Create Review</h1>
+            <h3 className='write-review-title'>Write a review</h3>
             <form className="style-form" onSubmit={onSubmit}>
-                <div className='each-error-div'>
+                <div className='error-div-reviews'>
                     {displayErrors && errors?.map((error, ind) => (
-                        <div key={ind}>{`* ${error}`}</div>
+                        <div className='each-error-div-reviews' key={ind} >{`* ${error}`}</div>
                     ))}
                 </div>
                 <div className='App'>
-                    <p>Overall rating</p>
+                    <p className='input-label-rating'>Overall rating</p>
                     <Rating 
                     fillColor={"#ff385c"}
                     onClick={handleRating} 
                     ratingValue={rating} />
                 </div>
-                <h2 id="form-h2">Add a written review</h2>
                 <div className='input-div'>
-                    {/* <label className='input-label required-field'>Content </label> */}
+                    <label className='input-label'>Add a written review</label>
                     <textarea
-                        className='text-area'
+                        className='add-review-text'
+                        placeholder='Add a review...'
                         type='text'
                         name='content'
                         required
@@ -87,9 +86,9 @@ const AddReviewForm = ({ spotId, userId }) => {
                 <div id="">
 
                 </div>
-                <div className='submit-btn-div'>
+                <div className='submit-btn-div-add-review'>
                     <button
-                        className="submit-btn"
+                        className="submit-btn-add-review"
                         // disabled={errors.length > 0}
                         type='submit'> Submit </button>
                 </div>

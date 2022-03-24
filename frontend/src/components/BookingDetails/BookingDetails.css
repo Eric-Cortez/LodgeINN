@@ -21,10 +21,11 @@
 .fa-star {
     font-size: 12px;
     color: #ff385c;
-
+    margin-right: 2px;
 }
 
 .booking-reviews-count {
+    display: flex;
    margin: 0;
    align-self: center;
    font-size: 12px;
@@ -59,7 +60,7 @@
 }  
 
 #date-start-input {
-    width: 90px;
+    width: 100px;
     height: 50px;
     border-top-left-radius: 10px;
     border: 1px solid rgb(176,176,176);
@@ -68,7 +69,7 @@
     
 }
 #date-end-input {
-    width: 90px;
+    width: 100px;
     height: 50px;
     border-top-right-radius: 10px;
     border: 1px solid rgb(176,176,176);
@@ -78,11 +79,12 @@
 .date-picker-div {
     display: flex;
     justify-content: center;
+    margin-top: 10px;
 }
 
 .guest-count-select {
     margin: 0;
-    width: 180px;
+    width: 200px;
     border: 1px solid rgb(176,176,176);
     align-self: center;
     border-top-right-radius: 0;
@@ -133,5 +135,24 @@
 .total-price.last {
     margin-bottom: 0;
     font-weight: 600 !important;
+}
+
+.location-title {
+    margin: 0;
+    font-size: 16px;
+}
+
+.host-title {
+    color: rgb(115,115,115);
+    font-size: 12px;
+    font-weight: 100;
+    margin: 5px 0;
+}
+
+.booking-dates {
+    font-weight: 100;
+    font-size: 14px;
+     color: rgb(115,115,115);
+    margin: 0;
 }
 

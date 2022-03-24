@@ -66,7 +66,7 @@ export const addReview = (payload) => async dispatch => {
 }
 
 export const editReview = (review, reviewId) => async dispatch => {
-    console.log(review, reviewId)
+
     const res = await csrfFetch(`/api/reviews/${reviewId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
@@ -83,14 +83,12 @@ export const editReview = (review, reviewId) => async dispatch => {
 }
 
 export const deleteReview = (reviewId) => async (dispatch) => {
-    console.log(reviewId, "thunk")
     const response = await csrfFetch(`/api/reviews/${reviewId}`, {
         method: 'delete'
     })
 
     if (response.ok) {
         const review = await response.json();
-        console.log(review.id, "deleted reviewID")
         await dispatch(deleteOneReview(review.id));
         return review;
     }

@@ -34,18 +34,28 @@ function ProfileButton({ user }) {
 
     return (
         <>
-            <button className="profile-menu" id="user-btn" onClick={openMenu}>
-                <i className="fas fa-bars" />
-                <i className="fas fa-user-circle" />
+            <button  id="user-btn" onClick={openMenu}>
+                <div className="dropdown-profile-btn">
+                    <i className="fas fa-bars" />
+                    <img className='nav-profile-img' src={"https://cdn2.vectorstock.com/i/1000x1000/20/76/man-avatar-profile-vector-21372076.jpg"} alt="profile " />  
+                </div>
             </button>
             {showMenu && (
                 <ul className="profile-dropdown">
-                    <li>User {user.username}</li>
-                    <li>{user.email}</li>
-                    <li>
-                        {/* <Link to="/spots/host">Host</Link> */}
-                    </li>
-                    <li>
+                    {/* <li className="dropdown-links">{user.username}</li> */}
+                    
+                     <Link to={`/users/${user?.id}/trips`} className="dropdown-link">
+                    <li className="dropdown-links">
+                       Trips
+                    </li></Link>
+
+                    <Link to={`/users/${user?.id}/listings`} className="dropdown-link">
+                    <li className="dropdown-links">
+                        Manage listings
+                       
+                    </li></Link>
+
+                    <li className="dropdown-links">
                         <button id="logOut" onClick={logout}>Log Out</button>
                     </li>
                 </ul>

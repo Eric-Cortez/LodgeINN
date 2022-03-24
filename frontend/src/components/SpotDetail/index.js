@@ -8,6 +8,7 @@ import BookingDetails from "../BookingDetails"
 import SpotMap from '../SpotMap';
 import { Reviews } from '../Reviews';
 import { getAllReviews } from "../../store/reviews"
+import { avgStars } from '../utils';
 
 
 const SpotDetail = ({ spotInfo, setSpotInfo}) => {
@@ -15,8 +16,8 @@ const SpotDetail = ({ spotInfo, setSpotInfo}) => {
     const { spotId } = useParams() 
     const history = useHistory()
     
-    const oneSpot = useSelector(state => state.spots[spotId])
-    const sessionUser = useSelector(state => state.session.user);
+    const oneSpot = useSelector(state => state?.spots[spotId])
+    const sessionUser = useSelector(state => state?.session?.user);
     const allSpotReviews = useSelector(state => state?.reviews)
 
 
@@ -43,17 +44,7 @@ const SpotDetail = ({ spotInfo, setSpotInfo}) => {
         }
     }
 
-    function avgStars() {
-        let sum = 0
-        let reviews = allSpotReviews?.list 
-        for (let i = 0; i < reviews?.length; i++) {
-            let num = reviews[i]?.rating
-            sum += num;
-        }
-        
-        return `${Number.parseFloat(sum / reviews?.length).toFixed(1)}`
-    }
-
+  
     
     return (
         <div className='spot-detail'> 
@@ -111,26 +102,26 @@ const SpotDetail = ({ spotInfo, setSpotInfo}) => {
                     <h4>{(oneSpot?.Amenities[0]?.privateBeachAccess) ? <p><i className="fas symb fa-umbrella-beach"></i> Private Beach Access </p> : ''}</h4>
                     </div>
             </div>
+
             {sessionUser?.id !== oneSpot?.User?.id &&
             <div className='review-div'>
-                           
                 {allSpotReviews &&
                     <h3 className='spot-rating-count'> 
-                        <i className="fas fa-star rating-review"></i> 
-                                    {avgStars()} • {allSpotReviews?.list?.length} {allSpotReviews?.list?.length === 1 ? 'review' : 'reviews'}
+                                    <i className="fas fa-star rating-review"></i>{allSpotReviews?.list?.length ? avgStars(allSpotReviews?.list) : ""} • {allSpotReviews?.list?.length} {allSpotReviews?.list?.length === 1 ? 'review' : 'reviews'}
                     </h3>
                 }          
               
                  <Reviews spot={oneSpot} user={sessionUser}/>
             </div>}
 
-            <div>
+            <div className='google-map-div'>
+               <h4>Where you'll be</h4>
                 <SpotMap oneSpot={oneSpot} />
             </div>
 
             </div>
             
-            <BookingDetails spotId={spotId} spot={oneSpot} user={sessionUser} />
+                <BookingDetails spotId={spotId} spot={oneSpot} user={sessionUser} allSpotReviews={allSpotReviews?.list} />
         </div>
         </div>
     )

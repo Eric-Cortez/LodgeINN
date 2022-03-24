@@ -1,9 +1,0 @@
- * {
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-.login-form{ 
-    display: flex;
-    flex-direction: column;
-    border-radius: 8px;
-}

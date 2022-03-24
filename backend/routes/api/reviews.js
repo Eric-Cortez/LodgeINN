@@ -63,7 +63,6 @@ router.put('/:id',
         
         const reviewId = parseInt(req.params.id, 10);
         const currReview = await Review.findByPk(reviewId);
-        console.log("id-------->", currReview)
         
         const { rating, review} = req.body
         
@@ -73,7 +72,7 @@ router.put('/:id',
             review
         }
         const updatedReview = await currReview.update(newReview)
-        console.log(updatedReview)
+        
         return res.json({
             updatedReview
         })

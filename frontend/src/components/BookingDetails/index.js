@@ -1,36 +1,49 @@
 import React, { useEffect, useState } from 'react'
 import DatePicker from "react-datepicker"
-import moment from 'moment';
-import bookingReducer, { addBooking, getAllBookings } from '../../store/booking';
+import  { addBooking, getAllBookings } from '../../store/booking';
 import { useDispatch, useSelector, } from 'react-redux';
 import { addDays } from 'date-fns';
 import { useHistory } from 'react-router-dom';
 import "./BookingDetails.css"
-import { dateFormat, disableCustomDt, customSelect, dayCount, handleDisabledDatesInRange } from '../utils';
+import { disableCustomDt, dayCount, handleDisabledDatesInRange } from '../utils';
+import { avgStars } from '../utils';
+import { getAllSpots } from '../../store/spots';
 
 
-const BookingDetails = ({ spotId, spot, user }) => {
+const BookingDetails = ({ spotId, user, allSpotReviews }) => {
+ 
     const dispatch = useDispatch()
     const history = useHistory()
-    // format todays date 
-    let today = new Date();
-    let dd = String(today.getDate()).padStart(2, '0');
-    let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-    let yyyy = today.getFullYear();
-    today = yyyy + '/' + mm + '/' + dd
-    // const yesterday = new Date(new Date(today).setDate(new Date(today).getDate() - 1))
 
-  
-    const guestLimit = customSelect(spot?.guests)
+ const customSelect = (guestLimit) => {
+        const limitArr = []
+        for (let i = 1; i <= guestLimit; i++) {
+            limitArr.push(i)
+        }
+        return limitArr
+    }
+    
     const allBookings = useSelector(state => state?.booking?.list)
+    const spot = useSelector(state => state?.spots[spotId])
     const [startDate, setStartDate] = useState("");
     const [endDate, setEndDate] = useState("");
-    const [guestCount, setGuestCount] = useState(guestLimit[0])
-    const spotBookings = allBookings.filter(booking => booking.spotId === +spotId)
+    const [guestCount, setGuestCount] = useState(customSelect(spot?.guests)[0])
+    const [displayErrors, setDisplayErrors] = useState(false)
+    const [errors, setErrors] = useState([])
+    const spotBookings = allBookings?.filter(booking => booking?.spotId === +spotId)
+
 
     useEffect(() => {
         dispatch(getAllBookings())
+        dispatch(getAllSpots())
     }, [guestCount, startDate, endDate, dispatch]);
+
+    useEffect(() => {
+        const errors = [];
+        if(startDate === "") errors.push("Please select a check-in date")
+        if(endDate === "") errors.push("Please Select a checkout date")
+        setErrors(errors)
+    }, [startDate, endDate])
 
 
     const handleSubmit = async (e) => {
@@ -40,10 +53,19 @@ const BookingDetails = ({ spotId, spot, user }) => {
             userId: user.id,
             startDate: startDate,
             endDate: endDate,
-            guestCount: +guestCount
+            guestCount: guestCount
         }
-        const res = await dispatch(addBooking(payload))
-        history.push(`/`)
+     
+        let res;
+        if (errors && errors.length === 0) {
+            res = await dispatch(addBooking(payload))
+        } else {
+            setDisplayErrors(true)
+        }
+
+        if(res) {
+            history.push(`/users/${user?.id}/trips`)
+        }
     }
 
  
@@ -54,19 +76,28 @@ const BookingDetails = ({ spotId, spot, user }) => {
             <div className='upper-booking-detail-div'>
         
                 <span id="one-price"><h3 className='price-per-n'>{`$${spot?.price}`}</h3> <span className='per-night-label'>/ night</span></span>
-                <span className='booking-reviews-count'><i className="fas fa-star"></i>[#]·[#] reviews</span>
+               
+                {allSpotReviews &&
+                 
+                    <span className='booking-reviews-count'><i className="fas fa-star"></i> {allSpotReviews.length ? avgStars(allSpotReviews) : "" }  · {allSpotReviews?.length} {allSpotReviews?.length === 1 ? 'review' : 'reviews'}</span>
+                }   
+            
+            
+            </div>
+            <div className='each-error-div'>
+                {displayErrors && errors?.map((error, ind) => (
+                    <div className="each-error-div" key={ind}>{`* ${error}`}</div>
+                ))}
             </div>
             <form className='booking-form' onSubmit={handleSubmit}>
-                <div id="booked-msg">
-
-                </div> 
+                <div id="booked-msg"></div> 
                 <div className='date-picker-div'>
                 <DatePicker
                     id="date-start-input"
                     selected={startDate}
                     onChange={(date) => setStartDate(date)}
                     selectsStart
-                    placeholderText='Add date'
+                    placeholderText='Check-in date'
                     startDate={startDate}
                     endDate={endDate}
                     minDate={new Date()}
@@ -77,7 +108,7 @@ const BookingDetails = ({ spotId, spot, user }) => {
                     selected={endDate}
                     onChange={(date) => setEndDate(date)}
                     selectsEnd
-                    placeholderText='Add date'
+                    placeholderText='Check-out date'
                     startDate={startDate}
                     endDate={endDate}
                     excludeDates={disableCustomDt(spotBookings)}
@@ -87,8 +118,9 @@ const BookingDetails = ({ spotId, spot, user }) => {
                 <select
                     onChange={e => setGuestCount(e.target.value)}
                     className="guest-count-select"
+                    value={guestCount}
                     >
-                    {guestLimit.map(num => {
+                    {customSelect(spot?.guests)?.map(num => {
                         if(num === 1) {
                             return   <option key={num} value={num}>{num} guest</option>
                         } else {
@@ -98,7 +130,7 @@ const BookingDetails = ({ spotId, spot, user }) => {
                     })}
 
                 </select>
-                <button className='reserve-booking-btn'>Reserve</button>
+                <button className='reserve-booking-btn'>{startDate === "" && endDate === "" ? "Check availability" : "Reserve" }</button>
                 {endDate ? <div>
                 <h5 className='reserve-msg'>You won't be charged yet</h5>
                 <p className='total-price'>{`$${spot?.price}`} x {dayCount(startDate, endDate) === 1 ? `${dayCount(startDate, endDate)} night` : `${dayCount(startDate, endDate)} nights`}   </p>

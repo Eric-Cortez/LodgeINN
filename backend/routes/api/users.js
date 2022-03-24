@@ -48,4 +48,19 @@ router.post(
     }),
 );
 
+// GET all users 
+router.get("/all", asyncHandler(async (req, res) => {
+    const allUsers = await User.findAll()
+
+    return res.json(allUsers)
+}))
+
+router.get("/:userId", asyncHandler(async (req, res) => {
+    const userId = parseInt(req.params.userId, 10)
+    const user = await User.findByPk(userId)
+
+    return res.json(user)
+}))
+
+
 module.exports = router;

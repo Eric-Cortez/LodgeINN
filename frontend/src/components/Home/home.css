@@ -32,10 +32,10 @@
 .middle-center,
 .bottom-center {
   position: absolute;
-  top: 60%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 75px;
+  font-size: 50;
   font-family: Arial, Helvetica, sans-serif;
   background-color: transparent;
   color: white;
@@ -45,8 +45,8 @@
 
 .centered-button {
   position: absolute;
-  top: 80%;
-  left: 50%;
+  bottom: 10%;
+  right: 30%;
   transform: translate(-50%, -50%);
   font-size: 25px;
   font-family: Arial, Helvetica, sans-serif;

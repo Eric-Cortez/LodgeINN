@@ -1,8 +1,5 @@
 i#logo-icon {
-    font-size: 50px;
-    padding-right: 4px;
-    margin-left: 30px;
-    margin-bottom: 20px;
+    font-size: 40px;
     font-weight: 500;
     height: 100%;
 }
@@ -12,38 +9,84 @@ a#logo {
    height: 100%;
    font-weight: 800;
    color: rgb(234,91,98);
+   align-self: center !important;
 }
 
 
 
-ul {
+.main-nav-ul {
     display: flex;
     justify-content: space-between;
     padding: 0;
     margin: 0;
     height: 7%;
+    margin: 0 40px;
+    padding: 15px 0;
 }
 
 li::marker {
     text-decoration: none !important;
 }
 
-i.fa-user-circle, 
+.search-main > * {
+    display: flex;
+    justify-content: center;
+}
+
+.search-form {
+    margin: 0;
+    padding: 0;
+}
+
+.all-nav-links {
+    align-self: center;
+}
+
+.all-nav-links > * {
+   color: #343434;
+   font-size: 15px;
+   font-weight: 600;
+   margin-left: 5px;
+   padding: 11px;
+  
+}
+
+
  .fa-bars  {
+    font-size: 16px;
+    padding-right: 10px;
+    color: gray;
+}
+
+.nav-profile-img {
     font-size: 30px;
+    height: 30px;
+    width: 30px;
     border-radius: 50%;
     color: gray;
     padding: 3px 2px;
 }
 
+.dropdown-profile-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 20px;
+}
+
+#user-btn:hover {
+    box-shadow: 0 5px 5px rgba(52, 52, 52, 0.2);   
+    transition: 0.2s ;
+}
+
+
 .login-btn,
 #demo-btn,
 a {
     text-decoration: none;
-    color: grey;
-    text-decoration: none;
-    font-size: 20px;
-    font-weight: 700;
+    border: none;
+    padding: 0;
+    padding: 11px;
 } 
 
 
@@ -51,11 +94,7 @@ a {
     padding-left: 15px;
 } 
 
-.login-btn,
-#demo-btn {
-border: none;
-margin-right: 20px;
-}
+
 
 nav {
     padding: 0;
@@ -63,13 +102,13 @@ nav {
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 1;
-    padding-top: 15px;
-    background-color: rgb(241,241,241);
+    z-index: 2;
+    background-color: white;
     overflow: hidden;
+    box-shadow: 10px 0px 20px rgba(52, 52, 52, 0.2);
 }
 nav * {
-     background-color: rgb(241,241,241);
+     background-color: white;
 }
 
 
@@ -85,48 +124,98 @@ nav * {
 
 
 a.nav-links {
-    /* border: 1px solid red; */
+  
     padding-right: 20px;
 }
 
-#user-btn {
-    border-radius: 21px !important;
+button#user-btn {
+    border-radius: 25px !important;
     overflow: visible !important;
-    padding: 2px 15px;
-    border: 1pz solid lightgray;
-    margin-right: 50px;
+    padding: 2px 10px;
+    padding-right: 5px;
+    border: 1px solid rgb(221,221,221) !important;
 }
 
 
 #logOut { 
-    left: 50px;
-    list-style: none;
-    background: none;
-    border: none;
-    color: #FF5A5F;
-    background-color: white; /* Green */
-    border: 2px solid #FF5A5F;
-    padding: 4px 8px;
+    color: #343434;
+    background-color: transparent; 
     text-align: center;
     text-decoration: none;
-    display: inline-block;
     font-size: 12px;
-    margin: 6px 4px;
-    transition-duration: 0.4s;
-    margin-bottom: 5px;
-    margin-left: 28%;
+    font-weight: 600;
     cursor: pointer; 
-    margin-left: 0!important;
-    margin-right: 50px;
+    width: 100%;
+    text-align: start;
+    border: none;
+    padding: 0;
 }
 
 #logOut:hover { 
-  cursor: pointer;
-    transform: scale(1.1);
-    background-color: #FF5A5F;
-    color: white;
+    cursor: pointer;
+    transition-duration: .5s;
+    color: #FF5A5F;
+    
       
 }
 
 
+.search-main {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+}
 
+
+
+.nav-hover:hover {
+ background-color:  rgba(176, 176, 176, 0.2);
+ border-radius: 20px;
+}
+
+.fa-globe {
+    background-color: transparent;
+}
+
+
+
+ul.profile-dropdown {
+  padding: 0;
+  margin: 0;
+  border-radius: 10px;
+  min-width: 160px;
+  background-color: white;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.3);
+  padding: 10px 0;
+  width: fit-content;
+  position: fixed;
+  top: 65px;
+  right: 40px;
+}
+
+.profile-dropdown * {
+    background-color: white;
+    color: #343434;
+}
+
+
+.dropdown-links {
+    font-size: 14px !important;
+    padding: 8px 10px !important;
+    margin: 0;
+    font-weight: 600 !important;
+}
+.dropdown-link {
+    margin: 0;
+    padding: 0;
+    font-size: 14px !important;
+    font-weight: 600;
+    background-color: transparent;
+    /* border: 2px solid red;
+    height: 100% !important;
+    width: 100% !important; */
+}
+
+.dropdown-links:hover {
+   background-color:  rgba(176, 176, 176, 0.3) !important;
+}
