@@ -5,6 +5,7 @@ import { states } from '../utils.js'
 import { editSpot } from "../../store/spots"
 import "./EditSpotForm.css"
 import { getOneSpot } from "../../store/spots"
+import "../Forms/GlobalForm.css"
 
 function EditSpotForm() {
 
@@ -36,7 +37,7 @@ function EditSpotForm() {
     const [pets, setPets] = useState(spotInfo?.Amenities[0]?.pets);
     const [validationErrors, setValidationErrors] = useState([])
 
-  
+
     useEffect(() => {
         dispatch(getOneSpot(spotId))
         if (title) localStorage.setItem("title", spotInfo?.title)
@@ -85,7 +86,7 @@ function EditSpotForm() {
         setBedrooms(localBedrooms)
         const localBathrooms = localStorage.getItem("bathrooms");
         setBathrooms(localBathrooms)
-        const localUrl= localStorage.getItem("url");
+        const localUrl = localStorage.getItem("url");
         setUrl(localUrl)
         const localKitchen = localStorage.getItem("kitchen");
         setKitchen(localKitchen === 'true' ? true : false)
@@ -114,11 +115,11 @@ function EditSpotForm() {
         if (!description?.length || description?.length === 0) errors.push("Please provide a description")
         if (price < 1 && price !== 0) errors.push("Please provide a valid price per night")
         if (guests < 1 && guests !== 0) errors.push("Please provide a guest count.")
-        if (bedrooms < 1 &&  bedrooms !== 0) errors.push("Please provide a bedroom count.")
+        if (bedrooms < 1 && bedrooms !== 0) errors.push("Please provide a bedroom count.")
         if (bathrooms < 1 && bathrooms !== 0) errors.push("Please provide a bathroom count.")
         if (url?.length > 255 || url?.length === 0 || !url?.includes("http" || "https")) errors.push("Please provide valid Image address(url)")
         setValidationErrors(errors)
-    }, [address, city, state, country, title, description, price, zipCode, guests, bedrooms, bathrooms,url])
+    }, [address, city, state, country, title, description, price, zipCode, guests, bedrooms, bathrooms, url])
 
 
     const handleSubmit = async (e) => {
@@ -155,12 +156,13 @@ function EditSpotForm() {
             }
         }
 
-    
+
 
         let createdSpot;
         try {
             createdSpot = await dispatch(editSpot(payload, spotId));
         } catch (error) {
+            
             throw new Error("This did not work!!")
             // if (error instanceof ValidationError) setErrorMessages(error.errors);
             // // If error is not a ValidationError, add slice at the end to remove extra
@@ -176,19 +178,314 @@ function EditSpotForm() {
     };
 
     return (
-        <div id="host-form" >
+        <div id="host-form-edit" >
             <form onSubmit={handleSubmit}>
-                <div id="form-container">
-                    <div id="top-host-form">
-                        <h1 className="Upper-title">Host Edit Form</h1>
-                        <ul className="errors-center">
-                            {validationErrors.map(error => (
-                                <li className="list-of-err" key={error}> •  {error}</li>
-                            ))}
-                        </ul>
-                    </div>
 
-                    <div id="left-host-form">
+                <div id="top-host-form">
+                    <h1>Edit Spot Details</h1>
+                    <ul className="errors-center">
+                        {validationErrors.map(error => (
+                            <li className="list-of-err" key={error}> •  {error}</li>
+                        ))}
+                    </ul>
+                </div>
+                <div className="form-line"></div>
+                <h3> Location </h3>
+                <div className='main-input-div'>
+                    <div className='inputs-container'>
+                        <div className='input-div-host'>
+                            <label
+                                className='input-label'
+                            > Address  </label>
+                            <input
+                                className="input host"
+                                required
+                                type='text'
+                                placeholder="Address"
+                                value={address}
+                                onChange={e => setAddress(e.target.value)}
+                            />
+
+                        </div>
+                        <div className='input-div-host'>
+                            <label
+                                className='input-label'
+                            > City</label>
+                            <input
+                                className="input host"
+                                required
+                                type='text'
+                                placeholder="City"
+                                value={city}
+                                onChange={e => setCity(e.target.value)}
+                            />
+
+                        </div>
+
+                        <div className='input-div-host'>
+                            <label
+                                className='input-label'
+                            > State </label>
+                            <select
+                                className="input select host"
+                                required
+                                type='text'
+                                placeholder="State"
+                                value={state}
+                                onChange={e => setState(e.target.value)}
+                            >
+                                {states.map(state => (
+                                    <option key={state}>
+                                        {state}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+
+                        <div className='input-div-host'>
+                            <label
+                                className='input-label'
+                            > Country </label>
+                            <input
+                                className="input host"
+                                required
+                                type='text'
+                                placeholder="Country"
+                                value={country}
+                                onChange={e => setCountry(e.target.value)}
+                            />
+                        </div>
+
+                        <div className='input-div-host'>
+                            <label
+                                className='input-label'
+                            > Zip Code</label>
+                            <input
+                                className="input host"
+                                required
+                                id="num-input"
+                                type='number'
+                                placeholder="Zip Code"
+                                value={zipCode}
+                                onChange={e => setZipCode(e.target.value)}
+                            />
+
+                        </div>
+                    </div>
+                </div>
+
+                <div className="form-line"></div>
+                <h3> Spot Details </h3>
+                <div className='main-input-div'>
+                    <div className='inputs-container'>
+
+                        <div className='input-div-host'>
+                            <label
+                                className='input-label'
+                            > Guests </label>
+                            <input
+                                className="input host"
+                                id="num-input"
+                                required
+                                type='number'
+                                placeholder="Guests"
+                                value={guests}
+                                onChange={e => setGuests(e.target.value)}
+                            />
+
+                        </div>
+                        <div className='input-div-host'>
+                            <label
+                                className='input-label'
+                            > Bedrooms</label>
+                            <input
+                                className="input host"
+                                id="num-input"
+                                required
+                                type='number'
+                                placeholder="Bedrooms"
+                                value={bedrooms}
+                                onChange={e => setBedrooms(e.target.value)}
+                            />
+                        </div>
+                        <div className='input-div-host'>
+                            <label
+                                className='input-label'
+                            > Bathrooms</label>
+                            <input
+                                className="input host"
+                                id="num-input"
+                                required
+                                type='number'
+                                placeholder="Bathrooms"
+                                value={bathrooms}
+                                onChange={e => setBathrooms(e.target.value)}
+                            />
+                        </div>
+
+                        <div className='input-div-host'>
+                            <label
+                                className='input-label'
+                            > Price per night</label>
+                            <input
+                                className="input host"
+                                required
+                                id="num-input"
+                                type='number'
+                                placeholder="Cost Per Night"
+                                value={price}
+                                onChange={e => setPrice(e.target.value)}
+                            />
+                        </div>
+                    </div>
+                </div>
+
+                <div className="form-line"></div>
+                <h3> Amenities </h3>
+                <div className='main-input-div'>
+                    <div className='inputs-container amenities'>
+                        <div className='each-checkbox-div'>
+                            <input
+                                id="kitchen"
+                                type="checkbox"
+                                checked={kitchen}
+                                onChange={(e) => setKitchen(!kitchen)}
+                            />
+                            <label htmlFor="kitchen"
+                                className="host-labels-box"
+                            >Kitchen</label>
+                        </div>
+                        <div className='each-checkbox-div'>
+                            <input
+                                id="privateBeachAccess"
+                                type="checkbox"
+                                checked={privateBeachAccess}
+                                onChange={(e) => setPrivateBeachAccess(!privateBeachAccess)}
+                            />
+                            <label htmlFor="privateBeachAccess"
+                                className="host-labels-box"
+                            >Private Beach Access</label>
+                        </div>
+
+                        <div className='each-checkbox-div'>
+                            <input
+                                id="firePlace"
+                                type="checkbox"
+                                checked={firePlace}
+                                onChange={(e) => setFirePlace(!firePlace)}
+                            />
+                            <label htmlFor="firePlace"
+                                className="host-labels-box"
+                            >Fire Place</label>
+                        </div>
+                        <div className='each-checkbox-div'>
+                            <input
+                                id="parking"
+                                type="checkbox"
+                                checked={parking}
+                                onChange={(e) => setParking(!parking)}
+                            />
+                            <label htmlFor="parking"
+                                className="host-labels-box"
+                            >Parking</label>
+                        </div>
+                        <div className='each-checkbox-div'>
+                            <input
+                                id="pool"
+                                type="checkbox"
+                                checked={pool}
+                                onChange={(e) => setPool(!pool)}
+                            />
+                            <label htmlFor="pool"
+                                className="host-labels-box"
+                            >Pool</label>
+                        </div>
+                        <div className='each-checkbox-div'>
+                            <input
+                                id="hotTub"
+                                type="checkbox"
+                                checked={hotTub}
+                                onChange={(e) => setHotTub(!hotTub)}
+                            />
+                            <label htmlFor="hotTub"
+                                className="host-labels-box"
+                            >Hot Tub</label>
+                        </div>
+                        <div className='each-checkbox-div'>
+                            <input
+                                id="pets"
+                                type="checkbox"
+                                checked={pets}
+                                onChange={(e) => setPets(!pets)}
+                            />
+                            <label htmlFor="pets"
+                                className="host-labels-box"
+                            >Pets </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="form-line"></div>
+                <h3> Description </h3>
+                <div className='main-input-div'>
+                    <div className='inputs-container'>
+
+                        <div className='input-div-host'>
+                            <label
+                                className='input-label'
+                            > Title </label>
+                            <input
+                                className="input host"
+                                required
+                                type='text'
+                                placeholder="Spot Name"
+                                value={title}
+                                onChange={e => setTitle(e.target.value)}
+                            />
+                        </div>
+                        <div className='input-div-host'>
+                            <label
+                                className='input-label'
+                            > Description </label>
+                            <textarea
+                                id="text-id"
+                                className="input host"
+                                required
+                                type='text'
+                                placeholder="Spot Description"
+                                value={description}
+                                onChange={e => setDescription(e.target.value)}
+                            />
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div className="form-line"></div>
+                <h3> Lodge Photo </h3>
+
+                <div className='main-input-div image'>
+                    <div className='inputs-container'>
+
+                        <div className='input-div-host'>
+                            <label
+                                className='input-label'
+                            > Image url </label>
+                            <input
+                                className="input host"
+                                required
+                                type='string'
+                                placeholder="image url"
+                                value={url}
+                                onChange={e => setUrl(e.target.value)}
+                            />
+
+                        </div>         
+                    </div>
+                </div>
+                <div className="form-line"></div>
+                {/* <div>
                         <h3 className="title-center"></h3>
                         <label
                             className="host-labels"
@@ -425,14 +722,15 @@ function EditSpotForm() {
                                 />
                             </label>
                         </div>
+                        
+                         </div> */}
                         <button
                             id="host-btn"
                             className="host-form"
                             disabled={validationErrors.length > 0}
                             type="submit">Submit</button>
                         <Link id="host-cancel-btn" exact="true" to={`/spots/${spotId}`}>Cancel</Link>
-                    </div>
-                </div>
+                   
             </form>
         </div>
     )

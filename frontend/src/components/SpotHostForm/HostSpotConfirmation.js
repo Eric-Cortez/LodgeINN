@@ -42,7 +42,7 @@ const HostSpotConfirmation = ({
       <p>{`Bathrooms: ${bathrooms}`}</p>
       <p>{`Price per night: $${price}`}</p>
         <div className='confirm-sub-title'></div>
-        <h3>amenities  <button className="confirm-edit" onClick={() => setStep(3)}><i class="fas fa-edit"></i></button></h3>
+        <h3>Amenities  <button className="confirm-edit" onClick={() => setStep(3)}><i class="fas fa-edit"></i></button></h3>
         {filteredArrAmen && filteredArrAmen?.map(amen => (
         <p key={amen}>{amen}</p>
       ))}
@@ -51,7 +51,7 @@ const HostSpotConfirmation = ({
         <p>{`Title: ${title}`}</p>
         <p>{`Description: ${description}`}</p>
         <div className='confirm-sub-title'></div>
-        <h3>Cabin Photo  <button className="confirm-edit" onClick={() => setStep(5)}><i class="fas fa-edit"></i></button></h3>
+        <h3>Lodge Photo  <button className="confirm-edit" onClick={() => setStep(5)}><i class="fas fa-edit"></i></button></h3>
       <img className='cabin-image' src={url}/>
       </div>
        

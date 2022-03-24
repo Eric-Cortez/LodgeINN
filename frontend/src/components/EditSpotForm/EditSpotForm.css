@@ -1,0 +1,9 @@
+#host-form-edit {
+    height: auto;
+    margin: 10% 5%;
+}
+
+.form-line {
+    border-top: 1px solid rgb(221, 221, 221);
+    margin-top: 22px;
+}
