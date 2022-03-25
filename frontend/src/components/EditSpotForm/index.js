@@ -36,8 +36,9 @@ function EditSpotForm() {
     const [hotTub, setHotTub] = useState(spotInfo?.Amenities[0]?.hotTub);
     const [pets, setPets] = useState(spotInfo?.Amenities[0]?.pets);
     const [validationErrors, setValidationErrors] = useState([])
+    const [displayErrors, setDisplayErrors] = useState(false);
 
-
+    console.log(validationErrors, displayErrors, "errors status")
     useEffect(() => {
         dispatch(getOneSpot(spotId))
         if (title) localStorage.setItem("title", spotInfo?.title)
@@ -111,7 +112,7 @@ function EditSpotForm() {
         if (state === '--Select a State--') errors.push("Please select a state")
         if (city?.length > 255 || country?.length === 0) errors.push("City must be less 255 characters")
         if (address?.length > 255 || address?.length === 0) errors.push("Address must be less 255 characters")
-        if (zipCode?.length > 0 && zipCode?.length > 6 || zipCode?.length === 0) errors.push("Please provide a valid zip code")
+        if ((zipCode?.length > 0 && zipCode?.length > 6) || zipCode?.length === 0) errors.push("Please provide a valid zip code")
         if (!description?.length || description?.length === 0) errors.push("Please provide a description")
         if (price < 1 && price !== 0) errors.push("Please provide a valid price per night")
         if (guests < 1 && guests !== 0) errors.push("Please provide a guest count.")
@@ -119,12 +120,11 @@ function EditSpotForm() {
         if (bathrooms < 1 && bathrooms !== 0) errors.push("Please provide a bathroom count.")
         if (url?.length > 255 || url?.length === 0 || !url?.includes("http" || "https")) errors.push("Please provide valid Image address(url)")
         setValidationErrors(errors)
-    }, [address, city, state, country, title, description, price, zipCode, guests, bedrooms, bathrooms, url])
+    }, [ address, city, state, country, title, description, price, zipCode, guests, bedrooms, bathrooms, url])
 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
         const payload = {
             amenities: {
                 id: spotInfo?.Amenities[0]?.id,
@@ -155,39 +155,62 @@ function EditSpotForm() {
                 bathrooms
             }
         }
-
+        console.log("hhhh")
+        console.log(payload)
 
 
         let createdSpot;
-        try {
-            createdSpot = await dispatch(editSpot(payload, spotId));
-        } catch (error) {
 
-            throw new Error("This did not work!!")
-            // if (error instanceof ValidationError) setErrorMessages(error.errors);
-            // // If error is not a ValidationError, add slice at the end to remove extra
-            // // "Error: "
-            // else setErrorMessages({ overall: error.toString().slice(7) })
+        if (validationErrors && validationErrors.length === 0) {
+            createdSpot = await dispatch(editSpot(payload, spotId));
+        } else {
+            setDisplayErrors(true)
+            const div = document.getElementById("top-host-form")
+            div.style.visibility = "visible"
+            div.style.color = "white"
+            div.style.backgroundColor = "rgba(229,30,80, 0.9)"
+            div.style.borderRadius = "10px"
+            div.style.position = "fixed"
+            div.style.top = "100px"
+            div.style.right = "20px"
+            div.style.fontSize = "18px"
+            div.style.fontWeight = "400"
+            div.style.padding = "15px"
+            setTimeout(() => div.style.visibility = "hidden", 3000)
         }
-        //!!END
-        if (createdSpot) {
-            //     setErrorMessages({});
+
+        if(createdSpot){
             history.push(`/spots/${createdSpot.id.id}`);
             localStorage.clear();
         }
+
+        // try {
+        //     createdSpot = await dispatch(editSpot(payload, spotId));
+        // } catch (error) {
+        //     setDisplayErrors(true)
+        //     throw new Error("This did not work!!")
+        //     // if (error instanceof ValidationError) setErrorMessages(error.errors);
+        //     // // If error is not a ValidationError, add slice at the end to remove extra
+        //     // // "Error: "
+        //     // else setErrorMessages({ overall: error.toString().slice(7) })
+        // }
+        // //!!END
+        // if (createdSpot) {
+        //     //     setErrorMessages({});
+        //     history.push(`/spots/${createdSpot.id.id}`);
+        //     localStorage.clear();
+        // }
     };
 
     return (
         <div id="host-form-edit" >
             <form onSubmit={handleSubmit}>
 
-                <div id="top-host-form">
                     <h1>Edit Spot Details</h1>
-                    <ul className="errors-center">
-                        {validationErrors.map(error => (
-                            <li className="list-of-err" key={error}> •  {error}</li>
+                <div id="top-host-form">
+                        {displayErrors && validationErrors.map(error => (
+                            <div className="list-of-err" key={error}> * {error}</div>
                         ))}
-                    </ul>
                 </div>
                 <div className="form-line"></div>
                 <h3 className="edit-spot-title"> Location </h3>
@@ -494,7 +517,7 @@ function EditSpotForm() {
                     <button
                         id="host-btn"
                         className="host-form edit-spot"
-                        disabled={validationErrors.length > 0}
+                        // disabled={validationErrors.length > 0}
                         type="submit">Submit</button>
                 </div>
             </form>

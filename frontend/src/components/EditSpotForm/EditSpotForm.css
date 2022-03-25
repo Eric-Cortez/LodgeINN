@@ -36,3 +36,9 @@
     color: black;
     text-decoration: underline;
 }
+
+.list-of-err {
+    color: white;
+    background-color: transparent;
+    padding: 0;
+}
