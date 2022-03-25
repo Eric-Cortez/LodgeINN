@@ -64,7 +64,6 @@ router.delete("/:bookingId",
 requireAuth,
 asyncHandler(async (req, res) => {
     const bookingId = parseInt(req.params.bookingId, 10);
-    console.log(bookingId, "IIIIIIID")
     const currBooking = await Booking.findByPk(bookingId);
     await currBooking.destroy()
     

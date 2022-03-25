@@ -149,7 +149,6 @@ const BookingDetails = ({ spotId, user, allSpotReviews }) => {
                 {endDate ? <div>
                     {/* <h5 className='reserve-msg'>You won't be charged yet</h5> */}
                     <h4 className='total-price heading'>Booking detail</h4>
-                    {console.log(guestCount)}
                     {guestCount && 
                     <p className='total-price'>Guest count: ({`${guestCount}`} { guestCount === 1 ? `guest` : `guests`} ) </p>
                     }

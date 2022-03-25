@@ -97,15 +97,12 @@ function SpotHostForm({ setShowModal }) {
 
         let createdSpot;
         if(payload) {
-            console.log("111entttter")
             createdSpot = await dispatch(addSpot(payload));
             await dispatch(getAllSpots())
-            console.log("2222")
         } else {
             setDisplayErrors(true)
         }
         if (createdSpot) {
-            console.log(createdSpot, "333created")
             setShowModal(false)
             history.push(`/spots/${createdSpot.id.id}`);
         }

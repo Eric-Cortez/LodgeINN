@@ -4,7 +4,6 @@ import { getAllReviews } from "../../store/reviews"
 import { avgStars } from '../utils'
 
 const Ratings = ({ spot }) => {
-    console.log(spot?.id)
     const dispatch = useDispatch()
 
     const allReviews = useSelector(state => state?.reviews)

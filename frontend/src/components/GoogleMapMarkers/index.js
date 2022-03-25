@@ -20,7 +20,6 @@
 //     googleMapsApiKey: environment,
 //     libraries: ["places"]
 //   })
-//   console.log(isLoaded)
 //   const center = useMemo(() => ({ lat: 43, lng: -80 }), []);
 
 //   if (!isLoaded) return <div className = 'map-image'>Loading...</div>

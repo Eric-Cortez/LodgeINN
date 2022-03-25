@@ -100,7 +100,6 @@ const TripPage = () => {
              
             </div>
           ))}
-          {console.log(futureNPastBookings(userBookings)?.futureDates.length)}
           {futureNPastBookings(userBookings)?.futureDates.length === 0 &&
             <div className='each-booking-container'>
               <p>No upcoming trips...<NavLink className="explore-new" to="/spots">explore</NavLink></p>

@@ -11,7 +11,6 @@ const SpotImage = ({
 
   const [displayErrors, setDisplayErrors] = useState(false)
   const [errors, setErrors] = useState([])
-  console.log(errors)
   useEffect(() => {
     const errors = []
     if (!url) errors.push("Please provide an image")

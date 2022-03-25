@@ -52,9 +52,11 @@
   height: fit-content;
   background-color: white;
   color: rgb(120, 20, 145);
+  transition-duration: 0.4s;
 }
 
 .another-spot:hover {
+  transform: scale(1.1);
   background-color: rgb(120, 20, 145);
   color: white;
 }

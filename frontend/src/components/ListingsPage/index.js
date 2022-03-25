@@ -12,8 +12,6 @@ const Listings = () => {
     const sessionUser = useSelector(state => state?.session?.user)
     const listings = useSelector(state => state?.spots?.list)
     const usersListings = listings.filter(listing => listing?.userId === sessionUser?.id)
-    console.log(usersListings)
-
 
     useEffect(() => {
         dispatch(getAllSpots())
@@ -29,7 +27,7 @@ const Listings = () => {
             <div className='all-listings'>
                 <h3>Your Listings</h3>
                 {usersListings && usersListings.map(listing => (
-                    <>
+                    <div key={`1${listing?.id}`}>
                         <div key={listing?.id} className='booking-post-info'>
                             <div className='left-listing-div'>
                                 <Link to={`/spots/${listing?.id}`}>
@@ -46,7 +44,7 @@ const Listings = () => {
                             </div>
                         </div>
                         <div className='each-line'></div>
-                    </>
+                    </div>
                 ))}
             </div>
         </div>

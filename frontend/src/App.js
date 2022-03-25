@@ -10,6 +10,7 @@ import EditSpotForm from "./components/EditSpotForm"
 import Footer from "./components/Footer";
 import TripPage from "./components/TripsPage";
 import Listings from "./components/ListingsPage";
+import NotFound from "./components/NotFound";
 
 
 function App() {
@@ -43,7 +44,7 @@ function App() {
             <TripPage />
           </Route>
           <Route>
-            <h1> Page Not Found: 404</h1>
+            <NotFound />
           </Route>
         </Switch>
       )}
