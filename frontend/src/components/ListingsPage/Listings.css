@@ -18,3 +18,27 @@
 .left-listing-div {
      display: flex;
 }
+
+.btn-basic.listing{
+     margin: 0 5px !important;
+     height: 25px !important;
+     padding: 6px !important;
+     font-size: 12px !important;
+}
+
+.edit-del-listing-div {
+   height: 99%;
+    display: flex;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: center;
+}
+
+.edit-del-inner {
+     height: fit-content;
+}
+
+.booking-post-info {
+     display: flex;
+     justify-content: space-between;
+}

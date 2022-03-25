@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom'
 import { deleteSpot } from '../../store/spots'
 import { getAllSpots } from '../../store/spots'
 import { Link } from 'react-router-dom'
+import "../Forms/GlobalForm.css"
 
 const EditDeleteListing = ({oneSpot}) => {
     const dispatch = useDispatch()
@@ -23,9 +24,11 @@ const EditDeleteListing = ({oneSpot}) => {
     }
 
   return (
-    <div>
-          <Link className="spot-delete-new" to={`/spots/${oneSpot?.id}/host`}>Edit Spot</Link>
-          <button className="spot-delete-new" onClick={deleteBtn}>Delete</button>
+    <div className='edit-del-listing-div'>
+        <div className='edit-del-inner'>
+          <Link className="btn-basic listing" to={`/spots/${oneSpot?.id}/host`}>Edit Spot</Link>
+          <button className="btn-basic listing" onClick={deleteBtn}>Delete</button>
+        </div>
     </div>
   )
 }

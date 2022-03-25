@@ -23,24 +23,24 @@ const Listings = () => {
     return (
         <div className='trip-page-main'>
             <h2 className='trip-title'>Listings</h2>
-                <AddHostFormModal type={"listing-page"}/>
+            <AddHostFormModal type={"listing-page"} />
             <div className='all-listings'>
                 <h3>Your Listings</h3>
                 {usersListings && usersListings.map(listing => (
                     <>
                         <div key={listing?.id} className='booking-post-info'>
                             <div className='left-listing-div'>
-                            <Link to={`/spots/${listing?.id}`}>
-                                <img className="trip-image-small" src={`${listing?.Images[0]?.url}`} alt="spot" />
-                            </Link>
-                            <div className='content-details'>
-                                <h4 className='location-title'>{listing?.title}</h4>
-                                <h5 className='host-title'>{listing?.address} </h5>
-                                <p className='booking-dates'>{listing?.city}, {listing?.state}</p>
-                            </div>
+                                <Link to={`/spots/${listing?.id}`}>
+                                    <img className="trip-image-small" src={`${listing?.Images[0]?.url}`} alt="spot" />
+                                </Link>
+                                <div className='content-details'>
+                                    <h4 className='location-title'>{listing?.title}</h4>
+                                    <h5 className='host-title'>{listing?.address} </h5>
+                                    <p className='booking-dates'>{listing?.city}, {listing?.state}</p>
+                                </div>
                             </div>
                             <div>
-                                <EditDeleteListing oneSpot={listing}/>
+                                <EditDeleteListing oneSpot={listing} />
                             </div>
                         </div>
                         <div className='each-line'></div>
