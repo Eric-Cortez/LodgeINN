@@ -3,12 +3,12 @@ import { Modal } from '../Modal';
 import "../Modal.css"
 import SpotHostForm from '../../components/SpotHostForm/index.js';
 
-function AddHostFormModal() {
+function AddHostFormModal({type}) {
     const [showModal, setShowModal] = useState(false);
 
     return (
         <>
-            <button id="review-preview-edit" className='nav-hover' onClick={() => setShowModal(true)}>Become A Host</button>
+            <button id="review-preview-edit" className='nav-hover' onClick={() => setShowModal(true)}>{type === "listing-page" ? "Host another spot" : "Become A Host"}</button>
             {showModal && (
                 <Modal onClose={() => {
                     setShowModal(false)

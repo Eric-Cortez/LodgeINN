@@ -3,3 +3,18 @@
      height: 100%;
      width: 100%;
 }
+
+.all-listings {
+     margin-bottom: 100px;
+     margin: 2% 15%;
+}
+
+
+.each-line {
+    border-bottom: rgb(235,235,235) 1.5px solid;
+    width: 95%;
+}
+
+.left-listing-div {
+     display: flex;
+}

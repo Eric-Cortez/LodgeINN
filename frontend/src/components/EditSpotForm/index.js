@@ -38,7 +38,7 @@ function EditSpotForm() {
     const [validationErrors, setValidationErrors] = useState([])
     const [displayErrors, setDisplayErrors] = useState(false);
 
-    console.log(validationErrors, displayErrors, "errors status")
+    
     useEffect(() => {
         dispatch(getOneSpot(spotId))
         if (title) localStorage.setItem("title", spotInfo?.title)
@@ -114,7 +114,7 @@ function EditSpotForm() {
         if (address?.length > 255 || address?.length === 0) errors.push("Address must be less 255 characters")
         if ((zipCode?.length > 0 && zipCode?.length > 6) || zipCode?.length === 0) errors.push("Please provide a valid zip code")
         if (!description?.length || description?.length === 0) errors.push("Please provide a description")
-        if (price < 1 && price !== 0) errors.push("Please provide a valid price per night")
+        if (price < 1 && price !== 0) errors.push("Please provide a valid price per night (less than 6 characters)")
         if (guests < 1 && guests !== 0) errors.push("Please provide a guest count.")
         if (bedrooms < 1 && bedrooms !== 0) errors.push("Please provide a bedroom count.")
         if (bathrooms < 1 && bathrooms !== 0) errors.push("Please provide a bathroom count.")
@@ -155,8 +155,6 @@ function EditSpotForm() {
                 bathrooms
             }
         }
-        console.log("hhhh")
-        console.log(payload)
 
 
         let createdSpot;

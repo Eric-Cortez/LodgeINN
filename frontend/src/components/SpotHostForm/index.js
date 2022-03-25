@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, Redirect, useHistory } from "react-router-dom";
-import { addSpot } from "../../store/spots"
+import { addSpot, getAllSpots } from "../../store/spots"
 import "./spotHostForm.css"
 import SpotInfo from "./SpotInfo.js";
 import SpotAddress from "./SpotAddress.js";
@@ -37,7 +37,7 @@ function SpotHostForm({ setShowModal }) {
     const [hotTub, setHotTub] = useState(false);
     const [pets, setPets] = useState(false);
     const [step, setStep] = useState(1)
-
+    const [displayErrors, setDisplayErrors] = useState(false);
 
 
     const allAmenitiesArr = {
@@ -58,13 +58,14 @@ function SpotHostForm({ setShowModal }) {
         parking,
         pool,
         hotTub,
-        pets])
+        pets,
+     displayErrors])
 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        //!!START SILENT
+
         const payload = {
             amenities: {
                 kitchen,
@@ -95,15 +96,31 @@ function SpotHostForm({ setShowModal }) {
         }
 
         let createdSpot;
-        try {
+        if(payload) {
+            console.log("111entttter")
             createdSpot = await dispatch(addSpot(payload));
-        } catch (error) {
-            throw new Error("Error - Resource not found")
+            await dispatch(getAllSpots())
+            console.log("2222")
+        } else {
+            setDisplayErrors(true)
         }
         if (createdSpot) {
+            console.log(createdSpot, "333created")
             setShowModal(false)
             history.push(`/spots/${createdSpot.id.id}`);
         }
+
+
+        // let createdSpot;
+        // try {
+        //     createdSpot = await dispatch(addSpot(payload));
+        // } catch (error) {
+        //     throw new Error("Error - Resource not found")
+        // }
+        // if (createdSpot) {
+        //     setShowModal(false)
+        //     history.push(`/spots/${createdSpot.id.id}`);
+        // }
     };
 
 
@@ -111,7 +128,13 @@ function SpotHostForm({ setShowModal }) {
 
     return (
         <form className="host-form-outer" onSubmit={handleSubmit}>
-
+           {displayErrors &&
+            <div id="host-spot-form"> 
+            * Unsuccessful
+            <br/>
+            Please review details
+            </div>}
+            
 
             {step === 1 &&
                 <SpotAddress
