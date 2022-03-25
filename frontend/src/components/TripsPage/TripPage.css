@@ -30,7 +30,7 @@
   border-radius: 15px;
   border: 1px solid #DDDDDD;
   display: flex;
-  height: 350px;
+  height: 400px;
   border-top-right-radius: 18px;
   border-bottom-right-radius: 18px;
   margin: 0 15%;
@@ -48,6 +48,9 @@
      width: 100%;
      border-top-right-radius: 15px;
      border-bottom-right-radius: 15px;
+     background-position: center;
+     background-repeat: no-repeat; 
+     background-size: cover;
 }
 
 .left-trip-div {
@@ -59,7 +62,7 @@
 
 .right-trip-div {
      width: 60%;
-     height: 350px;
+     height: 400px;
      border-top-right-radius: 15px;
      border-bottom-right-radius: 15px;
 }
