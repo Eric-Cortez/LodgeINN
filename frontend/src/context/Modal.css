@@ -29,3 +29,11 @@
   height: auto;
   width: auto;
 }
+
+.fa-edit.booking {
+ display: flex;
+ align-items: center;
+ height: 100%;
+ font-size: 20px;
+ margin:20px 0;
+}

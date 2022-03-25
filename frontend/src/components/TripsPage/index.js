@@ -90,9 +90,10 @@ const TripPage = () => {
                     <p className='Check-in'>Check-in 3PM</p>
                   </>
                   }
-                  
+           
                 <DeleteBookingBtn bookingId={date[1]?.id} />
                 <EditBookingModal spotId={date[1]?.spotId} booking={date[1]} />
+            
               </div>
              
             </div>
