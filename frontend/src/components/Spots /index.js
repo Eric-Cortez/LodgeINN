@@ -8,12 +8,12 @@ import "./Spots.css"
 import { avgStars } from "../utils";
 // import GoogleMapMarkers from "../GoogleMapMarkers";
 import SpotMap from "../SpotMap";
+import Ratings from "./Ratings";
 
 function Spots() {
     const dispatch = useDispatch()
     const allSpots = useSelector(state => state?.spots?.list)
 
-     
 
 
 
@@ -56,7 +56,10 @@ function Spots() {
                                        {(spot?.Amenities[0]?.hotTub) ? 'Hot tub' : (spot?.Amenities[0]?.kitchen) ? 'Kitchen' : ''}</p>
                                </div>
                                 <div key={`${spot?.title}7`} className="price-info-div">
+                                    <div className="star-num">
                                     <i key={`8${spot?.title}5`} className="fas fa-star spot"></i>
+                                    <Ratings  spot={spot}/>
+                                    </div>
                                     <p key={`9${spot?.title}5`}>${spot?.price} / night</p>
                                 </div>
 

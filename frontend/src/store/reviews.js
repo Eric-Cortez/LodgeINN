@@ -107,6 +107,7 @@ const reviewsReducer = (state = initialState, action) => {
             action.list.forEach(review => {
                 allReviews[review.id] = review
             });
+            console.log(action, "reducer")
             const res =  {
                 ...state,
                 ...allReviews,
