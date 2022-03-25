@@ -5,7 +5,7 @@ import ProfileButton from './ProfileButton';
 import Demo from './Demo';
 import './Navigation.css';
 import SearchBar from '../SearchBar';
-import AddHostFormModal from '../../context/AddHostFormModal/Index';
+import AddHostFormModal from '../../context/AddHostFormModal';
 
 import SignupFormModal from '../../context/SignupFormModal';
 import LoginFormModal from "../../context/LoginFormModal"

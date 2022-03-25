@@ -146,7 +146,6 @@ p#spot-detail-info {
 
  @media screen and (max-width: 1350px) {
  .right-container {
-    border:  2px solid red;
     display: none;
   }
 

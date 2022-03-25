@@ -4,7 +4,7 @@ import "../../components/TripsPage/TripPage.css"
 import { getAllSpots } from '../../store/spots'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import AddHostFormModal from '../../context/AddHostFormModal/Index'
+import AddHostFormModal from '../../context/AddHostFormModal'
 import EditDeleteListing from './EditDeleteListing'
 
 const Listings = () => {
