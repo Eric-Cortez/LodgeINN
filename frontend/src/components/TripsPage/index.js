@@ -9,6 +9,7 @@ import { getAllUsers } from "../../store/users"
 import DeleteBookingBtn from './DeleteBookingBtn';
 import { dateFormat } from '../utils';
 import EditBookingModal from '../../context/EditBookingModal';
+import { NavLink } from 'react-router-dom';
 
 const TripPage = () => {
   const sessionUser = useSelector(state => state?.session?.user);
@@ -46,7 +47,7 @@ const TripPage = () => {
   return (
     <div className='trip-page-main'>
     
-      <h2 className='trip-title'>Trips</h2>
+      {/* <h2 className='trip-title'>Trips</h2> */}
       <div id="booking-delete-msg"></div>
       <div className='trips-booking-div'>
         {!futureNPastBookings(userBookings).futureDates.length ?
@@ -98,6 +99,11 @@ const TripPage = () => {
              
             </div>
           ))}
+          {console.log(futureNPastBookings(userBookings)?.futureDates.length)}
+          {futureNPastBookings(userBookings)?.futureDates.length === 0 &&
+            <div className='each-booking-container'>
+              <p>No upcoming trips...<NavLink className="explore-new" to="/spots">explore</NavLink></p>
+            </div>}
         </div>
 
         <h3>Where you've been</h3>

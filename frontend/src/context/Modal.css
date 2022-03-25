@@ -41,3 +41,37 @@
 .no-account {
   margin: 2px;
 }
+
+.another-spot {
+  border: none;
+  background-color: none;
+  color: linear-gradient(to right,#59086E 0%,#460479 50%,#440589 100%) !important;
+  background-color: rgb(120, 20, 145);
+  color: white;
+  padding: 10px;
+  font-weight: 600;
+  border-radius: 20px;
+  height: fit-content;
+}
+
+.another-spot:hover {
+  background-color: rgb(89, 8, 110);
+}
+
+.listing-host-div-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 250px;
+  background-image: url("https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1032&q=80");
+  object-fit: contain !important;
+}
+
+.trip-title.listing {
+  background-color: transparent;
+  color: white;
+  font-weight: 900;
+  font-size: 50px;
+  margin-top: 1.5%;
+}

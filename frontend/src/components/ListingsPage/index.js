@@ -22,8 +22,10 @@ const Listings = () => {
 
     return (
         <div className='trip-page-main'>
-            <h2 className='trip-title'>Listings</h2>
-            <AddHostFormModal type={"listing-page"} />
+            <div className='listing-host-div-btn'>
+            <h2 className='trip-title listing'>Listings</h2>
+                <AddHostFormModal type={"listing-page"} />
+            </div>
             <div className='all-listings'>
                 <h3>Your Listings</h3>
                 {usersListings && usersListings.map(listing => (
