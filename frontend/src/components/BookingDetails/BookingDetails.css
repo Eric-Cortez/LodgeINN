@@ -156,3 +156,22 @@
     margin: 0;
 }
 
+
+.to-login-msg {
+    text-align: center;
+    margin: 8px;
+    margin-top: 12px;
+    width: 180px;
+    color: rgb(255, 56, 92)
+}
+
+.login-demo-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.or {
+    margin: 0 5px;
+    color: rgb(255, 56, 92)
+}
