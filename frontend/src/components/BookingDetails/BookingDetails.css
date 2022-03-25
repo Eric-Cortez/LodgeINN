@@ -122,6 +122,11 @@
     text-align: center;
 }
 
+.total-price.heading {
+    text-align: center;
+    font-weight: 500;
+}
+
 .total-price {
     font-size: 15px !important;
     line-height: 20px !important;
@@ -175,3 +180,4 @@
     margin: 0 5px;
     color: rgb(255, 56, 92)
 }
+

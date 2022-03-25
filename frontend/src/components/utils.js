@@ -119,7 +119,7 @@ export const handleDisabledDatesInRange = async (startDate, endDate, spotBooking
             div.style.fontSize = "18px"
             div.style.fontWeight = "400"
             div.style.padding = "15px"
-            setTimeout(() => div.remove(), 3000)
+            setTimeout(() => div.remove(), 1000)
             
             
             // const div = document.getElementById("booked-msg")

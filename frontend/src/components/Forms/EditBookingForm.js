@@ -78,7 +78,7 @@ const EditBookingForm = ({ setShowModal, spotId, booking}) => {
     
 
   return (
-      <div className='booking-div'>
+      <div className='booking-div edit'>
           <div className='upper-booking-detail-div'>
             <div>
 
@@ -137,10 +137,12 @@ const EditBookingForm = ({ setShowModal, spotId, booking}) => {
               </select>
               <button className='reserve-booking-btn'>Update reservation</button>
               {endDate ? <div>
+                  
                   <h5 className='reserve-msg'>Booking charges</h5>
-                  <p className='total-price'>{`$${spot?.price}`} x {dayCount(startDate, endDate) === 1 ? `${dayCount(startDate, endDate)} night` : `${dayCount(startDate, endDate)} nights`}   </p>
+                  <p className='total-price'>Price / night: {`$${spot?.price}`} x {dayCount(startDate, endDate) === 1 ? `${dayCount(startDate, endDate)} night` : `${dayCount(startDate, endDate)} nights`} ( {`${guestCount}`} {guestCount === 1 ? `guest` : `guests`} )</p>
+                  <p className='total-price'>Sales tax: {`$${Number.parseFloat(spot?.price * 0.092).toFixed(2)}`}</p>
                   <div className='booking-line'></div>
-                  <p className='total-price last'>Total: {`$${spot?.price * dayCount(startDate, endDate)}`}</p>
+                  <p className='total-price last'>Total: {`$${spot?.price * dayCount(startDate, endDate) + +Number.parseFloat(spot?.price * 0.092).toFixed(2)}`}</p>
               </div> : ""}
           </form>
       </div>
