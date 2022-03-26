@@ -145,6 +145,11 @@
 .location-title {
     margin: 0;
     font-size: 16px;
+    color: #343434;
+}
+
+.location-title:hover {
+    text-decoration: underline;
 }
 
 .host-title {

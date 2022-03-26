@@ -34,7 +34,9 @@ const Listings = () => {
                                     <img className="trip-image-small" src={`${listing?.Images[0]?.url}`} alt="spot" />
                                 </Link>
                                 <div className='content-details'>
-                                    <h4 className='location-title'>{listing?.title}</h4>
+                                    <Link className='location-title' to={`/spots/${listing?.id}`}>
+                                        <h4 className='location-title'>{listing?.title}</h4>
+                                    </Link>
                                     <h5 className='host-title'>{listing?.address} </h5>
                                     <p className='booking-dates'>{listing?.city}, {listing?.state}</p>
                                 </div>
