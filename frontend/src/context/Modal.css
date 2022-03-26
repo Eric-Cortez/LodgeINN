@@ -97,3 +97,30 @@
   background-color: white;
   color: #551a55;
 }
+
+.location-title-modal {
+    margin: 0;
+    padding-left: 0 !important;
+    font-size: 16px;
+    color: #343434;
+    border: none;
+    display: flex;
+    align-items: flex-start;
+}
+
+.location-title-modal-btn {
+    margin: 0;
+    padding-left: 0 !important;
+    margin-top: 2px;
+    font-size: 14px;
+    color: #343434;
+    border: none;
+    display: flex;
+    align-items: flex-start;
+}
+
+.location-title-modal-btn:hover {
+    text-decoration: underline;
+}
+
+

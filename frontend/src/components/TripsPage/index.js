@@ -10,6 +10,7 @@ import DeleteBookingBtn from './DeleteBookingBtn';
 import { dateFormat } from '../utils';
 import EditBookingModal from '../../context/EditBookingModal';
 import { NavLink } from 'react-router-dom';
+import BookingDetailsPreviewModal from '../../context/BookingDetailsPreviewModal';
 
 const TripPage = () => {
   const sessionUser = useSelector(state => state?.session?.user);
@@ -18,7 +19,7 @@ const TripPage = () => {
   const userBookings = allBookings?.filter(booking => booking?.userId === sessionUser?.id)
   const allSpots = useSelector(state => state?.spots)
   const allUsers = useSelector(state => state?.users)
- 
+
   useEffect(() => {
     dispatch(getAllUsers())
     dispatch(getAllBookings())
@@ -30,23 +31,23 @@ const TripPage = () => {
     const futureDates = []
     const todaysTrip = []
     for (let i = 0; i < allUserBookings.length; i++) {
-      let current = allUserBookings[i] 
+      let current = allUserBookings[i]
       if (dateFormat(new Date(current.startDate)) === dateFormat(new Date())) {
         todaysTrip.push([current.startDate, current, "today"])
       } else if (new Date(current.startDate).getTime() < new Date().getTime()) {
         pastDates.push([current.startDate, current])
-      } 
+      }
       else {
         futureDates.push([current.startDate, current])
       }
     }
 
-    return { pastDates: pastDates, futureDates: [ ...todaysTrip, ...futureDates] }
+    return { pastDates: pastDates, futureDates: [...todaysTrip, ...futureDates] }
   }
 
   return (
     <div className='trip-page-main'>
-    
+
       {/* <h2 className='trip-title'>Trips</h2> */}
       <div id="booking-delete-msg"></div>
       <div className='trips-booking-div'>
@@ -78,26 +79,35 @@ const TripPage = () => {
           {userBookings && futureNPastBookings(userBookings).futureDates.map(date => (
             <div key={`${date[1].id}1`} className='each-booking-container'>
               <div className='booking-post-info'>
-                <img className="trip-image-small" src={`${allSpots[date[1].spotId]?.Images[0]?.url}`} alt="spot" />
+
+                <Link to={`/spots/${date[1].spotId}`}>
+                  <img className="trip-image-small" src={`${allSpots[date[1].spotId]?.Images[0]?.url}`} alt="spot" />
+                </Link>
+
                 <div className='content-details'>
-                  <h4 className='location-title'>{allSpots[date[1].spotId]?.city}</h4>
+                  <h4 className='location-title-modal'>{allSpots[date[1].spotId]?.city}</h4>
                   <h5 className='host-title'>Hosted by {allUsers[allSpots[date[1].spotId]?.userId]?.username}</h5>
                   <p className='booking-dates'>{dateFormatOrder(new Date(date[0]), new Date(date[1]?.endDate))}</p>
+                  <BookingDetailsPreviewModal
+                    allSpots={allSpots}
+                    spotId={date[1].spotId}
+                    date={date}
+                    allUsers={allUsers} />
                 </div>
               </div>
               <div className='delete-button-div'>
-                  {date[2] &&
+                {date[2] &&
                   <>
                     <i className="fas fa-luggage-cart"></i>
                     <p className='Check-in'>Check-in 3PM</p>
                   </>
-                  }
-           
+                }
+
                 <DeleteBookingBtn bookingId={date[1]?.id} />
                 <EditBookingModal spotId={date[1]?.spotId} booking={date[1]} />
-            
+
               </div>
-             
+
             </div>
           ))}
           {futureNPastBookings(userBookings)?.futureDates.length === 0 &&
@@ -111,11 +121,19 @@ const TripPage = () => {
           <div key={`${date[1].id}2`} className='each-booking-container' >
             <div className='booking-post-info'>
 
-              <img className="trip-image-small" src={`${allSpots[date[1].spotId]?.Images[0]?.url}`} alt="spot" />
+              <Link to={`/spots/${date[1].spotId}`}>
+                <img className="trip-image-small" src={`${allSpots[date[1].spotId]?.Images[0]?.url}`} alt="spot" />
+              </Link>
               <div className='content-details'>
-                <h4 className='location-title'>{allSpots[date[1].spotId]?.city}</h4>
+                <h4 className='location-title-modal'>{allSpots[date[1].spotId]?.city}</h4>
+
                 <h5 className='host-title'>Hosted by {allUsers[allSpots[date[1].spotId]?.userId]?.username}</h5>
                 <p className='booking-dates'>{dateFormatOrder(new Date(date[0]), new Date(date[1]?.endDate))}</p>
+                <BookingDetailsPreviewModal
+                  allSpots={allSpots}
+                  spotId={date[1].spotId}
+                  date={date}
+                  allUsers={allUsers} />
               </div>
             </div>
           </div>

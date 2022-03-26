@@ -1,4 +1,6 @@
-
+#error-404-div {
+    margin-top: 12%;
+}
 
 #inner-404-div {
     margin: 5% 30%;
@@ -50,7 +52,7 @@
 .btn-home-back:hover { 
     cursor: pointer;
     transform: scale(1.1);
-    background-color: #6036EB;
+     background-color: rgb(154, 44, 182);
     color: white;
       
 }

@@ -156,7 +156,8 @@
     color: rgb(115,115,115);
     font-size: 12px;
     font-weight: 100;
-    margin: 5px 0;
+    margin: 5px;
+    margin-left: 0px;
 }
 
 .booking-dates {
