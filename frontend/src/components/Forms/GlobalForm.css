@@ -21,6 +21,7 @@
     border: 1px solid black;
     font-size: 12px;
     line-height: 16px;
+    cursor: pointer;
 }
 
 .add-review-text::-webkit-scrollbar {
@@ -57,12 +58,14 @@
     border: none;
     border-radius: 8px;
     align-self: center;
+    cursor: pointer !important;
 }
 
 .submit-btn-div-add-review {
     display: flex;
     justify-content: flex-end;
     margin-right: 15px;
+    cursor: pointer;
 }
 
 .error-div-reviews {

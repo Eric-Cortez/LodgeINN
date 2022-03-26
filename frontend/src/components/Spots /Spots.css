@@ -61,7 +61,7 @@ body {
 }
 
 .info {
-    width: 300px;
+    width: 400px;
     height: 100%;
     padding: 10px;
 }
@@ -161,10 +161,7 @@ p#spot-detail-info {
 .detail-pg-main-container {
     width: 100%;
 }
-.info {
-    width: fit-content;
 
-}
 .left-container {
     width: 100%;
 }
