@@ -85,8 +85,8 @@ const BookingDetails = ({ spotId, user, allSpotReviews }) => {
 
                 <span id="one-price"><h3 className='price-per-n'>{`$${spot?.price}`}</h3> <span className='per-night-label'>/ night</span></span>
 
-                {allSpotReviews &&
-
+                {allSpotReviews && avgStars(allSpotReviews) === "0.0" ?
+                     <span className='booking-reviews-count'><i className="fas fa-star"></i> 0  · {allSpotReviews?.length} {allSpotReviews?.length === 1 ? 'review' : 'reviews'}</span> :
                     <span className='booking-reviews-count'><i className="fas fa-star"></i> {allSpotReviews.length ? avgStars(allSpotReviews) : ""}  · {allSpotReviews?.length} {allSpotReviews?.length === 1 ? 'review' : 'reviews'}</span>
                 }
 
