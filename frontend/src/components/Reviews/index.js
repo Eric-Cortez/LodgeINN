@@ -11,6 +11,7 @@ export const Reviews = ({spot, user}) => {
 
   const dispatch = useDispatch()
   const allSpotReviews = useSelector(state => state?.reviews?.list)
+  console.log(user)
 
   useEffect(() => {
     if(spot?.id){
@@ -53,11 +54,13 @@ export const Reviews = ({spot, user}) => {
                 <p className='date-review'>{formatDateMonthYear(eachReview?.updatedAt)}</p>
               </div>
             </div>
-
+           
+           {eachReview?.userId === user?.id &&
+          
             <div>
               <button id="post-modal-del" onClick={handleDelete(eachReview?.id)}><i className="fa fa-trash"></i></button>
               <EditReviewModal reviewId={eachReview?.id} spotId={spot?.id}/>
-            </div>
+            </div> }
           </div>
           <Rating 
           className="react-simple-star-rating"

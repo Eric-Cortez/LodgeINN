@@ -55,6 +55,7 @@ h2 {
 
 #user-btn {
     border: 1px solid  rgb(125, 125, 125) !important;
+    cursor: pointer;
 }
 
 #p-text {
