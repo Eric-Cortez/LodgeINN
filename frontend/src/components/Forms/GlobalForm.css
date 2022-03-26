@@ -87,3 +87,7 @@
     width: 300px;
     margin: 10px 0;
 }
+
+.booking-div.edit {
+    width: 300px !important;
+}

@@ -122,6 +122,11 @@
     text-align: center;
 }
 
+.total-price.heading {
+    text-align: center;
+    font-weight: 500;
+}
+
 .total-price {
     font-size: 15px !important;
     line-height: 20px !important;
@@ -140,13 +145,19 @@
 .location-title {
     margin: 0;
     font-size: 16px;
+    color: #343434;
+}
+
+.location-title:hover {
+    text-decoration: underline;
 }
 
 .host-title {
     color: rgb(115,115,115);
     font-size: 12px;
     font-weight: 100;
-    margin: 5px 0;
+    margin: 5px;
+    margin-left: 0px;
 }
 
 .booking-dates {
@@ -154,5 +165,25 @@
     font-size: 14px;
      color: rgb(115,115,115);
     margin: 0;
+}
+
+
+.to-login-msg {
+    text-align: center;
+    margin: 8px;
+    margin-top: 12px;
+    width: 180px;
+    color: rgb(255, 56, 92)
+}
+
+.login-demo-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.or {
+    margin: 0 5px;
+    color: rgb(255, 56, 92)
 }
 

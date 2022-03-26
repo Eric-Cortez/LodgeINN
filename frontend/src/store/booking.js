@@ -61,7 +61,6 @@ export const addBooking = (bookingDetails) => async dispatch => {
     if (res.ok) {
         const payload = await res.json();
         await dispatch(addOneBooking(payload));
-        console.log( payload, "thunk ressssss")
         return payload;
     } else {
 
@@ -88,7 +87,6 @@ export const editBooking = (bookingPayload, bookingId) => async dispatch => {
 }
 
 export const deleteBooking = (bookingId) => async (dispatch) => {
-    console.log(bookingId, "thunk")
     const response = await csrfFetch(`/api/bookings/${bookingId}`, {
         method: "DELETE",
         // headers: { 'Content-Type': 'application/json' },

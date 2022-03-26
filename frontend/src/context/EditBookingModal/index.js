@@ -10,7 +10,7 @@ function EditBookingModal({ spotId, booking }) {
 
     return (
         <>
-            <button id="review-preview-edit" onClick={() => setShowModal(true)}><i className="fas fa-edit"></i></button>
+            <button id="review-preview-edit" onClick={() => setShowModal(true)}><i className="fas fa-edit booking"></i></button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
                   

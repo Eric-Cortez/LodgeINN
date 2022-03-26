@@ -1,0 +1,58 @@
+#error-404-div {
+    margin-top: 12%;
+}
+
+#inner-404-div {
+    margin: 5% 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+#error-msg {
+    font-size: 100px;
+    margin: 10px 0;
+}
+
+#page-not-found-404 {
+    font-size: 50px;
+    margin: 10px 0;
+}
+
+.btn-home-back {
+    padding-top: 5px;
+}
+
+.btn-home-back { 
+    left: 50px;
+    list-style: none;
+    background: none;
+    border: none;
+    padding: 6px 9px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    transition-duration: 0.4s;
+    margin-left: 28%;
+    cursor: pointer; 
+    margin-left: 0!important;
+    margin-top: 30px;
+    width: 100px;
+    border-radius: 25px;
+    text-align: center;
+    align-self: center;
+    font-weight: 600;
+    padding: 12px 22px;
+    background-color:rgb(120, 20, 145);
+    color: white;
+}
+
+.btn-home-back:hover { 
+    cursor: pointer;
+    transform: scale(1.1);
+     background-color: rgb(154, 44, 182);
+    color: white;
+      
+}

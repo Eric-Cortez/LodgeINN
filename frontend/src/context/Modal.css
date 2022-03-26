@@ -29,3 +29,98 @@
   height: auto;
   width: auto;
 }
+
+.fa-edit.booking {
+ display: flex;
+ align-items: center;
+ height: 100%;
+ font-size: 20px;
+ margin: 17px 0;
+}
+
+.no-account {
+  margin: 2px;
+}
+
+.another-spot {
+  border: none;
+  background-color: none;
+  color: linear-gradient(to right,#59086E 0%,#460479 50%,#440589 100%) !important;
+  padding: 15px 25px;
+  font-weight: 600;
+  border-radius: 25px;
+  height: fit-content;
+  background-color: white;
+  color: rgb(120, 20, 145);
+  transition-duration: 0.4s;
+}
+
+.another-spot:hover {
+  transform: scale(1.1);
+  background-color: rgb(120, 20, 145);
+  color: white;
+}
+
+.listing-host-div-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 300px;
+  background-image: url("https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1032&q=80");
+  object-fit: contain !important;
+   background-position: center;
+  background-repeat: no-repeat; 
+  background-size: cover;
+  margin-top: 0;
+}
+
+.trip-title.listing {
+  background-color: transparent;
+  color: white;
+  font-weight: 900;
+  font-size: 50px;
+  margin-top: 1.5%;
+}
+
+
+.centered-button {
+  margin-top: 30px;
+  width: 100px;
+  border-radius: 20px;
+  text-align: center;
+  align-self: center;
+  font-weight: 900 !important;
+  font-size: 18px;
+  padding: 10px;
+  border: none;
+  background-color: white;
+  color: #551a55;
+}
+
+.location-title-modal {
+    margin: 0;
+    padding-left: 0 !important;
+    font-size: 16px;
+    color: #343434;
+    border: none;
+    display: flex;
+    align-items: flex-start;
+}
+
+.location-title-modal-btn {
+    margin: 0;
+    padding-left: 0 !important;
+    margin-top: 2px;
+    font-size: 14px;
+    color: #343434;
+    border: none;
+    display: flex;
+    align-items: flex-start;
+}
+
+.location-title-modal-btn:hover {
+    text-decoration: underline;
+}
+
+

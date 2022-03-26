@@ -1,28 +1,89 @@
 
 #main-home-container {
-   margin: 0 9%;
-   margin-top: 10%;
-  
+  margin: 8% 10%;
+}
+
+
+
+.middle-container,
+.top-container {
+  height: 100%;
+  width: 100%;
+  border-radius: 15px;
+  background-position: center;
+  background-repeat: no-repeat; 
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .top-container{
-    margin: 4% 0;
-}
+    margin-bottom: 4%;
+    background-image: url("https://images.unsplash.com/photo-1593053272490-e0ed6d6a42c5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80");
+  }
 .middle-container{
-    margin: 4% 0;
+  margin-top: 4%;
+  background-image: url("https://images.unsplash.com/photo-1631630259742-c0f0b17c6c10?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80");
 }
 
 .bottom-container {
-    margin: 4% 0;
+  margin: 0;
+  margin-top: 4%;
+  width: 100%;
+  background-image: url("https://images.unsplash.com/photo-1572455825634-2c63e14ecae1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80");
+  height: 50%;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat; 
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 } 
 
-
-#first-img {
-    border-radius: 15px;
-    width: 100%;
+.centered {
+  background-color: transparent;
+  color: white;
+  font-size: 38px;
+  font-weight: 600;
+  line-height: 43px;
 }
 
-/* Centered text */
+.centered-button {
+  margin-top: 30px;
+  width: 100px;
+  border-radius: 25px;
+  text-align: center;
+  align-self: center;
+  font-weight: 600;
+  padding: 12px 22px;
+  background-color: white;
+  color: rgb(120, 20, 145);
+  transition-duration: 0.4s;
+}
+
+.centered-button:hover {
+  background-color: rgb(120, 20, 145);
+  color: white;
+  transform: scale(1.1);
+}
+
+.top-inner {
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+
+/* #first-img {
+    border-radius: 15px;
+    width: 100%;
+} */
+
+/* Centered text
 .top-container,
 .middle-container,
 .bottom-container {
@@ -54,4 +115,4 @@
   color: purple;
   padding: 15px 38px;
   border-radius: 35px;
-}
+} */

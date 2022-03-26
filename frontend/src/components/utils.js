@@ -101,7 +101,6 @@ export const handleDisabledDatesInRange = async (startDate, endDate, spotBooking
     for (let i = 1; i < dateArray.length; i++) {
         const eachDate = dateArray[i]
         if (arrayOfDisabledDates.find(date => dateFormat(date) === dateFormat(eachDate))) {
-            console.log(eachDate, "loop date")
             setStartDate(endDate)
             setEndDate("")
             
@@ -119,7 +118,7 @@ export const handleDisabledDatesInRange = async (startDate, endDate, spotBooking
             div.style.fontSize = "18px"
             div.style.fontWeight = "400"
             div.style.padding = "15px"
-            setTimeout(() => div.remove(), 3000)
+            setTimeout(() => div.remove(), 1000)
             
             
             // const div = document.getElementById("booked-msg")
@@ -128,9 +127,7 @@ export const handleDisabledDatesInRange = async (startDate, endDate, spotBooking
             // const div2 = document.getElementById("booked-msg")
             // let parentDiv = div2.parentNode
             // parentDiv.insertBefore(div, div2)
-            
             // div.innerText = "* Dates are unavailable please select another start date."
-            // console.log(div)
             // div.style.fontSize = "12px"
             // div.style.color = "rgb(234, 91, 98)"
             // div.style.width ="200px"

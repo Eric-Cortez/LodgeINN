@@ -5,9 +5,10 @@ import ProfileButton from './ProfileButton';
 import Demo from './Demo';
 import './Navigation.css';
 import SearchBar from '../SearchBar';
-import AddHostFormModal from '../../context/AddHostFormModal/Index';
-import LoginFormModal from '../../context/LoginFormModal';
+import AddHostFormModal from '../../context/AddHostFormModal';
+
 import SignupFormModal from '../../context/SignupFormModal';
+import LoginFormModal from "../../context/LoginFormModal"
 
 function Navigation({ isLoaded }) {
     const sessionUser = useSelector(state => state.session.user);
@@ -27,6 +28,7 @@ function Navigation({ isLoaded }) {
             <>
                 <NavLink className="nav-hover" to="/spots"><i className="fas fa-globe"></i> Explore</NavLink>
                 <LoginFormModal />
+                
                 <SignupFormModal />
                 <Demo />
             </>

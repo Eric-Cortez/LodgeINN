@@ -83,6 +83,11 @@ body {
     color: #343434;;
     font-weight: 600;
     padding: 0;
+    margin-bottom: 2px;
+}
+
+.each-spot-title:hover {
+    text-decoration: underline;
 }
 
 #spot-image {
@@ -142,19 +147,17 @@ p#spot-detail-info {
 
  .fa-star.spot {
      margin: 18px 0;
+     margin-right: 9px;
  }
 
  @media screen and (max-width: 1350px) {
  .right-container {
-    border:  2px solid red;
     display: none;
   }
 
 }
 
 @media screen and (max-width: 1349px) and (min-width: 600px)  {
-
-
 .detail-pg-main-container {
     width: 100%;
 }
@@ -175,4 +178,10 @@ p#spot-detail-info {
     align-items: center;
 }
 
+}
+
+.star-num {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

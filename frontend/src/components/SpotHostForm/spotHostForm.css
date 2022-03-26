@@ -454,3 +454,17 @@ select,
 .confirm-sub-title {
     border-top: 1px solid rgb(221, 221, 221);
 }
+
+#host-spot-form {
+    visibility: visible;
+    color: white;
+    background-color: rgb(229,30,80);
+    border-radius: 10px;
+    position: fixed;
+    top: 50px;
+    right: 20px;
+    font-size: 18px;
+    font-weight: 400;
+    padding: 15px;
+    z-index: 5;
+}

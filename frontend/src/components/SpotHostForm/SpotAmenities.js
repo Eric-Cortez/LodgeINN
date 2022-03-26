@@ -21,7 +21,6 @@ const SpotAmenities = ({
     setPets,
 }) => {
 
-    console.log(kitchen)
 
   return (
       <div className='host-spot-outer-form'>

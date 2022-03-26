@@ -1,0 +1,42 @@
+.trip-detail-main {
+    border-radius: 15px;
+    width: 500px;
+    padding: 30px;
+}
+
+.trip-image-small.modal {
+    height: 150px;
+    width: 150px;
+    margin: 10px;
+}
+
+.trip-info-modal {
+    display: flex;
+    flex-direction: row;
+}
+
+.booking-line.light {
+    border-bottom: rgb(235,235,235) 1.5px solid;
+    margin-top: 10px;
+}
+
+.trip-detail-head {
+    text-align: center;
+    margin: 10px;
+}
+
+.trip-detail-h4 {
+margin-left: 20px;
+}
+
+.trip-modal-p {
+    font-weight: 100;
+    font-size: 14px;
+    color: rgb(115,115,115);
+    margin: 4px 20px;
+}
+
+.total-price.last.new {
+    color: rgb(115,115,115) !important;
+    margin-left: 20px;
+}

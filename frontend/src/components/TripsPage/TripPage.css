@@ -30,15 +30,17 @@
   border-radius: 15px;
   border: 1px solid #DDDDDD;
   display: flex;
-  height: 350px;
+  height: 400px;
   border-top-right-radius: 18px;
   border-bottom-right-radius: 18px;
-  margin: 0 5%;
+  margin: 0 15%;
+
 }
 
 .trips-booking-div  {
      display: flex;
      align-items: center;
+     margin-top: 100px;
 }
 
 .trip-page-image {
@@ -46,6 +48,9 @@
      width: 100%;
      border-top-right-radius: 15px;
      border-bottom-right-radius: 15px;
+     background-position: center;
+     background-repeat: no-repeat; 
+     background-size: cover;
 }
 
 .left-trip-div {
@@ -57,7 +62,7 @@
 
 .right-trip-div {
      width: 60%;
-     height: 350px;
+     height: 400px;
      border-top-right-radius: 15px;
      border-bottom-right-radius: 15px;
 }
@@ -96,7 +101,7 @@ i.fa-suitcase {
      height: 80px;
      width: 80px;
      border-radius: 10px;
-     margin: 20px;
+     margin: 30px;
 }
 
 .each-booking-container {
@@ -106,6 +111,7 @@ i.fa-suitcase {
      border-bottom: 1px solid#DDDDDD;
      display: flex;
      justify-content: space-between;
+     margin: 80px;
 }
 
 .booking-post-info {
@@ -123,6 +129,7 @@ i.fa-suitcase {
      display: flex;
      align-items: center;
      height: 100%;
+     margin-right: 40px;
 }
 
 .Check-in {
@@ -132,4 +139,12 @@ i.fa-suitcase {
 
 .fa-luggage-cart {
      margin-right: 10px;
+}
+
+.explore-new {
+     padding: 0 1px;
+     color: rgb(255, 56, 92);
+}
+.explore-new:hover {
+     text-decoration: underline;
 }

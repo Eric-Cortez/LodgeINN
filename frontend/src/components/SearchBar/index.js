@@ -8,18 +8,22 @@ const SearchBar = () => {
 const [search, setSearch] = useState("")
 const dispatch = useDispatch()
 
+useEffect(() => {
+
+}, [search])
+console.log(search)
+let searchRes;
 const handleSubmit = async (e) => {
+    console.log(search, "hand")
     e.preventDefault()
     if (search) {
-        
-        await dispatch(getAllSearchRes(search))
-       
+       searchRes = await dispatch(getAllSearchRes(search))   
     }
 }
-
+    console.log(searchRes)
     return (
-   
-        <form  className="search-form" onSubmit={handleSubmit}>
+       <>
+        <form  className="search-form" onChange={handleSubmit}>
             <input
             name="search"
             type="text"
@@ -28,6 +32,10 @@ const handleSubmit = async (e) => {
             onChange={e => setSearch(e.target.value)}
             />  
         </form>
+        <div>
+
+        </div>
+       </>
 
   )
 }
