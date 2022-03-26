@@ -57,7 +57,6 @@ function Spots() {
                                </div>
                                 <div key={`${spot?.title}7`} className="price-info-div">
                                     <div className="star-num">
-                                    <i key={`8${spot?.title}5`} className="fas fa-star spot"></i>
                                     <Ratings  spot={spot}/>
                                     </div>
                                     <p key={`9${spot?.title}5`}>${spot?.price} / night</p>

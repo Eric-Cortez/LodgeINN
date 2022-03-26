@@ -15,9 +15,10 @@ const Ratings = ({ spot }) => {
     }, [dispatch])
     return (
         <>
-            {/* {reviewsSpot.length  &&
+            
+            {reviewsSpot.length > 0 &&
             <i className="fas fa-star spot"></i>
-            } */}
+            }
             <div>{reviewsSpot.length ? avgStars(reviewsSpot) : ""}</div>
         </>
     )
