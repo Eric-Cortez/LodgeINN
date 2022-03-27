@@ -49,7 +49,9 @@ const BookingConfirmation = () => {
             <h6 className='confirmation-num'>Confirmation number: {getRandomArbitrary(565565679944233, 100555616446555843632)}</h6>
 
             <div className='trip-info-modal'>
-                <img className="trip-image-small modal" src={`${allSpots[spotId]?.Images[0]?.url}`} alt="spot" />
+                <img className="trip-image-small modal" 
+                src={`${allSpots[spotId]?.Images[0]?.url}`} alt="spot" 
+                onError={(e) => { e.target.src = 'https://sonuptraders.com/wp-content/uploads/2019/02/picture-not-available.jpg'; e.target.onError = null; }}/>
                 <div>
 
                     <h4 className='trip-detail-h4'>Address</h4>

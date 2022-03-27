@@ -50,7 +50,11 @@ const SpotDetail = ({ spotInfo, setSpotInfo}) => {
         <div className='spot-detail'> 
          <div className='detail-upper-main'>
             <h1 id="title-1">{oneSpot?.title}</h1>
-            <img className="spot-image-new" src={oneSpot?.Images[0].url} alt="cabin" /> 
+            <img 
+            className="spot-image-new" 
+            src={oneSpot?.Images[0].url} 
+            alt="cabin" 
+            onError={(e) => { e.target.src = 'https://sonuptraders.com/wp-content/uploads/2019/02/picture-not-available.jpg'; e.target.onError = null; }}/> 
          </div>
 
         <div className='post-content-main'>

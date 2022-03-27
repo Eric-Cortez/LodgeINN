@@ -35,7 +35,11 @@ const Listings = () => {
                         <div key={listing?.id} className='booking-post-info'>
                             <div className='left-listing-div'>
                                 <Link to={`/spots/${listing?.id}`}>
-                                    <img className="trip-image-small" src={`${listing?.Images[0]?.url}`} alt="spot" />
+                                    <img 
+                                    className="trip-image-small" 
+                                    src={`${listing?.Images[0]?.url}`} 
+                                    alt="spot" 
+                                    onError={(e) => { e.target.src = 'https://sonuptraders.com/wp-content/uploads/2019/02/picture-not-available.jpg'; e.target.onError = null; }}/>
                                 </Link>
                                 <div className='content-details'>
                                     <Link className='location-title' to={`/spots/${listing?.id}`}>

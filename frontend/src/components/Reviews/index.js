@@ -48,7 +48,11 @@ export const Reviews = ({spot, user}) => {
         <div className='each-review-div' key={eachReview?.id}>
           <div className='review-user-info'>
             <div className='each-review-info'>
-              <img className='profile-img-review' src={"https://cdn2.vectorstock.com/i/1000x1000/20/76/man-avatar-profile-vector-21372076.jpg"} alt="profile " />
+              <img 
+              className='profile-img-review' 
+              src={"https://cdn2.vectorstock.com/i/1000x1000/20/76/man-avatar-profile-vector-21372076.jpg"} 
+              alt="profile " 
+                onError={(e) => { e.target.src = 'https://sonuptraders.com/wp-content/uploads/2019/02/picture-not-available.jpg'; e.target.onError = null; }}/>
               <div className='username-date-div-review'>
                 <p className='username-review'>{eachReview?.User?.username} </p>
                 <p className='date-review'>{formatDateMonthYear(eachReview?.updatedAt)}</p>

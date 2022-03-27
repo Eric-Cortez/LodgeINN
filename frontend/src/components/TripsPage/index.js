@@ -75,7 +75,12 @@ const TripPage = () => {
           {/* <img className='trip-page-image' src='https://cdn.vox-cdn.com/thumbor/AAuNEVGeC6kP6ssgbLy_snUv6KI=/0x0:1440x960/1200x675/filters:focal(624x417:854x647)/cdn.vox-cdn.com/uploads/chorus_image/image/65528594/d99ba571_4ea2_453d_8eb3_11459a57a038.0.jpg' alt='trip' /> */}
           {/* <img className='trip-page-image' src='https://images.unsplash.com/photo-1593053272490-e0ed6d6a42c5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80' alt='trip' /> */}
           {/* <img className='trip-page-image' src='https://images.squarespace-cdn.com/content/v1/533a16eae4b084aae2d8eb2e/1555524914550-36WJKQL7KEL0MUNM7645/mt-rainier-a-frame-packwood-cabin-little-owl-breeanna-lassher-23.jpg?format=1000w' alt='trip' /> */}
-          <img className='trip-page-image' src='https://www.thecabindiary.com/wp-content/uploads/2020/05/Copy-of-Copy-of-Copy-of-Untitled-copy.png' alt='trip' />
+          <img 
+          className='trip-page-image' 
+          src='https://www.thecabindiary.com/wp-content/uploads/2020/05/Copy-of-Copy-of-Copy-of-Untitled-copy.png' 
+          alt='trip' 
+            onError={(e) => { e.target.src = 'https://sonuptraders.com/wp-content/uploads/2019/02/picture-not-available.jpg'; e.target.onError = null; }}
+          />
         </div>
       </div>
       <div className='trip-plans-history'>
@@ -89,7 +94,11 @@ const TripPage = () => {
               <div className='booking-post-info'>
 
                 <Link to={`/spots/${date[1].spotId}`}>
-                  <img className="trip-image-small" src={`${allSpots[date[1].spotId]?.Images[0]?.url}`} alt="spot" />
+                  <img 
+                  className="trip-image-small" 
+                  src={`${allSpots[date[1].spotId]?.Images[0]?.url}`} 
+                  alt="spot" 
+                  onError={(e) => { e.target.src = 'https://sonuptraders.com/wp-content/uploads/2019/02/picture-not-available.jpg'; e.target.onError = null; }}/>
                 </Link>
 
                 <div className='content-details'>
@@ -130,7 +139,12 @@ const TripPage = () => {
             <div className='booking-post-info'>
 
               <Link to={`/spots/${date[1].spotId}`}>
-                <img className="trip-image-small" src={`${allSpots[date[1].spotId]?.Images[0]?.url}`} alt="spot" />
+                <img 
+                className="trip-image-small" 
+                src={`${allSpots[date[1].spotId]?.Images[0]?.url}`} 
+                alt="spot" 
+                  onError={(e) => { e.target.src = 'https://sonuptraders.com/wp-content/uploads/2019/02/picture-not-available.jpg'; e.target.onError = null; }}
+                />
               </Link>
               <div className='content-details'>
                 <h4 className='location-title-modal'>{allSpots[date[1].spotId]?.city}</h4>
