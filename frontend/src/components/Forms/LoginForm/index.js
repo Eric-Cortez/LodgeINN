@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import "./LoginForm.css"
 import SignupFormModal from "../../../context/SignupFormModal"
 
-function LoginForm() {
+function LoginForm({ setShowLoginModal }) {
     const dispatch = useDispatch();
     const [credential, setCredential] = useState("");
     const [password, setPassword] = useState("");
@@ -60,11 +60,13 @@ function LoginForm() {
                 </div>
 
                 <div className="btn-basic-submit">
+                <div className="login-quest">
+                    <p className="no-account">Don't have an account? </p>
+                        <SignupFormModal setShowLoginModal={setShowLoginModal} type="login"/>
+                </div>
+                <div className="login-btn-div">
                     <button className="btn-basic" type="submit">Log In</button>
                 </div>
-                <div>
-                    <p className="no-account">Don't have an account? </p>
-                    <SignupFormModal />
                 </div>
             </form>
         </div>

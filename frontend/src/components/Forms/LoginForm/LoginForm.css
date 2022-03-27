@@ -41,6 +41,8 @@
     font-size: 12px;
     color: #ff385c;
     margin: 3px 0;
+    width: 250px;
+    word-wrap: break-word;
 }
 
 
@@ -63,7 +65,24 @@
 
 .btn-basic-submit {
     display: flex;
-    justify-content: flex-end;
+    flex-direction: column;
     margin-top: 15px;
     margin-right: 10px;
+}
+
+.login-quest {
+    display: flex;
+    align-items: center;
+    margin: 5px;
+}
+
+.login-quest > * {
+    margin: 0;
+    font-size: 13px;
+}
+
+.login-btn-div {
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-end;
 }

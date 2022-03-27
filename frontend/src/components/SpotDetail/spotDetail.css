@@ -6,14 +6,15 @@ h2 {
 
 
 .spot-detail {
-    margin: 8% 8% ;
+    margin: 8% 12% ;
+    margin-top: 0;
     border-bottom: 1px solid rgb(221, 221, 221);
 }
 
 .spot-image-new {
-   width: 500px;
+   width: 600px;
    border-radius: 25px;
-   height: 400px;
+   height: 450px;
    object-fit: cover;
 }
 

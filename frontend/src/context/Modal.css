@@ -40,6 +40,7 @@
 
 .no-account {
   margin: 2px;
+  margin-top: 10%;
 }
 
 .another-spot {
@@ -124,4 +125,11 @@
     text-decoration: underline;
 }
 
+.login-btn-modal {
+  border: none;
+  color: rgb(120, 20, 145)
+}
 
+.login-btn-modal:hover {
+  text-decoration: underline;
+}
