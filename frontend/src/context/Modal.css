@@ -54,6 +54,7 @@
   background-color: white;
   color: rgb(120, 20, 145);
   transition-duration: 0.4s;
+  cursor: pointer;
 }
 
 .another-spot:hover {
