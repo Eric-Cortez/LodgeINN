@@ -26,6 +26,11 @@ const TripPage = () => {
     dispatch(getAllSpots())
   }, [dispatch])
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [])
+
+
   const futureNPastBookings = (allUserBookings) => {
     const pastDates = []
     const futureDates = []

@@ -11,6 +11,7 @@ import Footer from "./components/Footer";
 import TripPage from "./components/TripsPage";
 import Listings from "./components/ListingsPage";
 import NotFound from "./components/NotFound";
+import BookingConfirmation from "./components/BookingConfirmation";
 
 
 function App() {
@@ -42,6 +43,9 @@ function App() {
           </Route>
           <Route exact path="/users/:userId/trips">
             <TripPage />
+          </Route>
+          <Route exact path="/users/:userId/bookings/:bookingId">
+            <BookingConfirmation />
           </Route>
           <Route>
             <NotFound />

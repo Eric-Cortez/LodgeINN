@@ -16,6 +16,10 @@ const Listings = () => {
     useEffect(() => {
         dispatch(getAllSpots())
     }, [dispatch])
+    
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [])
 
 
     return (

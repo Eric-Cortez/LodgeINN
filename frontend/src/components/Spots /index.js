@@ -13,9 +13,10 @@ import Ratings from "./Ratings";
 function Spots() {
     const dispatch = useDispatch()
     const allSpots = useSelector(state => state?.spots?.list)
-
-
-
+    
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [])
 
     useEffect(() => {
         dispatch(getAllSpots())

@@ -50,4 +50,6 @@ footer.footer {
 #footer-style {
     border-top: 1px solid rgb(221, 221, 221);
     position: fixed;
+    position: relative;
+    z-index: 1;
 }

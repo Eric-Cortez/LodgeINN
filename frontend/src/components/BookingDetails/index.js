@@ -10,6 +10,7 @@ import { avgStars } from '../utils';
 import { getAllSpots } from '../../store/spots';
 import LoginFormModal from "../../context/LoginFormModal"
 import Demo from "../Navigation/Demo.js"
+import BookingDetailsPreviewModal from "../../context/BookingDetailsPreviewModal"
 
 
 const BookingDetails = ({ spotId, user, allSpotReviews }) => {
@@ -73,7 +74,8 @@ const BookingDetails = ({ spotId, user, allSpotReviews }) => {
         }
 
         if (res) {
-            history.push(`/users/${user?.id}/trips`)
+            history.push(`/users/${user?.id}/bookings/${res?.id}`)
+            // history.push(`/users/${user?.id}/trips`)
         }
     }
 

@@ -7,10 +7,14 @@ import AddHostFormModal from "../../context/AddHostFormModal"
 
 const Home = () => {
   const sessionUser = useSelector(state => state.session.user);
+  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [])
+
+  
   return (
     <div>
-
-   
     <div id="main-home-container">
       <div></div>
       <div className='top-container'>

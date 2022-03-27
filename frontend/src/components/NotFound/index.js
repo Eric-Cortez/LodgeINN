@@ -1,8 +1,14 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import "./NotFound.css"
 
 const NotFound = () => {
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [])
+
+
   return (
       <div id="error-404-div">
           <div id="inner-404-div">

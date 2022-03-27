@@ -117,6 +117,7 @@
     border: none;
     display: flex;
     align-items: flex-start;
+    cursor: pointer;
 }
 
 .location-title-modal-btn:hover {
