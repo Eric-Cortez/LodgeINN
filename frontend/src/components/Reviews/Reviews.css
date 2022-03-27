@@ -70,4 +70,5 @@
 #review-preview-edit {
    border: none;
    align-self: flex-start;
+   cursor: pointer;
 }

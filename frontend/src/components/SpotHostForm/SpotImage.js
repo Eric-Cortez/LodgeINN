@@ -14,8 +14,8 @@ const SpotImage = ({
   useEffect(() => {
     const errors = []
     if (!url) errors.push("Please provide an image")
-    // if (!url?.includes("http" || "https")) errors.push("Please provide a valid image Url")
-    // if (url?.length > 255 || url?.length === 0) errors.push("Please provide valid Image address(url)")
+    if (!url?.includes("http" || "https") || !url.includes(".")) errors.push("Please provide a valid image Url")
+    if(url?.length > 255 || url?.length === 0) errors.push("Image url must be less than 255 characters")
     setErrors(errors)
   }, [url])
 

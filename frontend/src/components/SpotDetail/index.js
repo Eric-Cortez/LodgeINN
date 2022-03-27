@@ -50,7 +50,11 @@ const SpotDetail = ({ spotInfo, setSpotInfo}) => {
         <div className='spot-detail'> 
          <div className='detail-upper-main'>
             <h1 id="title-1">{oneSpot?.title}</h1>
-            <img className="spot-image-new" src={oneSpot?.Images[0].url} alt="cabin" /> 
+            <img 
+            className="spot-image-new" 
+            src={oneSpot?.Images[0].url} 
+            alt="cabin" 
+            onError={(e) => { e.target.src = 'https://sonuptraders.com/wp-content/uploads/2019/02/picture-not-available.jpg'; e.target.onError = null; }}/> 
          </div>
 
         <div className='post-content-main'>
@@ -77,7 +81,7 @@ const SpotDetail = ({ spotInfo, setSpotInfo}) => {
                 <h3 ><i className="fas i-list fa-home"></i>Entire home</h3>
                 <p className="list-details">You’ll have the guesthouse to yourself.</p>
                 <h3><i className="fas i-list fa-hand-sparkles"></i>Enhanced Clean</h3>
-                <p className="list-details">This Host committed to Airbnb's 5-step enhanced cleaning process.</p>
+                <p className="list-details">This Host committed to LodgeINN's 5-step enhanced cleaning process.</p>
                 <h3><i className="fas i-list fa-map-marker-alt"></i>Great location</h3>
                 <p className="list-details">100% of recent guests gave the location a 5-star rating.</p>
                 <h3><i className="fas i-list fa-map-marker-alt"></i>Great check-in experience</h3>
@@ -105,9 +109,14 @@ const SpotDetail = ({ spotInfo, setSpotInfo}) => {
 
             {sessionUser?.id !== oneSpot?.User?.id &&
             <div className='review-div'>
-                {allSpotReviews &&
+                           
+                {allSpotReviews && avgStars(allSpotReviews?.list) === "0.0" ?
+                     <h3 className='spot-rating-count'> 
+                        <i className="fas fa-star rating-review"></i> 0 • {allSpotReviews?.list?.length} {allSpotReviews?.list?.length === 1 ? 'review' : 'reviews'}
+                    </h3> :
+
                     <h3 className='spot-rating-count'> 
-                                    <i className="fas fa-star rating-review"></i>{allSpotReviews?.list?.length ? avgStars(allSpotReviews?.list) : ""} • {allSpotReviews?.list?.length} {allSpotReviews?.list?.length === 1 ? 'review' : 'reviews'}
+                        <i className="fas fa-star rating-review"></i>{allSpotReviews?.list?.length ? avgStars(allSpotReviews?.list) : ""} • {allSpotReviews?.list?.length} {allSpotReviews?.list?.length === 1 ? 'review' : 'reviews'}
                     </h3>
                 }          
               

@@ -38,7 +38,7 @@ function SpotHostForm({ setShowModal }) {
     const [pets, setPets] = useState(false);
     const [step, setStep] = useState(1)
     const [displayErrors, setDisplayErrors] = useState(false);
-
+    const [errors, setErrors] = useState([])
 
     const allAmenitiesArr = {
         kitchen,
@@ -49,6 +49,37 @@ function SpotHostForm({ setShowModal }) {
         hotTub,
         pets
     }
+
+    useEffect(() => {
+        const errors = []
+        if (address?.length > 255 || address?.length === 0) errors.push("Address must be less 255 characters")
+        if (city?.length > 255 || city?.length === 0) errors.push("City must be less 255 characters")
+        if (state === '--Select a State--') errors.push("Please select a state")
+        if (country?.length > 50 || country?.length === 0) errors.push("Country must be less 50 characters")
+        if ((zipCode?.length > 0 && zipCode?.length > 6) || zipCode?.length === 0) errors.push("Please provide a valid zip code")
+        if (title?.length > 100 || title?.length === 0) errors.push("Title must be less 100 characters")
+        if (!description?.length || description?.length === 0) errors.push("Please provide a description")
+        if (!url) errors.push("Please provide an image")
+        if (!url?.includes("http" || "https") || !url.includes(".")) errors.push("Please provide a valid image Url")
+        if (url?.length > 255 || url?.length === 0) errors.push("Image url must be less than 255 characters")
+        if (price < 1 && price !== 0) errors.push("Please provide a valid price per night")
+        if (guests < 1 && guests !== 0) errors.push("Please provide a guest count.")
+        if (bedrooms < 1 && bedrooms !== 0) errors.push("Please provide a bedroom count.")
+        if (bathrooms < 1 && bathrooms !== 0) errors.push("Please provide a bathroom count.")
+        setErrors(errors)
+    }, [url,
+        address,
+        city, 
+        state, 
+        country, 
+        zipCode,
+        title,
+        description,
+        price, 
+        guests, 
+        bedrooms, 
+        bathrooms])
+
     useEffect(() => {
 
     }, [allAmenitiesArr,
@@ -61,10 +92,10 @@ function SpotHostForm({ setShowModal }) {
         pets,
      displayErrors])
 
+    
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
 
         const payload = {
             amenities: {
@@ -80,7 +111,7 @@ function SpotHostForm({ setShowModal }) {
                 url
             },
             spots: {
-                userId: session.user.id,
+                userId: session?.user?.id,
                 address,
                 city,
                 state,
@@ -94,9 +125,9 @@ function SpotHostForm({ setShowModal }) {
                 bathrooms
             }
         }
-
         let createdSpot;
-        if(payload) {
+        if(payload && errors.length === 0) {
+            console.log(payload)
             createdSpot = await dispatch(addSpot(payload));
             await dispatch(getAllSpots())
         } else {
@@ -107,17 +138,6 @@ function SpotHostForm({ setShowModal }) {
             history.push(`/spots/${createdSpot.id.id}`);
         }
 
-
-        // let createdSpot;
-        // try {
-        //     createdSpot = await dispatch(addSpot(payload));
-        // } catch (error) {
-        //     throw new Error("Error - Resource not found")
-        // }
-        // if (createdSpot) {
-        //     setShowModal(false)
-        //     history.push(`/spots/${createdSpot.id.id}`);
-        // }
     };
 
 

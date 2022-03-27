@@ -1,0 +1,19 @@
+#navbar {
+    position: relative;
+}
+
+
+.trip-detail-main.confirm {
+    height: 100%;
+    width: auto;
+    padding-left: 20%;
+    padding-right: 20%;
+}
+
+.trip-detail-head {
+    margin-top: 3%;
+}
+
+.confirmation-num {
+    text-align: center;
+}

@@ -1,6 +1,6 @@
 
 #main-home-container {
-  margin: 8% 10%;
+  margin: 4% 8%;
 }
 
 
@@ -48,6 +48,7 @@
   font-size: 38px;
   font-weight: 600;
   line-height: 43px;
+  text-align: center;
 }
 
 .centered-button {
@@ -61,6 +62,7 @@
   background-color: white;
   color: rgb(120, 20, 145);
   transition-duration: 0.4s;
+  cursor: pointer;
 }
 
 .centered-button:hover {

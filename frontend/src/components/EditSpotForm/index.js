@@ -38,7 +38,10 @@ function EditSpotForm() {
     const [validationErrors, setValidationErrors] = useState([])
     const [displayErrors, setDisplayErrors] = useState(false);
 
-    
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [])
+
     useEffect(() => {
         dispatch(getOneSpot(spotId))
         if (title) localStorage.setItem("title", spotInfo?.title)

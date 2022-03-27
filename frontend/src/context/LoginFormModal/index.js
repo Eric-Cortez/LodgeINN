@@ -5,14 +5,15 @@ import "../Modal.css"
 
 
 function LoginFormModal() {
-    const [showModal, setShowModal] = useState(false);
+    const [showModal, setShowLoginModal] = useState(false);
+   
 
     return (
         <>
-            <button className="login-btn nav-hover" onClick={() => setShowModal(true)}>Log in</button>
+            <button className="login-btn nav-hover" onClick={() => setShowLoginModal(true)}>Log in</button>
             {showModal && (
-                <Modal onClose={() => setShowModal(false)}>
-                    <LoginForm />
+                <Modal onClose={() => setShowLoginModal(false)}>
+                    <LoginForm setShowLoginModal={setShowLoginModal}/>
                 </Modal>
             )}
         </>

@@ -27,7 +27,7 @@ body {
     flex-direction: column;
     width: 60%;
     height: fit-content;
-    margin: 5% 0 2% 0;
+    margin: 2% 0 2% 0;
 }
 .right-container {
     width: 40%;
@@ -45,6 +45,9 @@ body {
     height: auto;
     width: 100%;
     z-index: 0;
+    background-position: center;
+    background-repeat: no-repeat; 
+   background-size: cover;
 }
 .spots-container {
     display: grid;
@@ -61,7 +64,7 @@ body {
 }
 
 .info {
-    width: 300px;
+    width: 400px;
     height: 100%;
     padding: 10px;
 }
@@ -150,21 +153,69 @@ p#spot-detail-info {
      margin-right: 9px;
  }
 
- @media screen and (max-width: 1350px) {
- .right-container {
-    display: none;
-  }
-
+.info {
+    width: fit-content;
+    margin-right: 40px;
 }
 
-@media screen and (max-width: 1349px) and (min-width: 600px)  {
+
+.star-num {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+ /* @media screen and (max-width: 614px) { */
+ /* .right-container {
+    display: none;
+  }
+ .spots-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+ } */
+
+ /* .detail-pg-main-container {
+     margin-top: 1000px !important;
+     border: 2px solid green
+ } */
+/* .left-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.info {
+    width: 50%;
+    margin: 0 30px;
+    padding: 0 30px;
+}
+
+.info > * {
+    font-size: 30px;
+    line-height: 32px;
+} 
+
+#spot-image {
+height: fit-content;
+width: fit-content;
+margin: 0;
+border-radius: 0;
+} */
+
+/* } */
+
+
+@media screen and (max-width: 1349px) and (min-width: 615px)  {
 .detail-pg-main-container {
     width: 100%;
 }
-.info {
-    width: fit-content;
 
-}
 .left-container {
     width: 100%;
 }
@@ -176,12 +227,22 @@ p#spot-detail-info {
     margin: 0;
     display: flex;
     align-items: center;
-}
-
-}
-
-.star-num {
-    display: flex;
     justify-content: center;
-    align-items: center;
+}
+
+} 
+
+ @media screen and (max-width: 1350px) {
+ .right-container {
+    display: none;
+  }
+
+  .info {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+}
+
+
+
 }

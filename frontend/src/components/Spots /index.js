@@ -13,9 +13,10 @@ import Ratings from "./Ratings";
 function Spots() {
     const dispatch = useDispatch()
     const allSpots = useSelector(state => state?.spots?.list)
-
-
-
+    
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [])
 
     useEffect(() => {
         dispatch(getAllSpots())
@@ -32,7 +33,14 @@ function Spots() {
                     <div key={`${spot?.title}1`} className="spots-container">
                         <div key={`${spot?.title}2`} className="image-container">
                             <Link key={`${spot?.title}13`} to={`/spots/${spot.id}`}>
-                                <img key={`${spot?.title}3`} crossOrigin="anonymous" id='spot-image' key={spot?.id} src={spot?.Images[0]?.url} alt="listing" />
+                                <img 
+                                key={`${spot?.title}3`} 
+                                crossOrigin="anonymous" 
+                                id='spot-image' 
+                                src={spot?.Images[0]?.url} 
+                                alt="listing" 
+                                // onError={(e) => { e.target.src = 'https://sonuptraders.com/wp-content/uploads/2019/02/picture-not-available.jpg'; e.target.onError = null; }}
+                                />
                             </Link>
                         </div>
 
@@ -57,7 +65,6 @@ function Spots() {
                                </div>
                                 <div key={`${spot?.title}7`} className="price-info-div">
                                     <div className="star-num">
-                                    <i key={`8${spot?.title}5`} className="fas fa-star spot"></i>
                                     <Ratings  spot={spot}/>
                                     </div>
                                     <p key={`9${spot?.title}5`}>${spot?.price} / night</p>

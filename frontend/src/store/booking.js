@@ -1,22 +1,14 @@
 import { csrfFetch } from './csrf';
 
 const LOAD_ALL = 'booking/loadAll';
-// const LOAD_ONE ='booking/lostOne';
 const ADD_ONE ='booking/addOne'
-
 const DELETE_ONE ='booking/deleteOne'
 
 // ACTIONS 
-
 const loadAll = (list) => ({
     type: LOAD_ALL,
     list
 })
-
-// const loadOne = (booking) => ({
-//     type: LOAD_ONE,
-//     booking
-// })
 
 const addOneBooking = booking => {
     return {
@@ -33,7 +25,6 @@ const deleteOneBooking = (bookingId) => {
 }
 
 // THUNKS 
-
 export const getAllBookings = () => async dispatch => {
     const response = await csrfFetch(`/api/bookings/`);
 
@@ -42,15 +33,6 @@ export const getAllBookings = () => async dispatch => {
         dispatch(loadAll(bookings));
     }
 };
-
-// export const getOneSpot = (id) => async dispatch => {
-//     const response = await csrfFetch(`/api/spots/${id}`)
-
-//     if (response.ok) {
-//         const spot = await response.json()
-//         dispatch(loadOne(spot))
-//     }
-// }
 
 export const addBooking = (bookingDetails) => async dispatch => {
     const res = await csrfFetch(`/api/bookings`, {
@@ -89,8 +71,6 @@ export const editBooking = (bookingPayload, bookingId) => async dispatch => {
 export const deleteBooking = (bookingId) => async (dispatch) => {
     const response = await csrfFetch(`/api/bookings/${bookingId}`, {
         method: "DELETE",
-        // headers: { 'Content-Type': 'application/json' },
-        // body: JSON.stringify(d)
     });
 
     if (response.ok) {

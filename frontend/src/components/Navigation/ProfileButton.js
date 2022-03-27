@@ -37,7 +37,11 @@ function ProfileButton({ user }) {
             <button  id="user-btn" onClick={openMenu}>
                 <div className="dropdown-profile-btn">
                     <i className="fas fa-bars" />
-                    <img className='nav-profile-img' src={"https://cdn2.vectorstock.com/i/1000x1000/20/76/man-avatar-profile-vector-21372076.jpg"} alt="profile " />  
+                    <img 
+                    className='nav-profile-img' 
+                    src={"https://cdn2.vectorstock.com/i/1000x1000/20/76/man-avatar-profile-vector-21372076.jpg"} 
+                    alt="profile " 
+                        onError={(e) => { e.target.src = 'https://sonuptraders.com/wp-content/uploads/2019/02/picture-not-available.jpg'; e.target.onError = null; }}/>  
                 </div>
             </button>
             {showMenu && (

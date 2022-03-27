@@ -52,7 +52,11 @@ const HostSpotConfirmation = ({
         <p>{`Description: ${description}`}</p>
         <div className='confirm-sub-title'></div>
         <h3>Lodge Photo  <button className="confirm-edit" onClick={() => setStep(5)}><i className="fas fa-edit"></i></button></h3>
-      <img className='cabin-image' src={url}/>
+      <img 
+      className='cabin-image' 
+      src={url}
+      alt="cabin"
+      onError={(e) => { e.target.src = 'https://sonuptraders.com/wp-content/uploads/2019/02/picture-not-available.jpg'; e.target.onError = null; }}/>
       </div>
        
       <div className='host-btn-next-back'>

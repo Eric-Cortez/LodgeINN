@@ -23,7 +23,15 @@
 i.fa-linkedin,
 i.fa-github {
     color: rgb(158, 156, 156) !important;
+    cursor: pointer;
 }
+i.fa-linkedin:hover,
+i.fa-github:hover {
+    color: rgb(120, 20, 145) !important;
+}
+
+
+
 .footer-line {
     position: fixed;
     border-bottom: 1px solid rgb(221, 221, 221);
@@ -42,4 +50,6 @@ footer.footer {
 #footer-style {
     border-top: 1px solid rgb(221, 221, 221);
     position: fixed;
+    position: relative;
+    z-index: 1;
 }
