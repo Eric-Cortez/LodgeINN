@@ -7,7 +7,7 @@ import './Navigation.css';
 import SearchBar from '../SearchBar';
 import SignupFormModal from '../../context/SignupFormModal';
 import LoginFormModal from "../../context/LoginFormModal"
-import AddHostFormModal from '../../context/AddHostFormModal';
+import AddHostFormModal from '../../context/AddHostFormModal/Index';
 
 
 function Navigation({ isLoaded }) {

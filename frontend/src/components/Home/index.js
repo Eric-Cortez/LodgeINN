@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import { useSelector, useDispatch, } from 'react-redux';
 import { getOneSpot } from '../../store/spots';
 import "./home.css"
-import AddHostFormModal from "../../context/AddHostFormModal"
+import AddHostFormModal from "../../context/AddHostFormModal/Index"
 
 const Home = () => {
   const sessionUser = useSelector(state => state.session.user);
