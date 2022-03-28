@@ -16,24 +16,31 @@
 LodgeINN is an application where users can post spots to host or book spots. 
 * Link to live  [LodgeInn](https://lodgeinn.herokuapp.com/) project. 
 
-
-### LodgeINN Login page
-![login](https://user-images.githubusercontent.com/80999718/149466559-c17dd619-3488-493f-a6a9-49f4f596c23a.png)
-
-### LodgeINN Sign up page
-![signup](https://user-images.githubusercontent.com/80999718/149380404-17edea81-37c0-4ff7-b432-8ba723dfda8e.png)
-
 ### LodgeINN Home page
-![home](https://user-images.githubusercontent.com/80999718/149466432-b487d479-4772-4e7c-99ff-a1aa481b7f7f.png)
+![home](https://user-images.githubusercontent.com/80999718/160439496-2ee6d3fb-06ea-4d3e-8c45-e953d1c0f987.png)
 
-### Spots 
-![spots](https://user-images.githubusercontent.com/80999718/149466089-a9f87c2f-7c34-4843-9b3c-59855ad48f27.png)
+### LodgeINN Login modal
+![login](https://user-images.githubusercontent.com/80999718/160440012-1394ebe6-7da3-4608-8ff5-c04678f08c8c.png)
 
-### Spots Detail 
-![Spot](https://user-images.githubusercontent.com/80999718/149380252-6c67be40-8ffc-4a5c-a806-d6116ccac953.png)
+### LodgeINN Sign up modal
+![signup](https://user-images.githubusercontent.com/80999718/160439676-66696eb4-0c71-48aa-9f7c-4069658bc646.png)
 
-### Host Form
-![Host ](https://user-images.githubusercontent.com/80999718/149466967-51d56682-07e3-4dd6-aa7d-2e8752f1f396.png)
+### Spots Detail page and Reviews
+![spot](https://user-images.githubusercontent.com/80999718/160440129-ee46a983-a166-4e9f-8fc2-473a1d61fddb.png)
+
+![reviews](https://user-images.githubusercontent.com/80999718/160440256-9d8167a8-1cf8-4ee8-85fe-619a5b303fa6.png)
+
+### Spots
+![spots](https://user-images.githubusercontent.com/80999718/160440460-cd638cac-b581-4748-94dd-f8655d5177f0.png)
+
+### Host Form modal
+![addspot](https://user-images.githubusercontent.com/80999718/160440535-0a430ea4-3fee-42e9-9a5d-bf54af43ddf6.png)
+
+### Manage Listings page
+![listings](https://user-images.githubusercontent.com/80999718/160440684-a64fbd48-3536-420e-b4bc-14cc68234ee9.png)
+
+### Manage Trip page
+![trip](https://user-images.githubusercontent.com/80999718/160440932-b3d4ff20-8094-4509-9ec4-4d71b6e2d583.png)
 
 ## Wiki Documentation: 
 ***
