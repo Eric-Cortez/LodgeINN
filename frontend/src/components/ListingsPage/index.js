@@ -23,13 +23,14 @@ const Listings = () => {
 
 
     return (
-        <div className='trip-page-main'>
+        <div className='trip-page-listing-main '>
             <div className='listing-host-div-btn'>
             <h2 className='trip-title listing'>Listings</h2>
                 <AddHostFormModal type={"listing-page"} />
             </div>
             <div className='all-listings'>
                 <h3>Your Listings</h3>
+                <div className='booking-line light'></div>
                 {usersListings && usersListings.map(listing => (
                     <div key={`1${listing?.id}`}>
                         <div key={listing?.id} className='booking-post-info'>

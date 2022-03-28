@@ -121,9 +121,9 @@ function EditSpotForm() {
         if (guests < 1 && guests !== 0) errors.push("Please provide a guest count.")
         if (bedrooms < 1 && bedrooms !== 0) errors.push("Please provide a bedroom count.")
         if (bathrooms < 1 && bathrooms !== 0) errors.push("Please provide a bathroom count.")
-        if (url?.length > 255 || url?.length === 0 || !url?.includes("http" || "https")) errors.push("Please provide valid Image address(url)")
+        if (url?.length > 255 || url?.length === 0 || !url?.includes("http" || "https") || !url?.includes(".")) errors.push("Please provide valid Image address(url)")
         setValidationErrors(errors)
-    }, [ address, city, state, country, title, description, price, zipCode, guests, bedrooms, bathrooms, url])
+    }, [address, city, state, country, title, description, price, zipCode, guests, bedrooms, bathrooms, url])
 
 
     const handleSubmit = async (e) => {
@@ -180,38 +180,22 @@ function EditSpotForm() {
             setTimeout(() => div.style.visibility = "hidden", 3000)
         }
 
-        if(createdSpot){
+        if (createdSpot) {
             history.push(`/spots/${createdSpot.id.id}`);
             localStorage.clear();
         }
 
-        // try {
-        //     createdSpot = await dispatch(editSpot(payload, spotId));
-        // } catch (error) {
-        //     setDisplayErrors(true)
-        //     throw new Error("This did not work!!")
-        //     // if (error instanceof ValidationError) setErrorMessages(error.errors);
-        //     // // If error is not a ValidationError, add slice at the end to remove extra
-        //     // // "Error: "
-        //     // else setErrorMessages({ overall: error.toString().slice(7) })
-        // }
-        // //!!END
-        // if (createdSpot) {
-        //     //     setErrorMessages({});
-        //     history.push(`/spots/${createdSpot.id.id}`);
-        //     localStorage.clear();
-        // }
     };
 
     return (
         <div id="host-form-edit" >
             <form onSubmit={handleSubmit}>
 
-                    <h1>Edit Spot Details</h1>
+                <h1>Edit Spot Details</h1>
                 <div id="top-host-form">
-                        {displayErrors && validationErrors.map(error => (
-                            <div className="list-of-err" key={error}> * {error}</div>
-                        ))}
+                    {displayErrors && validationErrors.map(error => (
+                        <div className="list-of-err" key={error}> * {error}</div>
+                    ))}
                 </div>
                 <div className="form-line"></div>
                 <h3 className="edit-spot-title"> Location </h3>
@@ -508,13 +492,20 @@ function EditSpotForm() {
                                 value={url}
                                 onChange={e => setUrl(e.target.value)}
                             />
-
                         </div>
+
+                        <img
+                            className='cabin-image edit'
+                            src={url}
+                            alt="cabin"
+                            onError={(e) => { e.target.src = 'https://sonuptraders.com/wp-content/uploads/2019/02/picture-not-available.jpg'; e.target.onError = null; }} />
+
+
                     </div>
                 </div>
                 <div className="form-line"></div>
                 <div className="edit-cancel-div">
-                    <Link  className="host-cancel-btn" exact="true" to={`/spots/${spotId}`}>Cancel</Link>
+                    <Link className="host-cancel-btn" exact="true" to={`/spots/${spotId}`}>Cancel</Link>
                     <button
                         id="host-btn"
                         className="host-form edit-spot"
