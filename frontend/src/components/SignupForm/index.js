@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import "../Forms/LoginForm/LoginForm.css"
+// import LoadingSpinner from "../LoadingSpinner";
+import "./SignupForm.css"
 
 function SignupForm() {
     const dispatch = useDispatch();
@@ -13,9 +15,9 @@ function SignupForm() {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [image, setImage] = useState("");
     const [errors, setErrors] = useState([]);
+    // const [isLoading, setIsLoading] = useState(false);
 
     if (sessionUser) return <Redirect to="/" />;
-
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -23,11 +25,15 @@ function SignupForm() {
 
         if (password === confirmPassword) {
             setErrors([]);
+            // setIsLoading(true)
             // return dispatch(sessionActions.signup({ email, username, password }))
             return dispatch(sessionActions.createUser({ email, username, password, image }))
                 .catch(async (res) => {
                     const data = await res.json();
-                    if (data && data.errors) setErrors(data.errors);
+                    if (data && data.errors){
+                        // setIsLoading(false)
+                         setErrors(data.errors);
+                        }
                 });
         }
         return setErrors(['Confirm Password field must be the same as the Password field']);
@@ -41,8 +47,11 @@ function SignupForm() {
     return (
         <div className="main-div">
             <form className="form-main" onSubmit={handleSubmit}>
-                <h2 className="form-title">Sign up</h2>
-
+                <div className="holds-loader">
+                    <h2 className="form-title">Sign up</h2>
+                    {/* {isLoading &&
+                    <LoadingSpinner />} */}
+                </div>
                 <div className="error-div-login">
                     {errors.map((error, idx) => (
                         <div className="each-error-div" key={idx}>{`* ${error}`}</div>
@@ -101,8 +110,10 @@ function SignupForm() {
                         required
                     />
                 </div>
-
-                <label>
+                <div>
+                <label
+                    className="label"
+                >Profile Photo</label>
                     <input
                         className="choose-photo-input"
                         type="file"
@@ -110,7 +121,7 @@ function SignupForm() {
                         required
                         onChange={updateImage}
                     />
-                </label>
+                </div>
 
 
                 <div className="btn-basic-submit">
