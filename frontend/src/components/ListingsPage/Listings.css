@@ -11,7 +11,7 @@
 
 .each-line {
     border-bottom: rgb(235,235,235) 1.5px solid;
-    width: 95%;
+    width: 100%;
 }
 
 .left-listing-div {
@@ -31,7 +31,8 @@
     justify-content: flex-start;
     align-content: center;
     align-items: center;
-    margin-right: 80px;
+
+    width: 156px;
 }
 
 .edit-del-inner {

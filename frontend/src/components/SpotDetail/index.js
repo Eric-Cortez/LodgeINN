@@ -9,7 +9,7 @@ import SpotMap from '../SpotMap';
 import { Reviews } from '../Reviews';
 import { getAllReviews } from "../../store/reviews"
 import { avgStars } from '../utils';
-import UserSpotStickyDiv from './UserSpotStickyDiv';
+import UserSpotStickyDiv from './UserSpotStickyDiv.js';
 
 
 const SpotDetail = ({ spotInfo, setSpotInfo}) => {
