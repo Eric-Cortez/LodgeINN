@@ -28,6 +28,9 @@ const validateSignup = [
         .withMessage('Please provide a password')
         .isLength({ min: 6 })
         .withMessage('Password must be 6 characters or more.'),
+    // check("image")
+    //     .exists({ checkFalsy: true })
+    //     .withMessage('Please provide an image.'),
     handleValidationErrors,
 ];
 

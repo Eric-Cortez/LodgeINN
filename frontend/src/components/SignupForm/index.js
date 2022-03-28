@@ -11,8 +11,7 @@ function SignupForm() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
-    const [image, setImage] = useState(null);
-    const [imageLoading, setImageLoading] = useState(false);
+    const [image, setImage] = useState("");
     const [errors, setErrors] = useState([]);
 
     if (sessionUser) return <Redirect to="/" />;
@@ -108,6 +107,7 @@ function SignupForm() {
                         className="choose-photo-input"
                         type="file"
                         accept="image/*"
+                        required
                         onChange={updateImage}
                     />
                 </label>

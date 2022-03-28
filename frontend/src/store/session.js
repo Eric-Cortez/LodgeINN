@@ -49,7 +49,7 @@ export const createUser = (user) => async (dispatch) => {
     formData.append("username", username);
     formData.append("email", email);
     formData.append("password", password);
-
+  
     if (image) formData.append("image", image);
 
     const res = await csrfFetch(`/api/users/`, {
