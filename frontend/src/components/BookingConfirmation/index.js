@@ -13,7 +13,7 @@ const BookingConfirmation = () => {
     const history = useHistory()
     const dispatch = useDispatch()
     const { userId, bookingId } = useParams()
-    console.log(bookingId)
+   
 
     const allSpots = useSelector(state => state?.spots)
     const allUsers = useSelector(state => state?.users)

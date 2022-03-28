@@ -11,16 +11,16 @@ const dispatch = useDispatch()
 useEffect(() => {
 
 }, [search])
-console.log(search)
+
 let searchRes;
 const handleSubmit = async (e) => {
-    console.log(search, "hand")
+
     e.preventDefault()
     if (search) {
        searchRes = await dispatch(getAllSearchRes(search))   
     }
 }
-    console.log(searchRes)
+    
     return (
        <>
         <form  className="search-form" onChange={handleSubmit}>

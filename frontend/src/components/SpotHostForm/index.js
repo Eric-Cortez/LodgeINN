@@ -92,7 +92,7 @@ function SpotHostForm({ setShowModal }) {
         pets,
      displayErrors])
 
-    console.log(errors, "full errors ")
+    
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -127,7 +127,7 @@ function SpotHostForm({ setShowModal }) {
         }
         let createdSpot;
         if(payload && errors.length === 0) {
-            console.log(payload)
+           
             createdSpot = await dispatch(addSpot(payload));
             await dispatch(getAllSpots())
         } 
