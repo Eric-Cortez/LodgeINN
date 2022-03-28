@@ -23,6 +23,7 @@ const SpotDescription = ({
 
     return (
         <div className='host-spot-outer-form'>
+            <div className='top-modal-form'>
             <h2 className='create-spot-title'>Tell us a bit more</h2>
             
             <div className='errors-container'>
@@ -65,6 +66,7 @@ const SpotDescription = ({
                    
                     </div>
                 </div>
+            </div>
             </div>
 
             <div className='host-btn-next-back'>

@@ -44,7 +44,8 @@ function Navigation({ isLoaded }) {
                     </Link>
                 </li>
                 <li className='search-main'>
-                    <SearchBar />
+                    {/* still need to finnish search implementation*/}
+                    {/* <SearchBar /> */}
                 </li>
                 <li className='all-nav-links'>
                     <NavLink className="nav-hover" exact to="/">Home</NavLink>

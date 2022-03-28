@@ -23,6 +23,13 @@ module.exports = (sequelize, DataTypes) => {
         len: [3, 256]
       },
     },
+    imageUrl: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [3, 256]
+      },
+    },
     hashedPassword: {
       type: DataTypes.STRING.BINARY,
       allowNull: false,
@@ -56,8 +63,9 @@ module.exports = (sequelize, DataTypes) => {
 
   // RETURNS AN OBJ ONLY WITH INFO THAT IS SAFE TO SAVE IN THE JWT
   User.prototype.toSafeObject = function () { 
-    const { id, username, email } = this; 
-    return { id, username, email };
+    const { id, username, email, imageUrl } = this; 
+  
+    return { id, username, email, imageUrl }
   };
   // MATCHES THE PASSWORD TO THE HASHED PASSWORD 
   User.prototype.validatePassword = function (password) {
@@ -83,12 +91,13 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   
-  User.signup = async function ({ username, email, password }) {
+  User.signup = async function ({ username, email, password, imageUrl }) {
     const hashedPassword = bcrypt.hashSync(password);
     const user = await User.create({
       username,
       email,
       hashedPassword,
+      imageUrl
     });
     return await User.scope('currentUser').findByPk(user.id);
   };

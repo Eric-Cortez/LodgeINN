@@ -42,3 +42,14 @@
      display: flex;
      justify-content: space-between;
 }
+
+.trip-page-listing-main  {
+     height: auto !important;
+     min-height: 100%;
+     margin-bottom: 40px !important;
+}
+
+.booking-line.light {
+    border-bottom: rgb(235,235,235) 1.5px solid;
+    margin-top: 15px;
+}

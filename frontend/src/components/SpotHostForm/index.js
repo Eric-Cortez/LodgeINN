@@ -92,7 +92,7 @@ function SpotHostForm({ setShowModal }) {
         pets,
      displayErrors])
 
-    
+    console.log(errors, "full errors ")
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -130,9 +130,10 @@ function SpotHostForm({ setShowModal }) {
             console.log(payload)
             createdSpot = await dispatch(addSpot(payload));
             await dispatch(getAllSpots())
-        } else {
-            setDisplayErrors(true)
-        }
+        } 
+        // else if (errors.length > 0) {
+        //     setDisplayErrors(true)
+        // }
         if (createdSpot) {
             setShowModal(false)
             history.push(`/spots/${createdSpot.id.id}`);
@@ -145,12 +146,12 @@ function SpotHostForm({ setShowModal }) {
 
     return (
         <form className="host-form-outer" onSubmit={handleSubmit}>
-           {displayErrors &&
+           {/* {(displayErrors && step === 6)&&
             <div id="host-spot-form"> 
             * Unsuccessful
             <br/>
             Please review details
-            </div>}
+            </div>} */}
             
 
             {step === 1 &&

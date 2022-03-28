@@ -29,6 +29,7 @@ const SpotInfo = ({
 
     return (
         <div className='host-spot-outer-form'>
+            <div className='top-modal-form'>
             <h2 className='create-spot-title'>Tell us more about your spot</h2>
             <h6 className='create-spot-header'>How many guests would you like to host?</h6>
 
@@ -102,6 +103,7 @@ const SpotInfo = ({
                         />
                     </div>
                 </div>
+            </div>
             </div>
             <div className='host-btn-next-back'>
                 <button
