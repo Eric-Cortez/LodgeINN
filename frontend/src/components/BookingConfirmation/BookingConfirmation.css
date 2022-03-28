@@ -17,3 +17,20 @@
 .confirmation-num {
     text-align: center;
 }
+.listing-link {
+    color: rgb(120, 20, 145);
+    font-weight: 600;
+    font-size: 16px;
+    margin: 2px 0;
+}
+
+.listing-link:hover {
+    color: rgb(174, 63, 202);
+    text-decoration: underline;
+}
+
+.listing-link-div {
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 10px;
+}
