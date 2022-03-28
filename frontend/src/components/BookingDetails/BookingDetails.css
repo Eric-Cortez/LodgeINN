@@ -172,10 +172,9 @@
 
 
 .to-login-msg {
+    margin: 0;
     text-align: center;
-    margin: 8px;
-    margin-top: 12px;
-    width: 180px;
+    width: auto;
     color: rgb(255, 56, 92)
 }
 
