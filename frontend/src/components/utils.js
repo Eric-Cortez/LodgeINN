@@ -39,7 +39,7 @@ export const dateFormatOrder = (startDate , endDate) => {
     if (startmm === endmm) {
         return startmm + ' ' + startD + "-" +  endD + ', ' + yyyy;
     } else {
-        return startmm + ' ' + startD + "-" + endmm + endD + ', ' + yyyy ;
+        return startmm + ' ' + startD + "-" + endmm + " " + endD + ', ' + yyyy ;
     }
 }
 

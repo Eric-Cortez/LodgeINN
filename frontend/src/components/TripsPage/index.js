@@ -61,7 +61,7 @@ const TripPage = () => {
             <i className="fa fa-suitcase"></i>
             <h4>No trips booked...yet! </h4>
             <p className='no-trip-message'>Time to dust off your bags and start planning your next adventure</p>
-            <Link className="trip-page-search" to="/">Start searching</Link>
+            <Link className="trip-page-search" to="/spots">Start searching</Link>
           </div> :
           <div className='left-trip-div'>
             <i className="fa fa-suitcase trips"></i>
