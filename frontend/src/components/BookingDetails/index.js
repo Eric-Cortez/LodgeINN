@@ -55,6 +55,11 @@ const BookingDetails = ({ spotId, user, allSpotReviews }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        if (new Date(endDate).getTime() < new Date(startDate).getTime()) {
+            setEndDate("")
+            errors.push("Please select a later checkout date")
+        }
+        
 
         let payload;
 
