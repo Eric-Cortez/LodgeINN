@@ -88,6 +88,7 @@ const TripPage = () => {
               <div key={booking?.id}>{booking?.startDate} spot: {booking?.spotId}</div>
             ))} */}
         <h3>Upcoming trips</h3>
+        <div className='booking-line light'></div>
         <div className='booking-outer-container'>
           {userBookings && futureNPastBookings(userBookings).futureDates.map(date => (
             <div key={`${date[1].id}1`} className='each-booking-container'>
@@ -134,6 +135,7 @@ const TripPage = () => {
         </div>
 
         <h3>Where you've been</h3>
+        <div className='booking-line light'></div>
         {userBookings && futureNPastBookings(userBookings).pastDates.map(date => (
           <div key={`${date[1].id}2`} className='each-booking-container' >
             <div className='booking-post-info'>

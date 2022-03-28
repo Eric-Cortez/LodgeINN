@@ -35,7 +35,8 @@ const SpotAddress = ({
 
     return (
         <div className='host-spot-outer-form'>
-
+            <div className='top-modal-form'>
+           
             <h2 className='create-spot-title'> Where's your place located?</h2>
 
             <div className='errors-container'>
@@ -127,6 +128,8 @@ const SpotAddress = ({
                     </div>
                 </div>
             </div>
+            </div>
+
             <div className='host-btn-div'>
                 <button onClick={() => {
                     if (errors.length) {

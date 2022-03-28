@@ -24,6 +24,7 @@ const SpotAmenities = ({
 
   return (
       <div className='host-spot-outer-form'>
+          <div className='top-modal-form'>
           <h2 className='create-spot-title'>Let guests know what your place has to offer</h2>
           <h6 className='create-spot-header'>Do you have any standout amenities?</h6>
           <div className='errors-container'>
@@ -112,6 +113,7 @@ const SpotAmenities = ({
                   >Pets </label>
                 </div>
               </div>
+          </div>
           </div>
           <div className='host-btn-next-back'>
             <button 
