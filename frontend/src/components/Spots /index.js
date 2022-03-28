@@ -35,11 +35,10 @@ function Spots() {
                             <Link key={`${spot?.title}13`} to={`/spots/${spot.id}`}>
                                 <img 
                                 key={`${spot?.title}3`} 
-                                crossOrigin="anonymous" 
                                 id='spot-image' 
                                 src={spot?.Images[0]?.url} 
                                 alt="listing" 
-                                // onError={(e) => { e.target.src = 'https://sonuptraders.com/wp-content/uploads/2019/02/picture-not-available.jpg'; e.target.onError = null; }}
+                                onError={(e) => { e.target.src = 'https://sonuptraders.com/wp-content/uploads/2019/02/picture-not-available.jpg'; e.target.onError = null; }}
                                 />
                             </Link>
                         </div>
