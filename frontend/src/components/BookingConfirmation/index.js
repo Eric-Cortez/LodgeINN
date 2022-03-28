@@ -2,7 +2,7 @@ import React, {useEffect} from 'react'
 import { dateFormatOrder, dayCount } from '../utils'
 import "../BookingPreviewDetails/BookingPreviewDetails.css"
 import "./BookingConfirmation.css"
-import { useHistory, useParams } from 'react-router-dom'
+import { Link, useHistory, useParams } from 'react-router-dom'
 import { getAllSpots } from '../../store/spots'
 import { useDispatch, useSelector, } from 'react-redux';
 import { getAllUsers } from '../../store/users'
@@ -47,7 +47,7 @@ const BookingConfirmation = () => {
             <h2 className='trip-detail-head'>Great, You're Booked!</h2>
             <h4 className='confirmation-num'>A confirmation email is on its way to you.</h4>
             <h6 className='confirmation-num'>Confirmation number: {getRandomArbitrary(565565679944233, 100555616446555843632)}</h6>
-
+            <Link to={`/users/${userId}/trips`}>Manage bookings</Link>
             <div className='trip-info-modal'>
                 <img className="trip-image-small modal" 
                 src={`${allSpots[spotId]?.Images[0]?.url}`} alt="spot" 
