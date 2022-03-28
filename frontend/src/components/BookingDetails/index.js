@@ -10,7 +10,7 @@ import { avgStars } from '../utils';
 import { getAllSpots } from '../../store/spots';
 import LoginFormModal from "../../context/LoginFormModal"
 import Demo from "../Navigation/Demo.js"
-import BookingDetailsPreviewModal from "../../context/BookingDetailsPreviewModal"
+// import BookingDetailsPreviewModal from "../../context/BookingDetailsPreviewModal"
 
 
 const BookingDetails = ({ spotId, user, allSpotReviews }) => {
