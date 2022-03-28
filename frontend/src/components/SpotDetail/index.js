@@ -9,6 +9,7 @@ import SpotMap from '../SpotMap';
 import { Reviews } from '../Reviews';
 import { getAllReviews } from "../../store/reviews"
 import { avgStars } from '../utils';
+import UserSpotStickyDiv from './UserSpotStickyDiv';
 
 
 const SpotDetail = ({ spotInfo, setSpotInfo}) => {
@@ -30,22 +31,7 @@ const SpotDetail = ({ spotInfo, setSpotInfo}) => {
     dispatch(getAllReviews(spotId))
 
     },[dispatch,spotId])
-
-    const deleteBtn = async (e) => {
-        e.preventDefault() 
-        let deleteSpotRes;
-        try {
-            deleteSpotRes = await dispatch(deleteSpot(oneSpot,spotId));
-        } catch (error) {
-            throw new Error("Error - Resource not found")
-        }
-        if (deleteSpotRes.message === "Delete Successful") {
-           history.push("/spots")
-        }
-    }
-
-  
-    
+   
     return (
         <div className='spot-detail'> 
          <div className='detail-upper-main'>
@@ -67,15 +53,6 @@ const SpotDetail = ({ spotInfo, setSpotInfo}) => {
                 </p>
             </div>
         
-
-            {sessionUser?.id === oneSpot?.userId &&
-            <div id="button-detail">
-                <Link  className="spot-delete-new" to={`/spots/${spotId}/host`}>Edit Spot</Link>
-                <button className="spot-delete-new"onClick={deleteBtn}>Delete</button>
-            </div>
-            }
-
-
 
             <div id="info">
                 <h3 ><i className="fas i-list fa-home"></i>Entire home</h3>
@@ -129,8 +106,11 @@ const SpotDetail = ({ spotInfo, setSpotInfo}) => {
             </div>
 
             </div>
-            
+                {sessionUser?.id !== oneSpot?.User?.id &&
                 <BookingDetails spotId={spotId} spot={oneSpot} user={sessionUser} allSpotReviews={allSpotReviews?.list} />
+               }
+                {sessionUser?.id === oneSpot?.User?.id && 
+                <UserSpotStickyDiv spotId={spotId} oneSpot={oneSpot}/>}
         </div>
         </div>
     )

@@ -111,9 +111,7 @@ h2 {
 
 
 
-.spot-delete-new  {
-    left: 50px;
-    list-style: none;
+.spot-new  {
     background: none;
     border: none;
     color: #FF5A5F;
@@ -125,15 +123,18 @@ h2 {
     display: inline-block;
     font-size: 12px;
     margin: 6px 4px;
-    transition-duration: 0.4s;
     margin-bottom: 5px;
-    margin-left: 28%;
+    transition-duration: 0.4s;
     cursor: pointer; 
-    margin-left: 0!important;
-    margin-right: 10px;
+    width: 100px;
+    align-self: center;
 }
 
-.spot-delete-new:hover {
+.spot-new.del {
+    width: 120px;
+}
+
+.spot-new:hover {
     cursor: pointer;
     transform: scale(1.1);
     background-color: #FF5A5F;

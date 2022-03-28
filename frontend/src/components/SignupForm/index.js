@@ -6,20 +6,26 @@ import "../Forms/LoginForm/LoginForm.css"
 
 function SignupForm() {
     const dispatch = useDispatch();
-    const sessionUser = useSelector((state) => state.session.user);
+    const sessionUser = useSelector((state) => state?.session?.user);
     const [email, setEmail] = useState("");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
+    const [image, setImage] = useState(null);
+    const [imageLoading, setImageLoading] = useState(false);
     const [errors, setErrors] = useState([]);
 
     if (sessionUser) return <Redirect to="/" />;
 
+
     const handleSubmit = (e) => {
         e.preventDefault();
+     
+
         if (password === confirmPassword) {
             setErrors([]);
-            return dispatch(sessionActions.signup({ email, username, password }))
+            // return dispatch(sessionActions.signup({ email, username, password }))
+            return dispatch(sessionActions.createUser({ email, username, password, image }))
                 .catch(async (res) => {
                     const data = await res.json();
                     if (data && data.errors) setErrors(data.errors);
@@ -27,6 +33,11 @@ function SignupForm() {
         }
         return setErrors(['Confirm Password field must be the same as the Password field']);
     };
+
+    const updateImage = (e) => {
+        const file = e.target.files[0];
+        setImage(file);
+    }
 
     return (
         <div className="main-div">
@@ -91,11 +102,32 @@ function SignupForm() {
                         required
                     />
                 </div>
+
+                <label>
+                    <input
+                        className="choose-photo-input"
+                        type="file"
+                        accept="image/*"
+                        onChange={updateImage}
+                    />
+                </label>
+
+
                 <div className="btn-basic-submit">
                     <button className="btn-basic" type="submit">Sign Up</button>
                 </div>
-
-
+                <div>
+                    {sessionUser && (
+                        <div>
+                            <h1>{sessionUser.username}</h1>
+                            <img
+                                style={{ width: "150px" }}
+                                src={sessionUser.imageUrl}
+                                alt="profile"
+                            />
+                        </div>
+                    )}
+                </div>
             </form>
         </div>
     );

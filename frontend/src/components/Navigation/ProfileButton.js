@@ -8,7 +8,6 @@ function ProfileButton({ user }) {
     const dispatch = useDispatch();
     const [showMenu, setShowMenu] = useState(false);
     const history = useHistory()
-
     const openMenu = () => {
         if (showMenu) return;
         setShowMenu(true);
@@ -39,7 +38,7 @@ function ProfileButton({ user }) {
                     <i className="fas fa-bars" />
                     <img 
                     className='nav-profile-img' 
-                    src={"https://cdn2.vectorstock.com/i/1000x1000/20/76/man-avatar-profile-vector-21372076.jpg"} 
+                    src={user?.imageUrl} 
                     alt="profile " 
                         onError={(e) => { e.target.src = 'https://sonuptraders.com/wp-content/uploads/2019/02/picture-not-available.jpg'; e.target.onError = null; }}/>  
                 </div>

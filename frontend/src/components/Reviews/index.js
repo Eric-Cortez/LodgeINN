@@ -6,16 +6,18 @@ import AddReviewForm from '../Forms/AddReviewForm';
 import EditReviewModal from '../../context/EditReviewModal';
 import { deleteReview } from '../../store/reviews';
 import { Rating } from 'react-simple-star-rating'
+import { getAllUsers } from '../../store/users';
 
 export const Reviews = ({spot, user}) => {
 
   const dispatch = useDispatch()
   const allSpotReviews = useSelector(state => state?.reviews?.list)
-  console.log(user)
+  const allUsers = useSelector(state => state?.users)
 
   useEffect(() => {
     if(spot?.id){
       dispatch(getAllReviews(spot?.id))
+      dispatch(getAllUsers())
     }
   }, [spot?.id, dispatch])
 
@@ -50,7 +52,7 @@ export const Reviews = ({spot, user}) => {
             <div className='each-review-info'>
               <img 
               className='profile-img-review' 
-              src={"https://cdn2.vectorstock.com/i/1000x1000/20/76/man-avatar-profile-vector-21372076.jpg"} 
+                src={allUsers[eachReview?.userId]?.imageUrl} 
               alt="profile " 
                 onError={(e) => { e.target.src = 'https://sonuptraders.com/wp-content/uploads/2019/02/picture-not-available.jpg'; e.target.onError = null; }}/>
               <div className='username-date-div-review'>
