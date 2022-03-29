@@ -21,8 +21,7 @@
     height: fit-content;
     width: fit-content;
     align-self: flex-start;
-    margin: 0;
-    margin-bottom: 5px;
+    margin: 5px  0;
 }
 
 .form-title {
@@ -34,7 +33,7 @@
     width: 250px;
     height: 30px;
     border-radius: 5px;
-    border-color: black;
+      border: 1px solid black;
 }
 
 .each-error-div {
