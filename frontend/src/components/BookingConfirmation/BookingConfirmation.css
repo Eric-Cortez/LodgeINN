@@ -34,3 +34,13 @@
   justify-content: flex-start;
   margin-left: 10px;
 }
+
+.conf {
+    word-wrap: break-word;
+}
+
+.input.host {
+    border: 2px solid rebeccapurple;
+    padding: 5px;
+    height: 35px;
+}

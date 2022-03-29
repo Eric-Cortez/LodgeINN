@@ -33,14 +33,14 @@ const HostSpotConfirmation = ({
       <h2 className='confirmation-host-header'>Confirm hosting details</h2>
       <div className='confirm-details'>
         <h3>Location <button  className="confirm-edit" onClick={() => setStep(1)}><i className="fas fa-edit"></i></button></h3> 
-      <p>{`${address}`}</p>
-      <p>{`${city}, ${state} ${zipCode} (${country})`}</p>
+        <p className='conf'>{`${address}`}</p>
+      <p className='conf'>{`${city}, ${state} ${zipCode} (${country})`}</p>
         <div className='confirm-sub-title'></div>
       <h3>Spot details  <button className="confirm-edit" onClick={() => setStep(2)}><i className="fas fa-edit"></i></button></h3>
-      <p>{`Guest limit: ${guests}`}</p>
-      <p>{`Bedrooms: ${bedrooms}`}</p>
-      <p>{`Bathrooms: ${bathrooms}`}</p>
-      <p>{`Price per night: $${price}`}</p>
+      <p className='conf'>{`Guest limit: ${guests}`}</p>
+        <p className='conf'>{`Bedrooms: ${bedrooms}`}</p>
+        <p className='conf'>{`Bathrooms: ${bathrooms}`}</p>
+        <p className='conf'>{`Price per night: $${price}`}</p>
         <div className='confirm-sub-title'></div>
         <h3>Amenities  <button className="confirm-edit" onClick={() => setStep(3)}><i className="fas fa-edit"></i></button></h3>
         {filteredArrAmen && filteredArrAmen?.map(amen => (
@@ -48,8 +48,8 @@ const HostSpotConfirmation = ({
       ))}
         <div className='confirm-sub-title'></div>
         <h3>Description  <button className="confirm-edit" onClick={() => setStep(4)}><i className="fas fa-edit"></i></button></h3>
-        <p>{`Title: ${title}`}</p>
-        <p>{`Description: ${description}`}</p>
+        <p className='conf'>{`Title: ${title}`}</p>
+        <p className='conf'>{`Description: ${description}`}</p>
         <div className='confirm-sub-title'></div>
         <h3>Lodge Photo  <button className="confirm-edit" onClick={() => setStep(5)}><i className="fas fa-edit"></i></button></h3>
       <img 
