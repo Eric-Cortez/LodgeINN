@@ -64,7 +64,7 @@ body {
 }
 
 .info {
-    width: 400px;
+    max-width: 400px;
     height: 100%;
     padding: 10px;
 }
@@ -80,13 +80,13 @@ body {
 }
 
 .each-spot-title {
-    word-wrap: break-word;
     font-size: 18px;
     line-height: 20px;
     color: #343434;;
     font-weight: 600;
     padding: 0;
     margin-bottom: 2px;
+    word-wrap: break-word;
 }
 
 .each-spot-title:hover {
