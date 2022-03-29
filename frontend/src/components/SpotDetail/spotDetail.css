@@ -19,12 +19,14 @@ h2 {
 }
 
 #title-1 {
-    margin-top: 65px;
-    display: flex;
-    justify-content: flex-start;
-    font-size: 25px;
     margin-bottom: 20px;
-    margin-left: 10px;
+    margin-top: 65px;
+    width: 100%;
+    height: auto !important; 
+    word-wrap: break-word !important; 
+    font-size: 25px;
+    max-width: 600px;
+    text-align: start;
 }
 
 #title {
@@ -33,6 +35,10 @@ h2 {
     font-size: 18px;
 }
 
+.city-header {
+    text-align: start;
+    word-wrap: break-word;
+}
 
 .amenities-container-all {
     color: rgb(135, 135, 135);
@@ -69,6 +75,11 @@ h2 {
     border-bottom: 1px solid rgb(221, 221, 221);
     padding-bottom: 20px;
     position: relative;
+}
+
+#p-text.one-spot-desc {
+    text-align: start;
+    word-wrap: break-word;
 }
 
 #one-spot {

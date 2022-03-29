@@ -64,8 +64,8 @@ const SpotDetail = ({ spotInfo, setSpotInfo}) => {
                 <h3><i className="fas i-list fa-map-marker-alt"></i>Great check-in experience</h3>
                 <p className="list-details">95% of recent guests gave the check-in process a 5-star rating.</p>
             </div>
-            <h3>{oneSpot?.city}, {oneSpot?.state}</h3>
-            <p id='p-text'>{oneSpot?.description}
+            <h3 className='city-header'>{oneSpot?.city}, {oneSpot?.state}</h3>
+            <p id='p-text' className='one-spot-desc'>{oneSpot?.description}
            </p> 
 
             <h3>Amenities</h3>
