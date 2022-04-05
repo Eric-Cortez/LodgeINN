@@ -124,6 +124,8 @@ i.fa-suitcase {
      display: flex;
      flex-direction: column;
      justify-content: center;
+     width: 300px;
+     height: auto;
 }
 
 .delete-button-div {

@@ -78,7 +78,8 @@ export const Reviews = ({spot, user}) => {
       ))}
       </div>
       <div className='add-review-form'>
-       {user?.id &&
+        {console.log(user?.id, spot?.userId)}
+        {(user?.id && user?.id !== spot?.userId) &&
         <AddReviewForm spotId={spot?.id} userId={user?.id}/>} 
       </div>
 
