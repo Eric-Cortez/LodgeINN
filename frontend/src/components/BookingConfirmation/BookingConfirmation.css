@@ -40,7 +40,7 @@
 }
 
 .input.host {
-    border: 2px solid rebeccapurple;
+    border: 1px solid black;
     padding: 5px;
     height: 35px;
 }
