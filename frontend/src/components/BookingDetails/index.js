@@ -161,8 +161,8 @@ const BookingDetails = ({ spotId, user, allSpotReviews }) => {
                     <p className='total-price'>Price / night:{`$${spot?.price}`} x {dayCount(startDate, endDate) === 1 ? `${dayCount(startDate, endDate)} night` : `${dayCount(startDate, endDate)} nights`} </p>
                     <p className='total-price'>Sales tax: {`$${Number.parseFloat(spot?.price * 0.092).toFixed(2)}`}</p>
                     
-                    <div className='booking-line'></div>
-                    <p className='total-price last'>Total: {`$${spot?.price * dayCount(startDate, endDate) + +Number.parseFloat(spot?.price * 0.092).toFixed(2)}`}</p>
+                    <div className='booking-line'></div> 
+                    <p className='total-price last'>Total: ${Number.parseFloat(spot?.price * dayCount(startDate, endDate) + +Number.parseFloat(spot?.price * 0.092).toFixed(2)).toFixed(2)}</p>
                 </div> : ""}
             </form>
                 {!sessionUser &&

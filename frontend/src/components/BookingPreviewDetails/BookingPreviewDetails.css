@@ -13,6 +13,7 @@
 .trip-info-modal {
     display: flex;
     flex-direction: row;
+    min-width: 440px;
 }
 
 .booking-line.light {
@@ -34,6 +35,19 @@ margin-left: 20px;
     font-size: 14px;
     color: rgb(115,115,115);
     margin: 4px 20px;
+    word-wrap: break-word;
+}
+
+.trip-modal-p-upper {
+     font-weight: 100;
+    font-size: 14px;
+    color: rgb(115,115,115);
+    margin: 4px 20px;
+    word-wrap: break-word;
+}
+
+.right-upper-confirm {
+    width: 60%;
 }
 
 .total-price.last.new {
