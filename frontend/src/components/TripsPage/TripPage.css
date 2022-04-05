@@ -124,6 +124,9 @@ i.fa-suitcase {
      display: flex;
      flex-direction: column;
      justify-content: center;
+     word-wrap: break-word;
+     max-width: 300px;
+     padding: 15px 0; 
      width: 300px;
      height: auto;
 }
