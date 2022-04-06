@@ -13,7 +13,7 @@ import SpotAmenities from "./SpotAmenities";
 function SpotHostForm({ setShowModal }) {
     const history = useHistory()
     const dispatch = useDispatch()
-    const session = useSelector(state => state.session)
+    const session = useSelector(state => state?.session)
 
 
 

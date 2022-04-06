@@ -125,9 +125,8 @@ i.fa-suitcase {
      flex-direction: column;
      justify-content: center;
      word-wrap: break-word;
-     max-width: 300px;
-     padding: 15px 0; 
-     width: 300px;
+     padding: 15px; 
+     width: 200px;
      height: auto;
 }
 
@@ -153,4 +152,8 @@ i.fa-suitcase {
 }
 .explore-new:hover {
      text-decoration: underline;
+}
+
+.trip-detail-upper-info {
+     max-width: 400px;
 }

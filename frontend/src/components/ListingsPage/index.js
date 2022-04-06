@@ -11,10 +11,15 @@ const Listings = () => {
     const dispatch = useDispatch()
     const sessionUser = useSelector(state => state?.session?.user)
     const listings = useSelector(state => state?.spots?.list)
-    const usersListings = listings.filter(listing => listing?.userId === sessionUser?.id)
+    let usersListings; 
+    if(listings){
+        usersListings = listings.filter(listing => listing?.userId === sessionUser?.id)
+    }
 
     useEffect(() => {
-        dispatch(getAllSpots())
+        (async () => {
+            await dispatch(getAllSpots())
+        })()
     }, [dispatch])
     
     useEffect(() => {

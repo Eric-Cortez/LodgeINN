@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import "../Forms/LoginForm/LoginForm.css"
-// import LoadingSpinner from "../LoadingSpinner";
+import LoadingSpinner from "../LoadingSpinner";
 import "./SignupForm.css"
 
 function SignupForm() {
@@ -15,7 +15,7 @@ function SignupForm() {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [image, setImage] = useState("");
     const [errors, setErrors] = useState([]);
-    // const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
     if (sessionUser) return <Redirect to="/" />;
 
@@ -25,15 +25,17 @@ function SignupForm() {
 
         if (password === confirmPassword) {
             setErrors([]);
-            // setIsLoading(true)
+            setIsLoading(true)
             // return dispatch(sessionActions.signup({ email, username, password }))
             return dispatch(sessionActions.createUser({ email, username, password, image }))
                 .catch(async (res) => {
                     const data = await res.json();
                     if (data && data.errors){
-                        // setIsLoading(false)
+                        setIsLoading(false)
                          setErrors(data.errors);
                         }
+                }).then(()=> {
+                    setIsLoading(false)
                 });
         }
         return setErrors(['Confirm Password field must be the same as the Password field']);
@@ -49,8 +51,8 @@ function SignupForm() {
             <form className="form-main" onSubmit={handleSubmit}>
                 <div className="holds-loader">
                     <h2 className="form-title">Sign up</h2>
-                    {/* {isLoading &&
-                    <LoadingSpinner />} */}
+                    {isLoading &&
+                    <LoadingSpinner />}
                 </div>
                 <div className="error-div-login">
                     {errors.map((error, idx) => (

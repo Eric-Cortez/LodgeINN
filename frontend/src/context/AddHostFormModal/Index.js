@@ -22,7 +22,7 @@ function AddHostFormModal({type}) {
                     setShowModal(false)
                 }}>
                     <SpotHostForm setShowModal={setShowModal} />
-                    {/* <EditReviewForm reviewId={reviewId} spotId={spotId} setShowModal={setShowModal} /> */}
+                    
                 </Modal>
             )}
         </>

@@ -51,14 +51,15 @@ const BookingConfirmation = () => {
                 <img className="trip-image-small modal"
                     src={`${allSpots[spotId]?.Images[0]?.url}`} alt="spot"
                     onError={(e) => { e.target.src = 'https://sonuptraders.com/wp-content/uploads/2019/02/picture-not-available.jpg'; e.target.onError = null; }} />
-                <div>
+                <div className='right-upper-confirm'>
 
                     <h4 className='trip-detail-h4'>Address</h4>
-                    <p className='trip-modal-p'>{allSpots[spotId]?.address}</p>
-                    <p className='trip-modal-p'>{allSpots[spotId]?.city}, {allSpots[spotId]?.state} {allSpots[spotId]?.zipCode}</p>
+                    <p className='trip-modal-p-upper'>{allSpots[spotId]?.address}</p>
+                    <p className='trip-modal-p-upper'>{allSpots[spotId]?.city}, {allSpots[spotId]?.state} {allSpots[spotId]?.zipCode}</p>
                     <div className="listing-link-div">
                         <Link className="listing-link" to={`/users/${userId}/trips`}>Manage bookings</Link>
                     </div>
+                   
                 </div>
 
             </div>
