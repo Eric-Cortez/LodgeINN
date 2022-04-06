@@ -13,7 +13,7 @@ const BookingPreviewDetails = ({ allSpots, spotId, date, allUsers }) => {
         src={`${allSpots[spotId]?.Images[0]?.url}`} 
         alt="spot" 
         onError={(e) => { e.target.src = 'https://sonuptraders.com/wp-content/uploads/2019/02/picture-not-available.jpg'; e.target.onError = null; }}/>
-        <div>
+        <div className='trip-detail-upper-info'>
 
           <h4 className='trip-detail-h4'>Address</h4>
           <p className='trip-modal-p'>{allSpots[spotId]?.address}</p>
