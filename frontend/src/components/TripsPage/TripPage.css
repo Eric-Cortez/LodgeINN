@@ -153,3 +153,7 @@ i.fa-suitcase {
 .explore-new:hover {
      text-decoration: underline;
 }
+
+.trip-detail-upper-info {
+     max-width: 400px;
+}
