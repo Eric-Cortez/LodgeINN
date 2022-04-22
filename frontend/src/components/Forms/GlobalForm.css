@@ -94,3 +94,14 @@
 .booking-div.edit {
     width: 300px !important;
 }
+
+.success {
+    animation-name: slide !important;
+    animation-duration: .5s !important;
+    transition: ease-in-out;
+}
+
+@keyframes slide {
+    from {transform: translateX(450px); color: #ff385c;}
+    to {transform: translateX(0px); color: black;}
+}
