@@ -22,6 +22,7 @@ const DeleteBookingBtn = ({bookingId}) => {
      
         if (res) {
             const div = document.createElement("div")
+            div.className = "success"
             const div2 = document.getElementById("booking-delete-msg")
             let parentDiv = div2.parentNode
             parentDiv.insertBefore(div,div2)
@@ -35,7 +36,7 @@ const DeleteBookingBtn = ({bookingId}) => {
             div.style.fontSize = "18px"
             div.style.fontWeight = "400"
             div.style.padding = "15px"
-            setTimeout(() => div.remove(), 2000)
+            setTimeout(() => div.remove(), 2500)
            await dispatch( getAllBookings())
         }
     
