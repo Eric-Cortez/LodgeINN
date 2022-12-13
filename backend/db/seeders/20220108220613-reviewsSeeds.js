@@ -1,16 +1,21 @@
 'use strict';
 
+let options = {};
+if (process.env.NODE_ENV === 'production') {
+  options.schema = process.env.SCHEMA;
+}
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
- 
-    return queryInterface.bulkInsert('Reviews', [
+    options.tableName = 'Reviews';
+    return queryInterface.bulkInsert(options, [
       {
-       userId: 5,
-       spotId: 1,
-       rating: 4,
-       review: "The cabin was nice. It is was very close to Leavenworth downtown. Was clean so that was nice, however there is a very bad foul smell coming out of the bathroom, just made me throw up every morning I hope they can fix it before anyone else rent the cabin again. Also the time we where there it was very cold and snowy, I asked on how we can turn on the fire heater inside and Frank told us if we never used it before then we should not use it, so we spent to nights in the cold hahahh. Also it would be nice if they had shuffled the snow a little bit on the grill and the outside area, we gad to do that ourselves.", 
-       createdAt: new Date(),
-       updatedAt: new Date()
+        userId: 5,
+        spotId: 1,
+        rating: 4,
+        review: "The cabin was nice. It is was very close to Leavenworth downtown. Was clean so that was nice, however there is a very bad foul smell coming out of the bathroom, just made me throw up every morning I hope they can fix it before anyone else rent the cabin again. Also the time we where there it was very cold and snowy, I asked on how we can turn on the fire heater inside and Frank told us if we never used it before then we should not use it, so we spent to nights in the cold hahahh. Also it would be nice if they had shuffled the snow a little bit on the grill and the outside area, we gad to do that ourselves.",
+        createdAt: new Date(),
+        updatedAt: new Date()
       },
       {
         userId: 6,
@@ -32,9 +37,9 @@ module.exports = {
 
   },
   down: (queryInterface, Sequelize) => {
-   
-     
-      return queryInterface.bulkDelete('Reviews', null, {});
-  
+
+    options.tableName = 'Reviews'
+    return queryInterface.bulkDelete(options, null, {});
+
   }
 };
