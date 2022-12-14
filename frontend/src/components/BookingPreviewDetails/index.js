@@ -8,11 +8,11 @@ const BookingPreviewDetails = ({ allSpots, spotId, date, allUsers }) => {
       <h2 className='trip-detail-head'>Trip details</h2>
 
       <div className='trip-info-modal'>
-        <img 
-        className="trip-image-small modal" 
-        src={`${allSpots[spotId]?.Images[0]?.url}`} 
-        alt="spot" 
-        onError={(e) => { e.target.src = 'https://sonuptraders.com/wp-content/uploads/2019/02/picture-not-available.jpg'; e.target.onError = null; }}/>
+        <img
+          className="trip-image-small modal"
+          src={`${allSpots[spotId]?.Images[0]?.url}`}
+          alt="spot"
+          onError={(e) => { e.target.src = 'https://filestore.community.support.microsoft.com/api/images/ext?url=https%3A%2F%2Fanswersstaticfilecdnv2.azureedge.net%2Fstatic%2Fimages%2Fimage-not-found.jpg'; e.target.onError = null; }} />
         <div className='trip-detail-upper-info'>
 
           <h4 className='trip-detail-h4'>Address</h4>
