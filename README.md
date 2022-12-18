@@ -14,7 +14,7 @@
 ***
 # LodgeINN
 LodgeINN is an application where users can post spots to host or book spots. 
-* Link to live  [LodgeInn](https://lodgeinn.herokuapp.com/) project. 
+* Link to live  [LodgeInn](https://lodge-inn.onrender.com) project. 
 
 ### LodgeINN Home page
 ![home](https://user-images.githubusercontent.com/80999718/160439496-2ee6d3fb-06ea-4d3e-8c45-e953d1c0f987.png)
